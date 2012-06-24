@@ -1,0 +1,115 @@
+@font-face {
+font-family: CODE-Bold;
+src: url("../fonts/CODE-Bold.otf") format("opentype");
+}
+
+@font-face {
+font-family: CODE-Light;
+src: url("../fonts/CODE-Light.otf") format("opentype");
+}
+
+html {
+	height: 100%;
+}
+
+body {
+background-color: black;
+min-height: 100%;
+}
+
+#container {
+min-height: 600px;
+padding-bottom: 50px;
+}
+
+#banner {
+width: 100%;
+background-color:black;
+text-align: center;
+position: relative;
+min-width: 960px;
+min-height: 500px;
+}
+
+#title-area {
+padding-top: 60px;
+font-family: 'CODE-Light';
+font-size: 50px;
+color: white;
+}
+
+#title-area  h1 {
+font-family: 'CODE-Light';
+font-size: 200px;
+color: white;
+}
+
+#logo {
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    -webkit-animation: rotating 8s linear infinite;
+}
+
+#description {
+width: 100%;
+background-color:white;
+text-align: center;
+min-width: 960px;
+min-height: 150px;
+}
+
+.description-area {
+width: 33%;
+float: left;
+padding-top: 40px;
+font-family: 'Open Sans', sans-serif;
+}
+
+.description-area h2 {
+font-family: 'Open Sans', sans-serif;
+font-size: 30px;
+}
+
+footer {
+margin-top: -50px; /* negative value of footer height */
+height: 50px;
+width: 100%;
+text-align: center;
+color: white;
+background-color:black;
+padding-top: 30px;
+}
+
+footer a:link {
+color:white;
+text-decoration:underline;
+}
+
+footer a:visited {
+color:#EBE9F2;
+text-decoration:underline;
+}
+
+footer a:hover {
+color:white;
+text-decoration:underline;
+font-weight:bold;
+}
+
+footer a:active {
+color:white;
+text-decoration:underline;
+font-weight:bold;
+}
