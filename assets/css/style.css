@@ -51,17 +51,14 @@ padding-top: 20px;
 padding-bottom: 20px;
 }
 
-@-webkit-keyframes rotating {
-    from{
-        -webkit-transform: rotate(0deg);
-    }
-    to{
-        -webkit-transform: rotate(360deg);
-    }
-}
+@-webkit-keyframes rotating {from{-webkit-transform: rotate(0deg);} to{-webkit-transform: rotate(360deg);}}
+@-moz-keyframes rotating {from{-moz-transform: rotate(0deg);} to{-moz-transform: rotate(360deg);}}
+@keyframes rotating {from{transform: rotate(0deg);} to{transform: rotate(360deg);}}
 
 .rotating {
     -webkit-animation: rotating 8s linear infinite;
+	-moz-animation: rotating 8s linear infinite;
+	animation: rotating 8s linear infinite;
 }
 
 #description {
