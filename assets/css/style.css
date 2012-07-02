@@ -16,6 +16,8 @@ body {
 background-image: url(../images/black_linen_v2.png);
 background-color: black;
 min-height: 100%;
+margin-left: 0px;
+margin-right: 0px;
 }
 
 #container {
@@ -93,7 +95,6 @@ padding-top: 30px;
 
 footer a:link {
 color:white;
-text-decoration:underline;
 }
 
 footer a:visited {
@@ -104,11 +105,9 @@ text-decoration:underline;
 footer a:hover {
 color:white;
 text-decoration:underline;
-font-weight:bold;
 }
 
 footer a:active {
 color:white;
 text-decoration:underline;
-font-weight:bold;
 }
