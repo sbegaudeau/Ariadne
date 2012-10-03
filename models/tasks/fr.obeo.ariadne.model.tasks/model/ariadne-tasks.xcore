@@ -1,0 +1,25 @@
+@Ecore(nsURI="http://www.obeo.fr/dsl/Ariadne/Tasks", nsPrefix="ariadne-tasks")
+@GenModel(editDirectory="/fr.obeo.ariadne.model.tasks.edit/src-gen")
+@GenModel(editorDirectory="/fr.obeo.ariadne.model.tasks.editor/src-gen")
+@GenModel(fileExtensions="ariadnetasks")
+package fr.obeo.ariadne.model.tasks
+
+import fr.obeo.ariadne.model.core.Element
+
+class TasksRepository extends Element {
+	String url
+}
+
+class Task extends Element {
+	String url
+	String identifier
+	contains TaskEntry[] taskEntries
+	refers Element[] elements
+}
+
+class TaskEntry {
+	String identifier
+	String[] values
+	String[] options
+	String kind
+}
