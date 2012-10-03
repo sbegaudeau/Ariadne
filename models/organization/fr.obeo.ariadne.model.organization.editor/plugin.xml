@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.obeo.ariadne.model.organization.presentation.OrganizationModelWizardID"
+            name="%_UI_OrganizationModelWizard_label"
+            class="fr.obeo.ariadne.model.organization.presentation.OrganizationModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/OrganizationModelFile.gif">
+         <description>%_UI_OrganizationModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="fr.obeo.ariadne.model.organization.presentation.OrganizationEditorID"
+            name="%_UI_OrganizationEditor_label"
+            icon="icons/full/obj16/OrganizationModelFile.gif"
+            extensions="ariadneorganization"
+            class="fr.obeo.ariadne.model.organization.presentation.OrganizationEditor"
+            contributorClass="fr.obeo.ariadne.model.organization.presentation.OrganizationActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

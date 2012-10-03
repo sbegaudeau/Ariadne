@@ -1,0 +1,64 @@
+@Ecore(nsURI="http://www.obeo.fr/dsl/Ariadne/Organization", nsPrefix="ariadne-organization")
+@GenModel(editDirectory="/fr.obeo.ariadne.model.organization.edit/src-gen")
+@GenModel(editorDirectory="/fr.obeo.ariadne.model.organization.editor/src-gen")
+@GenModel(fileExtensions="ariadneorganization")
+package fr.obeo.ariadne.model.organization
+
+import fr.obeo.ariadne.model.code.Component
+
+import fr.obeo.ariadne.model.continuousintegration.BuildServer
+
+import fr.obeo.ariadne.model.core.Element
+import fr.obeo.ariadne.model.core.Person
+import fr.obeo.ariadne.model.core.Property
+import fr.obeo.ariadne.model.core.VersionedElement
+
+import fr.obeo.ariadne.model.environment.DevelopmentEnvironment
+import fr.obeo.ariadne.model.environment.RuntimeEnvironment
+
+import fr.obeo.ariadne.model.scm.Repository
+
+import fr.obeo.ariadne.model.tasks.TasksRepository
+
+class Organization {
+	String name
+	String description
+	contains Category[] categories
+	contains Person[] persons
+	contains Repository[] repositories
+	contains BuildServer[] buildServers
+	contains TasksRepository[] tasksRepositories
+	contains Property[] properties
+	contains OrganizationDependency[] organizationDependencies
+}
+
+class Category extends Element {
+	contains Project[] projects
+	contains Specification[] specifications
+}
+
+class Project extends VersionedElement {
+	contains Component[] components
+	contains DevelopmentEnvironment[] developmentEnvironments
+	contains RuntimeEnvironment[] runtimeEnvironments
+	contains Project[] subProjects
+	refers Project[] dependentProjects
+	refers Specification[] specifications
+}
+
+class Specification extends VersionedElement {
+}
+
+class OrganizationDependency extends Element {
+	OrganizationDependencyKind[] organizationDependencyKinds
+	refers Organization organization
+}
+
+enum OrganizationDependencyKind {
+	PARTNER
+	COMPETITOR
+	CUSTOMER
+	SUPPLIER
+	SUBSIDIARY
+	PARENT
+}
