@@ -1,0 +1,46 @@
+@Ecore(nsURI="http://www.obeo.fr/dsl/Ariadne/ContinuousIntegration", nsPrefix="ariadne-continuousintegration")
+@GenModel(editDirectory="/fr.obeo.ariadne.model.continuousintegration.edit/src-gen")
+@GenModel(editorDirectory="/fr.obeo.ariadne.model.continuousintegration.editor/src-gen")
+@GenModel(fileExtensions="ariadnecontinuousintegration")
+package fr.obeo.ariadne.model.continuousintegration
+
+import fr.obeo.ariadne.model.code.Component
+
+import fr.obeo.ariadne.model.core.Element
+import fr.obeo.ariadne.model.core.VersionedElement
+
+class BuildServer {
+	String name
+	String url
+	String buildServerKind
+	contains BuildJob[] buildJobs
+}
+
+class BuildJob extends Element {
+	String url
+	String[] buildTechnologyKinds
+	BuildKind[] buildKinds
+	contains PromotionLocation[] promotionLocations
+	contains BuildDependency[] buildDependencies
+	refers Component[] components
+}
+
+class BuildDependency extends VersionedElement {
+	String qualifiedName
+	String[] urls
+	String[] licenses
+}
+
+class PromotionLocation extends VersionedElement {
+	String url
+}
+
+enum BuildKind {
+	RELEASE
+	RELEASE_CANDIDATE
+	MILESTONE
+	NIGHTLY
+	BETA
+	ALPHA
+	PROOF_OF_CONCEPT
+}
