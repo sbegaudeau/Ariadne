@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.obeo.ariadne.model.scm.presentation.ScmModelWizardID"
+            name="%_UI_ScmModelWizard_label"
+            class="fr.obeo.ariadne.model.scm.presentation.ScmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ScmModelFile.gif">
+         <description>%_UI_ScmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="fr.obeo.ariadne.model.scm.presentation.ScmEditorID"
+            name="%_UI_ScmEditor_label"
+            icon="icons/full/obj16/ScmModelFile.gif"
+            extensions="ariadnescm"
+            class="fr.obeo.ariadne.model.scm.presentation.ScmEditor"
+            contributorClass="fr.obeo.ariadne.model.scm.presentation.ScmActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
