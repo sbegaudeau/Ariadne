@@ -1,0 +1,38 @@
+@Ecore(nsURI="http://www.obeo.fr/dsl/Ariadne/Core", nsPrefix="ariadne-core")
+@GenModel(editDirectory="/fr.obeo.ariadne.model.core.edit/src-gen")
+@GenModel(editorDirectory="/fr.obeo.ariadne.model.core.editor/src-gen")
+@GenModel(fileExtensions="ariadnecore")
+package fr.obeo.ariadne.model.core
+
+abstract class Element {
+	String name
+	String description
+	refers Person[] authors
+	refers Property[] properties
+}
+
+abstract class VersionedElement extends Element {
+	contains Version version	
+}
+
+class Version {
+	int major
+	int minor
+	int patch
+}
+
+//#######################################################################
+// derived, generated, model, internal, visibleToFriends, deprecated 
+//#######################################################################
+
+class Property {
+	String name
+	String description
+	String identifier
+	refers Property[] extendedProperties
+}
+
+class Person {
+	String name
+	String email
+}
