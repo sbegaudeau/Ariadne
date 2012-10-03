@@ -1,0 +1,220 @@
+@Ecore(nsURI="http://www.obeo.fr/dsl/Ariadne/Code", nsPrefix="ariadne-code")
+@GenModel(editDirectory="/fr.obeo.ariadne.model.code.edit/src-gen")
+@GenModel(editorDirectory="/fr.obeo.ariadne.model.code.editor/src-gen")
+@GenModel(fileExtensions="ariadnecode")
+package fr.obeo.ariadne.model.code
+
+import fr.obeo.ariadne.model.core.VersionedElement
+import fr.obeo.ariadne.model.core.Version
+import fr.obeo.ariadne.model.core.Property
+
+class Component extends VersionedElement {
+	String identifier
+	contains ClasspathEntry[] classpathEntries
+	contains ResourcesContainer[] resourcesContainers
+	contains ReferenceDependency[] referenceDependencies
+	contains ContainmentDependency[] containmentDependencies
+}
+
+class ResourcesContainer extends VersionedElement {
+	String path
+	contains Resource[] resources
+	contains ResourcesContainer[] subResourcesContainers
+}
+
+abstract class Resource extends VersionedElement {
+	contains InheritanceDependency inheritanceDependency
+	contains ReferenceDependency[] referenceDependencies
+	contains ContainmentDependency[] containmentDependencies
+}
+
+class GenericResource extends Resource {
+	ResourceKind resourceKind
+}
+
+enum ResourceKind {
+	MANIFEST
+	LICENSE
+	COPYRIGHT
+	ICONS
+	VIDEO
+	MEDIA
+	DOCUMENTATION
+	INTERNATIONALIZATION
+	USER_INTERFACE
+	SERVICE
+	SETTINGS
+	CONFIGURATION
+	TEMPLATE
+	MODEL
+	BUILD
+	LIBRARY
+}
+
+class ClasspathEntry {
+	ClasspathEntryKind kind
+	String inputFolder
+	String outputFolder
+	contains TypesContainer[] typesContainers
+}
+
+enum ClasspathEntryKind {
+	SOURCE
+	CONTAINER
+	OUTPUT
+}
+
+class TypesContainer extends VersionedElement {
+	contains Type[] types
+	contains TypesContainer[] typesContainers
+}
+
+abstract class Type extends VersionedElement {
+	String qualifiedName
+	VisibilityKind visibility
+	contains Type[] types
+	contains TypingDependency[] typingDependencies
+	contains InheritanceDependency[] inheritanceDependencies
+	contains ReferenceDependency[] referenceDependencies
+	contains ContainmentDependency[] containmentDependencies
+	contains AnnotationDependency[] annotationDependencies
+}
+
+class Classifier extends Type {
+	ClassifierKind kind
+	boolean static
+	boolean final
+	boolean immutable
+	boolean ^abstract
+	contains Field[] fields
+	contains Operation[] operations
+}
+
+enum ClassifierKind {
+	CLASS
+	INTERFACE
+	OBJECT
+	TRAIT
+}
+
+class Field extends VersionedElement {
+	String qualifiedName
+	VisibilityKind visibility
+	boolean static
+	boolean ^abstract
+	boolean final
+	boolean immutable
+	boolean ^transient
+	contains TypingDependency typingDependency
+	contains InheritanceDependency inheritanceDependency
+	contains ReferenceDependency[] referenceDependencies
+	contains AnnotationDependency[] annotationDependencies
+}
+
+class Constructor extends VersionedElement {
+	String qualifiedName
+	VisibilityKind visibility
+	boolean static
+	boolean ^abstract
+	boolean final
+	boolean immutable
+	boolean ^transient
+	contains Parameter[] parameters
+	contains TypingDependency typingDependency
+	contains InheritanceDependency inheritanceDependency
+	contains ReferenceDependency[] referenceDependencies
+	contains AnnotationDependency[] annotationDependencies
+}
+
+class Operation extends VersionedElement {
+	String qualifiedName
+	VisibilityKind visibility
+	boolean static
+	boolean ^abstract
+	boolean final
+	boolean immutable
+	boolean ^transient
+	contains Parameter[] parameters
+	contains TypingDependency typingDependency
+	contains InheritanceDependency inheritanceDependency
+	contains ReferenceDependency[] referenceDependencies
+	contains AnnotationDependency[] annotationDependencies
+}
+
+class Parameter extends VersionedElement {
+	String qualifiedName
+	VisibilityKind visibility
+	boolean final
+	boolean immutable
+	contains TypingDependency typingDependency
+	contains ReferenceDependency[] referenceDependencies
+	contains AnnotationDependency[] annotationDependencies
+}
+
+class Annotation extends Type {
+	contains AnnotationField[] annotationFields
+}
+
+class AnnotationField {
+	String qualifiedName
+}
+
+enum VisibilityKind {
+	PUBLIC
+	PROTECTED
+	PACKAGE
+	PRIVATE
+}
+
+class RequiredService extends VersionedElement {
+	String identifier
+	contains TypingDependency[] typingDependencies
+	contains ReferenceDependency[] referenceDependencies
+}
+
+class ProvidedService extends VersionedElement {
+	String identifier
+	contains TypingDependency[] typingDependencies
+	contains ReferenceDependency[] referenceDependencies
+}
+
+class Dependency {
+	String identifier
+	contains Constraint[] constraints
+	refers Property[] properties
+}
+
+abstract class Constraint {
+	
+}
+
+class VersionRangeConstraint {
+	boolean includeLowerVersionBound
+	boolean includeUpperVersionBound
+	contains Version lowerVersion
+	contains Version upperVersion
+}
+
+class ExpressionConstraint {
+	String expression
+	String language
+}
+
+class TypingDependency extends Dependency {
+	String[] typeParameters
+}
+
+class InheritanceDependency extends Dependency {
+	String[] typeParameters
+}
+
+class ReferenceDependency extends Dependency {
+	String kind
+}
+
+class ContainmentDependency extends Dependency {
+}
+
+class AnnotationDependency extends Dependency {
+	String[] values
+}
