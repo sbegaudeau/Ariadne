@@ -94,6 +94,7 @@ public interface Organization extends EObject
   /**
    * Returns the value of the '<em><b>Categories</b></em>' containment reference list.
    * The list contents are of type {@link fr.obeo.ariadne.model.organization.Category}.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.organization.Category#getOrganization <em>Organization</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Categories</em>' containment reference list isn't clear,
@@ -102,7 +103,8 @@ public interface Organization extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Categories</em>' containment reference list.
    * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getOrganization_Categories()
-   * @model containment="true"
+   * @see fr.obeo.ariadne.model.organization.Category#getOrganization
+   * @model opposite="organization" containment="true"
    * @generated
    */
   EList<Category> getCategories();

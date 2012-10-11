@@ -8,6 +8,7 @@ import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.environment.DevelopmentEnvironment;
 import fr.obeo.ariadne.model.environment.RuntimeEnvironment;
+import fr.obeo.ariadne.model.scm.Repository;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -22,8 +23,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getDevelopmentEnvironments <em>Development Environments</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getRuntimeEnvironments <em>Runtime Environments</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getSubProjects <em>Sub Projects</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.Project#getReleases <em>Releases</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getDependentProjects <em>Dependent Projects</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getSpecifications <em>Specifications</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.Project#getRepositories <em>Repositories</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.Project#getCategory <em>Category</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,6 +102,22 @@ public interface Project extends VersionedElement
   EList<Project> getSubProjects();
 
   /**
+   * Returns the value of the '<em><b>Releases</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.organization.Release}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Releases</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Releases</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getProject_Releases()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Release> getReleases();
+
+  /**
    * Returns the value of the '<em><b>Dependent Projects</b></em>' reference list.
    * The list contents are of type {@link fr.obeo.ariadne.model.organization.Project}.
    * <!-- begin-user-doc -->
@@ -128,5 +148,49 @@ public interface Project extends VersionedElement
    * @generated
    */
   EList<Specification> getSpecifications();
+
+  /**
+   * Returns the value of the '<em><b>Repositories</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.scm.Repository}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Repositories</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Repositories</em>' reference list.
+   * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getProject_Repositories()
+   * @model
+   * @generated
+   */
+  EList<Repository> getRepositories();
+
+  /**
+   * Returns the value of the '<em><b>Category</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.organization.Category#getProjects <em>Projects</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Category</em>' container reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Category</em>' container reference.
+   * @see #setCategory(Category)
+   * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getProject_Category()
+   * @see fr.obeo.ariadne.model.organization.Category#getProjects
+   * @model opposite="projects" transient="false"
+   * @generated
+   */
+  Category getCategory();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.organization.Project#getCategory <em>Category</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Category</em>' container reference.
+   * @see #getCategory()
+   * @generated
+   */
+  void setCategory(Category value);
 
 } // Project

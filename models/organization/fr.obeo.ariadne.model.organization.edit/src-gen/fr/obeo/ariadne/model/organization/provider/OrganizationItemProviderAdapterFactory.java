@@ -199,6 +199,31 @@ public class OrganizationItemProviderAdapterFactory extends OrganizationAdapterF
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.organization.Release} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ReleaseItemProvider releaseItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.organization.Release}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createReleaseAdapter()
+  {
+    if (releaseItemProvider == null)
+    {
+      releaseItemProvider = new ReleaseItemProvider(this);
+    }
+
+    return releaseItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -314,6 +339,7 @@ public class OrganizationItemProviderAdapterFactory extends OrganizationAdapterF
     if (projectItemProvider != null) projectItemProvider.dispose();
     if (specificationItemProvider != null) specificationItemProvider.dispose();
     if (organizationDependencyItemProvider != null) organizationDependencyItemProvider.dispose();
+    if (releaseItemProvider != null) releaseItemProvider.dispose();
   }
 
 }

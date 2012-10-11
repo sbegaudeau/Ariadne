@@ -103,6 +103,11 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
         return createOrganizationDependencyAdapter();
       }
       @Override
+      public Adapter caseRelease(Release object)
+      {
+        return createReleaseAdapter();
+      }
+      @Override
       public Adapter caseElement(Element object)
       {
         return createElementAdapter();
@@ -205,6 +210,21 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOrganizationDependencyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.organization.Release <em>Release</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.obeo.ariadne.model.organization.Release
+   * @generated
+   */
+  public Adapter createReleaseAdapter()
   {
     return null;
   }

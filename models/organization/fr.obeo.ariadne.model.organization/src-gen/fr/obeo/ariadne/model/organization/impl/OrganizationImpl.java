@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -239,7 +240,7 @@ public class OrganizationImpl extends MinimalEObjectImpl.Container implements Or
   {
     if (categories == null)
     {
-      categories = new EObjectContainmentEList<Category>(Category.class, this, OrganizationPackage.ORGANIZATION__CATEGORIES);
+      categories = new EObjectContainmentWithInverseEList<Category>(Category.class, this, OrganizationPackage.ORGANIZATION__CATEGORIES, OrganizationPackage.CATEGORY__ORGANIZATION);
     }
     return categories;
   }
@@ -326,6 +327,23 @@ public class OrganizationImpl extends MinimalEObjectImpl.Container implements Or
       organizationDependencies = new EObjectContainmentEList<OrganizationDependency>(OrganizationDependency.class, this, OrganizationPackage.ORGANIZATION__ORGANIZATION_DEPENDENCIES);
     }
     return organizationDependencies;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case OrganizationPackage.ORGANIZATION__CATEGORIES:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**

@@ -73,6 +73,8 @@ public class ProjectItemProvider
 
       addDependentProjectsPropertyDescriptor(object);
       addSpecificationsPropertyDescriptor(object);
+      addRepositoriesPropertyDescriptor(object);
+      addCategoryPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -124,6 +126,52 @@ public class ProjectItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Repositories feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRepositoriesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Project_repositories_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Project_repositories_feature", "_UI_Project_type"),
+         OrganizationPackage.Literals.PROJECT__REPOSITORIES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Category feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addCategoryPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Project_category_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Project_category_feature", "_UI_Project_type"),
+         OrganizationPackage.Literals.PROJECT__CATEGORY,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -141,6 +189,7 @@ public class ProjectItemProvider
       childrenFeatures.add(OrganizationPackage.Literals.PROJECT__DEVELOPMENT_ENVIRONMENTS);
       childrenFeatures.add(OrganizationPackage.Literals.PROJECT__RUNTIME_ENVIRONMENTS);
       childrenFeatures.add(OrganizationPackage.Literals.PROJECT__SUB_PROJECTS);
+      childrenFeatures.add(OrganizationPackage.Literals.PROJECT__RELEASES);
     }
     return childrenFeatures;
   }
@@ -204,6 +253,7 @@ public class ProjectItemProvider
       case OrganizationPackage.PROJECT__DEVELOPMENT_ENVIRONMENTS:
       case OrganizationPackage.PROJECT__RUNTIME_ENVIRONMENTS:
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
+      case OrganizationPackage.PROJECT__RELEASES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -241,6 +291,11 @@ public class ProjectItemProvider
       (createChildParameter
         (OrganizationPackage.Literals.PROJECT__SUB_PROJECTS,
          OrganizationFactory.eINSTANCE.createProject()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (OrganizationPackage.Literals.PROJECT__RELEASES,
+         OrganizationFactory.eINSTANCE.createRelease()));
   }
 
   /**

@@ -116,6 +116,15 @@ public class OrganizationSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case OrganizationPackage.RELEASE:
+      {
+        Release release = (Release)theEObject;
+        T result = caseRelease(release);
+        if (result == null) result = caseVersionedElement(release);
+        if (result == null) result = caseElement(release);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -196,6 +205,22 @@ public class OrganizationSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOrganizationDependency(OrganizationDependency object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Release</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Release</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRelease(Release object)
   {
     return null;
   }

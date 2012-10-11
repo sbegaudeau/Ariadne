@@ -235,13 +235,22 @@ public interface OrganizationPackage extends EPackage
   int CATEGORY__SPECIFICATIONS = CorePackage.ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Organization</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CATEGORY__ORGANIZATION = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Category</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CATEGORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int CATEGORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Category</em>' class.
@@ -344,13 +353,22 @@ public interface OrganizationPackage extends EPackage
   int PROJECT__SUB_PROJECTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Releases</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__RELEASES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Dependent Projects</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECT__DEPENDENT_PROJECTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+  int PROJECT__DEPENDENT_PROJECTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Specifications</b></em>' reference list.
@@ -359,7 +377,25 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROJECT__SPECIFICATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
+  int PROJECT__SPECIFICATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Repositories</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__REPOSITORIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>Category</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__CATEGORY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>Project</em>' class.
@@ -368,7 +404,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROJECT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
+  int PROJECT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
    * The number of operations of the '<em>Project</em>' class.
@@ -535,6 +571,115 @@ public interface OrganizationPackage extends EPackage
   int ORGANIZATION_DEPENDENCY_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl <em>Release</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.organization.impl.ReleaseImpl
+   * @see fr.obeo.ariadne.model.organization.impl.OrganizationPackageImpl#getRelease()
+   * @generated
+   */
+  int RELEASE = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Kind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__KIND = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Components</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__COMPONENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Build Jobs</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__BUILD_JOBS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Branchs</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__BRANCHS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Release</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The number of operations of the '<em>Release</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.organization.OrganizationDependencyKind <em>Dependency Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -542,7 +687,7 @@ public interface OrganizationPackage extends EPackage
    * @see fr.obeo.ariadne.model.organization.impl.OrganizationPackageImpl#getOrganizationDependencyKind()
    * @generated
    */
-  int ORGANIZATION_DEPENDENCY_KIND = 5;
+  int ORGANIZATION_DEPENDENCY_KIND = 6;
 
 
   /**
@@ -687,6 +832,17 @@ public interface OrganizationPackage extends EPackage
   EReference getCategory_Specifications();
 
   /**
+   * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.organization.Category#getOrganization <em>Organization</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Organization</em>'.
+   * @see fr.obeo.ariadne.model.organization.Category#getOrganization()
+   * @see #getCategory()
+   * @generated
+   */
+  EReference getCategory_Organization();
+
+  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.organization.Project <em>Project</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -741,6 +897,17 @@ public interface OrganizationPackage extends EPackage
   EReference getProject_SubProjects();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.organization.Project#getReleases <em>Releases</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Releases</em>'.
+   * @see fr.obeo.ariadne.model.organization.Project#getReleases()
+   * @see #getProject()
+   * @generated
+   */
+  EReference getProject_Releases();
+
+  /**
    * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.organization.Project#getDependentProjects <em>Dependent Projects</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -761,6 +928,28 @@ public interface OrganizationPackage extends EPackage
    * @generated
    */
   EReference getProject_Specifications();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.organization.Project#getRepositories <em>Repositories</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Repositories</em>'.
+   * @see fr.obeo.ariadne.model.organization.Project#getRepositories()
+   * @see #getProject()
+   * @generated
+   */
+  EReference getProject_Repositories();
+
+  /**
+   * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.organization.Project#getCategory <em>Category</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Category</em>'.
+   * @see fr.obeo.ariadne.model.organization.Project#getCategory()
+   * @see #getProject()
+   * @generated
+   */
+  EReference getProject_Category();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.organization.Specification <em>Specification</em>}'.
@@ -803,6 +992,60 @@ public interface OrganizationPackage extends EPackage
    * @generated
    */
   EReference getOrganizationDependency_Organization();
+
+  /**
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.organization.Release <em>Release</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Release</em>'.
+   * @see fr.obeo.ariadne.model.organization.Release
+   * @generated
+   */
+  EClass getRelease();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.organization.Release#getKind <em>Kind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Kind</em>'.
+   * @see fr.obeo.ariadne.model.organization.Release#getKind()
+   * @see #getRelease()
+   * @generated
+   */
+  EAttribute getRelease_Kind();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.organization.Release#getComponents <em>Components</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Components</em>'.
+   * @see fr.obeo.ariadne.model.organization.Release#getComponents()
+   * @see #getRelease()
+   * @generated
+   */
+  EReference getRelease_Components();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.organization.Release#getBuildJobs <em>Build Jobs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Build Jobs</em>'.
+   * @see fr.obeo.ariadne.model.organization.Release#getBuildJobs()
+   * @see #getRelease()
+   * @generated
+   */
+  EReference getRelease_BuildJobs();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.organization.Release#getBranchs <em>Branchs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Branchs</em>'.
+   * @see fr.obeo.ariadne.model.organization.Release#getBranchs()
+   * @see #getRelease()
+   * @generated
+   */
+  EReference getRelease_Branchs();
 
   /**
    * Returns the meta object for enum '{@link fr.obeo.ariadne.model.organization.OrganizationDependencyKind <em>Dependency Kind</em>}'.
@@ -947,6 +1190,14 @@ public interface OrganizationPackage extends EPackage
     EReference CATEGORY__SPECIFICATIONS = eINSTANCE.getCategory_Specifications();
 
     /**
+     * The meta object literal for the '<em><b>Organization</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CATEGORY__ORGANIZATION = eINSTANCE.getCategory_Organization();
+
+    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl <em>Project</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -989,6 +1240,14 @@ public interface OrganizationPackage extends EPackage
     EReference PROJECT__SUB_PROJECTS = eINSTANCE.getProject_SubProjects();
 
     /**
+     * The meta object literal for the '<em><b>Releases</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROJECT__RELEASES = eINSTANCE.getProject_Releases();
+
+    /**
      * The meta object literal for the '<em><b>Dependent Projects</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1003,6 +1262,22 @@ public interface OrganizationPackage extends EPackage
      * @generated
      */
     EReference PROJECT__SPECIFICATIONS = eINSTANCE.getProject_Specifications();
+
+    /**
+     * The meta object literal for the '<em><b>Repositories</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROJECT__REPOSITORIES = eINSTANCE.getProject_Repositories();
+
+    /**
+     * The meta object literal for the '<em><b>Category</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROJECT__CATEGORY = eINSTANCE.getProject_Category();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.organization.impl.SpecificationImpl <em>Specification</em>}' class.
@@ -1039,6 +1314,48 @@ public interface OrganizationPackage extends EPackage
      * @generated
      */
     EReference ORGANIZATION_DEPENDENCY__ORGANIZATION = eINSTANCE.getOrganizationDependency_Organization();
+
+    /**
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl <em>Release</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.obeo.ariadne.model.organization.impl.ReleaseImpl
+     * @see fr.obeo.ariadne.model.organization.impl.OrganizationPackageImpl#getRelease()
+     * @generated
+     */
+    EClass RELEASE = eINSTANCE.getRelease();
+
+    /**
+     * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RELEASE__KIND = eINSTANCE.getRelease_Kind();
+
+    /**
+     * The meta object literal for the '<em><b>Components</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RELEASE__COMPONENTS = eINSTANCE.getRelease_Components();
+
+    /**
+     * The meta object literal for the '<em><b>Build Jobs</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RELEASE__BUILD_JOBS = eINSTANCE.getRelease_BuildJobs();
+
+    /**
+     * The meta object literal for the '<em><b>Branchs</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RELEASE__BRANCHS = eINSTANCE.getRelease_Branchs();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.organization.OrganizationDependencyKind <em>Dependency Kind</em>}' enum.

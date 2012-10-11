@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="fr.obeo.ariadne.ide.connector.core.nature"
+         name="%ariadneNatureName"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="fr.obeo.ariadne.ide.connector.core.internal.nature.AriadneProjectNature">
+         </run>
+      </runtime>
+   </extension>
+
+</plugin>

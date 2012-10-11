@@ -68,6 +68,15 @@ public interface OrganizationFactory extends EFactory
   OrganizationDependency createOrganizationDependency();
 
   /**
+   * Returns a new object of class '<em>Release</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Release</em>'.
+   * @generated
+   */
+  Release createRelease();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

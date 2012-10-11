@@ -8,12 +8,16 @@ import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.environment.DevelopmentEnvironment;
 import fr.obeo.ariadne.model.environment.RuntimeEnvironment;
+import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
+import fr.obeo.ariadne.model.organization.Release;
 import fr.obeo.ariadne.model.organization.Specification;
 
+import fr.obeo.ariadne.model.scm.Repository;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,8 +25,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -36,8 +42,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getDevelopmentEnvironments <em>Development Environments</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getRuntimeEnvironments <em>Runtime Environments</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getSubProjects <em>Sub Projects</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getDependentProjects <em>Dependent Projects</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getSpecifications <em>Specifications</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getRepositories <em>Repositories</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getCategory <em>Category</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,6 +95,16 @@ public class ProjectImpl extends VersionedElementImpl implements Project
   protected EList<Project> subProjects;
 
   /**
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReleases()
+   * @generated
+   * @ordered
+   */
+  protected EList<Release> releases;
+
+  /**
    * The cached value of the '{@link #getDependentProjects() <em>Dependent Projects</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -104,6 +123,16 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * @ordered
    */
   protected EList<Specification> specifications;
+
+  /**
+   * The cached value of the '{@link #getRepositories() <em>Repositories</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositories()
+   * @generated
+   * @ordered
+   */
+  protected EList<Repository> repositories;
 
   /**
    * <!-- begin-user-doc -->
@@ -187,6 +216,20 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Release> getReleases()
+  {
+    if (releases == null)
+    {
+      releases = new EObjectContainmentEList<Release>(Release.class, this, OrganizationPackage.PROJECT__RELEASES);
+    }
+    return releases;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Project> getDependentProjects()
   {
     if (dependentProjects == null)
@@ -215,6 +258,83 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Repository> getRepositories()
+  {
+    if (repositories == null)
+    {
+      repositories = new EObjectResolvingEList<Repository>(Repository.class, this, OrganizationPackage.PROJECT__REPOSITORIES);
+    }
+    return repositories;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Category getCategory()
+  {
+    if (eContainerFeatureID() != OrganizationPackage.PROJECT__CATEGORY) return null;
+    return (Category)eContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCategory(Category newCategory, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newCategory, OrganizationPackage.PROJECT__CATEGORY, msgs);
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCategory(Category newCategory)
+  {
+    if (newCategory != eInternalContainer() || (eContainerFeatureID() != OrganizationPackage.PROJECT__CATEGORY && newCategory != null))
+    {
+      if (EcoreUtil.isAncestor(this, newCategory))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newCategory != null)
+        msgs = ((InternalEObject)newCategory).eInverseAdd(this, OrganizationPackage.CATEGORY__PROJECTS, Category.class, msgs);
+      msgs = basicSetCategory(newCategory, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OrganizationPackage.PROJECT__CATEGORY, newCategory, newCategory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case OrganizationPackage.PROJECT__CATEGORY:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetCategory((Category)otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -228,8 +348,28 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return ((InternalEList<?>)getRuntimeEnvironments()).basicRemove(otherEnd, msgs);
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
         return ((InternalEList<?>)getSubProjects()).basicRemove(otherEnd, msgs);
+      case OrganizationPackage.PROJECT__RELEASES:
+        return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+      case OrganizationPackage.PROJECT__CATEGORY:
+        return basicSetCategory(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID())
+    {
+      case OrganizationPackage.PROJECT__CATEGORY:
+        return eInternalContainer().eInverseRemove(this, OrganizationPackage.CATEGORY__PROJECTS, Category.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -250,10 +390,16 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return getRuntimeEnvironments();
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
         return getSubProjects();
+      case OrganizationPackage.PROJECT__RELEASES:
+        return getReleases();
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         return getDependentProjects();
       case OrganizationPackage.PROJECT__SPECIFICATIONS:
         return getSpecifications();
+      case OrganizationPackage.PROJECT__REPOSITORIES:
+        return getRepositories();
+      case OrganizationPackage.PROJECT__CATEGORY:
+        return getCategory();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -285,6 +431,10 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         getSubProjects().clear();
         getSubProjects().addAll((Collection<? extends Project>)newValue);
         return;
+      case OrganizationPackage.PROJECT__RELEASES:
+        getReleases().clear();
+        getReleases().addAll((Collection<? extends Release>)newValue);
+        return;
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         getDependentProjects().clear();
         getDependentProjects().addAll((Collection<? extends Project>)newValue);
@@ -292,6 +442,13 @@ public class ProjectImpl extends VersionedElementImpl implements Project
       case OrganizationPackage.PROJECT__SPECIFICATIONS:
         getSpecifications().clear();
         getSpecifications().addAll((Collection<? extends Specification>)newValue);
+        return;
+      case OrganizationPackage.PROJECT__REPOSITORIES:
+        getRepositories().clear();
+        getRepositories().addAll((Collection<? extends Repository>)newValue);
+        return;
+      case OrganizationPackage.PROJECT__CATEGORY:
+        setCategory((Category)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -319,11 +476,20 @@ public class ProjectImpl extends VersionedElementImpl implements Project
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
         getSubProjects().clear();
         return;
+      case OrganizationPackage.PROJECT__RELEASES:
+        getReleases().clear();
+        return;
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         getDependentProjects().clear();
         return;
       case OrganizationPackage.PROJECT__SPECIFICATIONS:
         getSpecifications().clear();
+        return;
+      case OrganizationPackage.PROJECT__REPOSITORIES:
+        getRepositories().clear();
+        return;
+      case OrganizationPackage.PROJECT__CATEGORY:
+        setCategory((Category)null);
         return;
     }
     super.eUnset(featureID);
@@ -347,10 +513,16 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return runtimeEnvironments != null && !runtimeEnvironments.isEmpty();
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
         return subProjects != null && !subProjects.isEmpty();
+      case OrganizationPackage.PROJECT__RELEASES:
+        return releases != null && !releases.isEmpty();
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         return dependentProjects != null && !dependentProjects.isEmpty();
       case OrganizationPackage.PROJECT__SPECIFICATIONS:
         return specifications != null && !specifications.isEmpty();
+      case OrganizationPackage.PROJECT__REPOSITORIES:
+        return repositories != null && !repositories.isEmpty();
+      case OrganizationPackage.PROJECT__CATEGORY:
+        return getCategory() != null;
     }
     return super.eIsSet(featureID);
   }

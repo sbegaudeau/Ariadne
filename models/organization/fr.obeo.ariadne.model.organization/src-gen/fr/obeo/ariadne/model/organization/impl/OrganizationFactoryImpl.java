@@ -70,6 +70,7 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
       case OrganizationPackage.PROJECT: return createProject();
       case OrganizationPackage.SPECIFICATION: return createSpecification();
       case OrganizationPackage.ORGANIZATION_DEPENDENCY: return createOrganizationDependency();
+      case OrganizationPackage.RELEASE: return createRelease();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -162,6 +163,17 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
   {
     OrganizationDependencyImpl organizationDependency = new OrganizationDependencyImpl();
     return organizationDependency;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Release createRelease()
+  {
+    ReleaseImpl release = new ReleaseImpl();
+    return release;
   }
 
   /**
