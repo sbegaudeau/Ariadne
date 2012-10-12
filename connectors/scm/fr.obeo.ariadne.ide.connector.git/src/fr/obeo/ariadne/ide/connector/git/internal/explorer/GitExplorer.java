@@ -35,7 +35,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -48,8 +47,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.LogCommand;
@@ -82,36 +79,6 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	private Map<RevCommit, Commit> commit2ariadneCommit = new HashMap<RevCommit, Commit>();
 
 	/**
-	 * The projects that should be explored.
-	 */
-	private List<IProject> projects;
-
-	/**
-	 * The files containing the Ariadne organizations that should be used for the exploration.
-	 */
-	private List<IFile> organizations;
-
-	/**
-	 * The URI of the Ariadne project.
-	 */
-	private URI ariadneProjectURI;
-
-	/**
-	 * Indicates if we should save the data computed in the resource of the project.
-	 */
-	private boolean shouldSaveInProjectResource;
-
-	/**
-	 * The resource set where all the data will be manipulated.
-	 */
-	private ResourceSet resourceSet = new ResourceSetImpl();
-
-	/**
-	 * The Ariadne project that will be analyzed.
-	 */
-	private Project ariadneProject;
-
-	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#getName()
@@ -134,85 +101,30 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#setProjects(java.util.List)
-	 */
-	@Override
-	public void setProjects(List<IProject> projectsToExplore) {
-		this.projects = projectsToExplore;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#setOrganizations(java.util.List)
-	 */
-	@Override
-	public void setOrganizations(List<IFile> ariadneOrganizations) {
-		this.organizations = ariadneOrganizations;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#setAriadneProject(org.eclipse.emf.common.util.URI)
-	 */
-	@Override
-	public void setAriadneProject(URI uri) {
-		this.ariadneProjectURI = uri;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#saveInProjectResource(boolean)
-	 */
-	@Override
-	public void saveInProjectResource(boolean shouldSave) {
-		this.shouldSaveInProjectResource = shouldSave;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer#explore(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public IStatus explore(IProgressMonitor monitor) {
-		this.initialize(monitor);
 		for (IProject project : this.projects) {
 			// Only analyze if the project is shared on Git
 			if (RepositoryProvider.isShared(project)) {
 				RepositoryProvider provider = RepositoryProvider.getProvider(project);
 				if (GitProvider.ID.equals(provider.getID()) && provider instanceof GitProvider) {
 					// If the project is not mapped to a component, create it
-					this.doExplore(project, (GitProvider)provider, monitor);
+					fr.obeo.ariadne.model.scm.Repository ariadneRepository = this.doExplore(project,
+							(GitProvider)provider, monitor);
+
+					// Save the data computed
+					Resource resource = ariadneRepository.eResource();
+					try {
+						HashMap<String, String> options = new HashMap<String, String>();
+						resource.save(options);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
-		return Status.OK_STATUS;
-	}
-
-	/**
-	 * Initialize the exploration by loading all the data that will be manipulated in the resource set.
-	 * 
-	 * @param monitor
-	 *            The progress monitor
-	 * @return A status indicating any problem that could have occurred during the initialization
-	 */
-	public IStatus initialize(IProgressMonitor monitor) {
-		// Load the organization
-		for (IFile organizationFile : this.organizations) {
-			URI organizationFileURI = URI.createPlatformResourceURI(
-					organizationFile.getFullPath().toString(), true);
-			this.resourceSet.getResource(organizationFileURI, true);
-		}
-
-		// Find the project to which the data will be contributed
-		EObject eObject = this.resourceSet.getEObject(ariadneProjectURI, true);
-		if (eObject instanceof Project) {
-			this.ariadneProject = (Project)eObject;
-		}
-
 		return Status.OK_STATUS;
 	}
 
@@ -243,15 +155,6 @@ public class GitExplorer extends AbstractAriadneExplorer {
 				this.computeParents(repository, ariadneRepository);
 				this.computeReferences(repository, ariadneRepository);
 
-				// Save the data computed
-				Resource resource = ariadneRepository.eResource();
-				try {
-					HashMap<String, String> options = new HashMap<String, String>();
-					resource.save(options);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
 				return ariadneRepository;
 			}
 		}
@@ -277,6 +180,21 @@ public class GitExplorer extends AbstractAriadneExplorer {
 			for (fr.obeo.ariadne.model.scm.Repository aRepository : repositories) {
 				if (repositoryName.equals(aRepository.getName())) {
 					ariadneRepository = aRepository;
+
+					// Clear everything
+					List<Branch> branches = aRepository.getBranches();
+					for (Branch branch : branches) {
+						EcoreUtil.remove(branch);
+					}
+					List<Commit> commits = aRepository.getCommits();
+					for (Commit commit : commits) {
+						EcoreUtil.remove(commit);
+					}
+
+					List<Tag> tags = aRepository.getTags();
+					for (Tag tag : tags) {
+						EcoreUtil.remove(tag);
+					}
 				}
 			}
 		}

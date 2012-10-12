@@ -10,13 +10,19 @@
  *******************************************************************************/
 package fr.obeo.ariadne.ide.connector.core.explorer;
 
+import fr.obeo.ariadne.model.organization.Project;
+
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 /**
  * Superclass of all Ariadne explorers.
@@ -56,6 +62,36 @@ public abstract class AbstractAriadneExplorer {
 	public static final String OTHER_EXPLORER_KIND = "other"; //$NON-NLS-1$
 
 	/**
+	 * The projects that should be explored.
+	 */
+	protected List<IProject> projects;
+
+	/**
+	 * The files containing the Ariadne organizations that should be used for the exploration.
+	 */
+	protected List<IFile> organizations;
+
+	/**
+	 * The URI of the Ariadne project.
+	 */
+	protected URI ariadneProjectURI;
+
+	/**
+	 * Indicates if we should save the data computed in the resource of the project.
+	 */
+	protected boolean shouldSaveInProjectResource;
+
+	/**
+	 * The resource set where all the data will be manipulated.
+	 */
+	protected ResourceSet resourceSet = new ResourceSetImpl();
+
+	/**
+	 * The Ariadne project that will be analyzed.
+	 */
+	protected Project ariadneProject;
+
+	/**
 	 * Returns the name of the explorer.
 	 * 
 	 * @return The name of the explorer.
@@ -85,19 +121,23 @@ public abstract class AbstractAriadneExplorer {
 	/**
 	 * Sets the list of the IProjects that should be analyzed by the explorer.
 	 * 
-	 * @param projects
+	 * @param projectsToExplore
 	 *            The list of the IProjects to analyze
 	 */
-	public abstract void setProjects(List<IProject> projects);
+	public void setProjects(List<IProject> projectsToExplore) {
+		this.projects = projectsToExplore;
+	}
 
 	/**
 	 * Sets the list of the IFile containing the organization data that should be used for the resolution of
 	 * the links.
 	 * 
-	 * @param organizations
+	 * @param ariadneOrganizations
 	 *            The organizations to use
 	 */
-	public abstract void setOrganizations(List<IFile> organizations);
+	public void setOrganizations(List<IFile> ariadneOrganizations) {
+		this.organizations = ariadneOrganizations;
+	}
 
 	/**
 	 * Sets the URI of the Ariadne project that will receive the data.
@@ -105,7 +145,9 @@ public abstract class AbstractAriadneExplorer {
 	 * @param uri
 	 *            The Ariadne project for which we will computed the data
 	 */
-	public abstract void setAriadneProject(URI uri);
+	public void setAriadneProject(URI uri) {
+		this.ariadneProjectURI = uri;
+	}
 
 	/**
 	 * Indicates if we should save the result of the analysis in the resource containing the Ariadne project.
@@ -114,10 +156,36 @@ public abstract class AbstractAriadneExplorer {
 	 *            <code>true</code> if we should save the data in the resource of the Ariadne project,
 	 *            <code>false</code> otherwise.
 	 */
-	public abstract void saveInProjectResource(boolean shouldSave);
+	public void saveInProjectResource(boolean shouldSave) {
+		this.shouldSaveInProjectResource = shouldSave;
+	}
 
 	/**
-	 * Launch the exploration of the IProjects.
+	 * Initialize the exploration by loading all the data that will be manipulated in the resource set.
+	 * 
+	 * @param monitor
+	 *            The progress monitor
+	 * @return A status indicating any problem that could have occurred during the initialization
+	 */
+	public IStatus initialize(IProgressMonitor monitor) {
+		// Load the organization
+		for (IFile organizationFile : this.organizations) {
+			URI organizationFileURI = URI.createPlatformResourceURI(
+					organizationFile.getFullPath().toString(), true);
+			this.resourceSet.getResource(organizationFileURI, true);
+		}
+
+		// Find the project to which the data will be contributed
+		EObject eObject = this.resourceSet.getEObject(ariadneProjectURI, true);
+		if (eObject instanceof Project) {
+			this.ariadneProject = (Project)eObject;
+		}
+
+		return Status.OK_STATUS;
+	}
+
+	/**
+	 * Launch the exploration of the IProjects. This operation is called after initialize.
 	 * 
 	 * @param monitor
 	 *            The progress monitor

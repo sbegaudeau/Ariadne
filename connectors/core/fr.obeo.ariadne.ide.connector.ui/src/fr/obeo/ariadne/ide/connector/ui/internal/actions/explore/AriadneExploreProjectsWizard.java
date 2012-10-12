@@ -96,6 +96,7 @@ public class AriadneExploreProjectsWizard extends Wizard {
 					abstractAriadneExplorer.setOrganizations(organizations);
 					abstractAriadneExplorer.setAriadneProject(EcoreUtil.getURI(ariadneProject));
 					abstractAriadneExplorer.saveInProjectResource(shouldSaveInProjectResource);
+					abstractAriadneExplorer.initialize(monitor);
 					abstractAriadneExplorer.explore(monitor);
 				}
 			}
