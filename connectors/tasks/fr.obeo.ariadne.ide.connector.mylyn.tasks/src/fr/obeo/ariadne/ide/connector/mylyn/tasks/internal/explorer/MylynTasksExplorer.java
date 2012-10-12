@@ -47,7 +47,6 @@ import org.eclipse.mylyn.tasks.core.data.TaskData;
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  * @since 1.0
  */
-@SuppressWarnings("restriction")
 public class MylynTasksExplorer extends AbstractAriadneExplorer {
 
 	/**
