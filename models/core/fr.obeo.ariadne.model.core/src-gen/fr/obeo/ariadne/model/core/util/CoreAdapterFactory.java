@@ -90,14 +90,14 @@ public class CoreAdapterFactory extends AdapterFactoryImpl
         return createVersionAdapter();
       }
       @Override
-      public Adapter caseProperty(Property object)
-      {
-        return createPropertyAdapter();
-      }
-      @Override
       public Adapter casePerson(Person object)
       {
         return createPersonAdapter();
+      }
+      @Override
+      public Adapter caseProperty(Property object)
+      {
+        return createPropertyAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)

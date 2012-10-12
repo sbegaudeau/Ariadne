@@ -57,7 +57,15 @@ public enum ClassifierKind implements Enumerator
    * @generated
    * @ordered
    */
-  TRAIT(0, "TRAIT", "TRAIT");
+  TRAIT(0, "TRAIT", "TRAIT"), /**
+   * The '<em><b>ENUMERATION</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #ENUMERATION_VALUE
+   * @generated
+   * @ordered
+   */
+  ENUMERATION(0, "ENUMERATION", "ENUMERATION");
 
   /**
    * The '<em><b>CLASS</b></em>' literal value.
@@ -120,6 +128,21 @@ public enum ClassifierKind implements Enumerator
   public static final int TRAIT_VALUE = 0;
 
   /**
+   * The '<em><b>ENUMERATION</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>ENUMERATION</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #ENUMERATION
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int ENUMERATION_VALUE = 0;
+
+  /**
    * An array of all the '<em><b>Classifier Kind</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +155,7 @@ public enum ClassifierKind implements Enumerator
       INTERFACE,
       OBJECT,
       TRAIT,
+      ENUMERATION,
     };
 
   /**

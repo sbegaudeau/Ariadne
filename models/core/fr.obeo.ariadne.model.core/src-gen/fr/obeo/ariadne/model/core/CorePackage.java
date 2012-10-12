@@ -258,7 +258,53 @@ public interface CorePackage extends EPackage
    * @see fr.obeo.ariadne.model.core.impl.CorePackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 3;
+  int PROPERTY = 4;
+
+  /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.core.impl.PersonImpl <em>Person</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.core.impl.PersonImpl
+   * @see fr.obeo.ariadne.model.core.impl.CorePackageImpl#getPerson()
+   * @generated
+   */
+  int PERSON = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Email</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON__EMAIL = 1;
+
+  /**
+   * The number of structural features of the '<em>Person</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON_FEATURE_COUNT = 2;
+
+  /**
+   * The number of operations of the '<em>Person</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON_OPERATION_COUNT = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -313,52 +359,6 @@ public interface CorePackage extends EPackage
    * @ordered
    */
   int PROPERTY_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.core.impl.PersonImpl <em>Person</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.core.impl.PersonImpl
-   * @see fr.obeo.ariadne.model.core.impl.CorePackageImpl#getPerson()
-   * @generated
-   */
-  int PERSON = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PERSON__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Email</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PERSON__EMAIL = 1;
-
-  /**
-   * The number of structural features of the '<em>Person</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PERSON_FEATURE_COUNT = 2;
-
-  /**
-   * The number of operations of the '<em>Person</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PERSON_OPERATION_COUNT = 0;
 
 
   /**

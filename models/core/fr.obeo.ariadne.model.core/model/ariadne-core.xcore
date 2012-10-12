@@ -21,8 +21,13 @@ class Version {
 	int patch
 }
 
+class Person {
+	String name
+	String email
+}
+
 //#######################################################################
-// derived, generated, model, internal, visibleToFriends, deprecated 
+// derived, generated, model, internal, internal api, deprecated, api 
 //#######################################################################
 
 class Property {
@@ -30,9 +35,4 @@ class Property {
 	String description
 	String identifier
 	refers Property[] extendedProperties
-}
-
-class Person {
-	String name
-	String email
 }

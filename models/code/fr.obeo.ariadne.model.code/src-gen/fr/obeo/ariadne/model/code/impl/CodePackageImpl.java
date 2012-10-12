@@ -1984,6 +1984,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     addEEnumLiteral(classifierKindEEnum, ClassifierKind.INTERFACE);
     addEEnumLiteral(classifierKindEEnum, ClassifierKind.OBJECT);
     addEEnumLiteral(classifierKindEEnum, ClassifierKind.TRAIT);
+    addEEnumLiteral(classifierKindEEnum, ClassifierKind.ENUMERATION);
 
     initEEnum(visibilityKindEEnum, VisibilityKind.class, "VisibilityKind");
     addEEnumLiteral(visibilityKindEEnum, VisibilityKind.PUBLIC);

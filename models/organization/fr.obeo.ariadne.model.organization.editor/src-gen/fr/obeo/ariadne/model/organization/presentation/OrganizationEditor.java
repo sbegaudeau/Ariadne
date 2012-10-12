@@ -780,12 +780,12 @@ public class OrganizationEditor
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new OrganizationItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new ContinuousintegrationItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new CodeItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new TasksItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new EnvironmentItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new ContinuousintegrationItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new TasksItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ScmItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new CodeItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
     // Create the command stack that will notify this editor as commands are executed.

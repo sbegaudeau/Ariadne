@@ -95,6 +95,7 @@ enum ClassifierKind {
 	INTERFACE
 	OBJECT
 	TRAIT
+	ENUMERATION
 }
 
 class Field extends VersionedElement {

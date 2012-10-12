@@ -55,12 +55,12 @@ public final class OrganizationEditorPlugin extends EMFPlugin
     super
       (new ResourceLocator [] 
       {
-        ContinuousintegrationEditPlugin.INSTANCE,
-        CodeEditPlugin.INSTANCE,
-        TasksEditPlugin.INSTANCE,
-        CoreEditPlugin.INSTANCE,
         EnvironmentEditPlugin.INSTANCE,
+        ContinuousintegrationEditPlugin.INSTANCE,
+        CoreEditPlugin.INSTANCE,
+        TasksEditPlugin.INSTANCE,
         ScmEditPlugin.INSTANCE,
+        CodeEditPlugin.INSTANCE,
       });
   }
 

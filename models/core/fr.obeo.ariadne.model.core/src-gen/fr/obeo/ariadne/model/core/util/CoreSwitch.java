@@ -94,17 +94,17 @@ public class CoreSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CorePackage.PROPERTY:
-      {
-        Property property = (Property)theEObject;
-        T result = caseProperty(property);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CorePackage.PERSON:
       {
         Person person = (Person)theEObject;
         T result = casePerson(person);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CorePackage.PROPERTY:
+      {
+        Property property = (Property)theEObject;
+        T result = caseProperty(property);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

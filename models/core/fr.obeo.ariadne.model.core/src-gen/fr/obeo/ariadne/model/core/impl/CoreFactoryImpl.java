@@ -65,8 +65,8 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
     switch (eClass.getClassifierID())
     {
       case CorePackage.VERSION: return createVersion();
-      case CorePackage.PROPERTY: return createProperty();
       case CorePackage.PERSON: return createPerson();
+      case CorePackage.PROPERTY: return createProperty();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }

@@ -260,8 +260,8 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
   public void dispose()
   {
     if (versionItemProvider != null) versionItemProvider.dispose();
-    if (propertyItemProvider != null) propertyItemProvider.dispose();
     if (personItemProvider != null) personItemProvider.dispose();
+    if (propertyItemProvider != null) propertyItemProvider.dispose();
   }
 
 }
