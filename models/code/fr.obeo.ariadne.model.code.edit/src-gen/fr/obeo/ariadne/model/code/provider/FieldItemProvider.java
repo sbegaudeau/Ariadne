@@ -254,8 +254,8 @@ public class FieldItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.FIELD__TYPING_DEPENDENCY);
-      childrenFeatures.add(CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCY);
+      childrenFeatures.add(CodePackage.Literals.FIELD__TYPING_DEPENDENCIES);
+      childrenFeatures.add(CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.FIELD__REFERENCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.FIELD__ANNOTATION_DEPENDENCIES);
     }
@@ -326,8 +326,8 @@ public class FieldItemProvider
       case CodePackage.FIELD__TRANSIENT:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.FIELD__TYPING_DEPENDENCY:
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCY:
+      case CodePackage.FIELD__TYPING_DEPENDENCIES:
+      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
       case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
       case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -350,12 +350,12 @@ public class FieldItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.FIELD__TYPING_DEPENDENCY,
+        (CodePackage.Literals.FIELD__TYPING_DEPENDENCIES,
          CodeFactory.eINSTANCE.createTypingDependency()));
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCY,
+        (CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCIES,
          CodeFactory.eINSTANCE.createInheritanceDependency()));
 
     newChildDescriptors.add

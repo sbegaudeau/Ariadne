@@ -817,7 +817,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getField_TypingDependency()
+  public EReference getField_TypingDependencies()
   {
     return (EReference)fieldEClass.getEStructuralFeatures().get(7);
   }
@@ -827,7 +827,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getField_InheritanceDependency()
+  public EReference getField_InheritanceDependencies()
   {
     return (EReference)fieldEClass.getEStructuralFeatures().get(8);
   }
@@ -947,7 +947,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstructor_TypingDependency()
+  public EReference getConstructor_TypingDependencies()
   {
     return (EReference)constructorEClass.getEStructuralFeatures().get(8);
   }
@@ -957,7 +957,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstructor_InheritanceDependency()
+  public EReference getConstructor_InheritanceDependencies()
   {
     return (EReference)constructorEClass.getEStructuralFeatures().get(9);
   }
@@ -1077,7 +1077,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_TypingDependency()
+  public EReference getOperation_TypingDependencies()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(8);
   }
@@ -1087,7 +1087,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_InheritanceDependency()
+  public EReference getOperation_InheritanceDependencies()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(9);
   }
@@ -1167,7 +1167,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameter_TypingDependency()
+  public EReference getParameter_TypingDependencies()
   {
     return (EReference)parameterEClass.getEStructuralFeatures().get(4);
   }
@@ -1659,8 +1659,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEAttribute(fieldEClass, FIELD__FINAL);
     createEAttribute(fieldEClass, FIELD__IMMUTABLE);
     createEAttribute(fieldEClass, FIELD__TRANSIENT);
-    createEReference(fieldEClass, FIELD__TYPING_DEPENDENCY);
-    createEReference(fieldEClass, FIELD__INHERITANCE_DEPENDENCY);
+    createEReference(fieldEClass, FIELD__TYPING_DEPENDENCIES);
+    createEReference(fieldEClass, FIELD__INHERITANCE_DEPENDENCIES);
     createEReference(fieldEClass, FIELD__REFERENCE_DEPENDENCIES);
     createEReference(fieldEClass, FIELD__ANNOTATION_DEPENDENCIES);
 
@@ -1673,8 +1673,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEAttribute(constructorEClass, CONSTRUCTOR__IMMUTABLE);
     createEAttribute(constructorEClass, CONSTRUCTOR__TRANSIENT);
     createEReference(constructorEClass, CONSTRUCTOR__PARAMETERS);
-    createEReference(constructorEClass, CONSTRUCTOR__TYPING_DEPENDENCY);
-    createEReference(constructorEClass, CONSTRUCTOR__INHERITANCE_DEPENDENCY);
+    createEReference(constructorEClass, CONSTRUCTOR__TYPING_DEPENDENCIES);
+    createEReference(constructorEClass, CONSTRUCTOR__INHERITANCE_DEPENDENCIES);
     createEReference(constructorEClass, CONSTRUCTOR__REFERENCE_DEPENDENCIES);
     createEReference(constructorEClass, CONSTRUCTOR__ANNOTATION_DEPENDENCIES);
 
@@ -1687,8 +1687,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEAttribute(operationEClass, OPERATION__IMMUTABLE);
     createEAttribute(operationEClass, OPERATION__TRANSIENT);
     createEReference(operationEClass, OPERATION__PARAMETERS);
-    createEReference(operationEClass, OPERATION__TYPING_DEPENDENCY);
-    createEReference(operationEClass, OPERATION__INHERITANCE_DEPENDENCY);
+    createEReference(operationEClass, OPERATION__TYPING_DEPENDENCIES);
+    createEReference(operationEClass, OPERATION__INHERITANCE_DEPENDENCIES);
     createEReference(operationEClass, OPERATION__REFERENCE_DEPENDENCIES);
     createEReference(operationEClass, OPERATION__ANNOTATION_DEPENDENCIES);
 
@@ -1697,7 +1697,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEAttribute(parameterEClass, PARAMETER__VISIBILITY);
     createEAttribute(parameterEClass, PARAMETER__FINAL);
     createEAttribute(parameterEClass, PARAMETER__IMMUTABLE);
-    createEReference(parameterEClass, PARAMETER__TYPING_DEPENDENCY);
+    createEReference(parameterEClass, PARAMETER__TYPING_DEPENDENCIES);
     createEReference(parameterEClass, PARAMETER__REFERENCE_DEPENDENCIES);
     createEReference(parameterEClass, PARAMETER__ANNOTATION_DEPENDENCIES);
 
@@ -1866,8 +1866,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEAttribute(getField_Final(), theEcorePackage.getEBoolean(), "final", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getField_Immutable(), theEcorePackage.getEBoolean(), "immutable", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getField_Transient(), theEcorePackage.getEBoolean(), "transient", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getField_TypingDependency(), this.getTypingDependency(), null, "typingDependency", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getField_InheritanceDependency(), this.getInheritanceDependency(), null, "inheritanceDependency", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getField_TypingDependencies(), this.getTypingDependency(), null, "typingDependencies", null, 0, -1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getField_InheritanceDependencies(), this.getInheritanceDependency(), null, "inheritanceDependencies", null, 0, -1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getField_ReferenceDependencies(), this.getReferenceDependency(), null, "referenceDependencies", null, 0, -1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getField_AnnotationDependencies(), this.getAnnotationDependency(), null, "annotationDependencies", null, 0, -1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1880,8 +1880,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEAttribute(getConstructor_Immutable(), theEcorePackage.getEBoolean(), "immutable", null, 0, 1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstructor_Transient(), theEcorePackage.getEBoolean(), "transient", null, 0, 1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstructor_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstructor_TypingDependency(), this.getTypingDependency(), null, "typingDependency", null, 0, 1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstructor_InheritanceDependency(), this.getInheritanceDependency(), null, "inheritanceDependency", null, 0, 1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstructor_TypingDependencies(), this.getTypingDependency(), null, "typingDependencies", null, 0, -1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstructor_InheritanceDependencies(), this.getInheritanceDependency(), null, "inheritanceDependencies", null, 0, -1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstructor_ReferenceDependencies(), this.getReferenceDependency(), null, "referenceDependencies", null, 0, -1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstructor_AnnotationDependencies(), this.getAnnotationDependency(), null, "annotationDependencies", null, 0, -1, Constructor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1894,8 +1894,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEAttribute(getOperation_Immutable(), theEcorePackage.getEBoolean(), "immutable", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOperation_Transient(), theEcorePackage.getEBoolean(), "transient", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_TypingDependency(), this.getTypingDependency(), null, "typingDependency", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_InheritanceDependency(), this.getInheritanceDependency(), null, "inheritanceDependency", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_TypingDependencies(), this.getTypingDependency(), null, "typingDependencies", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_InheritanceDependencies(), this.getInheritanceDependency(), null, "inheritanceDependencies", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_ReferenceDependencies(), this.getReferenceDependency(), null, "referenceDependencies", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_AnnotationDependencies(), this.getAnnotationDependency(), null, "annotationDependencies", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1904,7 +1904,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEAttribute(getParameter_Visibility(), this.getVisibilityKind(), "visibility", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameter_Final(), theEcorePackage.getEBoolean(), "final", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameter_Immutable(), theEcorePackage.getEBoolean(), "immutable", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameter_TypingDependency(), this.getTypingDependency(), null, "typingDependency", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameter_TypingDependencies(), this.getTypingDependency(), null, "typingDependencies", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getParameter_ReferenceDependencies(), this.getReferenceDependency(), null, "referenceDependencies", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getParameter_AnnotationDependencies(), this.getAnnotationDependency(), null, "annotationDependencies", null, 0, -1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -138,6 +138,26 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getTasksRepository_ConnectorKind()
+  {
+    return (EAttribute)tasksRepositoryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTasksRepository_Tasks()
+  {
+    return (EReference)tasksRepositoryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTask()
   {
     return taskEClass;
@@ -168,9 +188,49 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getTask_Kind()
+  {
+    return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTask_CreationDate()
+  {
+    return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTask_Priority()
+  {
+    return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTask_Status()
+  {
+    return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getTask_TaskEntries()
   {
-    return (EReference)taskEClass.getEStructuralFeatures().get(2);
+    return (EReference)taskEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -180,7 +240,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    */
   public EReference getTask_Elements()
   {
-    return (EReference)taskEClass.getEStructuralFeatures().get(3);
+    return (EReference)taskEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -218,26 +278,6 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTaskEntry_Options()
-  {
-    return (EAttribute)taskEntryEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTaskEntry_Kind()
-  {
-    return (EAttribute)taskEntryEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public TasksFactory getTasksFactory()
   {
     return (TasksFactory)getEFactoryInstance();
@@ -265,18 +305,22 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     // Create classes and their features
     tasksRepositoryEClass = createEClass(TASKS_REPOSITORY);
     createEAttribute(tasksRepositoryEClass, TASKS_REPOSITORY__URL);
+    createEAttribute(tasksRepositoryEClass, TASKS_REPOSITORY__CONNECTOR_KIND);
+    createEReference(tasksRepositoryEClass, TASKS_REPOSITORY__TASKS);
 
     taskEClass = createEClass(TASK);
     createEAttribute(taskEClass, TASK__URL);
     createEAttribute(taskEClass, TASK__IDENTIFIER);
+    createEAttribute(taskEClass, TASK__KIND);
+    createEAttribute(taskEClass, TASK__CREATION_DATE);
+    createEAttribute(taskEClass, TASK__PRIORITY);
+    createEAttribute(taskEClass, TASK__STATUS);
     createEReference(taskEClass, TASK__TASK_ENTRIES);
     createEReference(taskEClass, TASK__ELEMENTS);
 
     taskEntryEClass = createEClass(TASK_ENTRY);
     createEAttribute(taskEntryEClass, TASK_ENTRY__IDENTIFIER);
     createEAttribute(taskEntryEClass, TASK_ENTRY__VALUES);
-    createEAttribute(taskEntryEClass, TASK_ENTRY__OPTIONS);
-    createEAttribute(taskEntryEClass, TASK_ENTRY__KIND);
   }
 
   /**
@@ -318,18 +362,22 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     // Initialize classes, features, and operations; add parameters
     initEClass(tasksRepositoryEClass, TasksRepository.class, "TasksRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTasksRepository_Url(), theEcorePackage.getEString(), "url", null, 0, 1, TasksRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTasksRepository_ConnectorKind(), theEcorePackage.getEString(), "connectorKind", null, 0, 1, TasksRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTasksRepository_Tasks(), this.getTask(), null, "tasks", null, 0, -1, TasksRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTask_Url(), theEcorePackage.getEString(), "url", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTask_Identifier(), theEcorePackage.getEString(), "identifier", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTask_Kind(), theEcorePackage.getEString(), "kind", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTask_CreationDate(), theEcorePackage.getEString(), "creationDate", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTask_Priority(), theEcorePackage.getEString(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTask_Status(), theEcorePackage.getEString(), "status", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTask_TaskEntries(), this.getTaskEntry(), null, "taskEntries", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTask_Elements(), theCorePackage.getElement(), null, "elements", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(taskEntryEClass, TaskEntry.class, "TaskEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTaskEntry_Identifier(), theEcorePackage.getEString(), "identifier", null, 0, 1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTaskEntry_Values(), theEcorePackage.getEString(), "values", null, 0, -1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTaskEntry_Options(), theEcorePackage.getEString(), "options", null, 0, -1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTaskEntry_Kind(), theEcorePackage.getEString(), "kind", null, 0, 1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

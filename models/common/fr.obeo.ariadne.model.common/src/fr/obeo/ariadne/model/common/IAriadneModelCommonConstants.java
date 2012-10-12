@@ -58,4 +58,9 @@ public interface IAriadneModelCommonConstants {
 	 * API.
 	 */
 	String API_PROPERTY = "API"; //$NON-NLS-1$
+
+	/**
+	 * The import reference kind.
+	 */
+	String IMPORT_REFERENCE_KIND = "import"; //$NON-NLS-1$
 }

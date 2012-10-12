@@ -22,10 +22,13 @@ import fr.obeo.ariadne.model.code.ClasspathEntry;
 import fr.obeo.ariadne.model.code.CodeFactory;
 import fr.obeo.ariadne.model.code.Component;
 import fr.obeo.ariadne.model.code.Field;
+import fr.obeo.ariadne.model.code.InheritanceDependency;
 import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Parameter;
+import fr.obeo.ariadne.model.code.ReferenceDependency;
 import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.TypesContainer;
+import fr.obeo.ariadne.model.code.TypingDependency;
 import fr.obeo.ariadne.model.code.VisibilityKind;
 import fr.obeo.ariadne.model.common.IAriadneModelCommonConstants;
 import fr.obeo.ariadne.model.core.CoreFactory;
@@ -48,10 +51,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IClassFile;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.IImportDeclaration;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.ILocalVariable;
@@ -341,10 +346,46 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				}
 				annotation.setVisibility(this.getVisibility(iType, false));
 
+				// Explore the fields
 				IField[] fields = iType.getFields();
 				for (IField iField : fields) {
-					// Explore the field
 					this.exploreField(iField, annotation, monitor);
+				}
+
+				// Set up the annotations dependencies
+				IAnnotation[] annotations = iType.getAnnotations();
+				for (IAnnotation iAnnotation : annotations) {
+					AnnotationDependency annotationDependency = CodeFactory.eINSTANCE
+							.createAnnotationDependency();
+					annotationDependency.setIdentifier(iAnnotation.getElementName());
+					annotation.getAnnotationDependencies().add(annotationDependency);
+				}
+
+				// Set up the reference dependencies (import)
+				ICompilationUnit compilationUnit = iType.getCompilationUnit();
+				if (compilationUnit != null) {
+					IImportDeclaration[] imports = compilationUnit.getImports();
+					for (IImportDeclaration iImportDeclaration : imports) {
+						ReferenceDependency referenceDependency = CodeFactory.eINSTANCE
+								.createReferenceDependency();
+						referenceDependency.setIdentifier(iImportDeclaration.getElementName());
+						referenceDependency.setKind(IAriadneModelCommonConstants.IMPORT_REFERENCE_KIND);
+						annotation.getReferenceDependencies().add(referenceDependency);
+					}
+				}
+
+				// Set up the inhenritance dependencies
+				String superclassName = iType.getSuperclassName();
+				InheritanceDependency inheritanceDependency = CodeFactory.eINSTANCE
+						.createInheritanceDependency();
+				inheritanceDependency.setIdentifier(superclassName);
+				annotation.getInheritanceDependencies().add(inheritanceDependency);
+
+				String[] superInterfaceNames = iType.getSuperInterfaceNames();
+				for (String superInterfaceName : superInterfaceNames) {
+					inheritanceDependency = CodeFactory.eINSTANCE.createInheritanceDependency();
+					inheritanceDependency.setIdentifier(superInterfaceName);
+					annotation.getInheritanceDependencies().add(inheritanceDependency);
 				}
 			}
 		} catch (JavaModelException e) {
@@ -387,14 +428,14 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 		AnnotationField field = null;
 		List<AnnotationField> fields = annotation.getAnnotationFields();
 		for (AnnotationField aField : fields) {
-			if (aField.getQualifiedName().equals(this.getSignature(iField, false))) {
+			if (aField.getQualifiedName().equals(this.getQualifiedName(iField, false))) {
 				field = aField;
 			}
 		}
 
 		if (field == null) {
 			field = CodeFactory.eINSTANCE.createAnnotationField();
-			field.setQualifiedName(this.getSignature(iField, false));
+			field.setQualifiedName(this.getQualifiedName(iField, false));
 			annotation.getAnnotationFields().add(field);
 		}
 	}
@@ -456,17 +497,53 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				classifier.setStatic(Flags.isStatic(flags));
 				classifier.setVisibility(this.getVisibility(iType, false));
 
+				// Explore the methods
 				IMethod[] methods = iType.getMethods();
 				for (IMethod iMethod : methods) {
-					// Explore the method
 					this.exploreOperation(iMethod, classifier, Flags.isInterface(flags), monitor);
 
 				}
 
+				// Explore the fields
 				IField[] fields = iType.getFields();
 				for (IField iField : fields) {
-					// Explore the field
 					this.exploreField(iField, classifier, Flags.isInterface(flags), monitor);
+				}
+
+				// Set up the annotations dependencies
+				IAnnotation[] annotations = iType.getAnnotations();
+				for (IAnnotation iAnnotation : annotations) {
+					AnnotationDependency annotationDependency = CodeFactory.eINSTANCE
+							.createAnnotationDependency();
+					annotationDependency.setIdentifier(iAnnotation.getElementName());
+					classifier.getAnnotationDependencies().add(annotationDependency);
+				}
+
+				// Set up the reference dependencies (import)
+				ICompilationUnit compilationUnit = iType.getCompilationUnit();
+				if (compilationUnit != null) {
+					IImportDeclaration[] imports = compilationUnit.getImports();
+					for (IImportDeclaration iImportDeclaration : imports) {
+						ReferenceDependency referenceDependency = CodeFactory.eINSTANCE
+								.createReferenceDependency();
+						referenceDependency.setIdentifier(iImportDeclaration.getElementName());
+						referenceDependency.setKind(IAriadneModelCommonConstants.IMPORT_REFERENCE_KIND);
+						classifier.getReferenceDependencies().add(referenceDependency);
+					}
+				}
+
+				// Set up the inhenritance dependencies
+				String superclassName = iType.getSuperclassName();
+				InheritanceDependency inheritanceDependency = CodeFactory.eINSTANCE
+						.createInheritanceDependency();
+				inheritanceDependency.setIdentifier(superclassName);
+				classifier.getInheritanceDependencies().add(inheritanceDependency);
+
+				String[] superInterfaceNames = iType.getSuperInterfaceNames();
+				for (String superInterfaceName : superInterfaceNames) {
+					inheritanceDependency = CodeFactory.eINSTANCE.createInheritanceDependency();
+					inheritanceDependency.setIdentifier(superInterfaceName);
+					classifier.getInheritanceDependencies().add(inheritanceDependency);
 				}
 			}
 		} catch (JavaModelException e) {
@@ -637,6 +714,12 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 					// Add the property "Deprecated"
 					this.addDeprecatedProperty(operation);
 				}
+
+				// Set the typing dependency
+				String returnType = Signature.getReturnType(iMethod.getReturnType());
+				TypingDependency typingDependency = CodeFactory.eINSTANCE.createTypingDependency();
+				typingDependency.setIdentifier(returnType);
+				operation.getTypingDependencies().add(typingDependency);
 			} catch (JavaModelException e) {
 				e.printStackTrace();
 			}
@@ -664,6 +747,12 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 							this.addDeprecatedProperty(parameter);
 						}
 						operation.getParameters().add(parameter);
+
+						// Set the typing dependency
+						String signature = Signature.toString(iLocalVariable.getTypeSignature());
+						TypingDependency typingDependency = CodeFactory.eINSTANCE.createTypingDependency();
+						typingDependency.setIdentifier(signature);
+						parameter.getTypingDependencies().add(typingDependency);
 					}
 				}
 			} catch (JavaModelException e) {
@@ -724,14 +813,14 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 		Field field = null;
 		List<Field> fields = classifier.getFields();
 		for (Field aField : fields) {
-			if (aField.getQualifiedName().equals(this.getSignature(iField, isInInterface))) {
+			if (aField.getQualifiedName().equals(this.getQualifiedName(iField, isInInterface))) {
 				field = aField;
 			}
 		}
 
 		if (field == null) {
 			field = CodeFactory.eINSTANCE.createField();
-			field.setQualifiedName(this.getSignature(iField, isInInterface));
+			field.setQualifiedName(this.getQualifiedName(iField, isInInterface));
 			classifier.getFields().add(field);
 		}
 
@@ -756,6 +845,12 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 					// Add the property "Deprecated"
 					this.addDeprecatedProperty(field);
 				}
+
+				// Set the typing dependency
+				String signature = Signature.toString(iField.getTypeSignature());
+				TypingDependency typingDependency = CodeFactory.eINSTANCE.createTypingDependency();
+				typingDependency.setIdentifier(signature);
+				field.getTypingDependencies().add(typingDependency);
 			} catch (JavaModelException e) {
 				e.printStackTrace();
 			}
@@ -771,7 +866,7 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 	 *            Indicates if we are in an interface (visibility optional)
 	 * @return The signature of the field
 	 */
-	private String getSignature(IField iField, boolean isInInterface) {
+	private String getQualifiedName(IField iField, boolean isInInterface) {
 		try {
 			String signatureBody = Signature.toString(iField.getTypeSignature()) + ' '
 					+ iField.getElementName();

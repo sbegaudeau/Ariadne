@@ -70,6 +70,10 @@ public class TaskItemProvider
 
       addUrlPropertyDescriptor(object);
       addIdentifierPropertyDescriptor(object);
+      addKindPropertyDescriptor(object);
+      addCreationDatePropertyDescriptor(object);
+      addPriorityPropertyDescriptor(object);
+      addStatusPropertyDescriptor(object);
       addElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -113,6 +117,98 @@ public class TaskItemProvider
          getString("_UI_Task_identifier_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Task_identifier_feature", "_UI_Task_type"),
          TasksPackage.Literals.TASK__IDENTIFIER,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Kind feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addKindPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Task_kind_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Task_kind_feature", "_UI_Task_type"),
+         TasksPackage.Literals.TASK__KIND,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Creation Date feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addCreationDatePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Task_creationDate_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Task_creationDate_feature", "_UI_Task_type"),
+         TasksPackage.Literals.TASK__CREATION_DATE,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Priority feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addPriorityPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Task_priority_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Task_priority_feature", "_UI_Task_type"),
+         TasksPackage.Literals.TASK__PRIORITY,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Status feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addStatusPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Task_status_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Task_status_feature", "_UI_Task_type"),
+         TasksPackage.Literals.TASK__STATUS,
          true,
          false,
          false,
@@ -220,6 +316,10 @@ public class TaskItemProvider
     {
       case TasksPackage.TASK__URL:
       case TasksPackage.TASK__IDENTIFIER:
+      case TasksPackage.TASK__KIND:
+      case TasksPackage.TASK__CREATION_DATE:
+      case TasksPackage.TASK__PRIORITY:
+      case TasksPackage.TASK__STATUS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case TasksPackage.TASK__TASK_ENTRIES:

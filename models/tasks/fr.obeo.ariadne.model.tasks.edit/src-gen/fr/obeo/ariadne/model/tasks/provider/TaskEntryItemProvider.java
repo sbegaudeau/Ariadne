@@ -66,8 +66,6 @@ public class TaskEntryItemProvider
 
       addIdentifierPropertyDescriptor(object);
       addValuesPropertyDescriptor(object);
-      addOptionsPropertyDescriptor(object);
-      addKindPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -119,52 +117,6 @@ public class TaskEntryItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Options feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addOptionsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_TaskEntry_options_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_TaskEntry_options_feature", "_UI_TaskEntry_type"),
-         TasksPackage.Literals.TASK_ENTRY__OPTIONS,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Kind feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addKindPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_TaskEntry_kind_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_TaskEntry_kind_feature", "_UI_TaskEntry_type"),
-         TasksPackage.Literals.TASK_ENTRY__KIND,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
-
-  /**
    * This returns TaskEntry.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -207,8 +159,6 @@ public class TaskEntryItemProvider
     {
       case TasksPackage.TASK_ENTRY__IDENTIFIER:
       case TasksPackage.TASK_ENTRY__VALUES:
-      case TasksPackage.TASK_ENTRY__OPTIONS:
-      case TasksPackage.TASK_ENTRY__KIND:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
     }

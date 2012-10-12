@@ -182,7 +182,7 @@ public class ParameterItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.PARAMETER__TYPING_DEPENDENCY);
+      childrenFeatures.add(CodePackage.Literals.PARAMETER__TYPING_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.PARAMETER__REFERENCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.PARAMETER__ANNOTATION_DEPENDENCIES);
     }
@@ -250,7 +250,7 @@ public class ParameterItemProvider
       case CodePackage.PARAMETER__IMMUTABLE:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
       case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -273,7 +273,7 @@ public class ParameterItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.PARAMETER__TYPING_DEPENDENCY,
+        (CodePackage.Literals.PARAMETER__TYPING_DEPENDENCIES,
          CodeFactory.eINSTANCE.createTypingDependency()));
 
     newChildDescriptors.add

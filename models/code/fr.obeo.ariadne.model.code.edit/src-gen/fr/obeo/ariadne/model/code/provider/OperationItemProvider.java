@@ -255,8 +255,8 @@ public class OperationItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(CodePackage.Literals.OPERATION__PARAMETERS);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__TYPING_DEPENDENCY);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCY);
+      childrenFeatures.add(CodePackage.Literals.OPERATION__TYPING_DEPENDENCIES);
+      childrenFeatures.add(CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.OPERATION__REFERENCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.OPERATION__ANNOTATION_DEPENDENCIES);
     }
@@ -328,8 +328,8 @@ public class OperationItemProvider
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case CodePackage.OPERATION__PARAMETERS:
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
       case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -357,12 +357,12 @@ public class OperationItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.OPERATION__TYPING_DEPENDENCY,
+        (CodePackage.Literals.OPERATION__TYPING_DEPENDENCIES,
          CodeFactory.eINSTANCE.createTypingDependency()));
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCY,
+        (CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCIES,
          CodeFactory.eINSTANCE.createInheritanceDependency()));
 
     newChildDescriptors.add

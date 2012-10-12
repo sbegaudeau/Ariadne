@@ -1115,22 +1115,22 @@ public interface CodePackage extends EPackage
   int FIELD__TRANSIENT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
-   * The feature id for the '<em><b>Typing Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__TYPING_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int FIELD__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__INHERITANCE_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int FIELD__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
@@ -1296,22 +1296,22 @@ public interface CodePackage extends EPackage
   int CONSTRUCTOR__PARAMETERS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Typing Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__TYPING_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int CONSTRUCTOR__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__INHERITANCE_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
+  int CONSTRUCTOR__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
@@ -1477,22 +1477,22 @@ public interface CodePackage extends EPackage
   int OPERATION__PARAMETERS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Typing Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__TYPING_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int OPERATION__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__INHERITANCE_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
+  int OPERATION__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
@@ -1622,13 +1622,13 @@ public interface CodePackage extends EPackage
   int PARAMETER__IMMUTABLE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Typing Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER__TYPING_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+  int PARAMETER__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
@@ -3133,26 +3133,26 @@ public interface CodePackage extends EPackage
   EAttribute getField_Transient();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Field#getTypingDependency <em>Typing Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getTypingDependencies <em>Typing Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Typing Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getTypingDependency()
+   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getTypingDependencies()
    * @see #getField()
    * @generated
    */
-  EReference getField_TypingDependency();
+  EReference getField_TypingDependencies();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Field#getInheritanceDependency <em>Inheritance Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inheritance Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getInheritanceDependency()
+   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getInheritanceDependencies()
    * @see #getField()
    * @generated
    */
-  EReference getField_InheritanceDependency();
+  EReference getField_InheritanceDependencies();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getReferenceDependencies <em>Reference Dependencies</em>}'.
@@ -3275,26 +3275,26 @@ public interface CodePackage extends EPackage
   EReference getConstructor_Parameters();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependency <em>Typing Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependencies <em>Typing Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Typing Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getTypingDependency()
+   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getTypingDependencies()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_TypingDependency();
+  EReference getConstructor_TypingDependencies();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependency <em>Inheritance Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inheritance Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getInheritanceDependency()
+   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getInheritanceDependencies()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_InheritanceDependency();
+  EReference getConstructor_InheritanceDependencies();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getReferenceDependencies <em>Reference Dependencies</em>}'.
@@ -3417,26 +3417,26 @@ public interface CodePackage extends EPackage
   EReference getOperation_Parameters();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Operation#getTypingDependency <em>Typing Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getTypingDependencies <em>Typing Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Typing Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getTypingDependency()
+   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getTypingDependencies()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_TypingDependency();
+  EReference getOperation_TypingDependencies();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Operation#getInheritanceDependency <em>Inheritance Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inheritance Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getInheritanceDependency()
+   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getInheritanceDependencies()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_InheritanceDependency();
+  EReference getOperation_InheritanceDependencies();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getReferenceDependencies <em>Reference Dependencies</em>}'.
@@ -3515,15 +3515,15 @@ public interface CodePackage extends EPackage
   EAttribute getParameter_Immutable();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependency <em>Typing Dependency</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependencies <em>Typing Dependencies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Typing Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Parameter#getTypingDependency()
+   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
+   * @see fr.obeo.ariadne.model.code.Parameter#getTypingDependencies()
    * @see #getParameter()
    * @generated
    */
-  EReference getParameter_TypingDependency();
+  EReference getParameter_TypingDependencies();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Parameter#getReferenceDependencies <em>Reference Dependencies</em>}'.
@@ -4383,20 +4383,20 @@ public interface CodePackage extends EPackage
     EAttribute FIELD__TRANSIENT = eINSTANCE.getField_Transient();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__TYPING_DEPENDENCY = eINSTANCE.getField_TypingDependency();
+    EReference FIELD__TYPING_DEPENDENCIES = eINSTANCE.getField_TypingDependencies();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__INHERITANCE_DEPENDENCY = eINSTANCE.getField_InheritanceDependency();
+    EReference FIELD__INHERITANCE_DEPENDENCIES = eINSTANCE.getField_InheritanceDependencies();
 
     /**
      * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
@@ -4489,20 +4489,20 @@ public interface CodePackage extends EPackage
     EReference CONSTRUCTOR__PARAMETERS = eINSTANCE.getConstructor_Parameters();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__TYPING_DEPENDENCY = eINSTANCE.getConstructor_TypingDependency();
+    EReference CONSTRUCTOR__TYPING_DEPENDENCIES = eINSTANCE.getConstructor_TypingDependencies();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__INHERITANCE_DEPENDENCY = eINSTANCE.getConstructor_InheritanceDependency();
+    EReference CONSTRUCTOR__INHERITANCE_DEPENDENCIES = eINSTANCE.getConstructor_InheritanceDependencies();
 
     /**
      * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
@@ -4595,20 +4595,20 @@ public interface CodePackage extends EPackage
     EReference OPERATION__PARAMETERS = eINSTANCE.getOperation_Parameters();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__TYPING_DEPENDENCY = eINSTANCE.getOperation_TypingDependency();
+    EReference OPERATION__TYPING_DEPENDENCIES = eINSTANCE.getOperation_TypingDependencies();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__INHERITANCE_DEPENDENCY = eINSTANCE.getOperation_InheritanceDependency();
+    EReference OPERATION__INHERITANCE_DEPENDENCIES = eINSTANCE.getOperation_InheritanceDependencies();
 
     /**
      * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
@@ -4669,12 +4669,12 @@ public interface CodePackage extends EPackage
     EAttribute PARAMETER__IMMUTABLE = eINSTANCE.getParameter_Immutable();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__TYPING_DEPENDENCY = eINSTANCE.getParameter_TypingDependency();
+    EReference PARAMETER__TYPING_DEPENDENCIES = eINSTANCE.getParameter_TypingDependencies();
 
     /**
      * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.

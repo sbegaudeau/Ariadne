@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Parameter#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Parameter#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Parameter#isImmutable <em>Immutable</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependency <em>Typing Dependency</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependencies <em>Typing Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Parameter#getReferenceDependencies <em>Reference Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Parameter#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
  * </ul>
@@ -138,30 +138,20 @@ public interface Parameter extends VersionedElement
   void setImmutable(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Typing Dependency</b></em>' containment reference.
+   * Returns the value of the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.TypingDependency}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typing Dependency</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Typing Dependencies</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typing Dependency</em>' containment reference.
-   * @see #setTypingDependency(TypingDependency)
-   * @see fr.obeo.ariadne.model.code.CodePackage#getParameter_TypingDependency()
+   * @return the value of the '<em>Typing Dependencies</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getParameter_TypingDependencies()
    * @model containment="true"
    * @generated
    */
-  TypingDependency getTypingDependency();
-
-  /**
-   * Sets the value of the '{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependency <em>Typing Dependency</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Typing Dependency</em>' containment reference.
-   * @see #getTypingDependency()
-   * @generated
-   */
-  void setTypingDependency(TypingDependency value);
+  EList<TypingDependency> getTypingDependencies();
 
   /**
    * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.

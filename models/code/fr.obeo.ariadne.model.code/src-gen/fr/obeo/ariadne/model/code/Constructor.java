@@ -22,8 +22,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#isTransient <em>Transient</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getParameters <em>Parameters</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependency <em>Typing Dependency</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependency <em>Inheritance Dependency</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependencies <em>Typing Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getReferenceDependencies <em>Reference Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
  * </ul>
@@ -237,56 +237,36 @@ public interface Constructor extends VersionedElement
   EList<Parameter> getParameters();
 
   /**
-   * Returns the value of the '<em><b>Typing Dependency</b></em>' containment reference.
+   * Returns the value of the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.TypingDependency}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typing Dependency</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Typing Dependencies</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typing Dependency</em>' containment reference.
-   * @see #setTypingDependency(TypingDependency)
-   * @see fr.obeo.ariadne.model.code.CodePackage#getConstructor_TypingDependency()
+   * @return the value of the '<em>Typing Dependencies</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getConstructor_TypingDependencies()
    * @model containment="true"
    * @generated
    */
-  TypingDependency getTypingDependency();
+  EList<TypingDependency> getTypingDependencies();
 
   /**
-   * Sets the value of the '{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependency <em>Typing Dependency</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Typing Dependency</em>' containment reference.
-   * @see #getTypingDependency()
-   * @generated
-   */
-  void setTypingDependency(TypingDependency value);
-
-  /**
-   * Returns the value of the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * Returns the value of the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.InheritanceDependency}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inheritance Dependency</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Inheritance Dependencies</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritance Dependency</em>' containment reference.
-   * @see #setInheritanceDependency(InheritanceDependency)
-   * @see fr.obeo.ariadne.model.code.CodePackage#getConstructor_InheritanceDependency()
+   * @return the value of the '<em>Inheritance Dependencies</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getConstructor_InheritanceDependencies()
    * @model containment="true"
    * @generated
    */
-  InheritanceDependency getInheritanceDependency();
-
-  /**
-   * Sets the value of the '{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependency <em>Inheritance Dependency</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inheritance Dependency</em>' containment reference.
-   * @see #getInheritanceDependency()
-   * @generated
-   */
-  void setInheritanceDependency(InheritanceDependency value);
+  EList<InheritanceDependency> getInheritanceDependencies();
 
   /**
    * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.

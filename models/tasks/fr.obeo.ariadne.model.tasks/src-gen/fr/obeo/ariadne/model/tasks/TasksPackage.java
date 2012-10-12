@@ -116,13 +116,31 @@ public interface TasksPackage extends EPackage
   int TASKS_REPOSITORY__URL = CorePackage.ELEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Connector Kind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASKS_REPOSITORY__CONNECTOR_KIND = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASKS_REPOSITORY__TASKS = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Repository</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int TASKS_REPOSITORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Repository</em>' class.
@@ -198,13 +216,49 @@ public interface TasksPackage extends EPackage
   int TASK__IDENTIFIER = CorePackage.ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Kind</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__KIND = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__CREATION_DATE = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Priority</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__PRIORITY = CorePackage.ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__STATUS = CorePackage.ELEMENT_FEATURE_COUNT + 5;
+
+  /**
    * The feature id for the '<em><b>Task Entries</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK__TASK_ENTRIES = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int TASK__TASK_ENTRIES = CorePackage.ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' reference list.
@@ -213,7 +267,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__ELEMENTS = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+  int TASK__ELEMENTS = CorePackage.ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Task</em>' class.
@@ -222,7 +276,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 4;
+  int TASK_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The number of operations of the '<em>Task</em>' class.
@@ -262,31 +316,13 @@ public interface TasksPackage extends EPackage
   int TASK_ENTRY__VALUES = 1;
 
   /**
-   * The feature id for the '<em><b>Options</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY__OPTIONS = 2;
-
-  /**
-   * The feature id for the '<em><b>Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY__KIND = 3;
-
-  /**
    * The number of structural features of the '<em>Task Entry</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_ENTRY_FEATURE_COUNT = 4;
+  int TASK_ENTRY_FEATURE_COUNT = 2;
 
   /**
    * The number of operations of the '<em>Task Entry</em>' class.
@@ -320,6 +356,28 @@ public interface TasksPackage extends EPackage
   EAttribute getTasksRepository_Url();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.TasksRepository#getConnectorKind <em>Connector Kind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Connector Kind</em>'.
+   * @see fr.obeo.ariadne.model.tasks.TasksRepository#getConnectorKind()
+   * @see #getTasksRepository()
+   * @generated
+   */
+  EAttribute getTasksRepository_ConnectorKind();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.tasks.TasksRepository#getTasks <em>Tasks</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Tasks</em>'.
+   * @see fr.obeo.ariadne.model.tasks.TasksRepository#getTasks()
+   * @see #getTasksRepository()
+   * @generated
+   */
+  EReference getTasksRepository_Tasks();
+
+  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.tasks.Task <em>Task</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -350,6 +408,50 @@ public interface TasksPackage extends EPackage
    * @generated
    */
   EAttribute getTask_Identifier();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.Task#getKind <em>Kind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Kind</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getKind()
+   * @see #getTask()
+   * @generated
+   */
+  EAttribute getTask_Kind();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.Task#getCreationDate <em>Creation Date</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Creation Date</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getCreationDate()
+   * @see #getTask()
+   * @generated
+   */
+  EAttribute getTask_CreationDate();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.Task#getPriority <em>Priority</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Priority</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getPriority()
+   * @see #getTask()
+   * @generated
+   */
+  EAttribute getTask_Priority();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.Task#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Status</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getStatus()
+   * @see #getTask()
+   * @generated
+   */
+  EAttribute getTask_Status();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.tasks.Task#getTaskEntries <em>Task Entries</em>}'.
@@ -406,28 +508,6 @@ public interface TasksPackage extends EPackage
   EAttribute getTaskEntry_Values();
 
   /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.tasks.TaskEntry#getOptions <em>Options</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Options</em>'.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry#getOptions()
-   * @see #getTaskEntry()
-   * @generated
-   */
-  EAttribute getTaskEntry_Options();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.TaskEntry#getKind <em>Kind</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Kind</em>'.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry#getKind()
-   * @see #getTaskEntry()
-   * @generated
-   */
-  EAttribute getTaskEntry_Kind();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -470,6 +550,22 @@ public interface TasksPackage extends EPackage
     EAttribute TASKS_REPOSITORY__URL = eINSTANCE.getTasksRepository_Url();
 
     /**
+     * The meta object literal for the '<em><b>Connector Kind</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASKS_REPOSITORY__CONNECTOR_KIND = eINSTANCE.getTasksRepository_ConnectorKind();
+
+    /**
+     * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TASKS_REPOSITORY__TASKS = eINSTANCE.getTasksRepository_Tasks();
+
+    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl <em>Task</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -494,6 +590,38 @@ public interface TasksPackage extends EPackage
      * @generated
      */
     EAttribute TASK__IDENTIFIER = eINSTANCE.getTask_Identifier();
+
+    /**
+     * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK__KIND = eINSTANCE.getTask_Kind();
+
+    /**
+     * The meta object literal for the '<em><b>Creation Date</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK__CREATION_DATE = eINSTANCE.getTask_CreationDate();
+
+    /**
+     * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK__PRIORITY = eINSTANCE.getTask_Priority();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK__STATUS = eINSTANCE.getTask_Status();
 
     /**
      * The meta object literal for the '<em><b>Task Entries</b></em>' containment reference list feature.
@@ -536,22 +664,6 @@ public interface TasksPackage extends EPackage
      * @generated
      */
     EAttribute TASK_ENTRY__VALUES = eINSTANCE.getTaskEntry_Values();
-
-    /**
-     * The meta object literal for the '<em><b>Options</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK_ENTRY__OPTIONS = eINSTANCE.getTaskEntry_Options();
-
-    /**
-     * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK_ENTRY__KIND = eINSTANCE.getTaskEntry_Kind();
 
   }
 

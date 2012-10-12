@@ -35,6 +35,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getTaskEntries <em>Task Entries</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getElements <em>Elements</em>}</li>
  * </ul>
@@ -83,6 +87,86 @@ public class TaskImpl extends ElementImpl implements Task
    * @ordered
    */
   protected String identifier = IDENTIFIER_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
+  protected static final String KIND_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
+  protected String kind = KIND_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCreationDate()
+   * @generated
+   * @ordered
+   */
+  protected static final String CREATION_DATE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCreationDate()
+   * @generated
+   * @ordered
+   */
+  protected String creationDate = CREATION_DATE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPriority()
+   * @generated
+   * @ordered
+   */
+  protected static final String PRIORITY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPriority()
+   * @generated
+   * @ordered
+   */
+  protected String priority = PRIORITY_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected static final String STATUS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
+  protected String status = STATUS_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getTaskEntries() <em>Task Entries</em>}' containment reference list.
@@ -176,6 +260,98 @@ public class TaskImpl extends ElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getKind()
+  {
+    return kind;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setKind(String newKind)
+  {
+    String oldKind = kind;
+    kind = newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TasksPackage.TASK__KIND, oldKind, kind));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getCreationDate()
+  {
+    return creationDate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCreationDate(String newCreationDate)
+  {
+    String oldCreationDate = creationDate;
+    creationDate = newCreationDate;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TasksPackage.TASK__CREATION_DATE, oldCreationDate, creationDate));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getPriority()
+  {
+    return priority;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPriority(String newPriority)
+  {
+    String oldPriority = priority;
+    priority = newPriority;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TasksPackage.TASK__PRIORITY, oldPriority, priority));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getStatus()
+  {
+    return status;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatus(String newStatus)
+  {
+    String oldStatus = status;
+    status = newStatus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, TasksPackage.TASK__STATUS, oldStatus, status));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<TaskEntry> getTaskEntries()
   {
     if (taskEntries == null)
@@ -229,6 +405,14 @@ public class TaskImpl extends ElementImpl implements Task
         return getUrl();
       case TasksPackage.TASK__IDENTIFIER:
         return getIdentifier();
+      case TasksPackage.TASK__KIND:
+        return getKind();
+      case TasksPackage.TASK__CREATION_DATE:
+        return getCreationDate();
+      case TasksPackage.TASK__PRIORITY:
+        return getPriority();
+      case TasksPackage.TASK__STATUS:
+        return getStatus();
       case TasksPackage.TASK__TASK_ENTRIES:
         return getTaskEntries();
       case TasksPackage.TASK__ELEMENTS:
@@ -253,6 +437,18 @@ public class TaskImpl extends ElementImpl implements Task
         return;
       case TasksPackage.TASK__IDENTIFIER:
         setIdentifier((String)newValue);
+        return;
+      case TasksPackage.TASK__KIND:
+        setKind((String)newValue);
+        return;
+      case TasksPackage.TASK__CREATION_DATE:
+        setCreationDate((String)newValue);
+        return;
+      case TasksPackage.TASK__PRIORITY:
+        setPriority((String)newValue);
+        return;
+      case TasksPackage.TASK__STATUS:
+        setStatus((String)newValue);
         return;
       case TasksPackage.TASK__TASK_ENTRIES:
         getTaskEntries().clear();
@@ -282,6 +478,18 @@ public class TaskImpl extends ElementImpl implements Task
       case TasksPackage.TASK__IDENTIFIER:
         setIdentifier(IDENTIFIER_EDEFAULT);
         return;
+      case TasksPackage.TASK__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case TasksPackage.TASK__CREATION_DATE:
+        setCreationDate(CREATION_DATE_EDEFAULT);
+        return;
+      case TasksPackage.TASK__PRIORITY:
+        setPriority(PRIORITY_EDEFAULT);
+        return;
+      case TasksPackage.TASK__STATUS:
+        setStatus(STATUS_EDEFAULT);
+        return;
       case TasksPackage.TASK__TASK_ENTRIES:
         getTaskEntries().clear();
         return;
@@ -306,6 +514,14 @@ public class TaskImpl extends ElementImpl implements Task
         return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
       case TasksPackage.TASK__IDENTIFIER:
         return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+      case TasksPackage.TASK__KIND:
+        return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT.equals(kind);
+      case TasksPackage.TASK__CREATION_DATE:
+        return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
+      case TasksPackage.TASK__PRIORITY:
+        return PRIORITY_EDEFAULT == null ? priority != null : !PRIORITY_EDEFAULT.equals(priority);
+      case TasksPackage.TASK__STATUS:
+        return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
       case TasksPackage.TASK__TASK_ENTRIES:
         return taskEntries != null && !taskEntries.isEmpty();
       case TasksPackage.TASK__ELEMENTS:
@@ -329,6 +545,14 @@ public class TaskImpl extends ElementImpl implements Task
     result.append(url);
     result.append(", identifier: ");
     result.append(identifier);
+    result.append(", kind: ");
+    result.append(kind);
+    result.append(", creationDate: ");
+    result.append(creationDate);
+    result.append(", priority: ");
+    result.append(priority);
+    result.append(", status: ");
+    result.append(status);
     result.append(')');
     return result.toString();
   }

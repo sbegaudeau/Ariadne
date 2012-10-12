@@ -4,6 +4,7 @@ package fr.obeo.ariadne.model.code.impl;
 
 import fr.obeo.ariadne.model.code.AnnotationDependency;
 import fr.obeo.ariadne.model.code.CodePackage;
+import fr.obeo.ariadne.model.code.InheritanceDependency;
 import fr.obeo.ariadne.model.code.Parameter;
 import fr.obeo.ariadne.model.code.ReferenceDependency;
 import fr.obeo.ariadne.model.code.TypingDependency;
@@ -37,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#isImmutable <em>Immutable</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getTypingDependency <em>Typing Dependency</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
  * </ul>
@@ -128,14 +129,14 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
   protected boolean immutable = IMMUTABLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypingDependency() <em>Typing Dependency</em>}' containment reference.
+   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependency()
+   * @see #getTypingDependencies()
    * @generated
    * @ordered
    */
-  protected TypingDependency typingDependency;
+  protected EList<TypingDependency> typingDependencies;
 
   /**
    * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
@@ -275,47 +276,13 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypingDependency getTypingDependency()
+  public EList<TypingDependency> getTypingDependencies()
   {
-    return typingDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypingDependency(TypingDependency newTypingDependency, NotificationChain msgs)
-  {
-    TypingDependency oldTypingDependency = typingDependency;
-    typingDependency = newTypingDependency;
-    if (eNotificationRequired())
+    if (typingDependencies == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CodePackage.PARAMETER__TYPING_DEPENDENCY, oldTypingDependency, newTypingDependency);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.PARAMETER__TYPING_DEPENDENCIES);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTypingDependency(TypingDependency newTypingDependency)
-  {
-    if (newTypingDependency != typingDependency)
-    {
-      NotificationChain msgs = null;
-      if (typingDependency != null)
-        msgs = ((InternalEObject)typingDependency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CodePackage.PARAMETER__TYPING_DEPENDENCY, null, msgs);
-      if (newTypingDependency != null)
-        msgs = ((InternalEObject)newTypingDependency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CodePackage.PARAMETER__TYPING_DEPENDENCY, null, msgs);
-      msgs = basicSetTypingDependency(newTypingDependency, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.PARAMETER__TYPING_DEPENDENCY, newTypingDependency, newTypingDependency));
+    return typingDependencies;
   }
 
   /**
@@ -356,8 +323,8 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
   {
     switch (featureID)
     {
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
-        return basicSetTypingDependency(null, msgs);
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
+        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
         return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
       case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
@@ -384,8 +351,8 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return isFinal();
       case CodePackage.PARAMETER__IMMUTABLE:
         return isImmutable();
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
-        return getTypingDependency();
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
+        return getTypingDependencies();
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
         return getReferenceDependencies();
       case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
@@ -417,8 +384,9 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
       case CodePackage.PARAMETER__IMMUTABLE:
         setImmutable((Boolean)newValue);
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
-        setTypingDependency((TypingDependency)newValue);
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
+        getTypingDependencies().clear();
+        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
         return;
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
         getReferenceDependencies().clear();
@@ -454,8 +422,8 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
       case CodePackage.PARAMETER__IMMUTABLE:
         setImmutable(IMMUTABLE_EDEFAULT);
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
-        setTypingDependency((TypingDependency)null);
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
+        getTypingDependencies().clear();
         return;
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
         getReferenceDependencies().clear();
@@ -485,8 +453,8 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return final_ != FINAL_EDEFAULT;
       case CodePackage.PARAMETER__IMMUTABLE:
         return immutable != IMMUTABLE_EDEFAULT;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCY:
-        return typingDependency != null;
+      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
+        return typingDependencies != null && !typingDependencies.isEmpty();
       case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
         return referenceDependencies != null && !referenceDependencies.isEmpty();
       case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:

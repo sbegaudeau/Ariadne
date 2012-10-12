@@ -43,8 +43,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getTypingDependency <em>Typing Dependency</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getInheritanceDependency <em>Inheritance Dependency</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
  * </ul>
@@ -205,24 +205,24 @@ public class OperationImpl extends VersionedElementImpl implements Operation
   protected EList<Parameter> parameters;
 
   /**
-   * The cached value of the '{@link #getTypingDependency() <em>Typing Dependency</em>}' containment reference.
+   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependency()
+   * @see #getTypingDependencies()
    * @generated
    * @ordered
    */
-  protected TypingDependency typingDependency;
+  protected EList<TypingDependency> typingDependencies;
 
   /**
-   * The cached value of the '{@link #getInheritanceDependency() <em>Inheritance Dependency</em>}' containment reference.
+   * The cached value of the '{@link #getInheritanceDependencies() <em>Inheritance Dependencies</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInheritanceDependency()
+   * @see #getInheritanceDependencies()
    * @generated
    * @ordered
    */
-  protected InheritanceDependency inheritanceDependency;
+  protected EList<InheritanceDependency> inheritanceDependencies;
 
   /**
    * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
@@ -445,26 +445,13 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypingDependency getTypingDependency()
+  public EList<TypingDependency> getTypingDependencies()
   {
-    return typingDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypingDependency(TypingDependency newTypingDependency, NotificationChain msgs)
-  {
-    TypingDependency oldTypingDependency = typingDependency;
-    typingDependency = newTypingDependency;
-    if (eNotificationRequired())
+    if (typingDependencies == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CodePackage.OPERATION__TYPING_DEPENDENCY, oldTypingDependency, newTypingDependency);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.OPERATION__TYPING_DEPENDENCIES);
     }
-    return msgs;
+    return typingDependencies;
   }
 
   /**
@@ -472,68 +459,13 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypingDependency(TypingDependency newTypingDependency)
+  public EList<InheritanceDependency> getInheritanceDependencies()
   {
-    if (newTypingDependency != typingDependency)
+    if (inheritanceDependencies == null)
     {
-      NotificationChain msgs = null;
-      if (typingDependency != null)
-        msgs = ((InternalEObject)typingDependency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CodePackage.OPERATION__TYPING_DEPENDENCY, null, msgs);
-      if (newTypingDependency != null)
-        msgs = ((InternalEObject)newTypingDependency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CodePackage.OPERATION__TYPING_DEPENDENCY, null, msgs);
-      msgs = basicSetTypingDependency(newTypingDependency, msgs);
-      if (msgs != null) msgs.dispatch();
+      inheritanceDependencies = new EObjectContainmentEList<InheritanceDependency>(InheritanceDependency.class, this, CodePackage.OPERATION__INHERITANCE_DEPENDENCIES);
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.OPERATION__TYPING_DEPENDENCY, newTypingDependency, newTypingDependency));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InheritanceDependency getInheritanceDependency()
-  {
-    return inheritanceDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetInheritanceDependency(InheritanceDependency newInheritanceDependency, NotificationChain msgs)
-  {
-    InheritanceDependency oldInheritanceDependency = inheritanceDependency;
-    inheritanceDependency = newInheritanceDependency;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CodePackage.OPERATION__INHERITANCE_DEPENDENCY, oldInheritanceDependency, newInheritanceDependency);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setInheritanceDependency(InheritanceDependency newInheritanceDependency)
-  {
-    if (newInheritanceDependency != inheritanceDependency)
-    {
-      NotificationChain msgs = null;
-      if (inheritanceDependency != null)
-        msgs = ((InternalEObject)inheritanceDependency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CodePackage.OPERATION__INHERITANCE_DEPENDENCY, null, msgs);
-      if (newInheritanceDependency != null)
-        msgs = ((InternalEObject)newInheritanceDependency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CodePackage.OPERATION__INHERITANCE_DEPENDENCY, null, msgs);
-      msgs = basicSetInheritanceDependency(newInheritanceDependency, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.OPERATION__INHERITANCE_DEPENDENCY, newInheritanceDependency, newInheritanceDependency));
+    return inheritanceDependencies;
   }
 
   /**
@@ -576,10 +508,10 @@ public class OperationImpl extends VersionedElementImpl implements Operation
     {
       case CodePackage.OPERATION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-        return basicSetTypingDependency(null, msgs);
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
-        return basicSetInheritanceDependency(null, msgs);
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
+        return ((InternalEList<?>)getInheritanceDependencies()).basicRemove(otherEnd, msgs);
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
         return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
       case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
@@ -614,10 +546,10 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return isTransient();
       case CodePackage.OPERATION__PARAMETERS:
         return getParameters();
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-        return getTypingDependency();
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
-        return getInheritanceDependency();
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+        return getTypingDependencies();
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
+        return getInheritanceDependencies();
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
         return getReferenceDependencies();
       case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
@@ -662,11 +594,13 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         getParameters().clear();
         getParameters().addAll((Collection<? extends Parameter>)newValue);
         return;
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-        setTypingDependency((TypingDependency)newValue);
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+        getTypingDependencies().clear();
+        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
         return;
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
-        setInheritanceDependency((InheritanceDependency)newValue);
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
+        getInheritanceDependencies().clear();
+        getInheritanceDependencies().addAll((Collection<? extends InheritanceDependency>)newValue);
         return;
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
         getReferenceDependencies().clear();
@@ -714,11 +648,11 @@ public class OperationImpl extends VersionedElementImpl implements Operation
       case CodePackage.OPERATION__PARAMETERS:
         getParameters().clear();
         return;
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-        setTypingDependency((TypingDependency)null);
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+        getTypingDependencies().clear();
         return;
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
-        setInheritanceDependency((InheritanceDependency)null);
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
+        getInheritanceDependencies().clear();
         return;
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
         getReferenceDependencies().clear();
@@ -756,10 +690,10 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return transient_ != TRANSIENT_EDEFAULT;
       case CodePackage.OPERATION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
-      case CodePackage.OPERATION__TYPING_DEPENDENCY:
-        return typingDependency != null;
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCY:
-        return inheritanceDependency != null;
+      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
+        return typingDependencies != null && !typingDependencies.isEmpty();
+      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
+        return inheritanceDependencies != null && !inheritanceDependencies.isEmpty();
       case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
         return referenceDependencies != null && !referenceDependencies.isEmpty();
       case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:

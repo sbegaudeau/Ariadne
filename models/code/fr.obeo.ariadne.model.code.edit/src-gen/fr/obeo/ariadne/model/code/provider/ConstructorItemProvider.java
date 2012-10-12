@@ -255,8 +255,8 @@ public class ConstructorItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__PARAMETERS);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCY);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCY);
+      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCIES);
+      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__REFERENCE_DEPENDENCIES);
       childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__ANNOTATION_DEPENDENCIES);
     }
@@ -328,8 +328,8 @@ public class ConstructorItemProvider
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case CodePackage.CONSTRUCTOR__PARAMETERS:
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCY:
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCY:
+      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
+      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
       case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
       case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -357,12 +357,12 @@ public class ConstructorItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCY,
+        (CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCIES,
          CodeFactory.eINSTANCE.createTypingDependency()));
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCY,
+        (CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCIES,
          CodeFactory.eINSTANCE.createInheritanceDependency()));
 
     newChildDescriptors.add

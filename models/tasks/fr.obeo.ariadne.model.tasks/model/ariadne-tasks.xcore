@@ -8,11 +8,17 @@ import fr.obeo.ariadne.model.core.Element
 
 class TasksRepository extends Element {
 	String url
+	String connectorKind
+	contains Task[] tasks
 }
 
 class Task extends Element {
 	String url
 	String identifier
+	String kind
+	String creationDate
+	String priority
+	String status
 	contains TaskEntry[] taskEntries
 	refers Element[] elements
 }
@@ -20,6 +26,4 @@ class Task extends Element {
 class TaskEntry {
 	String identifier
 	String[] values
-	String[] options
-	String kind
 }

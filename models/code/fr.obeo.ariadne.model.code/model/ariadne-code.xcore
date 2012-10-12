@@ -106,8 +106,8 @@ class Field extends VersionedElement {
 	boolean final
 	boolean immutable
 	boolean ^transient
-	contains TypingDependency typingDependency
-	contains InheritanceDependency inheritanceDependency
+	contains TypingDependency[] typingDependencies
+	contains InheritanceDependency[] inheritanceDependencies
 	contains ReferenceDependency[] referenceDependencies
 	contains AnnotationDependency[] annotationDependencies
 }
@@ -121,8 +121,8 @@ class Constructor extends VersionedElement {
 	boolean immutable
 	boolean ^transient
 	contains Parameter[] parameters
-	contains TypingDependency typingDependency
-	contains InheritanceDependency inheritanceDependency
+	contains TypingDependency[] typingDependencies
+	contains InheritanceDependency[] inheritanceDependencies
 	contains ReferenceDependency[] referenceDependencies
 	contains AnnotationDependency[] annotationDependencies
 }
@@ -136,8 +136,8 @@ class Operation extends VersionedElement {
 	boolean immutable
 	boolean ^transient
 	contains Parameter[] parameters
-	contains TypingDependency typingDependency
-	contains InheritanceDependency inheritanceDependency
+	contains TypingDependency[] typingDependencies
+	contains InheritanceDependency[] inheritanceDependencies
 	contains ReferenceDependency[] referenceDependencies
 	contains AnnotationDependency[] annotationDependencies
 }
@@ -147,7 +147,7 @@ class Parameter extends VersionedElement {
 	VisibilityKind visibility
 	boolean final
 	boolean immutable
-	contains TypingDependency typingDependency
+	contains TypingDependency[] typingDependencies
 	contains ReferenceDependency[] referenceDependencies
 	contains AnnotationDependency[] annotationDependencies
 }

@@ -27,8 +27,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl#getValues <em>Values</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl#getOptions <em>Options</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl#getKind <em>Kind</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,36 +63,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
    * @ordered
    */
   protected EList<String> values;
-
-  /**
-   * The cached value of the '{@link #getOptions() <em>Options</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOptions()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> options;
-
-  /**
-   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
-  protected static final String KIND_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
-  protected String kind = KIND_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,43 +127,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getOptions()
-  {
-    if (options == null)
-    {
-      options = new EDataTypeEList<String>(String.class, this, TasksPackage.TASK_ENTRY__OPTIONS);
-    }
-    return options;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getKind()
-  {
-    return kind;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setKind(String newKind)
-  {
-    String oldKind = kind;
-    kind = newKind;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, TasksPackage.TASK_ENTRY__KIND, oldKind, kind));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -205,10 +136,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
         return getIdentifier();
       case TasksPackage.TASK_ENTRY__VALUES:
         return getValues();
-      case TasksPackage.TASK_ENTRY__OPTIONS:
-        return getOptions();
-      case TasksPackage.TASK_ENTRY__KIND:
-        return getKind();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -231,13 +158,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
         getValues().clear();
         getValues().addAll((Collection<? extends String>)newValue);
         return;
-      case TasksPackage.TASK_ENTRY__OPTIONS:
-        getOptions().clear();
-        getOptions().addAll((Collection<? extends String>)newValue);
-        return;
-      case TasksPackage.TASK_ENTRY__KIND:
-        setKind((String)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -258,12 +178,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
       case TasksPackage.TASK_ENTRY__VALUES:
         getValues().clear();
         return;
-      case TasksPackage.TASK_ENTRY__OPTIONS:
-        getOptions().clear();
-        return;
-      case TasksPackage.TASK_ENTRY__KIND:
-        setKind(KIND_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -282,10 +196,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
         return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
       case TasksPackage.TASK_ENTRY__VALUES:
         return values != null && !values.isEmpty();
-      case TasksPackage.TASK_ENTRY__OPTIONS:
-        return options != null && !options.isEmpty();
-      case TasksPackage.TASK_ENTRY__KIND:
-        return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT.equals(kind);
     }
     return super.eIsSet(featureID);
   }
@@ -305,10 +215,6 @@ public class TaskEntryImpl extends MinimalEObjectImpl.Container implements TaskE
     result.append(identifier);
     result.append(", values: ");
     result.append(values);
-    result.append(", options: ");
-    result.append(options);
-    result.append(", kind: ");
-    result.append(kind);
     result.append(')');
     return result.toString();
   }
