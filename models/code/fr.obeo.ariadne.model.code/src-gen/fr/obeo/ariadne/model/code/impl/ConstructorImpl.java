@@ -1,15 +1,23 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
-import fr.obeo.ariadne.model.code.AnnotationDependency;
+import fr.obeo.ariadne.model.code.Annotation;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Constructor;
-import fr.obeo.ariadne.model.code.InheritanceDependency;
 import fr.obeo.ariadne.model.code.Parameter;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
-import fr.obeo.ariadne.model.code.TypingDependency;
+import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.VisibilityKind;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
@@ -26,6 +34,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -43,10 +52,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getOverriddenConstructors <em>Overridden Constructors</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -205,44 +214,44 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
   protected EList<Parameter> parameters;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Type> types;
 
   /**
-   * The cached value of the '{@link #getInheritanceDependencies() <em>Inheritance Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInheritanceDependencies()
+   * @see #getAnnotations()
    * @generated
    * @ordered
    */
-  protected EList<InheritanceDependency> inheritanceDependencies;
+  protected EList<Annotation> annotations;
 
   /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getOverriddenConstructors() <em>Overridden Constructors</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
+   * @see #getOverriddenConstructors()
    * @generated
    * @ordered
    */
-  protected EList<ReferenceDependency> referenceDependencies;
+  protected EList<Constructor> overriddenConstructors;
 
   /**
-   * The cached value of the '{@link #getAnnotationDependencies() <em>Annotation Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAnnotationDependencies()
+   * @see #getRelatedElements()
    * @generated
    * @ordered
    */
-  protected EList<AnnotationDependency> annotationDependencies;
+  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -445,13 +454,13 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public EList<Type> getTypes()
   {
-    if (typingDependencies == null)
+    if (types == null)
     {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES);
+      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.CONSTRUCTOR__TYPES);
     }
-    return typingDependencies;
+    return types;
   }
 
   /**
@@ -459,13 +468,13 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<InheritanceDependency> getInheritanceDependencies()
+  public EList<Annotation> getAnnotations()
   {
-    if (inheritanceDependencies == null)
+    if (annotations == null)
     {
-      inheritanceDependencies = new EObjectContainmentEList<InheritanceDependency>(InheritanceDependency.class, this, CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES);
+      annotations = new EObjectResolvingEList<Annotation>(Annotation.class, this, CodePackage.CONSTRUCTOR__ANNOTATIONS);
     }
-    return inheritanceDependencies;
+    return annotations;
   }
 
   /**
@@ -473,13 +482,13 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceDependency> getReferenceDependencies()
+  public EList<Constructor> getOverriddenConstructors()
   {
-    if (referenceDependencies == null)
+    if (overriddenConstructors == null)
     {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES);
+      overriddenConstructors = new EObjectResolvingEList<Constructor>(Constructor.class, this, CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS);
     }
-    return referenceDependencies;
+    return overriddenConstructors;
   }
 
   /**
@@ -487,13 +496,13 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AnnotationDependency> getAnnotationDependencies()
+  public EList<VersionedElement> getRelatedElements()
   {
-    if (annotationDependencies == null)
+    if (relatedElements == null)
     {
-      annotationDependencies = new EObjectContainmentEList<AnnotationDependency>(AnnotationDependency.class, this, CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES);
+      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.CONSTRUCTOR__RELATED_ELEMENTS);
     }
-    return annotationDependencies;
+    return relatedElements;
   }
 
   /**
@@ -508,14 +517,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
     {
       case CodePackage.CONSTRUCTOR__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-        return ((InternalEList<?>)getInheritanceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
-        return ((InternalEList<?>)getAnnotationDependencies()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -546,14 +547,14 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         return isTransient();
       case CodePackage.CONSTRUCTOR__PARAMETERS:
         return getParameters();
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-        return getInheritanceDependencies();
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
-        return getAnnotationDependencies();
+      case CodePackage.CONSTRUCTOR__TYPES:
+        return getTypes();
+      case CodePackage.CONSTRUCTOR__ANNOTATIONS:
+        return getAnnotations();
+      case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
+        return getOverriddenConstructors();
+      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
+        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -594,21 +595,21 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         getParameters().clear();
         getParameters().addAll((Collection<? extends Parameter>)newValue);
         return;
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.CONSTRUCTOR__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
-        getInheritanceDependencies().addAll((Collection<? extends InheritanceDependency>)newValue);
+      case CodePackage.CONSTRUCTOR__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
+      case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
+        getOverriddenConstructors().clear();
+        getOverriddenConstructors().addAll((Collection<? extends Constructor>)newValue);
         return;
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
-        getAnnotationDependencies().addAll((Collection<? extends AnnotationDependency>)newValue);
+      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -648,17 +649,17 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
       case CodePackage.CONSTRUCTOR__PARAMETERS:
         getParameters().clear();
         return;
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.CONSTRUCTOR__TYPES:
+        getTypes().clear();
         return;
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
+      case CodePackage.CONSTRUCTOR__ANNOTATIONS:
+        getAnnotations().clear();
         return;
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
+      case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
+        getOverriddenConstructors().clear();
         return;
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
+      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
+        getRelatedElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -690,14 +691,14 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         return transient_ != TRANSIENT_EDEFAULT;
       case CodePackage.CONSTRUCTOR__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-        return inheritanceDependencies != null && !inheritanceDependencies.isEmpty();
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
-        return annotationDependencies != null && !annotationDependencies.isEmpty();
+      case CodePackage.CONSTRUCTOR__TYPES:
+        return types != null && !types.isEmpty();
+      case CodePackage.CONSTRUCTOR__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
+      case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
+        return overriddenConstructors != null && !overriddenConstructors.isEmpty();
+      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
+        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

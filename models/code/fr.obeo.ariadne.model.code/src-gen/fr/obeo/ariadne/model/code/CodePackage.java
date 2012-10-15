@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -24,7 +32,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.ariadne.model.code.CodeFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.code.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.code.editor/src-gen' fileExtensions='ariadnecode'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.code.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.code.editor/src-gen' fileExtensions='ariadnecode' copyrightText='Copyright (c) 2012 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Stephane Begaudeau (Obeo) - initial API and implementation'"
  * @generated
  */
 public interface CodePackage extends EPackage
@@ -117,6 +125,15 @@ public interface CodePackage extends EPackage
   int COMPONENT__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -144,22 +161,31 @@ public interface CodePackage extends EPackage
   int COMPONENT__RESOURCES_CONTAINERS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Subcomponents</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int COMPONENT__SUBCOMPONENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Referenced Services</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__CONTAINMENT_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+  int COMPONENT__REFERENCED_SERVICES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Provided Services</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__PROVIDED_SERVICES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Component</em>' class.
@@ -168,7 +194,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
+  int COMPONENT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of operations of the '<em>Component</em>' class.
@@ -233,6 +259,15 @@ public interface CodePackage extends EPackage
    * @ordered
    */
   int RESOURCES_CONTAINER__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOURCES_CONTAINER__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -335,31 +370,22 @@ public interface CodePackage extends EPackage
   int RESOURCE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE__INHERITANCE_DEPENDENCY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+  int RESOURCE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESOURCE__CONTAINMENT_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int RESOURCE__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Resource</em>' class.
@@ -368,7 +394,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int RESOURCE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int RESOURCE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of operations of the '<em>Resource</em>' class.
@@ -435,31 +461,22 @@ public interface CodePackage extends EPackage
   int GENERIC_RESOURCE__VERSION = RESOURCE__VERSION;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERIC_RESOURCE__INHERITANCE_DEPENDENCY = RESOURCE__INHERITANCE_DEPENDENCY;
+  int GENERIC_RESOURCE__VERSIONED_DEPENDENCIES = RESOURCE__VERSIONED_DEPENDENCIES;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERIC_RESOURCE__REFERENCE_DEPENDENCIES = RESOURCE__REFERENCE_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_RESOURCE__CONTAINMENT_DEPENDENCIES = RESOURCE__CONTAINMENT_DEPENDENCIES;
+  int GENERIC_RESOURCE__RELATED_ELEMENTS = RESOURCE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Resource Kind</b></em>' attribute.
@@ -535,13 +552,22 @@ public interface CodePackage extends EPackage
   int CLASSPATH_ENTRY__TYPES_CONTAINERS = 3;
 
   /**
+   * The feature id for the '<em><b>Component</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSPATH_ENTRY__COMPONENT = 4;
+
+  /**
    * The number of structural features of the '<em>Classpath Entry</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSPATH_ENTRY_FEATURE_COUNT = 4;
+  int CLASSPATH_ENTRY_FEATURE_COUNT = 5;
 
   /**
    * The number of operations of the '<em>Classpath Entry</em>' class.
@@ -606,6 +632,15 @@ public interface CodePackage extends EPackage
    * @ordered
    */
   int TYPES_CONTAINER__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPES_CONTAINER__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -699,6 +734,15 @@ public interface CodePackage extends EPackage
   int TYPE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -717,58 +761,31 @@ public interface CodePackage extends EPackage
   int TYPE__VISIBILITY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * The feature id for the '<em><b>Internal Types</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int TYPE__INTERNAL_TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int TYPE__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
-
-  /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__CONTAINMENT_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
-
-  /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__ANNOTATION_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int TYPE__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -777,7 +794,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int TYPE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of operations of the '<em>Type</em>' class.
@@ -844,6 +861,15 @@ public interface CodePackage extends EPackage
   int CLASSIFIER__VERSION = TYPE__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__VERSIONED_DEPENDENCIES = TYPE__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -862,58 +888,31 @@ public interface CodePackage extends EPackage
   int CLASSIFIER__VISIBILITY = TYPE__VISIBILITY;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * The feature id for the '<em><b>Internal Types</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__TYPES = TYPE__TYPES;
+  int CLASSIFIER__INTERNAL_TYPES = TYPE__INTERNAL_TYPES;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__TYPING_DEPENDENCIES = TYPE__TYPING_DEPENDENCIES;
+  int CLASSIFIER__ANNOTATIONS = TYPE__ANNOTATIONS;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__INHERITANCE_DEPENDENCIES = TYPE__INHERITANCE_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASSIFIER__REFERENCE_DEPENDENCIES = TYPE__REFERENCE_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASSIFIER__CONTAINMENT_DEPENDENCIES = TYPE__CONTAINMENT_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASSIFIER__ANNOTATION_DEPENDENCIES = TYPE__ANNOTATION_DEPENDENCIES;
+  int CLASSIFIER__RELATED_ELEMENTS = TYPE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -961,13 +960,31 @@ public interface CodePackage extends EPackage
   int CLASSIFIER__ABSTRACT = TYPE_FEATURE_COUNT + 4;
 
   /**
+   * The feature id for the '<em><b>Super Types</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__SUPER_TYPES = TYPE_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Type Parameters</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__TYPE_PARAMETERS = TYPE_FEATURE_COUNT + 6;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__FIELDS = TYPE_FEATURE_COUNT + 5;
+  int CLASSIFIER__FIELDS = TYPE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -976,7 +993,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER__OPERATIONS = TYPE_FEATURE_COUNT + 6;
+  int CLASSIFIER__OPERATIONS = TYPE_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>Classifier</em>' class.
@@ -985,7 +1002,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER_FEATURE_COUNT = TYPE_FEATURE_COUNT + 7;
+  int CLASSIFIER_FEATURE_COUNT = TYPE_FEATURE_COUNT + 9;
 
   /**
    * The number of operations of the '<em>Classifier</em>' class.
@@ -1052,6 +1069,15 @@ public interface CodePackage extends EPackage
   int FIELD__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1115,40 +1141,40 @@ public interface CodePackage extends EPackage
   int FIELD__TRANSIENT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int FIELD__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int FIELD__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Overridden Fields</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
+  int FIELD__OVERRIDDEN_FIELDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__ANNOTATION_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
+  int FIELD__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
    * The number of structural features of the '<em>Field</em>' class.
@@ -1224,6 +1250,15 @@ public interface CodePackage extends EPackage
   int CONSTRUCTOR__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1296,40 +1331,40 @@ public interface CodePackage extends EPackage
   int CONSTRUCTOR__PARAMETERS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int CONSTRUCTOR__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
+  int CONSTRUCTOR__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Overridden Constructors</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
+  int CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR__ANNOTATION_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
+  int CONSTRUCTOR__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
 
   /**
    * The number of structural features of the '<em>Constructor</em>' class.
@@ -1405,6 +1440,15 @@ public interface CodePackage extends EPackage
   int OPERATION__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1477,40 +1521,58 @@ public interface CodePackage extends EPackage
   int OPERATION__PARAMETERS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Classifier</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int OPERATION__CLASSIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Return Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__INHERITANCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
+  int OPERATION__RETURN_TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
+  int OPERATION__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__ANNOTATION_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
+  int OPERATION__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
+
+  /**
+   * The feature id for the '<em><b>Overridden Operations</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__OVERRIDDEN_OPERATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 12;
+
+  /**
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 13;
 
   /**
    * The number of structural features of the '<em>Operation</em>' class.
@@ -1519,7 +1581,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 12;
+  int OPERATION_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 14;
 
   /**
    * The number of operations of the '<em>Operation</em>' class.
@@ -1586,6 +1648,15 @@ public interface CodePackage extends EPackage
   int PARAMETER__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1622,31 +1693,40 @@ public interface CodePackage extends EPackage
   int PARAMETER__IMMUTABLE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
+  int PARAMETER__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
+  int PARAMETER__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER__ANNOTATION_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
+  int PARAMETER__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Operation</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__OPERATION = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Parameter</em>' class.
@@ -1655,7 +1735,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int PARAMETER_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The number of operations of the '<em>Parameter</em>' class.
@@ -1722,6 +1802,15 @@ public interface CodePackage extends EPackage
   int ANNOTATION__VERSION = TYPE__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION__VERSIONED_DEPENDENCIES = TYPE__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1740,58 +1829,31 @@ public interface CodePackage extends EPackage
   int ANNOTATION__VISIBILITY = TYPE__VISIBILITY;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
+   * The feature id for the '<em><b>Internal Types</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ANNOTATION__TYPES = TYPE__TYPES;
+  int ANNOTATION__INTERNAL_TYPES = TYPE__INTERNAL_TYPES;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ANNOTATION__TYPING_DEPENDENCIES = TYPE__TYPING_DEPENDENCIES;
+  int ANNOTATION__ANNOTATIONS = TYPE__ANNOTATIONS;
 
   /**
-   * The feature id for the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ANNOTATION__INHERITANCE_DEPENDENCIES = TYPE__INHERITANCE_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION__REFERENCE_DEPENDENCIES = TYPE__REFERENCE_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION__CONTAINMENT_DEPENDENCIES = TYPE__CONTAINMENT_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Annotation Dependencies</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION__ANNOTATION_DEPENDENCIES = TYPE__ANNOTATION_DEPENDENCIES;
+  int ANNOTATION__RELATED_ELEMENTS = TYPE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Annotation Fields</b></em>' containment reference list.
@@ -1831,50 +1893,13 @@ public interface CodePackage extends EPackage
   int ANNOTATION_FIELD = 13;
 
   /**
-   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_FIELD__QUALIFIED_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Annotation Field</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_FIELD_FEATURE_COUNT = 1;
-
-  /**
-   * The number of operations of the '<em>Annotation Field</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_FIELD_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.RequiredServiceImpl <em>Required Service</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.RequiredServiceImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getRequiredService()
-   * @generated
-   */
-  int REQUIRED_SERVICE = 14;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+  int ANNOTATION_FIELD__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1883,7 +1908,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+  int ANNOTATION_FIELD__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -1892,7 +1917,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+  int ANNOTATION_FIELD__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -1901,7 +1926,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+  int ANNOTATION_FIELD__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Version</b></em>' containment reference.
@@ -1910,7 +1935,116 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+  int ANNOTATION_FIELD__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FIELD__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
+   * The feature id for the '<em><b>Default Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FIELD__DEFAULT_VALUE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FIELD__QUALIFIED_NAME = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Annotation Field</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FIELD_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of operations of the '<em>Annotation Field</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FIELD_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl <em>Referenced Service</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl
+   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getReferencedService()
+   * @generated
+   */
+  int REFERENCED_SERVICE = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCED_SERVICE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -1919,43 +2053,43 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+  int REFERENCED_SERVICE__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+  int REFERENCED_SERVICE__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Provided Services</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int REFERENCED_SERVICE__PROVIDED_SERVICES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Required Service</em>' class.
+   * The number of structural features of the '<em>Referenced Service</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int REFERENCED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The number of operations of the '<em>Required Service</em>' class.
+   * The number of operations of the '<em>Referenced Service</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REQUIRED_SERVICE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
+  int REFERENCED_SERVICE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl <em>Provided Service</em>}' class.
@@ -2013,6 +2147,15 @@ public interface CodePackage extends EPackage
   int PROVIDED_SERVICE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROVIDED_SERVICE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2022,22 +2165,22 @@ public interface CodePackage extends EPackage
   int PROVIDED_SERVICE__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Typing Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROVIDED_SERVICE__TYPING_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+  int PROVIDED_SERVICE__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Reference Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Referenced Service</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROVIDED_SERVICE__REFERENCE_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int PROVIDED_SERVICE__REFERENCED_SERVICE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Provided Service</em>' class.
@@ -2058,510 +2201,6 @@ public interface CodePackage extends EPackage
   int PROVIDED_SERVICE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.DependencyImpl <em>Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.DependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getDependency()
-   * @generated
-   */
-  int DEPENDENCY = 16;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPENDENCY__IDENTIFIER = 0;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPENDENCY__CONSTRAINTS = 1;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPENDENCY__PROPERTIES = 2;
-
-  /**
-   * The number of structural features of the '<em>Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPENDENCY_FEATURE_COUNT = 3;
-
-  /**
-   * The number of operations of the '<em>Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEPENDENCY_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ConstraintImpl <em>Constraint</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.ConstraintImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getConstraint()
-   * @generated
-   */
-  int CONSTRAINT = 17;
-
-  /**
-   * The number of structural features of the '<em>Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRAINT_FEATURE_COUNT = 0;
-
-  /**
-   * The number of operations of the '<em>Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRAINT_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.VersionRangeConstraintImpl <em>Version Range Constraint</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.VersionRangeConstraintImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getVersionRangeConstraint()
-   * @generated
-   */
-  int VERSION_RANGE_CONSTRAINT = 18;
-
-  /**
-   * The feature id for the '<em><b>Include Lower Version Bound</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT__INCLUDE_LOWER_VERSION_BOUND = 0;
-
-  /**
-   * The feature id for the '<em><b>Include Upper Version Bound</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT__INCLUDE_UPPER_VERSION_BOUND = 1;
-
-  /**
-   * The feature id for the '<em><b>Lower Version</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT__LOWER_VERSION = 2;
-
-  /**
-   * The feature id for the '<em><b>Upper Version</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT__UPPER_VERSION = 3;
-
-  /**
-   * The number of structural features of the '<em>Version Range Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT_FEATURE_COUNT = 4;
-
-  /**
-   * The number of operations of the '<em>Version Range Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERSION_RANGE_CONSTRAINT_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ExpressionConstraintImpl <em>Expression Constraint</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.ExpressionConstraintImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getExpressionConstraint()
-   * @generated
-   */
-  int EXPRESSION_CONSTRAINT = 19;
-
-  /**
-   * The feature id for the '<em><b>Expression</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_CONSTRAINT__EXPRESSION = 0;
-
-  /**
-   * The feature id for the '<em><b>Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_CONSTRAINT__LANGUAGE = 1;
-
-  /**
-   * The number of structural features of the '<em>Expression Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_CONSTRAINT_FEATURE_COUNT = 2;
-
-  /**
-   * The number of operations of the '<em>Expression Constraint</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_CONSTRAINT_OPERATION_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.TypingDependencyImpl <em>Typing Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.TypingDependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getTypingDependency()
-   * @generated
-   */
-  int TYPING_DEPENDENCY = 20;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY__IDENTIFIER = DEPENDENCY__IDENTIFIER;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY__CONSTRAINTS = DEPENDENCY__CONSTRAINTS;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY__PROPERTIES = DEPENDENCY__PROPERTIES;
-
-  /**
-   * The feature id for the '<em><b>Type Parameters</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY__TYPE_PARAMETERS = DEPENDENCY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Typing Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 1;
-
-  /**
-   * The number of operations of the '<em>Typing Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPING_DEPENDENCY_OPERATION_COUNT = DEPENDENCY_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.InheritanceDependencyImpl <em>Inheritance Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.InheritanceDependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getInheritanceDependency()
-   * @generated
-   */
-  int INHERITANCE_DEPENDENCY = 21;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY__IDENTIFIER = DEPENDENCY__IDENTIFIER;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY__CONSTRAINTS = DEPENDENCY__CONSTRAINTS;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY__PROPERTIES = DEPENDENCY__PROPERTIES;
-
-  /**
-   * The feature id for the '<em><b>Type Parameters</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY__TYPE_PARAMETERS = DEPENDENCY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Inheritance Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 1;
-
-  /**
-   * The number of operations of the '<em>Inheritance Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INHERITANCE_DEPENDENCY_OPERATION_COUNT = DEPENDENCY_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ReferenceDependencyImpl <em>Reference Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.ReferenceDependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getReferenceDependency()
-   * @generated
-   */
-  int REFERENCE_DEPENDENCY = 22;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY__IDENTIFIER = DEPENDENCY__IDENTIFIER;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY__CONSTRAINTS = DEPENDENCY__CONSTRAINTS;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY__PROPERTIES = DEPENDENCY__PROPERTIES;
-
-  /**
-   * The feature id for the '<em><b>Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY__KIND = DEPENDENCY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Reference Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 1;
-
-  /**
-   * The number of operations of the '<em>Reference Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_DEPENDENCY_OPERATION_COUNT = DEPENDENCY_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ContainmentDependencyImpl <em>Containment Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.ContainmentDependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getContainmentDependency()
-   * @generated
-   */
-  int CONTAINMENT_DEPENDENCY = 23;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_DEPENDENCY__IDENTIFIER = DEPENDENCY__IDENTIFIER;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_DEPENDENCY__CONSTRAINTS = DEPENDENCY__CONSTRAINTS;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_DEPENDENCY__PROPERTIES = DEPENDENCY__PROPERTIES;
-
-  /**
-   * The number of structural features of the '<em>Containment Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of operations of the '<em>Containment Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_DEPENDENCY_OPERATION_COUNT = DEPENDENCY_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.AnnotationDependencyImpl <em>Annotation Dependency</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.code.impl.AnnotationDependencyImpl
-   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getAnnotationDependency()
-   * @generated
-   */
-  int ANNOTATION_DEPENDENCY = 24;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY__IDENTIFIER = DEPENDENCY__IDENTIFIER;
-
-  /**
-   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY__CONSTRAINTS = DEPENDENCY__CONSTRAINTS;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY__PROPERTIES = DEPENDENCY__PROPERTIES;
-
-  /**
-   * The feature id for the '<em><b>Values</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY__VALUES = DEPENDENCY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Annotation Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 1;
-
-  /**
-   * The number of operations of the '<em>Annotation Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_DEPENDENCY_OPERATION_COUNT = DEPENDENCY_OPERATION_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2569,7 +2208,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getResourceKind()
    * @generated
    */
-  int RESOURCE_KIND = 25;
+  int RESOURCE_KIND = 16;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClasspathEntryKind <em>Classpath Entry Kind</em>}' enum.
@@ -2579,7 +2218,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClasspathEntryKind()
    * @generated
    */
-  int CLASSPATH_ENTRY_KIND = 26;
+  int CLASSPATH_ENTRY_KIND = 17;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClassifierKind <em>Classifier Kind</em>}' enum.
@@ -2589,7 +2228,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClassifierKind()
    * @generated
    */
-  int CLASSIFIER_KIND = 27;
+  int CLASSIFIER_KIND = 18;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.VisibilityKind <em>Visibility Kind</em>}' enum.
@@ -2599,7 +2238,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getVisibilityKind()
    * @generated
    */
-  int VISIBILITY_KIND = 28;
+  int VISIBILITY_KIND = 19;
 
 
   /**
@@ -2646,26 +2285,37 @@ public interface CodePackage extends EPackage
   EReference getComponent_ResourcesContainers();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Component#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Component#getSubcomponents <em>Subcomponents</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Component#getReferenceDependencies()
+   * @return the meta object for the containment reference list '<em>Subcomponents</em>'.
+   * @see fr.obeo.ariadne.model.code.Component#getSubcomponents()
    * @see #getComponent()
    * @generated
    */
-  EReference getComponent_ReferenceDependencies();
+  EReference getComponent_Subcomponents();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Component#getContainmentDependencies <em>Containment Dependencies</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Component#getReferencedServices <em>Referenced Services</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Containment Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Component#getContainmentDependencies()
+   * @return the meta object for the containment reference list '<em>Referenced Services</em>'.
+   * @see fr.obeo.ariadne.model.code.Component#getReferencedServices()
    * @see #getComponent()
    * @generated
    */
-  EReference getComponent_ContainmentDependencies();
+  EReference getComponent_ReferencedServices();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Component#getProvidedServices <em>Provided Services</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Provided Services</em>'.
+   * @see fr.obeo.ariadne.model.code.Component#getProvidedServices()
+   * @see #getComponent()
+   * @generated
+   */
+  EReference getComponent_ProvidedServices();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ResourcesContainer <em>Resources Container</em>}'.
@@ -2721,37 +2371,15 @@ public interface CodePackage extends EPackage
   EClass getResource();
 
   /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.Resource#getInheritanceDependency <em>Inheritance Dependency</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Resource#getRelatedElements <em>Related Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Inheritance Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Resource#getInheritanceDependency()
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Resource#getRelatedElements()
    * @see #getResource()
    * @generated
    */
-  EReference getResource_InheritanceDependency();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Resource#getReferenceDependencies <em>Reference Dependencies</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Resource#getReferenceDependencies()
-   * @see #getResource()
-   * @generated
-   */
-  EReference getResource_ReferenceDependencies();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Resource#getContainmentDependencies <em>Containment Dependencies</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Containment Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Resource#getContainmentDependencies()
-   * @see #getResource()
-   * @generated
-   */
-  EReference getResource_ContainmentDependencies();
+  EReference getResource_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.GenericResource <em>Generic Resource</em>}'.
@@ -2829,6 +2457,17 @@ public interface CodePackage extends EPackage
   EReference getClasspathEntry_TypesContainers();
 
   /**
+   * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.code.ClasspathEntry#getComponent <em>Component</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Component</em>'.
+   * @see fr.obeo.ariadne.model.code.ClasspathEntry#getComponent()
+   * @see #getClasspathEntry()
+   * @generated
+   */
+  EReference getClasspathEntry_Component();
+
+  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.TypesContainer <em>Types Container</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2893,70 +2532,37 @@ public interface CodePackage extends EPackage
   EAttribute getType_Visibility();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getTypes <em>Types</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getInternalTypes <em>Internal Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Types</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getTypes()
+   * @return the meta object for the containment reference list '<em>Internal Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Type#getInternalTypes()
    * @see #getType()
    * @generated
    */
-  EReference getType_Types();
+  EReference getType_InternalTypes();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Type#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getTypingDependencies()
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see fr.obeo.ariadne.model.code.Type#getAnnotations()
    * @see #getType()
    * @generated
    */
-  EReference getType_TypingDependencies();
+  EReference getType_Annotations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Type#getRelatedElements <em>Related Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getInheritanceDependencies()
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Type#getRelatedElements()
    * @see #getType()
    * @generated
    */
-  EReference getType_InheritanceDependencies();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getReferenceDependencies <em>Reference Dependencies</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getReferenceDependencies()
-   * @see #getType()
-   * @generated
-   */
-  EReference getType_ReferenceDependencies();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getContainmentDependencies <em>Containment Dependencies</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Containment Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getContainmentDependencies()
-   * @see #getType()
-   * @generated
-   */
-  EReference getType_ContainmentDependencies();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Type#getAnnotationDependencies <em>Annotation Dependencies</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotation Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getAnnotationDependencies()
-   * @see #getType()
-   * @generated
-   */
-  EReference getType_AnnotationDependencies();
+  EReference getType_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Classifier <em>Classifier</em>}'.
@@ -3022,6 +2628,28 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EAttribute getClassifier_Abstract();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Classifier#getSuperTypes <em>Super Types</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Super Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Classifier#getSuperTypes()
+   * @see #getClassifier()
+   * @generated
+   */
+  EReference getClassifier_SuperTypes();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Classifier#getTypeParameters <em>Type Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Type Parameters</em>'.
+   * @see fr.obeo.ariadne.model.code.Classifier#getTypeParameters()
+   * @see #getClassifier()
+   * @generated
+   */
+  EReference getClassifier_TypeParameters();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Classifier#getFields <em>Fields</em>}'.
@@ -3133,48 +2761,48 @@ public interface CodePackage extends EPackage
   EAttribute getField_Transient();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Field#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getTypingDependencies()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getTypes()
    * @see #getField()
    * @generated
    */
-  EReference getField_TypingDependencies();
+  EReference getField_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Field#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getInheritanceDependencies()
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getAnnotations()
    * @see #getField()
    * @generated
    */
-  EReference getField_InheritanceDependencies();
+  EReference getField_Annotations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Field#getOverriddenFields <em>Overridden Fields</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getReferenceDependencies()
+   * @return the meta object for the reference list '<em>Overridden Fields</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getOverriddenFields()
    * @see #getField()
    * @generated
    */
-  EReference getField_ReferenceDependencies();
+  EReference getField_OverriddenFields();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Field#getAnnotationDependencies <em>Annotation Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Field#getRelatedElements <em>Related Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotation Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getAnnotationDependencies()
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Field#getRelatedElements()
    * @see #getField()
    * @generated
    */
-  EReference getField_AnnotationDependencies();
+  EReference getField_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Constructor <em>Constructor</em>}'.
@@ -3275,48 +2903,48 @@ public interface CodePackage extends EPackage
   EReference getConstructor_Parameters();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Constructor#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getTypingDependencies()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getTypes()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_TypingDependencies();
+  EReference getConstructor_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Constructor#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getInheritanceDependencies()
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getAnnotations()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_InheritanceDependencies();
+  EReference getConstructor_Annotations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Constructor#getOverriddenConstructors <em>Overridden Constructors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getReferenceDependencies()
+   * @return the meta object for the reference list '<em>Overridden Constructors</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getOverriddenConstructors()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_ReferenceDependencies();
+  EReference getConstructor_OverriddenConstructors();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Constructor#getAnnotationDependencies <em>Annotation Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Constructor#getRelatedElements <em>Related Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotation Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getAnnotationDependencies()
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Constructor#getRelatedElements()
    * @see #getConstructor()
    * @generated
    */
-  EReference getConstructor_AnnotationDependencies();
+  EReference getConstructor_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Operation <em>Operation</em>}'.
@@ -3417,48 +3045,70 @@ public interface CodePackage extends EPackage
   EReference getOperation_Parameters();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.code.Operation#getClassifier <em>Classifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getTypingDependencies()
+   * @return the meta object for the container reference '<em>Classifier</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getClassifier()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_TypingDependencies();
+  EReference getOperation_Classifier();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getInheritanceDependencies <em>Inheritance Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getReturnTypes <em>Return Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Inheritance Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getInheritanceDependencies()
+   * @return the meta object for the reference list '<em>Return Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getReturnTypes()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_InheritanceDependencies();
+  EReference getOperation_ReturnTypes();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getReferenceDependencies()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getTypes()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_ReferenceDependencies();
+  EReference getOperation_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Operation#getAnnotationDependencies <em>Annotation Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotation Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getAnnotationDependencies()
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getAnnotations()
    * @see #getOperation()
    * @generated
    */
-  EReference getOperation_AnnotationDependencies();
+  EReference getOperation_Annotations();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getOverriddenOperations <em>Overridden Operations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Overridden Operations</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getOverriddenOperations()
+   * @see #getOperation()
+   * @generated
+   */
+  EReference getOperation_OverriddenOperations();
+
+  /**
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getRelatedElements <em>Related Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Operation#getRelatedElements()
+   * @see #getOperation()
+   * @generated
+   */
+  EReference getOperation_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Parameter <em>Parameter</em>}'.
@@ -3515,37 +3165,48 @@ public interface CodePackage extends EPackage
   EAttribute getParameter_Immutable();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Parameter#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Parameter#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Parameter#getTypingDependencies()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.Parameter#getTypes()
    * @see #getParameter()
    * @generated
    */
-  EReference getParameter_TypingDependencies();
+  EReference getParameter_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Parameter#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Parameter#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Parameter#getReferenceDependencies()
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see fr.obeo.ariadne.model.code.Parameter#getAnnotations()
    * @see #getParameter()
    * @generated
    */
-  EReference getParameter_ReferenceDependencies();
+  EReference getParameter_Annotations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Parameter#getAnnotationDependencies <em>Annotation Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Parameter#getRelatedElements <em>Related Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotation Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.Parameter#getAnnotationDependencies()
+   * @return the meta object for the reference list '<em>Related Elements</em>'.
+   * @see fr.obeo.ariadne.model.code.Parameter#getRelatedElements()
    * @see #getParameter()
    * @generated
    */
-  EReference getParameter_AnnotationDependencies();
+  EReference getParameter_RelatedElements();
+
+  /**
+   * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.code.Parameter#getOperation <em>Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Operation</em>'.
+   * @see fr.obeo.ariadne.model.code.Parameter#getOperation()
+   * @see #getParameter()
+   * @generated
+   */
+  EReference getParameter_Operation();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Annotation <em>Annotation</em>}'.
@@ -3579,6 +3240,17 @@ public interface CodePackage extends EPackage
   EClass getAnnotationField();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.AnnotationField#getDefaultValue <em>Default Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Default Value</em>'.
+   * @see fr.obeo.ariadne.model.code.AnnotationField#getDefaultValue()
+   * @see #getAnnotationField()
+   * @generated
+   */
+  EAttribute getAnnotationField_DefaultValue();
+
+  /**
    * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.AnnotationField#getQualifiedName <em>Qualified Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3590,47 +3262,47 @@ public interface CodePackage extends EPackage
   EAttribute getAnnotationField_QualifiedName();
 
   /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.RequiredService <em>Required Service</em>}'.
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ReferencedService <em>Referenced Service</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Required Service</em>'.
-   * @see fr.obeo.ariadne.model.code.RequiredService
+   * @return the meta object for class '<em>Referenced Service</em>'.
+   * @see fr.obeo.ariadne.model.code.ReferencedService
    * @generated
    */
-  EClass getRequiredService();
+  EClass getReferencedService();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.RequiredService#getIdentifier <em>Identifier</em>}'.
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.ReferencedService#getIdentifier <em>Identifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Identifier</em>'.
-   * @see fr.obeo.ariadne.model.code.RequiredService#getIdentifier()
-   * @see #getRequiredService()
+   * @see fr.obeo.ariadne.model.code.ReferencedService#getIdentifier()
+   * @see #getReferencedService()
    * @generated
    */
-  EAttribute getRequiredService_Identifier();
+  EAttribute getReferencedService_Identifier();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.RequiredService#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ReferencedService#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.RequiredService#getTypingDependencies()
-   * @see #getRequiredService()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.ReferencedService#getTypes()
+   * @see #getReferencedService()
    * @generated
    */
-  EReference getRequiredService_TypingDependencies();
+  EReference getReferencedService_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.RequiredService#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ReferencedService#getProvidedServices <em>Provided Services</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.RequiredService#getReferenceDependencies()
-   * @see #getRequiredService()
+   * @return the meta object for the reference list '<em>Provided Services</em>'.
+   * @see fr.obeo.ariadne.model.code.ReferencedService#getProvidedServices()
+   * @see #getReferencedService()
    * @generated
    */
-  EReference getRequiredService_ReferenceDependencies();
+  EReference getReferencedService_ProvidedServices();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ProvidedService <em>Provided Service</em>}'.
@@ -3654,259 +3326,26 @@ public interface CodePackage extends EPackage
   EAttribute getProvidedService_Identifier();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.ProvidedService#getTypingDependencies <em>Typing Dependencies</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ProvidedService#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typing Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.ProvidedService#getTypingDependencies()
+   * @return the meta object for the reference list '<em>Types</em>'.
+   * @see fr.obeo.ariadne.model.code.ProvidedService#getTypes()
    * @see #getProvidedService()
    * @generated
    */
-  EReference getProvidedService_TypingDependencies();
+  EReference getProvidedService_Types();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.ProvidedService#getReferenceDependencies <em>Reference Dependencies</em>}'.
+   * Returns the meta object for the reference '{@link fr.obeo.ariadne.model.code.ProvidedService#getReferencedService <em>Referenced Service</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Reference Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.code.ProvidedService#getReferenceDependencies()
+   * @return the meta object for the reference '<em>Referenced Service</em>'.
+   * @see fr.obeo.ariadne.model.code.ProvidedService#getReferencedService()
    * @see #getProvidedService()
    * @generated
    */
-  EReference getProvidedService_ReferenceDependencies();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Dependency <em>Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.Dependency
-   * @generated
-   */
-  EClass getDependency();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.Dependency#getIdentifier <em>Identifier</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Identifier</em>'.
-   * @see fr.obeo.ariadne.model.code.Dependency#getIdentifier()
-   * @see #getDependency()
-   * @generated
-   */
-  EAttribute getDependency_Identifier();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Dependency#getConstraints <em>Constraints</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Constraints</em>'.
-   * @see fr.obeo.ariadne.model.code.Dependency#getConstraints()
-   * @see #getDependency()
-   * @generated
-   */
-  EReference getDependency_Constraints();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Dependency#getProperties <em>Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Properties</em>'.
-   * @see fr.obeo.ariadne.model.code.Dependency#getProperties()
-   * @see #getDependency()
-   * @generated
-   */
-  EReference getDependency_Properties();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Constraint <em>Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Constraint</em>'.
-   * @see fr.obeo.ariadne.model.code.Constraint
-   * @generated
-   */
-  EClass getConstraint();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint <em>Version Range Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Version Range Constraint</em>'.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint
-   * @generated
-   */
-  EClass getVersionRangeConstraint();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint#isIncludeLowerVersionBound <em>Include Lower Version Bound</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Include Lower Version Bound</em>'.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint#isIncludeLowerVersionBound()
-   * @see #getVersionRangeConstraint()
-   * @generated
-   */
-  EAttribute getVersionRangeConstraint_IncludeLowerVersionBound();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint#isIncludeUpperVersionBound <em>Include Upper Version Bound</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Include Upper Version Bound</em>'.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint#isIncludeUpperVersionBound()
-   * @see #getVersionRangeConstraint()
-   * @generated
-   */
-  EAttribute getVersionRangeConstraint_IncludeUpperVersionBound();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint#getLowerVersion <em>Lower Version</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Lower Version</em>'.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint#getLowerVersion()
-   * @see #getVersionRangeConstraint()
-   * @generated
-   */
-  EReference getVersionRangeConstraint_LowerVersion();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint#getUpperVersion <em>Upper Version</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Upper Version</em>'.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint#getUpperVersion()
-   * @see #getVersionRangeConstraint()
-   * @generated
-   */
-  EReference getVersionRangeConstraint_UpperVersion();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ExpressionConstraint <em>Expression Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Expression Constraint</em>'.
-   * @see fr.obeo.ariadne.model.code.ExpressionConstraint
-   * @generated
-   */
-  EClass getExpressionConstraint();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.ExpressionConstraint#getExpression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Expression</em>'.
-   * @see fr.obeo.ariadne.model.code.ExpressionConstraint#getExpression()
-   * @see #getExpressionConstraint()
-   * @generated
-   */
-  EAttribute getExpressionConstraint_Expression();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.ExpressionConstraint#getLanguage <em>Language</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Language</em>'.
-   * @see fr.obeo.ariadne.model.code.ExpressionConstraint#getLanguage()
-   * @see #getExpressionConstraint()
-   * @generated
-   */
-  EAttribute getExpressionConstraint_Language();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.TypingDependency <em>Typing Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Typing Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.TypingDependency
-   * @generated
-   */
-  EClass getTypingDependency();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.code.TypingDependency#getTypeParameters <em>Type Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Type Parameters</em>'.
-   * @see fr.obeo.ariadne.model.code.TypingDependency#getTypeParameters()
-   * @see #getTypingDependency()
-   * @generated
-   */
-  EAttribute getTypingDependency_TypeParameters();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.InheritanceDependency <em>Inheritance Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Inheritance Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.InheritanceDependency
-   * @generated
-   */
-  EClass getInheritanceDependency();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.code.InheritanceDependency#getTypeParameters <em>Type Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Type Parameters</em>'.
-   * @see fr.obeo.ariadne.model.code.InheritanceDependency#getTypeParameters()
-   * @see #getInheritanceDependency()
-   * @generated
-   */
-  EAttribute getInheritanceDependency_TypeParameters();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ReferenceDependency <em>Reference Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Reference Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.ReferenceDependency
-   * @generated
-   */
-  EClass getReferenceDependency();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.code.ReferenceDependency#getKind <em>Kind</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Kind</em>'.
-   * @see fr.obeo.ariadne.model.code.ReferenceDependency#getKind()
-   * @see #getReferenceDependency()
-   * @generated
-   */
-  EAttribute getReferenceDependency_Kind();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.ContainmentDependency <em>Containment Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Containment Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.ContainmentDependency
-   * @generated
-   */
-  EClass getContainmentDependency();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.AnnotationDependency <em>Annotation Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Annotation Dependency</em>'.
-   * @see fr.obeo.ariadne.model.code.AnnotationDependency
-   * @generated
-   */
-  EClass getAnnotationDependency();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.code.AnnotationDependency#getValues <em>Values</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Values</em>'.
-   * @see fr.obeo.ariadne.model.code.AnnotationDependency#getValues()
-   * @see #getAnnotationDependency()
-   * @generated
-   */
-  EAttribute getAnnotationDependency_Values();
+  EReference getProvidedService_ReferencedService();
 
   /**
    * Returns the meta object for enum '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}'.
@@ -4007,20 +3446,28 @@ public interface CodePackage extends EPackage
     EReference COMPONENT__RESOURCES_CONTAINERS = eINSTANCE.getComponent_ResourcesContainers();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Subcomponents</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT__REFERENCE_DEPENDENCIES = eINSTANCE.getComponent_ReferenceDependencies();
+    EReference COMPONENT__SUBCOMPONENTS = eINSTANCE.getComponent_Subcomponents();
 
     /**
-     * The meta object literal for the '<em><b>Containment Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Referenced Services</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT__CONTAINMENT_DEPENDENCIES = eINSTANCE.getComponent_ContainmentDependencies();
+    EReference COMPONENT__REFERENCED_SERVICES = eINSTANCE.getComponent_ReferencedServices();
+
+    /**
+     * The meta object literal for the '<em><b>Provided Services</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT__PROVIDED_SERVICES = eINSTANCE.getComponent_ProvidedServices();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ResourcesContainerImpl <em>Resources Container</em>}' class.
@@ -4067,28 +3514,12 @@ public interface CodePackage extends EPackage
     EClass RESOURCE = eINSTANCE.getResource();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependency</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RESOURCE__INHERITANCE_DEPENDENCY = eINSTANCE.getResource_InheritanceDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RESOURCE__REFERENCE_DEPENDENCIES = eINSTANCE.getResource_ReferenceDependencies();
-
-    /**
-     * The meta object literal for the '<em><b>Containment Dependencies</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RESOURCE__CONTAINMENT_DEPENDENCIES = eINSTANCE.getResource_ContainmentDependencies();
+    EReference RESOURCE__RELATED_ELEMENTS = eINSTANCE.getResource_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.GenericResourceImpl <em>Generic Resource</em>}' class.
@@ -4151,6 +3582,14 @@ public interface CodePackage extends EPackage
     EReference CLASSPATH_ENTRY__TYPES_CONTAINERS = eINSTANCE.getClasspathEntry_TypesContainers();
 
     /**
+     * The meta object literal for the '<em><b>Component</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSPATH_ENTRY__COMPONENT = eINSTANCE.getClasspathEntry_Component();
+
+    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.TypesContainerImpl <em>Types Container</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4203,52 +3642,28 @@ public interface CodePackage extends EPackage
     EAttribute TYPE__VISIBILITY = eINSTANCE.getType_Visibility();
 
     /**
-     * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Internal Types</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__TYPES = eINSTANCE.getType_Types();
+    EReference TYPE__INTERNAL_TYPES = eINSTANCE.getType_InternalTypes();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__TYPING_DEPENDENCIES = eINSTANCE.getType_TypingDependencies();
+    EReference TYPE__ANNOTATIONS = eINSTANCE.getType_Annotations();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__INHERITANCE_DEPENDENCIES = eINSTANCE.getType_InheritanceDependencies();
-
-    /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TYPE__REFERENCE_DEPENDENCIES = eINSTANCE.getType_ReferenceDependencies();
-
-    /**
-     * The meta object literal for the '<em><b>Containment Dependencies</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TYPE__CONTAINMENT_DEPENDENCIES = eINSTANCE.getType_ContainmentDependencies();
-
-    /**
-     * The meta object literal for the '<em><b>Annotation Dependencies</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TYPE__ANNOTATION_DEPENDENCIES = eINSTANCE.getType_AnnotationDependencies();
+    EReference TYPE__RELATED_ELEMENTS = eINSTANCE.getType_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -4299,6 +3714,22 @@ public interface CodePackage extends EPackage
      * @generated
      */
     EAttribute CLASSIFIER__ABSTRACT = eINSTANCE.getClassifier_Abstract();
+
+    /**
+     * The meta object literal for the '<em><b>Super Types</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSIFIER__SUPER_TYPES = eINSTANCE.getClassifier_SuperTypes();
+
+    /**
+     * The meta object literal for the '<em><b>Type Parameters</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSIFIER__TYPE_PARAMETERS = eINSTANCE.getClassifier_TypeParameters();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
@@ -4383,36 +3814,36 @@ public interface CodePackage extends EPackage
     EAttribute FIELD__TRANSIENT = eINSTANCE.getField_Transient();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__TYPING_DEPENDENCIES = eINSTANCE.getField_TypingDependencies();
+    EReference FIELD__TYPES = eINSTANCE.getField_Types();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__INHERITANCE_DEPENDENCIES = eINSTANCE.getField_InheritanceDependencies();
+    EReference FIELD__ANNOTATIONS = eINSTANCE.getField_Annotations();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Overridden Fields</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__REFERENCE_DEPENDENCIES = eINSTANCE.getField_ReferenceDependencies();
+    EReference FIELD__OVERRIDDEN_FIELDS = eINSTANCE.getField_OverriddenFields();
 
     /**
-     * The meta object literal for the '<em><b>Annotation Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FIELD__ANNOTATION_DEPENDENCIES = eINSTANCE.getField_AnnotationDependencies();
+    EReference FIELD__RELATED_ELEMENTS = eINSTANCE.getField_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl <em>Constructor</em>}' class.
@@ -4489,36 +3920,36 @@ public interface CodePackage extends EPackage
     EReference CONSTRUCTOR__PARAMETERS = eINSTANCE.getConstructor_Parameters();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__TYPING_DEPENDENCIES = eINSTANCE.getConstructor_TypingDependencies();
+    EReference CONSTRUCTOR__TYPES = eINSTANCE.getConstructor_Types();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__INHERITANCE_DEPENDENCIES = eINSTANCE.getConstructor_InheritanceDependencies();
+    EReference CONSTRUCTOR__ANNOTATIONS = eINSTANCE.getConstructor_Annotations();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Overridden Constructors</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__REFERENCE_DEPENDENCIES = eINSTANCE.getConstructor_ReferenceDependencies();
+    EReference CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS = eINSTANCE.getConstructor_OverriddenConstructors();
 
     /**
-     * The meta object literal for the '<em><b>Annotation Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRUCTOR__ANNOTATION_DEPENDENCIES = eINSTANCE.getConstructor_AnnotationDependencies();
+    EReference CONSTRUCTOR__RELATED_ELEMENTS = eINSTANCE.getConstructor_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.OperationImpl <em>Operation</em>}' class.
@@ -4595,36 +4026,52 @@ public interface CodePackage extends EPackage
     EReference OPERATION__PARAMETERS = eINSTANCE.getOperation_Parameters();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Classifier</b></em>' container reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__TYPING_DEPENDENCIES = eINSTANCE.getOperation_TypingDependencies();
+    EReference OPERATION__CLASSIFIER = eINSTANCE.getOperation_Classifier();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Return Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__INHERITANCE_DEPENDENCIES = eINSTANCE.getOperation_InheritanceDependencies();
+    EReference OPERATION__RETURN_TYPES = eINSTANCE.getOperation_ReturnTypes();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__REFERENCE_DEPENDENCIES = eINSTANCE.getOperation_ReferenceDependencies();
+    EReference OPERATION__TYPES = eINSTANCE.getOperation_Types();
 
     /**
-     * The meta object literal for the '<em><b>Annotation Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPERATION__ANNOTATION_DEPENDENCIES = eINSTANCE.getOperation_AnnotationDependencies();
+    EReference OPERATION__ANNOTATIONS = eINSTANCE.getOperation_Annotations();
+
+    /**
+     * The meta object literal for the '<em><b>Overridden Operations</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPERATION__OVERRIDDEN_OPERATIONS = eINSTANCE.getOperation_OverriddenOperations();
+
+    /**
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPERATION__RELATED_ELEMENTS = eINSTANCE.getOperation_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -4669,28 +4116,36 @@ public interface CodePackage extends EPackage
     EAttribute PARAMETER__IMMUTABLE = eINSTANCE.getParameter_Immutable();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__TYPING_DEPENDENCIES = eINSTANCE.getParameter_TypingDependencies();
+    EReference PARAMETER__TYPES = eINSTANCE.getParameter_Types();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__REFERENCE_DEPENDENCIES = eINSTANCE.getParameter_ReferenceDependencies();
+    EReference PARAMETER__ANNOTATIONS = eINSTANCE.getParameter_Annotations();
 
     /**
-     * The meta object literal for the '<em><b>Annotation Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMETER__ANNOTATION_DEPENDENCIES = eINSTANCE.getParameter_AnnotationDependencies();
+    EReference PARAMETER__RELATED_ELEMENTS = eINSTANCE.getParameter_RelatedElements();
+
+    /**
+     * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER__OPERATION = eINSTANCE.getParameter_Operation();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.AnnotationImpl <em>Annotation</em>}' class.
@@ -4721,6 +4176,14 @@ public interface CodePackage extends EPackage
     EClass ANNOTATION_FIELD = eINSTANCE.getAnnotationField();
 
     /**
+     * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ANNOTATION_FIELD__DEFAULT_VALUE = eINSTANCE.getAnnotationField_DefaultValue();
+
+    /**
      * The meta object literal for the '<em><b>Qualified Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4729,14 +4192,14 @@ public interface CodePackage extends EPackage
     EAttribute ANNOTATION_FIELD__QUALIFIED_NAME = eINSTANCE.getAnnotationField_QualifiedName();
 
     /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.RequiredServiceImpl <em>Required Service</em>}' class.
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl <em>Referenced Service</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.RequiredServiceImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getRequiredService()
+     * @see fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl
+     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getReferencedService()
      * @generated
      */
-    EClass REQUIRED_SERVICE = eINSTANCE.getRequiredService();
+    EClass REFERENCED_SERVICE = eINSTANCE.getReferencedService();
 
     /**
      * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
@@ -4744,23 +4207,23 @@ public interface CodePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REQUIRED_SERVICE__IDENTIFIER = eINSTANCE.getRequiredService_Identifier();
+    EAttribute REFERENCED_SERVICE__IDENTIFIER = eINSTANCE.getReferencedService_Identifier();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REQUIRED_SERVICE__TYPING_DEPENDENCIES = eINSTANCE.getRequiredService_TypingDependencies();
+    EReference REFERENCED_SERVICE__TYPES = eINSTANCE.getReferencedService_Types();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Provided Services</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REQUIRED_SERVICE__REFERENCE_DEPENDENCIES = eINSTANCE.getRequiredService_ReferenceDependencies();
+    EReference REFERENCED_SERVICE__PROVIDED_SERVICES = eINSTANCE.getReferencedService_ProvidedServices();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl <em>Provided Service</em>}' class.
@@ -4781,214 +4244,20 @@ public interface CodePackage extends EPackage
     EAttribute PROVIDED_SERVICE__IDENTIFIER = eINSTANCE.getProvidedService_Identifier();
 
     /**
-     * The meta object literal for the '<em><b>Typing Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROVIDED_SERVICE__TYPING_DEPENDENCIES = eINSTANCE.getProvidedService_TypingDependencies();
+    EReference PROVIDED_SERVICE__TYPES = eINSTANCE.getProvidedService_Types();
 
     /**
-     * The meta object literal for the '<em><b>Reference Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Referenced Service</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROVIDED_SERVICE__REFERENCE_DEPENDENCIES = eINSTANCE.getProvidedService_ReferenceDependencies();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.DependencyImpl <em>Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.DependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getDependency()
-     * @generated
-     */
-    EClass DEPENDENCY = eINSTANCE.getDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DEPENDENCY__IDENTIFIER = eINSTANCE.getDependency_Identifier();
-
-    /**
-     * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEPENDENCY__CONSTRAINTS = eINSTANCE.getDependency_Constraints();
-
-    /**
-     * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEPENDENCY__PROPERTIES = eINSTANCE.getDependency_Properties();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ConstraintImpl <em>Constraint</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.ConstraintImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getConstraint()
-     * @generated
-     */
-    EClass CONSTRAINT = eINSTANCE.getConstraint();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.VersionRangeConstraintImpl <em>Version Range Constraint</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.VersionRangeConstraintImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getVersionRangeConstraint()
-     * @generated
-     */
-    EClass VERSION_RANGE_CONSTRAINT = eINSTANCE.getVersionRangeConstraint();
-
-    /**
-     * The meta object literal for the '<em><b>Include Lower Version Bound</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VERSION_RANGE_CONSTRAINT__INCLUDE_LOWER_VERSION_BOUND = eINSTANCE.getVersionRangeConstraint_IncludeLowerVersionBound();
-
-    /**
-     * The meta object literal for the '<em><b>Include Upper Version Bound</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VERSION_RANGE_CONSTRAINT__INCLUDE_UPPER_VERSION_BOUND = eINSTANCE.getVersionRangeConstraint_IncludeUpperVersionBound();
-
-    /**
-     * The meta object literal for the '<em><b>Lower Version</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VERSION_RANGE_CONSTRAINT__LOWER_VERSION = eINSTANCE.getVersionRangeConstraint_LowerVersion();
-
-    /**
-     * The meta object literal for the '<em><b>Upper Version</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VERSION_RANGE_CONSTRAINT__UPPER_VERSION = eINSTANCE.getVersionRangeConstraint_UpperVersion();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ExpressionConstraintImpl <em>Expression Constraint</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.ExpressionConstraintImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getExpressionConstraint()
-     * @generated
-     */
-    EClass EXPRESSION_CONSTRAINT = eINSTANCE.getExpressionConstraint();
-
-    /**
-     * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXPRESSION_CONSTRAINT__EXPRESSION = eINSTANCE.getExpressionConstraint_Expression();
-
-    /**
-     * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXPRESSION_CONSTRAINT__LANGUAGE = eINSTANCE.getExpressionConstraint_Language();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.TypingDependencyImpl <em>Typing Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.TypingDependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getTypingDependency()
-     * @generated
-     */
-    EClass TYPING_DEPENDENCY = eINSTANCE.getTypingDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Type Parameters</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TYPING_DEPENDENCY__TYPE_PARAMETERS = eINSTANCE.getTypingDependency_TypeParameters();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.InheritanceDependencyImpl <em>Inheritance Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.InheritanceDependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getInheritanceDependency()
-     * @generated
-     */
-    EClass INHERITANCE_DEPENDENCY = eINSTANCE.getInheritanceDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Type Parameters</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INHERITANCE_DEPENDENCY__TYPE_PARAMETERS = eINSTANCE.getInheritanceDependency_TypeParameters();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ReferenceDependencyImpl <em>Reference Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.ReferenceDependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getReferenceDependency()
-     * @generated
-     */
-    EClass REFERENCE_DEPENDENCY = eINSTANCE.getReferenceDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REFERENCE_DEPENDENCY__KIND = eINSTANCE.getReferenceDependency_Kind();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ContainmentDependencyImpl <em>Containment Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.ContainmentDependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getContainmentDependency()
-     * @generated
-     */
-    EClass CONTAINMENT_DEPENDENCY = eINSTANCE.getContainmentDependency();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.AnnotationDependencyImpl <em>Annotation Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.code.impl.AnnotationDependencyImpl
-     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getAnnotationDependency()
-     * @generated
-     */
-    EClass ANNOTATION_DEPENDENCY = eINSTANCE.getAnnotationDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ANNOTATION_DEPENDENCY__VALUES = eINSTANCE.getAnnotationDependency_Values();
+    EReference PROVIDED_SERVICE__REFERENCED_SERVICE = eINSTANCE.getProvidedService_ReferencedService();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}' enum.

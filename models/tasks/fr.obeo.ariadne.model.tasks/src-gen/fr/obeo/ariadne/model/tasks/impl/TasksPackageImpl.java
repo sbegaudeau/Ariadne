@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks.impl;
 
@@ -238,7 +246,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTask_Elements()
+  public EReference getTask_VersionedElements()
   {
     return (EReference)taskEClass.getEStructuralFeatures().get(7);
   }
@@ -316,7 +324,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     createEAttribute(taskEClass, TASK__PRIORITY);
     createEAttribute(taskEClass, TASK__STATUS);
     createEReference(taskEClass, TASK__TASK_ENTRIES);
-    createEReference(taskEClass, TASK__ELEMENTS);
+    createEReference(taskEClass, TASK__VERSIONED_ELEMENTS);
 
     taskEntryEClass = createEClass(TASK_ENTRY);
     createEAttribute(taskEntryEClass, TASK_ENTRY__IDENTIFIER);
@@ -356,8 +364,8 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    tasksRepositoryEClass.getESuperTypes().add(theCorePackage.getElement());
-    taskEClass.getESuperTypes().add(theCorePackage.getElement());
+    tasksRepositoryEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
+    taskEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
     // Initialize classes, features, and operations; add parameters
     initEClass(tasksRepositoryEClass, TasksRepository.class, "TasksRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -373,7 +381,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     initEAttribute(getTask_Priority(), theEcorePackage.getEString(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTask_Status(), theEcorePackage.getEString(), "status", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTask_TaskEntries(), this.getTaskEntry(), null, "taskEntries", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTask_Elements(), theCorePackage.getElement(), null, "elements", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTask_VersionedElements(), theCorePackage.getVersionedElement(), null, "versionedElements", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(taskEntryEClass, TaskEntry.class, "TaskEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTaskEntry_Identifier(), theEcorePackage.getEString(), "identifier", null, 0, 1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

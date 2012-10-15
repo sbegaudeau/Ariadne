@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.core.provider;
 
@@ -13,14 +21,19 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -30,7 +43,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class VersionedElementItemProvider
-  extends ElementItemProvider
+  extends ItemProviderAdapter
   implements
     IEditingDomainItemProvider,
     IStructuredItemContentProvider,
@@ -62,8 +75,104 @@ public class VersionedElementItemProvider
     {
       super.getPropertyDescriptors(object);
 
+      addNamePropertyDescriptor(object);
+      addDescriptionPropertyDescriptor(object);
+      addAuthorsPropertyDescriptor(object);
+      addPropertiesPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addNamePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedElement_name_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedElement_name_feature", "_UI_VersionedElement_type"),
+         CorePackage.Literals.VERSIONED_ELEMENT__NAME,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Description feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addDescriptionPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedElement_description_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedElement_description_feature", "_UI_VersionedElement_type"),
+         CorePackage.Literals.VERSIONED_ELEMENT__DESCRIPTION,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Authors feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addAuthorsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedElement_authors_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedElement_authors_feature", "_UI_VersionedElement_type"),
+         CorePackage.Literals.VERSIONED_ELEMENT__AUTHORS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Properties feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addPropertiesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedElement_properties_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedElement_properties_feature", "_UI_VersionedElement_type"),
+         CorePackage.Literals.VERSIONED_ELEMENT__PROPERTIES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
@@ -81,6 +190,7 @@ public class VersionedElementItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(CorePackage.Literals.VERSIONED_ELEMENT__VERSION);
+      childrenFeatures.add(CorePackage.Literals.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES);
     }
     return childrenFeatures;
   }
@@ -128,7 +238,12 @@ public class VersionedElementItemProvider
 
     switch (notification.getFeatureID(VersionedElement.class))
     {
+      case CorePackage.VERSIONED_ELEMENT__NAME:
+      case CorePackage.VERSIONED_ELEMENT__DESCRIPTION:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
       case CorePackage.VERSIONED_ELEMENT__VERSION:
+      case CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -151,6 +266,23 @@ public class VersionedElementItemProvider
       (createChildParameter
         (CorePackage.Literals.VERSIONED_ELEMENT__VERSION,
          CoreFactory.eINSTANCE.createVersion()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (CorePackage.Literals.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES,
+         CoreFactory.eINSTANCE.createVersionedDependency()));
+  }
+
+  /**
+   * Return the resource locator for this item provider's resources.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ResourceLocator getResourceLocator()
+  {
+    return CoreEditPlugin.INSTANCE;
   }
 
 }

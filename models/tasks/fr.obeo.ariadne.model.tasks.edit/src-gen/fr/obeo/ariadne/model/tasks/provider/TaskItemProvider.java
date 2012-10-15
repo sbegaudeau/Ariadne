@@ -1,9 +1,17 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks.provider;
 
 
-import fr.obeo.ariadne.model.core.provider.ElementItemProvider;
+import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import fr.obeo.ariadne.model.tasks.Task;
 import fr.obeo.ariadne.model.tasks.TasksFactory;
@@ -36,7 +44,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class TaskItemProvider
-  extends ElementItemProvider
+  extends VersionedElementItemProvider
   implements
     IEditingDomainItemProvider,
     IStructuredItemContentProvider,
@@ -74,7 +82,7 @@ public class TaskItemProvider
       addCreationDatePropertyDescriptor(object);
       addPriorityPropertyDescriptor(object);
       addStatusPropertyDescriptor(object);
-      addElementsPropertyDescriptor(object);
+      addVersionedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -218,20 +226,20 @@ public class TaskItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Elements feature.
+   * This adds a property descriptor for the Versioned Elements feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addElementsPropertyDescriptor(Object object)
+  protected void addVersionedElementsPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_Task_elements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Task_elements_feature", "_UI_Task_type"),
-         TasksPackage.Literals.TASK__ELEMENTS,
+         getString("_UI_Task_versionedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Task_versionedElements_feature", "_UI_Task_type"),
+         TasksPackage.Literals.TASK__VERSIONED_ELEMENTS,
          true,
          false,
          true,

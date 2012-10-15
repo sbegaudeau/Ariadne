@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
@@ -77,16 +85,8 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
       case CodePackage.PARAMETER: return createParameter();
       case CodePackage.ANNOTATION: return createAnnotation();
       case CodePackage.ANNOTATION_FIELD: return createAnnotationField();
-      case CodePackage.REQUIRED_SERVICE: return createRequiredService();
+      case CodePackage.REFERENCED_SERVICE: return createReferencedService();
       case CodePackage.PROVIDED_SERVICE: return createProvidedService();
-      case CodePackage.DEPENDENCY: return createDependency();
-      case CodePackage.VERSION_RANGE_CONSTRAINT: return createVersionRangeConstraint();
-      case CodePackage.EXPRESSION_CONSTRAINT: return createExpressionConstraint();
-      case CodePackage.TYPING_DEPENDENCY: return createTypingDependency();
-      case CodePackage.INHERITANCE_DEPENDENCY: return createInheritanceDependency();
-      case CodePackage.REFERENCE_DEPENDENCY: return createReferenceDependency();
-      case CodePackage.CONTAINMENT_DEPENDENCY: return createContainmentDependency();
-      case CodePackage.ANNOTATION_DEPENDENCY: return createAnnotationDependency();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -275,10 +275,10 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RequiredService createRequiredService()
+  public ReferencedService createReferencedService()
   {
-    RequiredServiceImpl requiredService = new RequiredServiceImpl();
-    return requiredService;
+    ReferencedServiceImpl referencedService = new ReferencedServiceImpl();
+    return referencedService;
   }
 
   /**
@@ -290,94 +290,6 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
   {
     ProvidedServiceImpl providedService = new ProvidedServiceImpl();
     return providedService;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Dependency createDependency()
-  {
-    DependencyImpl dependency = new DependencyImpl();
-    return dependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VersionRangeConstraint createVersionRangeConstraint()
-  {
-    VersionRangeConstraintImpl versionRangeConstraint = new VersionRangeConstraintImpl();
-    return versionRangeConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ExpressionConstraint createExpressionConstraint()
-  {
-    ExpressionConstraintImpl expressionConstraint = new ExpressionConstraintImpl();
-    return expressionConstraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TypingDependency createTypingDependency()
-  {
-    TypingDependencyImpl typingDependency = new TypingDependencyImpl();
-    return typingDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InheritanceDependency createInheritanceDependency()
-  {
-    InheritanceDependencyImpl inheritanceDependency = new InheritanceDependencyImpl();
-    return inheritanceDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceDependency createReferenceDependency()
-  {
-    ReferenceDependencyImpl referenceDependency = new ReferenceDependencyImpl();
-    return referenceDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ContainmentDependency createContainmentDependency()
-  {
-    ContainmentDependencyImpl containmentDependency = new ContainmentDependencyImpl();
-    return containmentDependency;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AnnotationDependency createAnnotationDependency()
-  {
-    AnnotationDependencyImpl annotationDependency = new AnnotationDependencyImpl();
-    return annotationDependency;
   }
 
   /**

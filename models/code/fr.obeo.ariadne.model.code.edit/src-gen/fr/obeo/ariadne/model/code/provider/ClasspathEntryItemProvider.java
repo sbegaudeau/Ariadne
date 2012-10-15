@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -71,6 +79,7 @@ public class ClasspathEntryItemProvider
       addKindPropertyDescriptor(object);
       addInputFolderPropertyDescriptor(object);
       addOutputFolderPropertyDescriptor(object);
+      addComponentPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -140,6 +149,29 @@ public class ClasspathEntryItemProvider
          false,
          false,
          ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Component feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addComponentPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ClasspathEntry_component_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_ClasspathEntry_component_feature", "_UI_ClasspathEntry_type"),
+         CodePackage.Literals.CLASSPATH_ENTRY__COMPONENT,
+         true,
+         false,
+         true,
+         null,
          null,
          null));
   }

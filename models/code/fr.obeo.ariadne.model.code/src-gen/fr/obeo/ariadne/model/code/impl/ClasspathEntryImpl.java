@@ -1,10 +1,19 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
 import fr.obeo.ariadne.model.code.ClasspathEntry;
 import fr.obeo.ariadne.model.code.ClasspathEntryKind;
 import fr.obeo.ariadne.model.code.CodePackage;
+import fr.obeo.ariadne.model.code.Component;
 import fr.obeo.ariadne.model.code.TypesContainer;
 
 import java.util.Collection;
@@ -21,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -34,6 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClasspathEntryImpl#getInputFolder <em>Input Folder</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClasspathEntryImpl#getOutputFolder <em>Output Folder</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClasspathEntryImpl#getTypesContainers <em>Types Containers</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ClasspathEntryImpl#getComponent <em>Component</em>}</li>
  * </ul>
  * </p>
  *
@@ -220,6 +231,69 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public Component getComponent()
+  {
+    if (eContainerFeatureID() != CodePackage.CLASSPATH_ENTRY__COMPONENT) return null;
+    return (Component)eContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetComponent(Component newComponent, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newComponent, CodePackage.CLASSPATH_ENTRY__COMPONENT, msgs);
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setComponent(Component newComponent)
+  {
+    if (newComponent != eInternalContainer() || (eContainerFeatureID() != CodePackage.CLASSPATH_ENTRY__COMPONENT && newComponent != null))
+    {
+      if (EcoreUtil.isAncestor(this, newComponent))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newComponent != null)
+        msgs = ((InternalEObject)newComponent).eInverseAdd(this, CodePackage.COMPONENT__CLASSPATH_ENTRIES, Component.class, msgs);
+      msgs = basicSetComponent(newComponent, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.CLASSPATH_ENTRY__COMPONENT, newComponent, newComponent));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetComponent((Component)otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -227,8 +301,26 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
     {
       case CodePackage.CLASSPATH_ENTRY__TYPES_CONTAINERS:
         return ((InternalEList<?>)getTypesContainers()).basicRemove(otherEnd, msgs);
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        return basicSetComponent(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID())
+    {
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        return eInternalContainer().eInverseRemove(this, CodePackage.COMPONENT__CLASSPATH_ENTRIES, Component.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -249,6 +341,8 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
         return getOutputFolder();
       case CodePackage.CLASSPATH_ENTRY__TYPES_CONTAINERS:
         return getTypesContainers();
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        return getComponent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -277,6 +371,9 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
         getTypesContainers().clear();
         getTypesContainers().addAll((Collection<? extends TypesContainer>)newValue);
         return;
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        setComponent((Component)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -303,6 +400,9 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
       case CodePackage.CLASSPATH_ENTRY__TYPES_CONTAINERS:
         getTypesContainers().clear();
         return;
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        setComponent((Component)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -325,6 +425,8 @@ public class ClasspathEntryImpl extends MinimalEObjectImpl.Container implements 
         return OUTPUT_FOLDER_EDEFAULT == null ? outputFolder != null : !OUTPUT_FOLDER_EDEFAULT.equals(outputFolder);
       case CodePackage.CLASSPATH_ENTRY__TYPES_CONTAINERS:
         return typesContainers != null && !typesContainers.isEmpty();
+      case CodePackage.CLASSPATH_ENTRY__COMPONENT:
+        return getComponent() != null;
     }
     return super.eIsSet(featureID);
   }

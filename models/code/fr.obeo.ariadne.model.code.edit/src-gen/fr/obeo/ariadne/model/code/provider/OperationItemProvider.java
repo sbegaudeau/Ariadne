@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -75,6 +83,12 @@ public class OperationItemProvider
       addFinalPropertyDescriptor(object);
       addImmutablePropertyDescriptor(object);
       addTransientPropertyDescriptor(object);
+      addClassifierPropertyDescriptor(object);
+      addReturnTypesPropertyDescriptor(object);
+      addTypesPropertyDescriptor(object);
+      addAnnotationsPropertyDescriptor(object);
+      addOverriddenOperationsPropertyDescriptor(object);
+      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -241,6 +255,144 @@ public class OperationItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Classifier feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addClassifierPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_classifier_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_classifier_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__CLASSIFIER,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Return Types feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addReturnTypesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_returnTypes_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_returnTypes_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__RETURN_TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Types feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_types_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_types_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Annotations feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addAnnotationsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_annotations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_annotations_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__ANNOTATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Overridden Operations feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addOverriddenOperationsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_overriddenOperations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_overriddenOperations_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__OVERRIDDEN_OPERATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Related Elements feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRelatedElementsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Operation_relatedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Operation_relatedElements_feature", "_UI_Operation_type"),
+         CodePackage.Literals.OPERATION__RELATED_ELEMENTS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,10 +407,6 @@ public class OperationItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(CodePackage.Literals.OPERATION__PARAMETERS);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.OPERATION__ANNOTATION_DEPENDENCIES);
     }
     return childrenFeatures;
   }
@@ -328,10 +476,6 @@ public class OperationItemProvider
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case CodePackage.OPERATION__PARAMETERS:
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -354,26 +498,6 @@ public class OperationItemProvider
       (createChildParameter
         (CodePackage.Literals.OPERATION__PARAMETERS,
          CodeFactory.eINSTANCE.createParameter()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.OPERATION__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.OPERATION__INHERITANCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createInheritanceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.OPERATION__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.OPERATION__ANNOTATION_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createAnnotationDependency()));
   }
 
   /**

@@ -1,15 +1,21 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
-import fr.obeo.ariadne.model.code.AnnotationDependency;
+import fr.obeo.ariadne.model.code.Annotation;
 import fr.obeo.ariadne.model.code.CodePackage;
-import fr.obeo.ariadne.model.code.ContainmentDependency;
-import fr.obeo.ariadne.model.code.InheritanceDependency;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
 import fr.obeo.ariadne.model.code.Type;
-import fr.obeo.ariadne.model.code.TypingDependency;
 import fr.obeo.ariadne.model.code.VisibilityKind;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
@@ -26,6 +32,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -37,12 +44,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getVisibility <em>Visibility</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getContainmentDependencies <em>Containment Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getInternalTypes <em>Internal Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,64 +95,34 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
   protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+   * The cached value of the '{@link #getInternalTypes() <em>Internal Types</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypes()
+   * @see #getInternalTypes()
    * @generated
    * @ordered
    */
-  protected EList<Type> types;
+  protected EList<Type> internalTypes;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getAnnotations()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Annotation> annotations;
 
   /**
-   * The cached value of the '{@link #getInheritanceDependencies() <em>Inheritance Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInheritanceDependencies()
+   * @see #getRelatedElements()
    * @generated
    * @ordered
    */
-  protected EList<InheritanceDependency> inheritanceDependencies;
-
-  /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
-   * @generated
-   * @ordered
-   */
-  protected EList<ReferenceDependency> referenceDependencies;
-
-  /**
-   * The cached value of the '{@link #getContainmentDependencies() <em>Containment Dependencies</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getContainmentDependencies()
-   * @generated
-   * @ordered
-   */
-  protected EList<ContainmentDependency> containmentDependencies;
-
-  /**
-   * The cached value of the '{@link #getAnnotationDependencies() <em>Annotation Dependencies</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnnotationDependencies()
-   * @generated
-   * @ordered
-   */
-  protected EList<AnnotationDependency> annotationDependencies;
+  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -222,13 +196,13 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getTypes()
+  public EList<Type> getInternalTypes()
   {
-    if (types == null)
+    if (internalTypes == null)
     {
-      types = new EObjectContainmentEList<Type>(Type.class, this, CodePackage.TYPE__TYPES);
+      internalTypes = new EObjectContainmentEList<Type>(Type.class, this, CodePackage.TYPE__INTERNAL_TYPES);
     }
-    return types;
+    return internalTypes;
   }
 
   /**
@@ -236,13 +210,13 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public EList<Annotation> getAnnotations()
   {
-    if (typingDependencies == null)
+    if (annotations == null)
     {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.TYPE__TYPING_DEPENDENCIES);
+      annotations = new EObjectResolvingEList<Annotation>(Annotation.class, this, CodePackage.TYPE__ANNOTATIONS);
     }
-    return typingDependencies;
+    return annotations;
   }
 
   /**
@@ -250,55 +224,13 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<InheritanceDependency> getInheritanceDependencies()
+  public EList<VersionedElement> getRelatedElements()
   {
-    if (inheritanceDependencies == null)
+    if (relatedElements == null)
     {
-      inheritanceDependencies = new EObjectContainmentEList<InheritanceDependency>(InheritanceDependency.class, this, CodePackage.TYPE__INHERITANCE_DEPENDENCIES);
+      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.TYPE__RELATED_ELEMENTS);
     }
-    return inheritanceDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<ReferenceDependency> getReferenceDependencies()
-  {
-    if (referenceDependencies == null)
-    {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.TYPE__REFERENCE_DEPENDENCIES);
-    }
-    return referenceDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<ContainmentDependency> getContainmentDependencies()
-  {
-    if (containmentDependencies == null)
-    {
-      containmentDependencies = new EObjectContainmentEList<ContainmentDependency>(ContainmentDependency.class, this, CodePackage.TYPE__CONTAINMENT_DEPENDENCIES);
-    }
-    return containmentDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<AnnotationDependency> getAnnotationDependencies()
-  {
-    if (annotationDependencies == null)
-    {
-      annotationDependencies = new EObjectContainmentEList<AnnotationDependency>(AnnotationDependency.class, this, CodePackage.TYPE__ANNOTATION_DEPENDENCIES);
-    }
-    return annotationDependencies;
+    return relatedElements;
   }
 
   /**
@@ -311,18 +243,8 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
   {
     switch (featureID)
     {
-      case CodePackage.TYPE__TYPES:
-        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-        return ((InternalEList<?>)getInheritanceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-        return ((InternalEList<?>)getContainmentDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
-        return ((InternalEList<?>)getAnnotationDependencies()).basicRemove(otherEnd, msgs);
+      case CodePackage.TYPE__INTERNAL_TYPES:
+        return ((InternalEList<?>)getInternalTypes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -341,18 +263,12 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
         return getQualifiedName();
       case CodePackage.TYPE__VISIBILITY:
         return getVisibility();
-      case CodePackage.TYPE__TYPES:
-        return getTypes();
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-        return getInheritanceDependencies();
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-        return getContainmentDependencies();
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
-        return getAnnotationDependencies();
+      case CodePackage.TYPE__INTERNAL_TYPES:
+        return getInternalTypes();
+      case CodePackage.TYPE__ANNOTATIONS:
+        return getAnnotations();
+      case CodePackage.TYPE__RELATED_ELEMENTS:
+        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -374,29 +290,17 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
       case CodePackage.TYPE__VISIBILITY:
         setVisibility((VisibilityKind)newValue);
         return;
-      case CodePackage.TYPE__TYPES:
-        getTypes().clear();
-        getTypes().addAll((Collection<? extends Type>)newValue);
+      case CodePackage.TYPE__INTERNAL_TYPES:
+        getInternalTypes().clear();
+        getInternalTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.TYPE__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
-        getInheritanceDependencies().addAll((Collection<? extends InheritanceDependency>)newValue);
-        return;
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
-        return;
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-        getContainmentDependencies().clear();
-        getContainmentDependencies().addAll((Collection<? extends ContainmentDependency>)newValue);
-        return;
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
-        getAnnotationDependencies().addAll((Collection<? extends AnnotationDependency>)newValue);
+      case CodePackage.TYPE__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -418,23 +322,14 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
       case CodePackage.TYPE__VISIBILITY:
         setVisibility(VISIBILITY_EDEFAULT);
         return;
-      case CodePackage.TYPE__TYPES:
-        getTypes().clear();
+      case CodePackage.TYPE__INTERNAL_TYPES:
+        getInternalTypes().clear();
         return;
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.TYPE__ANNOTATIONS:
+        getAnnotations().clear();
         return;
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
-        return;
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        return;
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-        getContainmentDependencies().clear();
-        return;
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
+      case CodePackage.TYPE__RELATED_ELEMENTS:
+        getRelatedElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -454,18 +349,12 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
         return QUALIFIED_NAME_EDEFAULT == null ? qualifiedName != null : !QUALIFIED_NAME_EDEFAULT.equals(qualifiedName);
       case CodePackage.TYPE__VISIBILITY:
         return visibility != VISIBILITY_EDEFAULT;
-      case CodePackage.TYPE__TYPES:
-        return types != null && !types.isEmpty();
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-        return inheritanceDependencies != null && !inheritanceDependencies.isEmpty();
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-        return containmentDependencies != null && !containmentDependencies.isEmpty();
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
-        return annotationDependencies != null && !annotationDependencies.isEmpty();
+      case CodePackage.TYPE__INTERNAL_TYPES:
+        return internalTypes != null && !internalTypes.isEmpty();
+      case CodePackage.TYPE__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
+      case CodePackage.TYPE__RELATED_ELEMENTS:
+        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

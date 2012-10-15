@@ -1,10 +1,20 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
 
 import fr.obeo.ariadne.model.code.AnnotationField;
 import fr.obeo.ariadne.model.code.CodePackage;
+
+import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +32,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -32,7 +41,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class AnnotationFieldItemProvider
-  extends ItemProviderAdapter
+  extends VersionedElementItemProvider
   implements
     IEditingDomainItemProvider,
     IStructuredItemContentProvider,
@@ -64,9 +73,33 @@ public class AnnotationFieldItemProvider
     {
       super.getPropertyDescriptors(object);
 
+      addDefaultValuePropertyDescriptor(object);
       addQualifiedNamePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Default Value feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addDefaultValuePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_AnnotationField_defaultValue_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_AnnotationField_defaultValue_feature", "_UI_AnnotationField_type"),
+         CodePackage.Literals.ANNOTATION_FIELD__DEFAULT_VALUE,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -113,7 +146,7 @@ public class AnnotationFieldItemProvider
   @Override
   public String getText(Object object)
   {
-    String label = ((AnnotationField)object).getQualifiedName();
+    String label = ((AnnotationField)object).getName();
     return label == null || label.length() == 0 ?
       getString("_UI_AnnotationField_type") :
       getString("_UI_AnnotationField_type") + " " + label;
@@ -133,6 +166,7 @@ public class AnnotationFieldItemProvider
 
     switch (notification.getFeatureID(AnnotationField.class))
     {
+      case CodePackage.ANNOTATION_FIELD__DEFAULT_VALUE:
       case CodePackage.ANNOTATION_FIELD__QUALIFIED_NAME:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;

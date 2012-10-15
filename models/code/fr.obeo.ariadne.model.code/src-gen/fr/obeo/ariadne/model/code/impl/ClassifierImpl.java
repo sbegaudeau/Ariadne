@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
@@ -7,6 +15,7 @@ import fr.obeo.ariadne.model.code.ClassifierKind;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Field;
 import fr.obeo.ariadne.model.code.Operation;
+import fr.obeo.ariadne.model.code.Type;
 
 import java.util.Collection;
 
@@ -21,6 +30,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -35,6 +46,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getSuperTypes <em>Super Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getOperations <em>Operations</em>}</li>
  * </ul>
@@ -143,6 +156,26 @@ public class ClassifierImpl extends TypeImpl implements Classifier
    * @ordered
    */
   protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSuperTypes() <em>Super Types</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuperTypes()
+   * @generated
+   * @ordered
+   */
+  protected EList<Type> superTypes;
+
+  /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected EList<Type> typeParameters;
 
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
@@ -305,6 +338,34 @@ public class ClassifierImpl extends TypeImpl implements Classifier
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Type> getSuperTypes()
+  {
+    if (superTypes == null)
+    {
+      superTypes = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.CLASSIFIER__SUPER_TYPES);
+    }
+    return superTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Type> getTypeParameters()
+  {
+    if (typeParameters == null)
+    {
+      typeParameters = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.CLASSIFIER__TYPE_PARAMETERS);
+    }
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Field> getFields()
   {
     if (fields == null)
@@ -323,9 +384,26 @@ public class ClassifierImpl extends TypeImpl implements Classifier
   {
     if (operations == null)
     {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, CodePackage.CLASSIFIER__OPERATIONS);
+      operations = new EObjectContainmentWithInverseEList<Operation>(Operation.class, this, CodePackage.CLASSIFIER__OPERATIONS, CodePackage.OPERATION__CLASSIFIER);
     }
     return operations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CodePackage.CLASSIFIER__OPERATIONS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getOperations()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
@@ -366,6 +444,10 @@ public class ClassifierImpl extends TypeImpl implements Classifier
         return isImmutable();
       case CodePackage.CLASSIFIER__ABSTRACT:
         return isAbstract();
+      case CodePackage.CLASSIFIER__SUPER_TYPES:
+        return getSuperTypes();
+      case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
+        return getTypeParameters();
       case CodePackage.CLASSIFIER__FIELDS:
         return getFields();
       case CodePackage.CLASSIFIER__OPERATIONS:
@@ -399,6 +481,14 @@ public class ClassifierImpl extends TypeImpl implements Classifier
         return;
       case CodePackage.CLASSIFIER__ABSTRACT:
         setAbstract((Boolean)newValue);
+        return;
+      case CodePackage.CLASSIFIER__SUPER_TYPES:
+        getSuperTypes().clear();
+        getSuperTypes().addAll((Collection<? extends Type>)newValue);
+        return;
+      case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
+        getTypeParameters().clear();
+        getTypeParameters().addAll((Collection<? extends Type>)newValue);
         return;
       case CodePackage.CLASSIFIER__FIELDS:
         getFields().clear();
@@ -437,6 +527,12 @@ public class ClassifierImpl extends TypeImpl implements Classifier
       case CodePackage.CLASSIFIER__ABSTRACT:
         setAbstract(ABSTRACT_EDEFAULT);
         return;
+      case CodePackage.CLASSIFIER__SUPER_TYPES:
+        getSuperTypes().clear();
+        return;
+      case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
+        getTypeParameters().clear();
+        return;
       case CodePackage.CLASSIFIER__FIELDS:
         getFields().clear();
         return;
@@ -467,6 +563,10 @@ public class ClassifierImpl extends TypeImpl implements Classifier
         return immutable != IMMUTABLE_EDEFAULT;
       case CodePackage.CLASSIFIER__ABSTRACT:
         return abstract_ != ABSTRACT_EDEFAULT;
+      case CodePackage.CLASSIFIER__SUPER_TYPES:
+        return superTypes != null && !superTypes.isEmpty();
+      case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
+        return typeParameters != null && !typeParameters.isEmpty();
       case CodePackage.CLASSIFIER__FIELDS:
         return fields != null && !fields.isEmpty();
       case CodePackage.CLASSIFIER__OPERATIONS:

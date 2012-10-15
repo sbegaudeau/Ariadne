@@ -1,8 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.organization.impl;
 
-import fr.obeo.ariadne.model.core.impl.ElementImpl;
+import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.Organization;
@@ -21,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -41,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CategoryImpl extends ElementImpl implements Category
+public class CategoryImpl extends VersionedElementImpl implements Category
 {
   /**
    * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.

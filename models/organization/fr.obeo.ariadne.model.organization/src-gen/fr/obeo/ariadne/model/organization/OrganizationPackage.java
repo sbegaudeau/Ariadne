@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.organization;
 
@@ -24,7 +32,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.ariadne.model.organization.OrganizationFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.organization.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.organization.editor/src-gen' fileExtensions='ariadneorganization'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.organization.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.organization.editor/src-gen' fileExtensions='ariadneorganization' copyrightText='Copyright (c) 2012 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Stephane Begaudeau (Obeo) - initial API and implementation'"
  * @generated
  */
 public interface OrganizationPackage extends EPackage
@@ -187,7 +195,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__NAME = CorePackage.ELEMENT__NAME;
+  int CATEGORY__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -196,7 +204,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__DESCRIPTION = CorePackage.ELEMENT__DESCRIPTION;
+  int CATEGORY__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -205,7 +213,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__AUTHORS = CorePackage.ELEMENT__AUTHORS;
+  int CATEGORY__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -214,7 +222,25 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__PROPERTIES = CorePackage.ELEMENT__PROPERTIES;
+  int CATEGORY__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CATEGORY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CATEGORY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Projects</b></em>' containment reference list.
@@ -223,7 +249,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__PROJECTS = CorePackage.ELEMENT_FEATURE_COUNT + 0;
+  int CATEGORY__PROJECTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
@@ -232,7 +258,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__SPECIFICATIONS = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int CATEGORY__SPECIFICATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Organization</b></em>' container reference.
@@ -241,7 +267,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY__ORGANIZATION = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int CATEGORY__ORGANIZATION = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Category</em>' class.
@@ -250,7 +276,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+  int CATEGORY_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Category</em>' class.
@@ -259,7 +285,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CATEGORY_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
+  int CATEGORY_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl <em>Project</em>}' class.
@@ -315,6 +341,15 @@ public interface OrganizationPackage extends EPackage
    * @ordered
    */
   int PROJECT__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' containment reference list.
@@ -471,6 +506,15 @@ public interface OrganizationPackage extends EPackage
   int SPECIFICATION__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPECIFICATION__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The number of structural features of the '<em>Specification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -505,7 +549,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__NAME = CorePackage.ELEMENT__NAME;
+  int ORGANIZATION_DEPENDENCY__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -514,7 +558,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__DESCRIPTION = CorePackage.ELEMENT__DESCRIPTION;
+  int ORGANIZATION_DEPENDENCY__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -523,7 +567,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__AUTHORS = CorePackage.ELEMENT__AUTHORS;
+  int ORGANIZATION_DEPENDENCY__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -532,7 +576,25 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__PROPERTIES = CorePackage.ELEMENT__PROPERTIES;
+  int ORGANIZATION_DEPENDENCY__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORGANIZATION_DEPENDENCY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORGANIZATION_DEPENDENCY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Organization Dependency Kinds</b></em>' attribute list.
@@ -541,7 +603,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__ORGANIZATION_DEPENDENCY_KINDS = CorePackage.ELEMENT_FEATURE_COUNT + 0;
+  int ORGANIZATION_DEPENDENCY__ORGANIZATION_DEPENDENCY_KINDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Organization</b></em>' reference.
@@ -550,7 +612,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY__ORGANIZATION = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int ORGANIZATION_DEPENDENCY__ORGANIZATION = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Dependency</em>' class.
@@ -559,7 +621,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int ORGANIZATION_DEPENDENCY_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of operations of the '<em>Dependency</em>' class.
@@ -568,7 +630,7 @@ public interface OrganizationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ORGANIZATION_DEPENDENCY_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
+  int ORGANIZATION_DEPENDENCY_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl <em>Release</em>}' class.
@@ -624,6 +686,15 @@ public interface OrganizationPackage extends EPackage
    * @ordered
    */
   int RELEASE__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute.

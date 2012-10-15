@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -14,9 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link fr.obeo.ariadne.model.code.Resource#getInheritanceDependency <em>Inheritance Dependency</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Resource#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Resource#getContainmentDependencies <em>Containment Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Resource#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,61 +33,19 @@ import org.eclipse.emf.common.util.EList;
 public interface Resource extends VersionedElement
 {
   /**
-   * Returns the value of the '<em><b>Inheritance Dependency</b></em>' containment reference.
+   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inheritance Dependency</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritance Dependency</em>' containment reference.
-   * @see #setInheritanceDependency(InheritanceDependency)
-   * @see fr.obeo.ariadne.model.code.CodePackage#getResource_InheritanceDependency()
-   * @model containment="true"
+   * @return the value of the '<em>Related Elements</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getResource_RelatedElements()
+   * @model
    * @generated
    */
-  InheritanceDependency getInheritanceDependency();
-
-  /**
-   * Sets the value of the '{@link fr.obeo.ariadne.model.code.Resource#getInheritanceDependency <em>Inheritance Dependency</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Inheritance Dependency</em>' containment reference.
-   * @see #getInheritanceDependency()
-   * @generated
-   */
-  void setInheritanceDependency(InheritanceDependency value);
-
-  /**
-   * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Reference Dependencies</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getResource_ReferenceDependencies()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ReferenceDependency> getReferenceDependencies();
-
-  /**
-   * Returns the value of the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ContainmentDependency}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Containment Dependencies</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Containment Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getResource_ContainmentDependencies()
-   * @model containment="true"
-   * @generated
-   */
-  EList<ContainmentDependency> getContainmentDependencies();
+  EList<VersionedElement> getRelatedElements();
 
 } // Resource

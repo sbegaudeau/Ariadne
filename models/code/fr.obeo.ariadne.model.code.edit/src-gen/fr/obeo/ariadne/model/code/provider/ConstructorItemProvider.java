@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -75,6 +83,10 @@ public class ConstructorItemProvider
       addFinalPropertyDescriptor(object);
       addImmutablePropertyDescriptor(object);
       addTransientPropertyDescriptor(object);
+      addTypesPropertyDescriptor(object);
+      addAnnotationsPropertyDescriptor(object);
+      addOverriddenConstructorsPropertyDescriptor(object);
+      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -241,6 +253,98 @@ public class ConstructorItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Types feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Constructor_types_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Constructor_types_feature", "_UI_Constructor_type"),
+         CodePackage.Literals.CONSTRUCTOR__TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Annotations feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addAnnotationsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Constructor_annotations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Constructor_annotations_feature", "_UI_Constructor_type"),
+         CodePackage.Literals.CONSTRUCTOR__ANNOTATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Overridden Constructors feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addOverriddenConstructorsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Constructor_overriddenConstructors_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Constructor_overriddenConstructors_feature", "_UI_Constructor_type"),
+         CodePackage.Literals.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Related Elements feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRelatedElementsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Constructor_relatedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Constructor_relatedElements_feature", "_UI_Constructor_type"),
+         CodePackage.Literals.CONSTRUCTOR__RELATED_ELEMENTS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,10 +359,6 @@ public class ConstructorItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__PARAMETERS);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.CONSTRUCTOR__ANNOTATION_DEPENDENCIES);
     }
     return childrenFeatures;
   }
@@ -328,10 +428,6 @@ public class ConstructorItemProvider
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case CodePackage.CONSTRUCTOR__PARAMETERS:
-      case CodePackage.CONSTRUCTOR__TYPING_DEPENDENCIES:
-      case CodePackage.CONSTRUCTOR__INHERITANCE_DEPENDENCIES:
-      case CodePackage.CONSTRUCTOR__REFERENCE_DEPENDENCIES:
-      case CodePackage.CONSTRUCTOR__ANNOTATION_DEPENDENCIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -354,26 +450,6 @@ public class ConstructorItemProvider
       (createChildParameter
         (CodePackage.Literals.CONSTRUCTOR__PARAMETERS,
          CodeFactory.eINSTANCE.createParameter()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__INHERITANCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createInheritanceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.CONSTRUCTOR__ANNOTATION_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createAnnotationDependency()));
   }
 
   /**

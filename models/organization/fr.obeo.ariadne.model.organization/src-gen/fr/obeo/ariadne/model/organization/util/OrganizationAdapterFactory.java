@@ -1,8 +1,15 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.organization.util;
 
-import fr.obeo.ariadne.model.core.Element;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.organization.*;
@@ -106,11 +113,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRelease(Release object)
       {
         return createReleaseAdapter();
-      }
-      @Override
-      public Adapter caseElement(Element object)
-      {
-        return createElementAdapter();
       }
       @Override
       public Adapter caseVersionedElement(VersionedElement object)
@@ -225,21 +227,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReleaseAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.core.Element <em>Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.core.Element
-   * @generated
-   */
-  public Adapter createElementAdapter()
   {
     return null;
   }

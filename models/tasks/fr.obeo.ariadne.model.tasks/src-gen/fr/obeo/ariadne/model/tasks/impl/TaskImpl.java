@@ -1,10 +1,18 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks.impl;
 
-import fr.obeo.ariadne.model.core.Element;
+import fr.obeo.ariadne.model.core.VersionedElement;
 
-import fr.obeo.ariadne.model.core.impl.ElementImpl;
+import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.tasks.Task;
 import fr.obeo.ariadne.model.tasks.TaskEntry;
@@ -40,13 +48,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getTaskEntries <em>Task Entries</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getVersionedElements <em>Versioned Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TaskImpl extends ElementImpl implements Task
+public class TaskImpl extends VersionedElementImpl implements Task
 {
   /**
    * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.
@@ -179,14 +187,14 @@ public class TaskImpl extends ElementImpl implements Task
   protected EList<TaskEntry> taskEntries;
 
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' reference list.
+   * The cached value of the '{@link #getVersionedElements() <em>Versioned Elements</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
+   * @see #getVersionedElements()
    * @generated
    * @ordered
    */
-  protected EList<Element> elements;
+  protected EList<VersionedElement> versionedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -366,13 +374,13 @@ public class TaskImpl extends ElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Element> getElements()
+  public EList<VersionedElement> getVersionedElements()
   {
-    if (elements == null)
+    if (versionedElements == null)
     {
-      elements = new EObjectResolvingEList<Element>(Element.class, this, TasksPackage.TASK__ELEMENTS);
+      versionedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, TasksPackage.TASK__VERSIONED_ELEMENTS);
     }
-    return elements;
+    return versionedElements;
   }
 
   /**
@@ -415,8 +423,8 @@ public class TaskImpl extends ElementImpl implements Task
         return getStatus();
       case TasksPackage.TASK__TASK_ENTRIES:
         return getTaskEntries();
-      case TasksPackage.TASK__ELEMENTS:
-        return getElements();
+      case TasksPackage.TASK__VERSIONED_ELEMENTS:
+        return getVersionedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -454,9 +462,9 @@ public class TaskImpl extends ElementImpl implements Task
         getTaskEntries().clear();
         getTaskEntries().addAll((Collection<? extends TaskEntry>)newValue);
         return;
-      case TasksPackage.TASK__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends Element>)newValue);
+      case TasksPackage.TASK__VERSIONED_ELEMENTS:
+        getVersionedElements().clear();
+        getVersionedElements().addAll((Collection<? extends VersionedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -493,8 +501,8 @@ public class TaskImpl extends ElementImpl implements Task
       case TasksPackage.TASK__TASK_ENTRIES:
         getTaskEntries().clear();
         return;
-      case TasksPackage.TASK__ELEMENTS:
-        getElements().clear();
+      case TasksPackage.TASK__VERSIONED_ELEMENTS:
+        getVersionedElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -524,8 +532,8 @@ public class TaskImpl extends ElementImpl implements Task
         return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
       case TasksPackage.TASK__TASK_ENTRIES:
         return taskEntries != null && !taskEntries.isEmpty();
-      case TasksPackage.TASK__ELEMENTS:
-        return elements != null && !elements.isEmpty();
+      case TasksPackage.TASK__VERSIONED_ELEMENTS:
+        return versionedElements != null && !versionedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

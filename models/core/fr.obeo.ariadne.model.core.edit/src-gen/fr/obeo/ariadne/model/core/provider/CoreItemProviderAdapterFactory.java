@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.core.provider;
 
@@ -74,6 +82,31 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.VersionedDependency} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected VersionedDependencyItemProvider versionedDependencyItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.core.VersionedDependency}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createVersionedDependencyAdapter()
+  {
+    if (versionedDependencyItemProvider == null)
+    {
+      versionedDependencyItemProvider = new VersionedDependencyItemProvider(this);
+    }
+
+    return versionedDependencyItemProvider;
+  }
+
+  /**
    * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.Version} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -99,31 +132,6 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.Property} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected PropertyItemProvider propertyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.core.Property}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createPropertyAdapter()
-  {
-    if (propertyItemProvider == null)
-    {
-      propertyItemProvider = new PropertyItemProvider(this);
-    }
-
-    return propertyItemProvider;
-  }
-
-  /**
    * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.Person} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -146,6 +154,31 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
     }
 
     return personItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.Property} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected PropertyItemProvider propertyItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.core.Property}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createPropertyAdapter()
+  {
+    if (propertyItemProvider == null)
+    {
+      propertyItemProvider = new PropertyItemProvider(this);
+    }
+
+    return propertyItemProvider;
   }
 
   /**
@@ -259,6 +292,7 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
    */
   public void dispose()
   {
+    if (versionedDependencyItemProvider != null) versionedDependencyItemProvider.dispose();
     if (versionItemProvider != null) versionItemProvider.dispose();
     if (personItemProvider != null) personItemProvider.dispose();
     if (propertyItemProvider != null) propertyItemProvider.dispose();

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -22,10 +30,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Operation#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Operation#isTransient <em>Transient</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Operation#getParameters <em>Parameters</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Operation#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Operation#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Operation#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Operation#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getClassifier <em>Classifier</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getReturnTypes <em>Return Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getOverriddenOperations <em>Overridden Operations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Operation#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -223,6 +233,7 @@ public interface Operation extends VersionedElement
   /**
    * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
    * The list contents are of type {@link fr.obeo.ariadne.model.code.Parameter}.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.code.Parameter#getOperation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
@@ -231,73 +242,118 @@ public interface Operation extends VersionedElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameters</em>' containment reference list.
    * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_Parameters()
-   * @model containment="true"
+   * @see fr.obeo.ariadne.model.code.Parameter#getOperation
+   * @model opposite="operation" containment="true"
    * @generated
    */
   EList<Parameter> getParameters();
 
   /**
-   * Returns the value of the '<em><b>Typing Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.TypingDependency}.
+   * Returns the value of the '<em><b>Classifier</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.code.Classifier#getOperations <em>Operations</em>}'.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typing Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Classifier</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typing Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_TypingDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Classifier</em>' container reference.
+   * @see #setClassifier(Classifier)
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_Classifier()
+   * @see fr.obeo.ariadne.model.code.Classifier#getOperations
+   * @model opposite="operations" transient="false"
    * @generated
    */
-  EList<TypingDependency> getTypingDependencies();
+  Classifier getClassifier();
 
   /**
-   * Returns the value of the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.InheritanceDependency}.
+   * Sets the value of the '{@link fr.obeo.ariadne.model.code.Operation#getClassifier <em>Classifier</em>}' container reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Inheritance Dependencies</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritance Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_InheritanceDependencies()
-   * @model containment="true"
+   * @param value the new value of the '<em>Classifier</em>' container reference.
+   * @see #getClassifier()
    * @generated
    */
-  EList<InheritanceDependency> getInheritanceDependencies();
+  void setClassifier(Classifier value);
 
   /**
-   * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
+   * Returns the value of the '<em><b>Return Types</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Type}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reference Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Return Types</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_ReferenceDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Return Types</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_ReturnTypes()
+   * @model
    * @generated
    */
-  EList<ReferenceDependency> getReferenceDependencies();
+  EList<Type> getReturnTypes();
 
   /**
-   * Returns the value of the '<em><b>Annotation Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.AnnotationDependency}.
+   * Returns the value of the '<em><b>Types</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Type}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Annotation Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Types</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Annotation Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_AnnotationDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Types</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_Types()
+   * @model
    * @generated
    */
-  EList<AnnotationDependency> getAnnotationDependencies();
+  EList<Type> getTypes();
+
+  /**
+   * Returns the value of the '<em><b>Annotations</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Annotation}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Annotations</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Annotations</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_Annotations()
+   * @model
+   * @generated
+   */
+  EList<Annotation> getAnnotations();
+
+  /**
+   * Returns the value of the '<em><b>Overridden Operations</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Operation}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Overridden Operations</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Overridden Operations</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_OverriddenOperations()
+   * @model derived="true"
+   * @generated
+   */
+  EList<Operation> getOverriddenOperations();
+
+  /**
+   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Related Elements</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getOperation_RelatedElements()
+   * @model
+   * @generated
+   */
+  EList<VersionedElement> getRelatedElements();
 
 } // Operation

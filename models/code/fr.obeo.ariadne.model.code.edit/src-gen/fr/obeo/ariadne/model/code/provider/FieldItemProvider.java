@@ -1,9 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
 
-import fr.obeo.ariadne.model.code.CodeFactory;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Field;
 
@@ -16,8 +23,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -75,6 +80,10 @@ public class FieldItemProvider
       addFinalPropertyDescriptor(object);
       addImmutablePropertyDescriptor(object);
       addTransientPropertyDescriptor(object);
+      addTypesPropertyDescriptor(object);
+      addAnnotationsPropertyDescriptor(object);
+      addOverriddenFieldsPropertyDescriptor(object);
+      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -241,39 +250,95 @@ public class FieldItemProvider
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * This adds a property descriptor for the Types feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+  protected void addTypesPropertyDescriptor(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.FIELD__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.FIELD__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.FIELD__ANNOTATION_DEPENDENCIES);
-    }
-    return childrenFeatures;
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Field_types_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Field_types_feature", "_UI_Field_type"),
+         CodePackage.Literals.FIELD__TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
+   * This adds a property descriptor for the Annotations feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
+  protected void addAnnotationsPropertyDescriptor(Object object)
   {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Field_annotations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Field_annotations_feature", "_UI_Field_type"),
+         CodePackage.Literals.FIELD__ANNOTATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
 
-    return super.getChildFeature(object, child);
+  /**
+   * This adds a property descriptor for the Overridden Fields feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addOverriddenFieldsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Field_overriddenFields_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Field_overriddenFields_feature", "_UI_Field_type"),
+         CodePackage.Literals.FIELD__OVERRIDDEN_FIELDS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Related Elements feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRelatedElementsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Field_relatedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Field_relatedElements_feature", "_UI_Field_type"),
+         CodePackage.Literals.FIELD__RELATED_ELEMENTS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
@@ -326,12 +391,6 @@ public class FieldItemProvider
       case CodePackage.FIELD__TRANSIENT:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
     }
     super.notifyChanged(notification);
   }
@@ -347,26 +406,6 @@ public class FieldItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.FIELD__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.FIELD__INHERITANCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createInheritanceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.FIELD__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.FIELD__ANNOTATION_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createAnnotationDependency()));
   }
 
   /**

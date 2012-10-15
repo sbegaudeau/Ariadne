@@ -1,6 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.scm.util;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.scm.*;
 
@@ -100,6 +110,11 @@ public class ScmAdapterFactory extends AdapterFactoryImpl
         return createResourceChangeAdapter();
       }
       @Override
+      public Adapter caseVersionedElement(VersionedElement object)
+      {
+        return createVersionedElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -192,6 +207,21 @@ public class ScmAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createResourceChangeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.core.VersionedElement <em>Versioned Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.obeo.ariadne.model.core.VersionedElement
+   * @generated
+   */
+  public Adapter createVersionedElementAdapter()
   {
     return null;
   }

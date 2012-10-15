@@ -1,31 +1,36 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
-import fr.obeo.ariadne.model.code.AnnotationDependency;
+import fr.obeo.ariadne.model.code.Annotation;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Field;
-import fr.obeo.ariadne.model.code.InheritanceDependency;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
-import fr.obeo.ariadne.model.code.TypingDependency;
+import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.VisibilityKind;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,10 +46,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#isTransient <em>Transient</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getOverriddenFields <em>Overridden Fields</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -193,44 +198,44 @@ public class FieldImpl extends VersionedElementImpl implements Field
   protected boolean transient_ = TRANSIENT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Type> types;
 
   /**
-   * The cached value of the '{@link #getInheritanceDependencies() <em>Inheritance Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInheritanceDependencies()
+   * @see #getAnnotations()
    * @generated
    * @ordered
    */
-  protected EList<InheritanceDependency> inheritanceDependencies;
+  protected EList<Annotation> annotations;
 
   /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getOverriddenFields() <em>Overridden Fields</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
+   * @see #getOverriddenFields()
    * @generated
    * @ordered
    */
-  protected EList<ReferenceDependency> referenceDependencies;
+  protected EList<Field> overriddenFields;
 
   /**
-   * The cached value of the '{@link #getAnnotationDependencies() <em>Annotation Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAnnotationDependencies()
+   * @see #getRelatedElements()
    * @generated
    * @ordered
    */
-  protected EList<AnnotationDependency> annotationDependencies;
+  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -419,13 +424,13 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public EList<Type> getTypes()
   {
-    if (typingDependencies == null)
+    if (types == null)
     {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.FIELD__TYPING_DEPENDENCIES);
+      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.FIELD__TYPES);
     }
-    return typingDependencies;
+    return types;
   }
 
   /**
@@ -433,13 +438,13 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<InheritanceDependency> getInheritanceDependencies()
+  public EList<Annotation> getAnnotations()
   {
-    if (inheritanceDependencies == null)
+    if (annotations == null)
     {
-      inheritanceDependencies = new EObjectContainmentEList<InheritanceDependency>(InheritanceDependency.class, this, CodePackage.FIELD__INHERITANCE_DEPENDENCIES);
+      annotations = new EObjectResolvingEList<Annotation>(Annotation.class, this, CodePackage.FIELD__ANNOTATIONS);
     }
-    return inheritanceDependencies;
+    return annotations;
   }
 
   /**
@@ -447,13 +452,13 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceDependency> getReferenceDependencies()
+  public EList<Field> getOverriddenFields()
   {
-    if (referenceDependencies == null)
+    if (overriddenFields == null)
     {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.FIELD__REFERENCE_DEPENDENCIES);
+      overriddenFields = new EObjectResolvingEList<Field>(Field.class, this, CodePackage.FIELD__OVERRIDDEN_FIELDS);
     }
-    return referenceDependencies;
+    return overriddenFields;
   }
 
   /**
@@ -461,35 +466,13 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AnnotationDependency> getAnnotationDependencies()
+  public EList<VersionedElement> getRelatedElements()
   {
-    if (annotationDependencies == null)
+    if (relatedElements == null)
     {
-      annotationDependencies = new EObjectContainmentEList<AnnotationDependency>(AnnotationDependency.class, this, CodePackage.FIELD__ANNOTATION_DEPENDENCIES);
+      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.FIELD__RELATED_ELEMENTS);
     }
-    return annotationDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-        return ((InternalEList<?>)getInheritanceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        return ((InternalEList<?>)getAnnotationDependencies()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return relatedElements;
   }
 
   /**
@@ -516,14 +499,14 @@ public class FieldImpl extends VersionedElementImpl implements Field
         return isImmutable();
       case CodePackage.FIELD__TRANSIENT:
         return isTransient();
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-        return getInheritanceDependencies();
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        return getAnnotationDependencies();
+      case CodePackage.FIELD__TYPES:
+        return getTypes();
+      case CodePackage.FIELD__ANNOTATIONS:
+        return getAnnotations();
+      case CodePackage.FIELD__OVERRIDDEN_FIELDS:
+        return getOverriddenFields();
+      case CodePackage.FIELD__RELATED_ELEMENTS:
+        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -560,21 +543,21 @@ public class FieldImpl extends VersionedElementImpl implements Field
       case CodePackage.FIELD__TRANSIENT:
         setTransient((Boolean)newValue);
         return;
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.FIELD__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
-        getInheritanceDependencies().addAll((Collection<? extends InheritanceDependency>)newValue);
+      case CodePackage.FIELD__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
+      case CodePackage.FIELD__OVERRIDDEN_FIELDS:
+        getOverriddenFields().clear();
+        getOverriddenFields().addAll((Collection<? extends Field>)newValue);
         return;
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
-        getAnnotationDependencies().addAll((Collection<? extends AnnotationDependency>)newValue);
+      case CodePackage.FIELD__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -611,17 +594,17 @@ public class FieldImpl extends VersionedElementImpl implements Field
       case CodePackage.FIELD__TRANSIENT:
         setTransient(TRANSIENT_EDEFAULT);
         return;
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.FIELD__TYPES:
+        getTypes().clear();
         return;
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
+      case CodePackage.FIELD__ANNOTATIONS:
+        getAnnotations().clear();
         return;
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
+      case CodePackage.FIELD__OVERRIDDEN_FIELDS:
+        getOverriddenFields().clear();
         return;
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
+      case CodePackage.FIELD__RELATED_ELEMENTS:
+        getRelatedElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -651,14 +634,14 @@ public class FieldImpl extends VersionedElementImpl implements Field
         return immutable != IMMUTABLE_EDEFAULT;
       case CodePackage.FIELD__TRANSIENT:
         return transient_ != TRANSIENT_EDEFAULT;
-      case CodePackage.FIELD__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.FIELD__INHERITANCE_DEPENDENCIES:
-        return inheritanceDependencies != null && !inheritanceDependencies.isEmpty();
-      case CodePackage.FIELD__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
-      case CodePackage.FIELD__ANNOTATION_DEPENDENCIES:
-        return annotationDependencies != null && !annotationDependencies.isEmpty();
+      case CodePackage.FIELD__TYPES:
+        return types != null && !types.isEmpty();
+      case CodePackage.FIELD__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
+      case CodePackage.FIELD__OVERRIDDEN_FIELDS:
+        return overriddenFields != null && !overriddenFields.isEmpty();
+      case CodePackage.FIELD__RELATED_ELEMENTS:
+        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

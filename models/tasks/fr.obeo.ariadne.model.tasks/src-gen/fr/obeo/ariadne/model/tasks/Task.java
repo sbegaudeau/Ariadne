@@ -1,8 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks;
 
-import fr.obeo.ariadne.model.core.Element;
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -21,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getStatus <em>Status</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getTaskEntries <em>Task Entries</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getElements <em>Elements</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getVersionedElements <em>Versioned Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,7 +37,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Task extends Element
+public interface Task extends VersionedElement
 {
   /**
    * Returns the value of the '<em><b>Url</b></em>' attribute.
@@ -204,19 +212,19 @@ public interface Task extends Element
   EList<TaskEntry> getTaskEntries();
 
   /**
-   * Returns the value of the '<em><b>Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.Element}.
+   * Returns the value of the '<em><b>Versioned Elements</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Elements</em>' reference list isn't clear,
+   * If the meaning of the '<em>Versioned Elements</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.tasks.TasksPackage#getTask_Elements()
+   * @return the value of the '<em>Versioned Elements</em>' reference list.
+   * @see fr.obeo.ariadne.model.tasks.TasksPackage#getTask_VersionedElements()
    * @model
    * @generated
    */
-  EList<Element> getElements();
+  EList<VersionedElement> getVersionedElements();
 
 } // Task

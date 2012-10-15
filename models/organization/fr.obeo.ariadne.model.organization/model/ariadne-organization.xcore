@@ -2,6 +2,14 @@
 @GenModel(editDirectory="/fr.obeo.ariadne.model.organization.edit/src-gen")
 @GenModel(editorDirectory="/fr.obeo.ariadne.model.organization.editor/src-gen")
 @GenModel(fileExtensions="ariadneorganization")
+@GenModel(copyrightText="Copyright (c) 2012 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.organization
 
 import fr.obeo.ariadne.model.code.Component
@@ -10,7 +18,6 @@ import fr.obeo.ariadne.model.continuousintegration.BuildJob
 import fr.obeo.ariadne.model.continuousintegration.BuildServer
 import fr.obeo.ariadne.model.continuousintegration.BuildKind
 
-import fr.obeo.ariadne.model.core.Element
 import fr.obeo.ariadne.model.core.Person
 import fr.obeo.ariadne.model.core.Property
 import fr.obeo.ariadne.model.core.VersionedElement
@@ -35,7 +42,7 @@ class Organization {
 	contains OrganizationDependency[] organizationDependencies
 }
 
-class Category extends Element {
+class Category extends VersionedElement {
 	contains Project[] projects opposite category
 	contains Specification[] specifications
 	container Organization organization opposite categories
@@ -56,7 +63,7 @@ class Project extends VersionedElement {
 class Specification extends VersionedElement {
 }
 
-class OrganizationDependency extends Element {
+class OrganizationDependency extends VersionedElement {
 	OrganizationDependencyKind[] organizationDependencyKinds
 	refers Organization organization
 }

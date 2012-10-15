@@ -1,10 +1,17 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.util;
 
 import fr.obeo.ariadne.model.code.*;
 
-import fr.obeo.ariadne.model.core.Element;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.ecore.EObject;
@@ -80,7 +87,6 @@ public class CodeSwitch<T> extends Switch<T>
         Component component = (Component)theEObject;
         T result = caseComponent(component);
         if (result == null) result = caseVersionedElement(component);
-        if (result == null) result = caseElement(component);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -89,7 +95,6 @@ public class CodeSwitch<T> extends Switch<T>
         ResourcesContainer resourcesContainer = (ResourcesContainer)theEObject;
         T result = caseResourcesContainer(resourcesContainer);
         if (result == null) result = caseVersionedElement(resourcesContainer);
-        if (result == null) result = caseElement(resourcesContainer);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -98,7 +103,6 @@ public class CodeSwitch<T> extends Switch<T>
         Resource resource = (Resource)theEObject;
         T result = caseResource(resource);
         if (result == null) result = caseVersionedElement(resource);
-        if (result == null) result = caseElement(resource);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -108,7 +112,6 @@ public class CodeSwitch<T> extends Switch<T>
         T result = caseGenericResource(genericResource);
         if (result == null) result = caseResource(genericResource);
         if (result == null) result = caseVersionedElement(genericResource);
-        if (result == null) result = caseElement(genericResource);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -124,7 +127,6 @@ public class CodeSwitch<T> extends Switch<T>
         TypesContainer typesContainer = (TypesContainer)theEObject;
         T result = caseTypesContainer(typesContainer);
         if (result == null) result = caseVersionedElement(typesContainer);
-        if (result == null) result = caseElement(typesContainer);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -133,7 +135,6 @@ public class CodeSwitch<T> extends Switch<T>
         Type type = (Type)theEObject;
         T result = caseType(type);
         if (result == null) result = caseVersionedElement(type);
-        if (result == null) result = caseElement(type);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -143,7 +144,6 @@ public class CodeSwitch<T> extends Switch<T>
         T result = caseClassifier(classifier);
         if (result == null) result = caseType(classifier);
         if (result == null) result = caseVersionedElement(classifier);
-        if (result == null) result = caseElement(classifier);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -152,7 +152,6 @@ public class CodeSwitch<T> extends Switch<T>
         Field field = (Field)theEObject;
         T result = caseField(field);
         if (result == null) result = caseVersionedElement(field);
-        if (result == null) result = caseElement(field);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -161,7 +160,6 @@ public class CodeSwitch<T> extends Switch<T>
         Constructor constructor = (Constructor)theEObject;
         T result = caseConstructor(constructor);
         if (result == null) result = caseVersionedElement(constructor);
-        if (result == null) result = caseElement(constructor);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -170,7 +168,6 @@ public class CodeSwitch<T> extends Switch<T>
         Operation operation = (Operation)theEObject;
         T result = caseOperation(operation);
         if (result == null) result = caseVersionedElement(operation);
-        if (result == null) result = caseElement(operation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -179,7 +176,6 @@ public class CodeSwitch<T> extends Switch<T>
         Parameter parameter = (Parameter)theEObject;
         T result = caseParameter(parameter);
         if (result == null) result = caseVersionedElement(parameter);
-        if (result == null) result = caseElement(parameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -189,7 +185,6 @@ public class CodeSwitch<T> extends Switch<T>
         T result = caseAnnotation(annotation);
         if (result == null) result = caseType(annotation);
         if (result == null) result = caseVersionedElement(annotation);
-        if (result == null) result = caseElement(annotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,15 +192,15 @@ public class CodeSwitch<T> extends Switch<T>
       {
         AnnotationField annotationField = (AnnotationField)theEObject;
         T result = caseAnnotationField(annotationField);
+        if (result == null) result = caseVersionedElement(annotationField);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CodePackage.REQUIRED_SERVICE:
+      case CodePackage.REFERENCED_SERVICE:
       {
-        RequiredService requiredService = (RequiredService)theEObject;
-        T result = caseRequiredService(requiredService);
-        if (result == null) result = caseVersionedElement(requiredService);
-        if (result == null) result = caseElement(requiredService);
+        ReferencedService referencedService = (ReferencedService)theEObject;
+        T result = caseReferencedService(referencedService);
+        if (result == null) result = caseVersionedElement(referencedService);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -214,75 +209,6 @@ public class CodeSwitch<T> extends Switch<T>
         ProvidedService providedService = (ProvidedService)theEObject;
         T result = caseProvidedService(providedService);
         if (result == null) result = caseVersionedElement(providedService);
-        if (result == null) result = caseElement(providedService);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.DEPENDENCY:
-      {
-        Dependency dependency = (Dependency)theEObject;
-        T result = caseDependency(dependency);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.CONSTRAINT:
-      {
-        Constraint constraint = (Constraint)theEObject;
-        T result = caseConstraint(constraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.VERSION_RANGE_CONSTRAINT:
-      {
-        VersionRangeConstraint versionRangeConstraint = (VersionRangeConstraint)theEObject;
-        T result = caseVersionRangeConstraint(versionRangeConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.EXPRESSION_CONSTRAINT:
-      {
-        ExpressionConstraint expressionConstraint = (ExpressionConstraint)theEObject;
-        T result = caseExpressionConstraint(expressionConstraint);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.TYPING_DEPENDENCY:
-      {
-        TypingDependency typingDependency = (TypingDependency)theEObject;
-        T result = caseTypingDependency(typingDependency);
-        if (result == null) result = caseDependency(typingDependency);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.INHERITANCE_DEPENDENCY:
-      {
-        InheritanceDependency inheritanceDependency = (InheritanceDependency)theEObject;
-        T result = caseInheritanceDependency(inheritanceDependency);
-        if (result == null) result = caseDependency(inheritanceDependency);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.REFERENCE_DEPENDENCY:
-      {
-        ReferenceDependency referenceDependency = (ReferenceDependency)theEObject;
-        T result = caseReferenceDependency(referenceDependency);
-        if (result == null) result = caseDependency(referenceDependency);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.CONTAINMENT_DEPENDENCY:
-      {
-        ContainmentDependency containmentDependency = (ContainmentDependency)theEObject;
-        T result = caseContainmentDependency(containmentDependency);
-        if (result == null) result = caseDependency(containmentDependency);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CodePackage.ANNOTATION_DEPENDENCY:
-      {
-        AnnotationDependency annotationDependency = (AnnotationDependency)theEObject;
-        T result = caseAnnotationDependency(annotationDependency);
-        if (result == null) result = caseDependency(annotationDependency);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -515,17 +441,17 @@ public class CodeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Required Service</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Referenced Service</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Required Service</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Referenced Service</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRequiredService(RequiredService object)
+  public T caseReferencedService(ReferencedService object)
   {
     return null;
   }
@@ -542,166 +468,6 @@ public class CodeSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProvidedService(ProvidedService object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDependency(Dependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseConstraint(Constraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Version Range Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Version Range Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVersionRangeConstraint(VersionRangeConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Expression Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expression Constraint</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpressionConstraint(ExpressionConstraint object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Typing Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Typing Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTypingDependency(TypingDependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Inheritance Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Inheritance Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInheritanceDependency(InheritanceDependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Reference Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reference Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReferenceDependency(ReferenceDependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Containment Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Containment Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseContainmentDependency(ContainmentDependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Annotation Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Annotation Dependency</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAnnotationDependency(AnnotationDependency object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseElement(Element object)
   {
     return null;
   }

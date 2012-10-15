@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -131,13 +139,13 @@ public interface CodeFactory extends EFactory
   AnnotationField createAnnotationField();
 
   /**
-   * Returns a new object of class '<em>Required Service</em>'.
+   * Returns a new object of class '<em>Referenced Service</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Required Service</em>'.
+   * @return a new object of class '<em>Referenced Service</em>'.
    * @generated
    */
-  RequiredService createRequiredService();
+  ReferencedService createReferencedService();
 
   /**
    * Returns a new object of class '<em>Provided Service</em>'.
@@ -147,78 +155,6 @@ public interface CodeFactory extends EFactory
    * @generated
    */
   ProvidedService createProvidedService();
-
-  /**
-   * Returns a new object of class '<em>Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Dependency</em>'.
-   * @generated
-   */
-  Dependency createDependency();
-
-  /**
-   * Returns a new object of class '<em>Version Range Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Version Range Constraint</em>'.
-   * @generated
-   */
-  VersionRangeConstraint createVersionRangeConstraint();
-
-  /**
-   * Returns a new object of class '<em>Expression Constraint</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression Constraint</em>'.
-   * @generated
-   */
-  ExpressionConstraint createExpressionConstraint();
-
-  /**
-   * Returns a new object of class '<em>Typing Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Typing Dependency</em>'.
-   * @generated
-   */
-  TypingDependency createTypingDependency();
-
-  /**
-   * Returns a new object of class '<em>Inheritance Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Inheritance Dependency</em>'.
-   * @generated
-   */
-  InheritanceDependency createInheritanceDependency();
-
-  /**
-   * Returns a new object of class '<em>Reference Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reference Dependency</em>'.
-   * @generated
-   */
-  ReferenceDependency createReferenceDependency();
-
-  /**
-   * Returns a new object of class '<em>Containment Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Containment Dependency</em>'.
-   * @generated
-   */
-  ContainmentDependency createContainmentDependency();
-
-  /**
-   * Returns a new object of class '<em>Annotation Dependency</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Annotation Dependency</em>'.
-   * @generated
-   */
-  AnnotationDependency createAnnotationDependency();
 
   /**
    * Returns the package supported by this factory.

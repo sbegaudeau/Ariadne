@@ -1,10 +1,20 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.continuousintegration.impl;
 
 import fr.obeo.ariadne.model.continuousintegration.BuildJob;
 import fr.obeo.ariadne.model.continuousintegration.BuildServer;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
+
+import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import java.util.Collection;
 
@@ -17,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -29,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildServerImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildServerImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildServerImpl#getBuildServerKind <em>Build Server Kind</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildServerImpl#getBuildJobs <em>Build Jobs</em>}</li>
@@ -38,28 +46,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class BuildServerImpl extends MinimalEObjectImpl.Container implements BuildServer
+public class BuildServerImpl extends VersionedElementImpl implements BuildServer
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -129,29 +117,6 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
   protected EClass eStaticClass()
   {
     return ContinuousintegrationPackage.Literals.BUILD_SERVER;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ContinuousintegrationPackage.BUILD_SERVER__NAME, oldName, name));
   }
 
   /**
@@ -240,8 +205,6 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
   {
     switch (featureID)
     {
-      case ContinuousintegrationPackage.BUILD_SERVER__NAME:
-        return getName();
       case ContinuousintegrationPackage.BUILD_SERVER__URL:
         return getUrl();
       case ContinuousintegrationPackage.BUILD_SERVER__BUILD_SERVER_KIND:
@@ -263,9 +226,6 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
   {
     switch (featureID)
     {
-      case ContinuousintegrationPackage.BUILD_SERVER__NAME:
-        setName((String)newValue);
-        return;
       case ContinuousintegrationPackage.BUILD_SERVER__URL:
         setUrl((String)newValue);
         return;
@@ -290,9 +250,6 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
   {
     switch (featureID)
     {
-      case ContinuousintegrationPackage.BUILD_SERVER__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case ContinuousintegrationPackage.BUILD_SERVER__URL:
         setUrl(URL_EDEFAULT);
         return;
@@ -316,8 +273,6 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
   {
     switch (featureID)
     {
-      case ContinuousintegrationPackage.BUILD_SERVER__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ContinuousintegrationPackage.BUILD_SERVER__URL:
         return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
       case ContinuousintegrationPackage.BUILD_SERVER__BUILD_SERVER_KIND:
@@ -339,9 +294,7 @@ public class BuildServerImpl extends MinimalEObjectImpl.Container implements Bui
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", url: ");
+    result.append(" (url: ");
     result.append(url);
     result.append(", buildServerKind: ");
     result.append(buildServerKind);

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -18,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.obeo.ariadne.model.code.ClasspathEntry#getInputFolder <em>Input Folder</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.ClasspathEntry#getOutputFolder <em>Output Folder</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.ClasspathEntry#getTypesContainers <em>Types Containers</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.ClasspathEntry#getComponent <em>Component</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,5 +132,33 @@ public interface ClasspathEntry extends EObject
    * @generated
    */
   EList<TypesContainer> getTypesContainers();
+
+  /**
+   * Returns the value of the '<em><b>Component</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.code.Component#getClasspathEntries <em>Classpath Entries</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Component</em>' container reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Component</em>' container reference.
+   * @see #setComponent(Component)
+   * @see fr.obeo.ariadne.model.code.CodePackage#getClasspathEntry_Component()
+   * @see fr.obeo.ariadne.model.code.Component#getClasspathEntries
+   * @model opposite="classpathEntries" transient="false"
+   * @generated
+   */
+  Component getComponent();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.code.ClasspathEntry#getComponent <em>Component</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Component</em>' container reference.
+   * @see #getComponent()
+   * @generated
+   */
+  void setComponent(Component value);
 
 } // ClasspathEntry

@@ -1,7 +1,17 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.scm.provider;
 
+
+import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import fr.obeo.ariadne.model.scm.Repository;
 import fr.obeo.ariadne.model.scm.ScmFactory;
@@ -17,15 +27,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -35,7 +42,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class RepositoryItemProvider
-  extends ItemProviderAdapter
+  extends VersionedElementItemProvider
   implements
     IEditingDomainItemProvider,
     IStructuredItemContentProvider,
@@ -67,32 +74,8 @@ public class RepositoryItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addNamePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Name feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addNamePropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Repository_name_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Repository_name_feature", "_UI_Repository_type"),
-         ScmPackage.Literals.REPOSITORY__NAME,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
   }
 
   /**
@@ -171,9 +154,6 @@ public class RepositoryItemProvider
 
     switch (notification.getFeatureID(Repository.class))
     {
-      case ScmPackage.REPOSITORY__NAME:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-        return;
       case ScmPackage.REPOSITORY__BRANCHES:
       case ScmPackage.REPOSITORY__COMMITS:
       case ScmPackage.REPOSITORY__TAGS:

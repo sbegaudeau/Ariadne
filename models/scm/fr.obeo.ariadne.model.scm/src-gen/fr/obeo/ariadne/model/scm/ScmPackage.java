@@ -1,6 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.scm;
+
+import fr.obeo.ariadne.model.core.CorePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +32,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.ariadne.model.scm.ScmFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.scm.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.scm.editor/src-gen' fileExtensions='ariadnescm'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.scm.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.scm.editor/src-gen' fileExtensions='ariadnescm' copyrightText='Copyright (c) 2012 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Stephane Begaudeau (Obeo) - initial API and implementation'"
  * @generated
  */
 public interface ScmPackage extends EPackage
@@ -76,7 +86,52 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__NAME = 0;
+  int REPOSITORY__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -85,7 +140,7 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__BRANCHES = 1;
+  int REPOSITORY__BRANCHES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Commits</b></em>' containment reference list.
@@ -94,7 +149,7 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__COMMITS = 2;
+  int REPOSITORY__COMMITS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -103,7 +158,7 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__TAGS = 3;
+  int REPOSITORY__TAGS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Repository</em>' class.
@@ -112,7 +167,7 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY_FEATURE_COUNT = 4;
+  int REPOSITORY_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Repository</em>' class.
@@ -121,7 +176,7 @@ public interface ScmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY_OPERATION_COUNT = 0;
+  int REPOSITORY_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.scm.impl.BranchImpl <em>Branch</em>}' class.
@@ -390,17 +445,6 @@ public interface ScmPackage extends EPackage
    * @generated
    */
   EClass getRepository();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.scm.Repository#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.obeo.ariadne.model.scm.Repository#getName()
-   * @see #getRepository()
-   * @generated
-   */
-  EAttribute getRepository_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.scm.Repository#getBranches <em>Branches</em>}'.
@@ -683,14 +727,6 @@ public interface ScmPackage extends EPackage
      * @generated
      */
     EClass REPOSITORY = eINSTANCE.getRepository();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REPOSITORY__NAME = eINSTANCE.getRepository_Name();
 
     /**
      * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -15,8 +23,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getReferenceDependencies <em>Reference Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getReferencedService <em>Referenced Service</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,35 +61,45 @@ public interface ProvidedService extends VersionedElement
   void setIdentifier(String value);
 
   /**
-   * Returns the value of the '<em><b>Typing Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.TypingDependency}.
+   * Returns the value of the '<em><b>Types</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Type}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typing Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Types</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typing Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getProvidedService_TypingDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Types</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getProvidedService_Types()
+   * @model
    * @generated
    */
-  EList<TypingDependency> getTypingDependencies();
+  EList<Type> getTypes();
 
   /**
-   * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
+   * Returns the value of the '<em><b>Referenced Service</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reference Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Referenced Service</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getProvidedService_ReferenceDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Referenced Service</em>' reference.
+   * @see #setReferencedService(ReferencedService)
+   * @see fr.obeo.ariadne.model.code.CodePackage#getProvidedService_ReferencedService()
+   * @model
    * @generated
    */
-  EList<ReferenceDependency> getReferenceDependencies();
+  ReferencedService getReferencedService();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.code.ProvidedService#getReferencedService <em>Referenced Service</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Referenced Service</em>' reference.
+   * @see #getReferencedService()
+   * @generated
+   */
+  void setReferencedService(ReferencedService value);
 
 } // ProvidedService

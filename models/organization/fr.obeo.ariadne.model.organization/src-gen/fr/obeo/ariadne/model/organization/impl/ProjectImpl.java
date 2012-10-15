@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.organization.impl;
 
@@ -8,6 +16,7 @@ import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.environment.DevelopmentEnvironment;
 import fr.obeo.ariadne.model.environment.RuntimeEnvironment;
+
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
@@ -15,6 +24,7 @@ import fr.obeo.ariadne.model.organization.Release;
 import fr.obeo.ariadne.model.organization.Specification;
 
 import fr.obeo.ariadne.model.scm.Repository;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -26,6 +36,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;

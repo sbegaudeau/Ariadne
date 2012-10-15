@@ -1,9 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
 
-import fr.obeo.ariadne.model.code.CodeFactory;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.ProvidedService;
 
@@ -16,8 +23,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -69,6 +74,8 @@ public class ProvidedServiceItemProvider
       super.getPropertyDescriptors(object);
 
       addIdentifierPropertyDescriptor(object);
+      addTypesPropertyDescriptor(object);
+      addReferencedServicePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -97,37 +104,49 @@ public class ProvidedServiceItemProvider
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * This adds a property descriptor for the Types feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+  protected void addTypesPropertyDescriptor(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.PROVIDED_SERVICE__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES);
-    }
-    return childrenFeatures;
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ProvidedService_types_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_ProvidedService_types_feature", "_UI_ProvidedService_type"),
+         CodePackage.Literals.PROVIDED_SERVICE__TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
+   * This adds a property descriptor for the Referenced Service feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
+  protected void addReferencedServicePropertyDescriptor(Object object)
   {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
-
-    return super.getChildFeature(object, child);
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ProvidedService_referencedService_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_ProvidedService_referencedService_feature", "_UI_ProvidedService_type"),
+         CodePackage.Literals.PROVIDED_SERVICE__REFERENCED_SERVICE,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
@@ -174,10 +193,6 @@ public class ProvidedServiceItemProvider
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
     }
     super.notifyChanged(notification);
   }
@@ -193,16 +208,6 @@ public class ProvidedServiceItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.PROVIDED_SERVICE__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
   }
 
   /**

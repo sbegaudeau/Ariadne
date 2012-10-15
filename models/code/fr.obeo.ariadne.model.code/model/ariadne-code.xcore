@@ -2,18 +2,25 @@
 @GenModel(editDirectory="/fr.obeo.ariadne.model.code.edit/src-gen")
 @GenModel(editorDirectory="/fr.obeo.ariadne.model.code.editor/src-gen")
 @GenModel(fileExtensions="ariadnecode")
+@GenModel(copyrightText="Copyright (c) 2012 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.code
 
 import fr.obeo.ariadne.model.core.VersionedElement
-import fr.obeo.ariadne.model.core.Version
-import fr.obeo.ariadne.model.core.Property
 
 class Component extends VersionedElement {
 	String identifier
-	contains ClasspathEntry[] classpathEntries
+	contains ClasspathEntry[] classpathEntries opposite component
 	contains ResourcesContainer[] resourcesContainers
-	contains ReferenceDependency[] referenceDependencies
-	contains ContainmentDependency[] containmentDependencies
+	contains Component[] subcomponents
+	contains ReferencedService[] referencedServices
+	contains ProvidedService[] providedServices
 }
 
 class ResourcesContainer extends VersionedElement {
@@ -23,9 +30,7 @@ class ResourcesContainer extends VersionedElement {
 }
 
 abstract class Resource extends VersionedElement {
-	contains InheritanceDependency inheritanceDependency
-	contains ReferenceDependency[] referenceDependencies
-	contains ContainmentDependency[] containmentDependencies
+	refers VersionedElement[] relatedElements
 }
 
 class GenericResource extends Resource {
@@ -56,6 +61,7 @@ class ClasspathEntry {
 	String inputFolder
 	String outputFolder
 	contains TypesContainer[] typesContainers
+	container Component component opposite classpathEntries
 }
 
 enum ClasspathEntryKind {
@@ -72,12 +78,9 @@ class TypesContainer extends VersionedElement {
 abstract class Type extends VersionedElement {
 	String qualifiedName
 	VisibilityKind visibility
-	contains Type[] types
-	contains TypingDependency[] typingDependencies
-	contains InheritanceDependency[] inheritanceDependencies
-	contains ReferenceDependency[] referenceDependencies
-	contains ContainmentDependency[] containmentDependencies
-	contains AnnotationDependency[] annotationDependencies
+	contains Type[] internalTypes
+	refers Annotation[] annotations
+	refers VersionedElement[] relatedElements
 }
 
 class Classifier extends Type {
@@ -86,8 +89,10 @@ class Classifier extends Type {
 	boolean final
 	boolean immutable
 	boolean ^abstract
+	refers Type[] superTypes
+	refers Type[] typeParameters
 	contains Field[] fields
-	contains Operation[] operations
+	contains Operation[] operations opposite classifier
 }
 
 enum ClassifierKind {
@@ -106,10 +111,10 @@ class Field extends VersionedElement {
 	boolean final
 	boolean immutable
 	boolean ^transient
-	contains TypingDependency[] typingDependencies
-	contains InheritanceDependency[] inheritanceDependencies
-	contains ReferenceDependency[] referenceDependencies
-	contains AnnotationDependency[] annotationDependencies
+	refers Type[] types
+	refers Annotation[] annotations
+	refers derived Field[] overriddenFields
+	refers VersionedElement[] relatedElements
 }
 
 class Constructor extends VersionedElement {
@@ -121,10 +126,10 @@ class Constructor extends VersionedElement {
 	boolean immutable
 	boolean ^transient
 	contains Parameter[] parameters
-	contains TypingDependency[] typingDependencies
-	contains InheritanceDependency[] inheritanceDependencies
-	contains ReferenceDependency[] referenceDependencies
-	contains AnnotationDependency[] annotationDependencies
+	refers Type[] types
+	refers Annotation[] annotations
+	refers derived Constructor[] overriddenConstructors
+	refers VersionedElement[] relatedElements
 }
 
 class Operation extends VersionedElement {
@@ -135,11 +140,13 @@ class Operation extends VersionedElement {
 	boolean final
 	boolean immutable
 	boolean ^transient
-	contains Parameter[] parameters
-	contains TypingDependency[] typingDependencies
-	contains InheritanceDependency[] inheritanceDependencies
-	contains ReferenceDependency[] referenceDependencies
-	contains AnnotationDependency[] annotationDependencies
+	contains Parameter[] parameters opposite operation
+	container Classifier classifier opposite operations
+	refers Type[] returnTypes
+	refers Type[] types
+	refers Annotation[] annotations
+	refers derived Operation[] overriddenOperations
+	refers VersionedElement[] relatedElements
 }
 
 class Parameter extends VersionedElement {
@@ -147,16 +154,18 @@ class Parameter extends VersionedElement {
 	VisibilityKind visibility
 	boolean final
 	boolean immutable
-	contains TypingDependency[] typingDependencies
-	contains ReferenceDependency[] referenceDependencies
-	contains AnnotationDependency[] annotationDependencies
+	refers Type[] types
+	refers Annotation[] annotations
+	refers VersionedElement[] relatedElements
+	container Operation operation opposite parameters
 }
 
 class Annotation extends Type {
 	contains AnnotationField[] annotationFields
 }
 
-class AnnotationField {
+class AnnotationField extends VersionedElement {
+	String defaultValue
 	String qualifiedName
 }
 
@@ -167,55 +176,14 @@ enum VisibilityKind {
 	PRIVATE
 }
 
-class RequiredService extends VersionedElement {
+class ReferencedService extends VersionedElement {
 	String identifier
-	contains TypingDependency[] typingDependencies
-	contains ReferenceDependency[] referenceDependencies
+	refers Type[] types
+	refers ProvidedService[] providedServices
 }
 
 class ProvidedService extends VersionedElement {
 	String identifier
-	contains TypingDependency[] typingDependencies
-	contains ReferenceDependency[] referenceDependencies
-}
-
-class Dependency {
-	String identifier
-	contains Constraint[] constraints
-	refers Property[] properties
-}
-
-abstract class Constraint {
-	
-}
-
-class VersionRangeConstraint {
-	boolean includeLowerVersionBound
-	boolean includeUpperVersionBound
-	contains Version lowerVersion
-	contains Version upperVersion
-}
-
-class ExpressionConstraint {
-	String expression
-	String language
-}
-
-class TypingDependency extends Dependency {
-	String[] typeParameters
-}
-
-class InheritanceDependency extends Dependency {
-	String[] typeParameters
-}
-
-class ReferenceDependency extends Dependency {
-	String kind
-}
-
-class ContainmentDependency extends Dependency {
-}
-
-class AnnotationDependency extends Dependency {
-	String[] values
+	refers Type[] types
+	refers ReferencedService referencedService
 }

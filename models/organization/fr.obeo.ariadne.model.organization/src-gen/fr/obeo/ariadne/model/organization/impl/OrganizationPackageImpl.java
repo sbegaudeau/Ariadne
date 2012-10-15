@@ -1,13 +1,23 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.organization.impl;
 
 import fr.obeo.ariadne.model.code.CodePackage;
 
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
+
 import fr.obeo.ariadne.model.core.CorePackage;
 
 import fr.obeo.ariadne.model.environment.EnvironmentPackage;
+
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.Organization;
 import fr.obeo.ariadne.model.organization.OrganizationDependency;
@@ -21,6 +31,7 @@ import fr.obeo.ariadne.model.organization.Specification;
 import fr.obeo.ariadne.model.scm.ScmPackage;
 
 import fr.obeo.ariadne.model.tasks.TasksPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -136,10 +147,10 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     isInited = true;
 
     // Initialize simple dependencies
-    EnvironmentPackage.eINSTANCE.eClass();
-    ContinuousintegrationPackage.eINSTANCE.eClass();
-    TasksPackage.eINSTANCE.eClass();
     ScmPackage.eINSTANCE.eClass();
+    TasksPackage.eINSTANCE.eClass();
+    ContinuousintegrationPackage.eINSTANCE.eClass();
+    EnvironmentPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theOrganizationPackage.createPackageContents();
@@ -607,10 +618,10 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    categoryEClass.getESuperTypes().add(theCorePackage.getElement());
+    categoryEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     projectEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     specificationEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
-    organizationDependencyEClass.getESuperTypes().add(theCorePackage.getElement());
+    organizationDependencyEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     releaseEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
     // Initialize classes, features, and operations; add parameters

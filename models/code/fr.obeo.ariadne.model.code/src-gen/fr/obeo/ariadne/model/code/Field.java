@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -21,10 +29,10 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Field#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Field#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Field#isTransient <em>Transient</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Field#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Field#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Field#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Field#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Field#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Field#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Field#getOverriddenFields <em>Overridden Fields</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Field#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -220,67 +228,67 @@ public interface Field extends VersionedElement
   void setTransient(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Typing Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.TypingDependency}.
+   * Returns the value of the '<em><b>Types</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Type}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Typing Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Types</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Typing Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getField_TypingDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Types</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getField_Types()
+   * @model
    * @generated
    */
-  EList<TypingDependency> getTypingDependencies();
+  EList<Type> getTypes();
 
   /**
-   * Returns the value of the '<em><b>Inheritance Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.InheritanceDependency}.
+   * Returns the value of the '<em><b>Annotations</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Annotation}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inheritance Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Annotations</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inheritance Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getField_InheritanceDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Annotations</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getField_Annotations()
+   * @model
    * @generated
    */
-  EList<InheritanceDependency> getInheritanceDependencies();
+  EList<Annotation> getAnnotations();
 
   /**
-   * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
+   * Returns the value of the '<em><b>Overridden Fields</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Field}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reference Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Overridden Fields</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getField_ReferenceDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Overridden Fields</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getField_OverriddenFields()
+   * @model derived="true"
    * @generated
    */
-  EList<ReferenceDependency> getReferenceDependencies();
+  EList<Field> getOverriddenFields();
 
   /**
-   * Returns the value of the '<em><b>Annotation Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.AnnotationDependency}.
+   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Annotation Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Annotation Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getField_AnnotationDependencies()
-   * @model containment="true"
+   * @return the value of the '<em>Related Elements</em>' reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getField_RelatedElements()
+   * @model
    * @generated
    */
-  EList<AnnotationDependency> getAnnotationDependencies();
+  EList<VersionedElement> getRelatedElements();
 
 } // Field

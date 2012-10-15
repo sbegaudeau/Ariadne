@@ -1,14 +1,23 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
-import fr.obeo.ariadne.model.code.AnnotationDependency;
+import fr.obeo.ariadne.model.code.Annotation;
 import fr.obeo.ariadne.model.code.CodePackage;
-import fr.obeo.ariadne.model.code.InheritanceDependency;
+import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Parameter;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
-import fr.obeo.ariadne.model.code.TypingDependency;
+import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.VisibilityKind;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
@@ -24,8 +33,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,9 +47,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#isImmutable <em>Immutable</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getRelatedElements <em>Related Elements</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,34 +139,34 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
   protected boolean immutable = IMMUTABLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Type> types;
 
   /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
+   * @see #getAnnotations()
    * @generated
    * @ordered
    */
-  protected EList<ReferenceDependency> referenceDependencies;
+  protected EList<Annotation> annotations;
 
   /**
-   * The cached value of the '{@link #getAnnotationDependencies() <em>Annotation Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAnnotationDependencies()
+   * @see #getRelatedElements()
    * @generated
    * @ordered
    */
-  protected EList<AnnotationDependency> annotationDependencies;
+  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -276,13 +286,13 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public EList<Type> getTypes()
   {
-    if (typingDependencies == null)
+    if (types == null)
     {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.PARAMETER__TYPING_DEPENDENCIES);
+      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.PARAMETER__TYPES);
     }
-    return typingDependencies;
+    return types;
   }
 
   /**
@@ -290,13 +300,13 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceDependency> getReferenceDependencies()
+  public EList<Annotation> getAnnotations()
   {
-    if (referenceDependencies == null)
+    if (annotations == null)
     {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.PARAMETER__REFERENCE_DEPENDENCIES);
+      annotations = new EObjectResolvingEList<Annotation>(Annotation.class, this, CodePackage.PARAMETER__ANNOTATIONS);
     }
-    return referenceDependencies;
+    return annotations;
   }
 
   /**
@@ -304,13 +314,76 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AnnotationDependency> getAnnotationDependencies()
+  public EList<VersionedElement> getRelatedElements()
   {
-    if (annotationDependencies == null)
+    if (relatedElements == null)
     {
-      annotationDependencies = new EObjectContainmentEList<AnnotationDependency>(AnnotationDependency.class, this, CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES);
+      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.PARAMETER__RELATED_ELEMENTS);
     }
-    return annotationDependencies;
+    return relatedElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Operation getOperation()
+  {
+    if (eContainerFeatureID() != CodePackage.PARAMETER__OPERATION) return null;
+    return (Operation)eContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOperation(Operation newOperation, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newOperation, CodePackage.PARAMETER__OPERATION, msgs);
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOperation(Operation newOperation)
+  {
+    if (newOperation != eInternalContainer() || (eContainerFeatureID() != CodePackage.PARAMETER__OPERATION && newOperation != null))
+    {
+      if (EcoreUtil.isAncestor(this, newOperation))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newOperation != null)
+        msgs = ((InternalEObject)newOperation).eInverseAdd(this, CodePackage.OPERATION__PARAMETERS, Operation.class, msgs);
+      msgs = basicSetOperation(newOperation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.PARAMETER__OPERATION, newOperation, newOperation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CodePackage.PARAMETER__OPERATION:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetOperation((Operation)otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
@@ -323,14 +396,26 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
   {
     switch (featureID)
     {
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        return ((InternalEList<?>)getAnnotationDependencies()).basicRemove(otherEnd, msgs);
+      case CodePackage.PARAMETER__OPERATION:
+        return basicSetOperation(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID())
+    {
+      case CodePackage.PARAMETER__OPERATION:
+        return eInternalContainer().eInverseRemove(this, CodePackage.OPERATION__PARAMETERS, Operation.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -351,12 +436,14 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return isFinal();
       case CodePackage.PARAMETER__IMMUTABLE:
         return isImmutable();
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        return getAnnotationDependencies();
+      case CodePackage.PARAMETER__TYPES:
+        return getTypes();
+      case CodePackage.PARAMETER__ANNOTATIONS:
+        return getAnnotations();
+      case CodePackage.PARAMETER__RELATED_ELEMENTS:
+        return getRelatedElements();
+      case CodePackage.PARAMETER__OPERATION:
+        return getOperation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -384,17 +471,20 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
       case CodePackage.PARAMETER__IMMUTABLE:
         setImmutable((Boolean)newValue);
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.PARAMETER__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
+      case CodePackage.PARAMETER__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
-        getAnnotationDependencies().addAll((Collection<? extends AnnotationDependency>)newValue);
+      case CodePackage.PARAMETER__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
+        return;
+      case CodePackage.PARAMETER__OPERATION:
+        setOperation((Operation)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -422,14 +512,17 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
       case CodePackage.PARAMETER__IMMUTABLE:
         setImmutable(IMMUTABLE_EDEFAULT);
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.PARAMETER__TYPES:
+        getTypes().clear();
         return;
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
+      case CodePackage.PARAMETER__ANNOTATIONS:
+        getAnnotations().clear();
         return;
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
+      case CodePackage.PARAMETER__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        return;
+      case CodePackage.PARAMETER__OPERATION:
+        setOperation((Operation)null);
         return;
     }
     super.eUnset(featureID);
@@ -453,12 +546,14 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return final_ != FINAL_EDEFAULT;
       case CodePackage.PARAMETER__IMMUTABLE:
         return immutable != IMMUTABLE_EDEFAULT;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        return annotationDependencies != null && !annotationDependencies.isEmpty();
+      case CodePackage.PARAMETER__TYPES:
+        return types != null && !types.isEmpty();
+      case CodePackage.PARAMETER__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
+      case CodePackage.PARAMETER__RELATED_ELEMENTS:
+        return relatedElements != null && !relatedElements.isEmpty();
+      case CodePackage.PARAMETER__OPERATION:
+        return getOperation() != null;
     }
     return super.eIsSet(featureID);
   }

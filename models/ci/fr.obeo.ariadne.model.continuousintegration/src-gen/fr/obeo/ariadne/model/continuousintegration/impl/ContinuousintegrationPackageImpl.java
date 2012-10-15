@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.continuousintegration.impl;
 
@@ -147,7 +155,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBuildServer_Name()
+  public EAttribute getBuildServer_Url()
   {
     return (EAttribute)buildServerEClass.getEStructuralFeatures().get(0);
   }
@@ -157,7 +165,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBuildServer_Url()
+  public EAttribute getBuildServer_BuildServerKind()
   {
     return (EAttribute)buildServerEClass.getEStructuralFeatures().get(1);
   }
@@ -167,19 +175,9 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBuildServer_BuildServerKind()
-  {
-    return (EAttribute)buildServerEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getBuildServer_BuildJobs()
   {
-    return (EReference)buildServerEClass.getEStructuralFeatures().get(3);
+    return (EReference)buildServerEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -353,7 +351,6 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
 
     // Create classes and their features
     buildServerEClass = createEClass(BUILD_SERVER);
-    createEAttribute(buildServerEClass, BUILD_SERVER__NAME);
     createEAttribute(buildServerEClass, BUILD_SERVER__URL);
     createEAttribute(buildServerEClass, BUILD_SERVER__BUILD_SERVER_KIND);
     createEReference(buildServerEClass, BUILD_SERVER__BUILD_JOBS);
@@ -403,8 +400,8 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
     CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
     CodePackage theCodePackage = (CodePackage)EPackage.Registry.INSTANCE.getEPackage(CodePackage.eNS_URI);
 
     // Create type parameters
@@ -412,13 +409,13 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    buildJobEClass.getESuperTypes().add(theCorePackage.getElement());
+    buildServerEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
+    buildJobEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     buildDependencyEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     promotionLocationEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
     // Initialize classes, features, and operations; add parameters
     initEClass(buildServerEClass, BuildServer.class, "BuildServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBuildServer_Name(), theEcorePackage.getEString(), "name", null, 0, 1, BuildServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBuildServer_Url(), theEcorePackage.getEString(), "url", null, 0, 1, BuildServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBuildServer_BuildServerKind(), theEcorePackage.getEString(), "buildServerKind", null, 0, 1, BuildServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBuildServer_BuildJobs(), this.getBuildJob(), null, "buildJobs", null, 0, -1, BuildServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1,8 +1,15 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.environment.util;
 
-import fr.obeo.ariadne.model.core.Element;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.environment.*;
@@ -79,7 +86,7 @@ public class EnvironmentSwitch<T> extends Switch<T>
       {
         Environment environment = (Environment)theEObject;
         T result = caseEnvironment(environment);
-        if (result == null) result = caseElement(environment);
+        if (result == null) result = caseVersionedElement(environment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -88,7 +95,6 @@ public class EnvironmentSwitch<T> extends Switch<T>
         EnvironmentComponent environmentComponent = (EnvironmentComponent)theEObject;
         T result = caseEnvironmentComponent(environmentComponent);
         if (result == null) result = caseVersionedElement(environmentComponent);
-        if (result == null) result = caseElement(environmentComponent);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -97,7 +103,7 @@ public class EnvironmentSwitch<T> extends Switch<T>
         DevelopmentEnvironment developmentEnvironment = (DevelopmentEnvironment)theEObject;
         T result = caseDevelopmentEnvironment(developmentEnvironment);
         if (result == null) result = caseEnvironment(developmentEnvironment);
-        if (result == null) result = caseElement(developmentEnvironment);
+        if (result == null) result = caseVersionedElement(developmentEnvironment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,7 +112,6 @@ public class EnvironmentSwitch<T> extends Switch<T>
         DevelopmentTool developmentTool = (DevelopmentTool)theEObject;
         T result = caseDevelopmentTool(developmentTool);
         if (result == null) result = caseVersionedElement(developmentTool);
-        if (result == null) result = caseElement(developmentTool);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -115,7 +120,7 @@ public class EnvironmentSwitch<T> extends Switch<T>
         RuntimeEnvironment runtimeEnvironment = (RuntimeEnvironment)theEObject;
         T result = caseRuntimeEnvironment(runtimeEnvironment);
         if (result == null) result = caseEnvironment(runtimeEnvironment);
-        if (result == null) result = caseElement(runtimeEnvironment);
+        if (result == null) result = caseVersionedElement(runtimeEnvironment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,22 +204,6 @@ public class EnvironmentSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRuntimeEnvironment(RuntimeEnvironment object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseElement(Element object)
   {
     return null;
   }

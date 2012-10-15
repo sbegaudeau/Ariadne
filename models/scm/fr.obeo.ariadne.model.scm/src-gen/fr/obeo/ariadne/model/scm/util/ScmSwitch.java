@@ -1,6 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.scm.util;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.scm.*;
 
@@ -76,6 +86,7 @@ public class ScmSwitch<T> extends Switch<T>
       {
         Repository repository = (Repository)theEObject;
         T result = caseRepository(repository);
+        if (result == null) result = caseVersionedElement(repository);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,6 +198,22 @@ public class ScmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseResourceChange(ResourceChange object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Versioned Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Versioned Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVersionedElement(VersionedElement object)
   {
     return null;
   }

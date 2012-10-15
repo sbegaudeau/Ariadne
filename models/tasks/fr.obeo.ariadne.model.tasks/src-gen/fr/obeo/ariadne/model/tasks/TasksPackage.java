@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks;
 
@@ -23,7 +31,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.ariadne.model.tasks.TasksFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.tasks.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.tasks.editor/src-gen' fileExtensions='ariadnetasks'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.tasks.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.tasks.editor/src-gen' fileExtensions='ariadnetasks' copyrightText='Copyright (c) 2012 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Stephane Begaudeau (Obeo) - initial API and implementation'"
  * @generated
  */
 public interface TasksPackage extends EPackage
@@ -77,7 +85,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__NAME = CorePackage.ELEMENT__NAME;
+  int TASKS_REPOSITORY__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -86,7 +94,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__DESCRIPTION = CorePackage.ELEMENT__DESCRIPTION;
+  int TASKS_REPOSITORY__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -95,7 +103,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__AUTHORS = CorePackage.ELEMENT__AUTHORS;
+  int TASKS_REPOSITORY__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -104,7 +112,25 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__PROPERTIES = CorePackage.ELEMENT__PROPERTIES;
+  int TASKS_REPOSITORY__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASKS_REPOSITORY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASKS_REPOSITORY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -113,7 +139,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__URL = CorePackage.ELEMENT_FEATURE_COUNT + 0;
+  int TASKS_REPOSITORY__URL = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Connector Kind</b></em>' attribute.
@@ -122,7 +148,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__CONNECTOR_KIND = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int TASKS_REPOSITORY__CONNECTOR_KIND = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -131,7 +157,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY__TASKS = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int TASKS_REPOSITORY__TASKS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Repository</em>' class.
@@ -140,7 +166,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+  int TASKS_REPOSITORY_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Repository</em>' class.
@@ -149,7 +175,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASKS_REPOSITORY_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
+  int TASKS_REPOSITORY_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl <em>Task</em>}' class.
@@ -168,7 +194,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__NAME = CorePackage.ELEMENT__NAME;
+  int TASK__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -177,7 +203,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__DESCRIPTION = CorePackage.ELEMENT__DESCRIPTION;
+  int TASK__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -186,7 +212,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__AUTHORS = CorePackage.ELEMENT__AUTHORS;
+  int TASK__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -195,7 +221,25 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__PROPERTIES = CorePackage.ELEMENT__PROPERTIES;
+  int TASK__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -204,7 +248,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__URL = CorePackage.ELEMENT_FEATURE_COUNT + 0;
+  int TASK__URL = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -213,7 +257,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__IDENTIFIER = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int TASK__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -222,7 +266,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__KIND = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int TASK__KIND = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Creation Date</b></em>' attribute.
@@ -231,7 +275,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__CREATION_DATE = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+  int TASK__CREATION_DATE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -240,7 +284,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__PRIORITY = CorePackage.ELEMENT_FEATURE_COUNT + 4;
+  int TASK__PRIORITY = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -249,7 +293,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__STATUS = CorePackage.ELEMENT_FEATURE_COUNT + 5;
+  int TASK__STATUS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Task Entries</b></em>' containment reference list.
@@ -258,16 +302,16 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__TASK_ENTRIES = CorePackage.ELEMENT_FEATURE_COUNT + 6;
+  int TASK__TASK_ENTRIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
-   * The feature id for the '<em><b>Elements</b></em>' reference list.
+   * The feature id for the '<em><b>Versioned Elements</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK__ELEMENTS = CorePackage.ELEMENT_FEATURE_COUNT + 7;
+  int TASK__VERSIONED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Task</em>' class.
@@ -276,7 +320,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 8;
+  int TASK_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The number of operations of the '<em>Task</em>' class.
@@ -285,7 +329,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
+  int TASK_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl <em>Task Entry</em>}' class.
@@ -465,15 +509,15 @@ public interface TasksPackage extends EPackage
   EReference getTask_TaskEntries();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.tasks.Task#getElements <em>Elements</em>}'.
+   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.tasks.Task#getVersionedElements <em>Versioned Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Elements</em>'.
-   * @see fr.obeo.ariadne.model.tasks.Task#getElements()
+   * @return the meta object for the reference list '<em>Versioned Elements</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getVersionedElements()
    * @see #getTask()
    * @generated
    */
-  EReference getTask_Elements();
+  EReference getTask_VersionedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.tasks.TaskEntry <em>Task Entry</em>}'.
@@ -632,12 +676,12 @@ public interface TasksPackage extends EPackage
     EReference TASK__TASK_ENTRIES = eINSTANCE.getTask_TaskEntries();
 
     /**
-     * The meta object literal for the '<em><b>Elements</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Versioned Elements</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TASK__ELEMENTS = eINSTANCE.getTask_Elements();
+    EReference TASK__VERSIONED_ELEMENTS = eINSTANCE.getTask_VersionedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl <em>Task Entry</em>}' class.

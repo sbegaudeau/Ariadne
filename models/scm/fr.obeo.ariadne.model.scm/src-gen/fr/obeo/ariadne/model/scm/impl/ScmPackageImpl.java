@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.scm.impl;
 
@@ -153,19 +161,9 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRepository_Name()
-  {
-    return (EAttribute)repositoryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getRepository_Branches()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(1);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -175,7 +173,7 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
    */
   public EReference getRepository_Commits()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(2);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -185,7 +183,7 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
    */
   public EReference getRepository_Tags()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(3);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -419,7 +417,6 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
 
     // Create classes and their features
     repositoryEClass = createEClass(REPOSITORY);
-    createEAttribute(repositoryEClass, REPOSITORY__NAME);
     createEReference(repositoryEClass, REPOSITORY__BRANCHES);
     createEReference(repositoryEClass, REPOSITORY__COMMITS);
     createEReference(repositoryEClass, REPOSITORY__TAGS);
@@ -476,18 +473,18 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
     CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    repositoryEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
     // Initialize classes, features, and operations; add parameters
     initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRepository_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRepository_Branches(), this.getBranch(), null, "branches", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRepository_Commits(), this.getCommit(), null, "commits", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRepository_Tags(), this.getTag(), null, "tags", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

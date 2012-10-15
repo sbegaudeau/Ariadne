@@ -2,12 +2,19 @@
 @GenModel(editDirectory="/fr.obeo.ariadne.model.environment.edit/src-gen")
 @GenModel(editorDirectory="/fr.obeo.ariadne.model.environment.editor/src-gen")
 @GenModel(fileExtensions="ariadneenvironment")
+@GenModel(copyrightText="Copyright (c) 2012 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.environment
 
-import fr.obeo.ariadne.model.core.Element
 import fr.obeo.ariadne.model.core.VersionedElement
 
-abstract class Environment extends Element {
+abstract class Environment extends VersionedElement {
 	String operatingSystem
 	String windowingSystem
 	String architecture

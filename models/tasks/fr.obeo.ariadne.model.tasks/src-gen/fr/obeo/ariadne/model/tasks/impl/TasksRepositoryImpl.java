@@ -1,22 +1,33 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks.impl;
 
-import fr.obeo.ariadne.model.core.impl.ElementImpl;
+import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.tasks.Task;
 import fr.obeo.ariadne.model.tasks.TasksPackage;
 import fr.obeo.ariadne.model.tasks.TasksRepository;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,7 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class TasksRepositoryImpl extends ElementImpl implements TasksRepository
+public class TasksRepositoryImpl extends VersionedElementImpl implements TasksRepository
 {
   /**
    * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.

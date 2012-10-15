@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.continuousintegration.provider;
 
@@ -6,6 +14,8 @@ package fr.obeo.ariadne.model.continuousintegration.provider;
 import fr.obeo.ariadne.model.continuousintegration.BuildServer;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationFactory;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
+
+import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +35,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -35,7 +44,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class BuildServerItemProvider
-  extends ItemProviderAdapter
+  extends VersionedElementItemProvider
   implements
     IEditingDomainItemProvider,
     IStructuredItemContentProvider,
@@ -67,34 +76,10 @@ public class BuildServerItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addNamePropertyDescriptor(object);
       addUrlPropertyDescriptor(object);
       addBuildServerKindPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Name feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addNamePropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_BuildServer_name_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_BuildServer_name_feature", "_UI_BuildServer_type"),
-         ContinuousintegrationPackage.Literals.BUILD_SERVER__NAME,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
   }
 
   /**
@@ -217,7 +202,6 @@ public class BuildServerItemProvider
 
     switch (notification.getFeatureID(BuildServer.class))
     {
-      case ContinuousintegrationPackage.BUILD_SERVER__NAME:
       case ContinuousintegrationPackage.BUILD_SERVER__URL:
       case ContinuousintegrationPackage.BUILD_SERVER__BUILD_SERVER_KIND:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

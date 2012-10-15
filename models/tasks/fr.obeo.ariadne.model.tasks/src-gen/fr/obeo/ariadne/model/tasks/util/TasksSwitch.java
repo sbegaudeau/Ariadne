@@ -1,8 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.tasks.util;
 
-import fr.obeo.ariadne.model.core.Element;
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.tasks.*;
 
@@ -78,7 +86,7 @@ public class TasksSwitch<T> extends Switch<T>
       {
         TasksRepository tasksRepository = (TasksRepository)theEObject;
         T result = caseTasksRepository(tasksRepository);
-        if (result == null) result = caseElement(tasksRepository);
+        if (result == null) result = caseVersionedElement(tasksRepository);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -86,7 +94,7 @@ public class TasksSwitch<T> extends Switch<T>
       {
         Task task = (Task)theEObject;
         T result = caseTask(task);
-        if (result == null) result = caseElement(task);
+        if (result == null) result = caseVersionedElement(task);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -150,17 +158,17 @@ public class TasksSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Versioned Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Versioned Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseElement(Element object)
+  public T caseVersionedElement(VersionedElement object)
   {
     return null;
   }

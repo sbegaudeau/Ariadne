@@ -1,15 +1,24 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
-import fr.obeo.ariadne.model.code.AnnotationDependency;
+import fr.obeo.ariadne.model.code.Annotation;
+import fr.obeo.ariadne.model.code.Classifier;
 import fr.obeo.ariadne.model.code.CodePackage;
-import fr.obeo.ariadne.model.code.InheritanceDependency;
 import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Parameter;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
-import fr.obeo.ariadne.model.code.TypingDependency;
+import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.VisibilityKind;
+
+import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
@@ -25,7 +34,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -43,10 +54,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getInheritanceDependencies <em>Inheritance Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getAnnotationDependencies <em>Annotation Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getClassifier <em>Classifier</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getReturnTypes <em>Return Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getOverriddenOperations <em>Overridden Operations</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -205,44 +218,54 @@ public class OperationImpl extends VersionedElementImpl implements Operation
   protected EList<Parameter> parameters;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getReturnTypes() <em>Return Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getReturnTypes()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Type> returnTypes;
 
   /**
-   * The cached value of the '{@link #getInheritanceDependencies() <em>Inheritance Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInheritanceDependencies()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<InheritanceDependency> inheritanceDependencies;
+  protected EList<Type> types;
 
   /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
+   * @see #getAnnotations()
    * @generated
    * @ordered
    */
-  protected EList<ReferenceDependency> referenceDependencies;
+  protected EList<Annotation> annotations;
 
   /**
-   * The cached value of the '{@link #getAnnotationDependencies() <em>Annotation Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getOverriddenOperations() <em>Overridden Operations</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAnnotationDependencies()
+   * @see #getOverriddenOperations()
    * @generated
    * @ordered
    */
-  protected EList<AnnotationDependency> annotationDependencies;
+  protected EList<Operation> overriddenOperations;
+
+  /**
+   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRelatedElements()
+   * @generated
+   * @ordered
+   */
+  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -435,7 +458,7 @@ public class OperationImpl extends VersionedElementImpl implements Operation
   {
     if (parameters == null)
     {
-      parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, CodePackage.OPERATION__PARAMETERS);
+      parameters = new EObjectContainmentWithInverseEList<Parameter>(Parameter.class, this, CodePackage.OPERATION__PARAMETERS, CodePackage.PARAMETER__OPERATION);
     }
     return parameters;
   }
@@ -445,13 +468,10 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public Classifier getClassifier()
   {
-    if (typingDependencies == null)
-    {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.OPERATION__TYPING_DEPENDENCIES);
-    }
-    return typingDependencies;
+    if (eContainerFeatureID() != CodePackage.OPERATION__CLASSIFIER) return null;
+    return (Classifier)eContainer();
   }
 
   /**
@@ -459,13 +479,10 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<InheritanceDependency> getInheritanceDependencies()
+  public NotificationChain basicSetClassifier(Classifier newClassifier, NotificationChain msgs)
   {
-    if (inheritanceDependencies == null)
-    {
-      inheritanceDependencies = new EObjectContainmentEList<InheritanceDependency>(InheritanceDependency.class, this, CodePackage.OPERATION__INHERITANCE_DEPENDENCIES);
-    }
-    return inheritanceDependencies;
+    msgs = eBasicSetContainer((InternalEObject)newClassifier, CodePackage.OPERATION__CLASSIFIER, msgs);
+    return msgs;
   }
 
   /**
@@ -473,13 +490,22 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceDependency> getReferenceDependencies()
+  public void setClassifier(Classifier newClassifier)
   {
-    if (referenceDependencies == null)
+    if (newClassifier != eInternalContainer() || (eContainerFeatureID() != CodePackage.OPERATION__CLASSIFIER && newClassifier != null))
     {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.OPERATION__REFERENCE_DEPENDENCIES);
+      if (EcoreUtil.isAncestor(this, newClassifier))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newClassifier != null)
+        msgs = ((InternalEObject)newClassifier).eInverseAdd(this, CodePackage.CLASSIFIER__OPERATIONS, Classifier.class, msgs);
+      msgs = basicSetClassifier(newClassifier, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return referenceDependencies;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.OPERATION__CLASSIFIER, newClassifier, newClassifier));
   }
 
   /**
@@ -487,13 +513,90 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AnnotationDependency> getAnnotationDependencies()
+  public EList<Type> getReturnTypes()
   {
-    if (annotationDependencies == null)
+    if (returnTypes == null)
     {
-      annotationDependencies = new EObjectContainmentEList<AnnotationDependency>(AnnotationDependency.class, this, CodePackage.OPERATION__ANNOTATION_DEPENDENCIES);
+      returnTypes = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.OPERATION__RETURN_TYPES);
     }
-    return annotationDependencies;
+    return returnTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Type> getTypes()
+  {
+    if (types == null)
+    {
+      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.OPERATION__TYPES);
+    }
+    return types;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Annotation> getAnnotations()
+  {
+    if (annotations == null)
+    {
+      annotations = new EObjectResolvingEList<Annotation>(Annotation.class, this, CodePackage.OPERATION__ANNOTATIONS);
+    }
+    return annotations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Operation> getOverriddenOperations()
+  {
+    if (overriddenOperations == null)
+    {
+      overriddenOperations = new EObjectResolvingEList<Operation>(Operation.class, this, CodePackage.OPERATION__OVERRIDDEN_OPERATIONS);
+    }
+    return overriddenOperations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<VersionedElement> getRelatedElements()
+  {
+    if (relatedElements == null)
+    {
+      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.OPERATION__RELATED_ELEMENTS);
+    }
+    return relatedElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CodePackage.OPERATION__PARAMETERS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+      case CodePackage.OPERATION__CLASSIFIER:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetClassifier((Classifier)otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
@@ -508,16 +611,26 @@ public class OperationImpl extends VersionedElementImpl implements Operation
     {
       case CodePackage.OPERATION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-        return ((InternalEList<?>)getInheritanceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
-        return ((InternalEList<?>)getAnnotationDependencies()).basicRemove(otherEnd, msgs);
+      case CodePackage.OPERATION__CLASSIFIER:
+        return basicSetClassifier(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID())
+    {
+      case CodePackage.OPERATION__CLASSIFIER:
+        return eInternalContainer().eInverseRemove(this, CodePackage.CLASSIFIER__OPERATIONS, Classifier.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -546,14 +659,18 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return isTransient();
       case CodePackage.OPERATION__PARAMETERS:
         return getParameters();
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-        return getInheritanceDependencies();
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
-        return getAnnotationDependencies();
+      case CodePackage.OPERATION__CLASSIFIER:
+        return getClassifier();
+      case CodePackage.OPERATION__RETURN_TYPES:
+        return getReturnTypes();
+      case CodePackage.OPERATION__TYPES:
+        return getTypes();
+      case CodePackage.OPERATION__ANNOTATIONS:
+        return getAnnotations();
+      case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
+        return getOverriddenOperations();
+      case CodePackage.OPERATION__RELATED_ELEMENTS:
+        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -594,21 +711,28 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         getParameters().clear();
         getParameters().addAll((Collection<? extends Parameter>)newValue);
         return;
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.OPERATION__CLASSIFIER:
+        setClassifier((Classifier)newValue);
         return;
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
-        getInheritanceDependencies().addAll((Collection<? extends InheritanceDependency>)newValue);
+      case CodePackage.OPERATION__RETURN_TYPES:
+        getReturnTypes().clear();
+        getReturnTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
+      case CodePackage.OPERATION__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
-        getAnnotationDependencies().addAll((Collection<? extends AnnotationDependency>)newValue);
+      case CodePackage.OPERATION__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
+        return;
+      case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
+        getOverriddenOperations().clear();
+        getOverriddenOperations().addAll((Collection<? extends Operation>)newValue);
+        return;
+      case CodePackage.OPERATION__RELATED_ELEMENTS:
+        getRelatedElements().clear();
+        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -648,17 +772,23 @@ public class OperationImpl extends VersionedElementImpl implements Operation
       case CodePackage.OPERATION__PARAMETERS:
         getParameters().clear();
         return;
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.OPERATION__CLASSIFIER:
+        setClassifier((Classifier)null);
         return;
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-        getInheritanceDependencies().clear();
+      case CodePackage.OPERATION__RETURN_TYPES:
+        getReturnTypes().clear();
         return;
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
+      case CodePackage.OPERATION__TYPES:
+        getTypes().clear();
         return;
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
-        getAnnotationDependencies().clear();
+      case CodePackage.OPERATION__ANNOTATIONS:
+        getAnnotations().clear();
+        return;
+      case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
+        getOverriddenOperations().clear();
+        return;
+      case CodePackage.OPERATION__RELATED_ELEMENTS:
+        getRelatedElements().clear();
         return;
     }
     super.eUnset(featureID);
@@ -690,14 +820,18 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return transient_ != TRANSIENT_EDEFAULT;
       case CodePackage.OPERATION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
-      case CodePackage.OPERATION__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.OPERATION__INHERITANCE_DEPENDENCIES:
-        return inheritanceDependencies != null && !inheritanceDependencies.isEmpty();
-      case CodePackage.OPERATION__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
-      case CodePackage.OPERATION__ANNOTATION_DEPENDENCIES:
-        return annotationDependencies != null && !annotationDependencies.isEmpty();
+      case CodePackage.OPERATION__CLASSIFIER:
+        return getClassifier() != null;
+      case CodePackage.OPERATION__RETURN_TYPES:
+        return returnTypes != null && !returnTypes.isEmpty();
+      case CodePackage.OPERATION__TYPES:
+        return types != null && !types.isEmpty();
+      case CodePackage.OPERATION__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
+      case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
+        return overriddenOperations != null && !overriddenOperations.isEmpty();
+      case CodePackage.OPERATION__RELATED_ELEMENTS:
+        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

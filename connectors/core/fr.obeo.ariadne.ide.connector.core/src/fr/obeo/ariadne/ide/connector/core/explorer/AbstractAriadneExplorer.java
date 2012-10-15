@@ -57,6 +57,11 @@ public abstract class AbstractAriadneExplorer {
 	public static final String TASKS_EXPLORER_KIND = "tasks"; //$NON-NLS-1$
 
 	/**
+	 * The constant representing "environment" explorers.
+	 */
+	public static final String ENVIRONMENT_EXPLORER_KIND = "environment"; //$NON-NLS-1$
+
+	/**
 	 * The constant representing "other" explorers.
 	 */
 	public static final String OTHER_EXPLORER_KIND = "other"; //$NON-NLS-1$
@@ -110,6 +115,7 @@ public abstract class AbstractAriadneExplorer {
 	 * <li>SCM</li>
 	 * <li>TASKS</li>
 	 * <li>CONTINUOUS INTEGRATION</li>
+	 * <li>ENVIRONMENT</li>
 	 * <li>OTHER</li>
 	 * </ul>
 	 * </p>

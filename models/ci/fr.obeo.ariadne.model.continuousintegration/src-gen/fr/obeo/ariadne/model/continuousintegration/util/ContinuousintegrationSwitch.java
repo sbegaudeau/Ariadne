@@ -1,10 +1,17 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.continuousintegration.util;
 
 import fr.obeo.ariadne.model.continuousintegration.*;
 
-import fr.obeo.ariadne.model.core.Element;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.ecore.EObject;
@@ -79,6 +86,7 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
       {
         BuildServer buildServer = (BuildServer)theEObject;
         T result = caseBuildServer(buildServer);
+        if (result == null) result = caseVersionedElement(buildServer);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -86,7 +94,7 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
       {
         BuildJob buildJob = (BuildJob)theEObject;
         T result = caseBuildJob(buildJob);
-        if (result == null) result = caseElement(buildJob);
+        if (result == null) result = caseVersionedElement(buildJob);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -95,7 +103,6 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
         BuildDependency buildDependency = (BuildDependency)theEObject;
         T result = caseBuildDependency(buildDependency);
         if (result == null) result = caseVersionedElement(buildDependency);
-        if (result == null) result = caseElement(buildDependency);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -104,7 +111,6 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
         PromotionLocation promotionLocation = (PromotionLocation)theEObject;
         T result = casePromotionLocation(promotionLocation);
         if (result == null) result = caseVersionedElement(promotionLocation);
-        if (result == null) result = caseElement(promotionLocation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -172,22 +178,6 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePromotionLocation(PromotionLocation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseElement(Element object)
   {
     return null;
   }

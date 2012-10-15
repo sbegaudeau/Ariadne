@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -69,6 +77,8 @@ public class ClassifierItemProvider
       addFinalPropertyDescriptor(object);
       addImmutablePropertyDescriptor(object);
       addAbstractPropertyDescriptor(object);
+      addSuperTypesPropertyDescriptor(object);
+      addTypeParametersPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -184,6 +194,52 @@ public class ClassifierItemProvider
          false,
          false,
          ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Super Types feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addSuperTypesPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Classifier_superTypes_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Classifier_superTypes_feature", "_UI_Classifier_type"),
+         CodePackage.Literals.CLASSIFIER__SUPER_TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Type Parameters feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypeParametersPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Classifier_typeParameters_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Classifier_typeParameters_feature", "_UI_Classifier_type"),
+         CodePackage.Literals.CLASSIFIER__TYPE_PARAMETERS,
+         true,
+         false,
+         true,
+         null,
          null,
          null));
   }

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.continuousintegration;
 
@@ -24,7 +32,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.continuousintegration.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.continuousintegration.editor/src-gen' fileExtensions='ariadnecontinuousintegration'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='fr.obeo.ariadne.model' editDirectory='/fr.obeo.ariadne.model.continuousintegration.edit/src-gen' editorDirectory='/fr.obeo.ariadne.model.continuousintegration.editor/src-gen' fileExtensions='ariadnecontinuousintegration' copyrightText='Copyright (c) 2012 Obeo.\r\nAll rights reserved. This program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v1.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v10.html\r\n\r\nContributors:\r\n    Stephane Begaudeau (Obeo) - initial API and implementation'"
  * @generated
  */
 public interface ContinuousintegrationPackage extends EPackage
@@ -78,7 +86,52 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER__NAME = 0;
+  int BUILD_SERVER__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_SERVER__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_SERVER__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_SERVER__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_SERVER__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_SERVER__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -87,7 +140,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER__URL = 1;
+  int BUILD_SERVER__URL = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Build Server Kind</b></em>' attribute.
@@ -96,7 +149,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER__BUILD_SERVER_KIND = 2;
+  int BUILD_SERVER__BUILD_SERVER_KIND = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Build Jobs</b></em>' containment reference list.
@@ -105,7 +158,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER__BUILD_JOBS = 3;
+  int BUILD_SERVER__BUILD_JOBS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Build Server</em>' class.
@@ -114,7 +167,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER_FEATURE_COUNT = 4;
+  int BUILD_SERVER_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of operations of the '<em>Build Server</em>' class.
@@ -123,7 +176,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_SERVER_OPERATION_COUNT = 0;
+  int BUILD_SERVER_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl <em>Build Job</em>}' class.
@@ -142,7 +195,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__NAME = CorePackage.ELEMENT__NAME;
+  int BUILD_JOB__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -151,7 +204,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__DESCRIPTION = CorePackage.ELEMENT__DESCRIPTION;
+  int BUILD_JOB__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -160,7 +213,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__AUTHORS = CorePackage.ELEMENT__AUTHORS;
+  int BUILD_JOB__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -169,7 +222,25 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__PROPERTIES = CorePackage.ELEMENT__PROPERTIES;
+  int BUILD_JOB__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_JOB__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_JOB__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -178,7 +249,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__URL = CorePackage.ELEMENT_FEATURE_COUNT + 0;
+  int BUILD_JOB__URL = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Build Technology Kinds</b></em>' attribute list.
@@ -187,7 +258,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__BUILD_TECHNOLOGY_KINDS = CorePackage.ELEMENT_FEATURE_COUNT + 1;
+  int BUILD_JOB__BUILD_TECHNOLOGY_KINDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Build Kinds</b></em>' attribute list.
@@ -196,7 +267,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__BUILD_KINDS = CorePackage.ELEMENT_FEATURE_COUNT + 2;
+  int BUILD_JOB__BUILD_KINDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Promotion Locations</b></em>' containment reference list.
@@ -205,7 +276,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__PROMOTION_LOCATIONS = CorePackage.ELEMENT_FEATURE_COUNT + 3;
+  int BUILD_JOB__PROMOTION_LOCATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Build Dependencies</b></em>' containment reference list.
@@ -214,7 +285,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__BUILD_DEPENDENCIES = CorePackage.ELEMENT_FEATURE_COUNT + 4;
+  int BUILD_JOB__BUILD_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' reference list.
@@ -223,7 +294,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB__COMPONENTS = CorePackage.ELEMENT_FEATURE_COUNT + 5;
+  int BUILD_JOB__COMPONENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Build Job</em>' class.
@@ -232,7 +303,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB_FEATURE_COUNT = CorePackage.ELEMENT_FEATURE_COUNT + 6;
+  int BUILD_JOB_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of operations of the '<em>Build Job</em>' class.
@@ -241,7 +312,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_JOB_OPERATION_COUNT = CorePackage.ELEMENT_OPERATION_COUNT + 0;
+  int BUILD_JOB_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildDependencyImpl <em>Build Dependency</em>}' class.
@@ -297,6 +368,15 @@ public interface ContinuousintegrationPackage extends EPackage
    * @ordered
    */
   int BUILD_DEPENDENCY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_DEPENDENCY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
    * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -399,6 +479,15 @@ public interface ContinuousintegrationPackage extends EPackage
   int PROMOTION_LOCATION__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROMOTION_LOCATION__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
    * The feature id for the '<em><b>Url</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -445,17 +534,6 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    */
   EClass getBuildServer();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.continuousintegration.BuildServer#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildServer#getName()
-   * @see #getBuildServer()
-   * @generated
-   */
-  EAttribute getBuildServer_Name();
 
   /**
    * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.continuousintegration.BuildServer#getUrl <em>Url</em>}'.
@@ -673,14 +751,6 @@ public interface ContinuousintegrationPackage extends EPackage
      * @generated
      */
     EClass BUILD_SERVER = eINSTANCE.getBuildServer();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BUILD_SERVER__NAME = eINSTANCE.getBuildServer_Name();
 
     /**
      * The meta object literal for the '<em><b>Url</b></em>' attribute feature.

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.core.impl;
 
@@ -64,12 +72,24 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
   {
     switch (eClass.getClassifierID())
     {
+      case CorePackage.VERSIONED_DEPENDENCY: return createVersionedDependency();
       case CorePackage.VERSION: return createVersion();
       case CorePackage.PERSON: return createPerson();
       case CorePackage.PROPERTY: return createProperty();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VersionedDependency createVersionedDependency()
+  {
+    VersionedDependencyImpl versionedDependency = new VersionedDependencyImpl();
+    return versionedDependency;
   }
 
   /**
@@ -88,10 +108,10 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property createProperty()
+  public Person createPerson()
   {
-    PropertyImpl property = new PropertyImpl();
-    return property;
+    PersonImpl person = new PersonImpl();
+    return person;
   }
 
   /**
@@ -99,10 +119,10 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Person createPerson()
+  public Property createProperty()
   {
-    PersonImpl person = new PersonImpl();
-    return person;
+    PropertyImpl property = new PropertyImpl();
+    return property;
   }
 
   /**

@@ -1,10 +1,17 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.util;
 
 import fr.obeo.ariadne.model.code.*;
 
-import fr.obeo.ariadne.model.core.Element;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -148,64 +155,14 @@ public class CodeAdapterFactory extends AdapterFactoryImpl
         return createAnnotationFieldAdapter();
       }
       @Override
-      public Adapter caseRequiredService(RequiredService object)
+      public Adapter caseReferencedService(ReferencedService object)
       {
-        return createRequiredServiceAdapter();
+        return createReferencedServiceAdapter();
       }
       @Override
       public Adapter caseProvidedService(ProvidedService object)
       {
         return createProvidedServiceAdapter();
-      }
-      @Override
-      public Adapter caseDependency(Dependency object)
-      {
-        return createDependencyAdapter();
-      }
-      @Override
-      public Adapter caseConstraint(Constraint object)
-      {
-        return createConstraintAdapter();
-      }
-      @Override
-      public Adapter caseVersionRangeConstraint(VersionRangeConstraint object)
-      {
-        return createVersionRangeConstraintAdapter();
-      }
-      @Override
-      public Adapter caseExpressionConstraint(ExpressionConstraint object)
-      {
-        return createExpressionConstraintAdapter();
-      }
-      @Override
-      public Adapter caseTypingDependency(TypingDependency object)
-      {
-        return createTypingDependencyAdapter();
-      }
-      @Override
-      public Adapter caseInheritanceDependency(InheritanceDependency object)
-      {
-        return createInheritanceDependencyAdapter();
-      }
-      @Override
-      public Adapter caseReferenceDependency(ReferenceDependency object)
-      {
-        return createReferenceDependencyAdapter();
-      }
-      @Override
-      public Adapter caseContainmentDependency(ContainmentDependency object)
-      {
-        return createContainmentDependencyAdapter();
-      }
-      @Override
-      public Adapter caseAnnotationDependency(AnnotationDependency object)
-      {
-        return createAnnotationDependencyAdapter();
-      }
-      @Override
-      public Adapter caseElement(Element object)
-      {
-        return createElementAdapter();
       }
       @Override
       public Adapter caseVersionedElement(VersionedElement object)
@@ -445,16 +402,16 @@ public class CodeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.RequiredService <em>Required Service</em>}'.
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.ReferencedService <em>Referenced Service</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.RequiredService
+   * @see fr.obeo.ariadne.model.code.ReferencedService
    * @generated
    */
-  public Adapter createRequiredServiceAdapter()
+  public Adapter createReferencedServiceAdapter()
   {
     return null;
   }
@@ -470,156 +427,6 @@ public class CodeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProvidedServiceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.Dependency <em>Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.Dependency
-   * @generated
-   */
-  public Adapter createDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.Constraint <em>Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.Constraint
-   * @generated
-   */
-  public Adapter createConstraintAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.VersionRangeConstraint <em>Version Range Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.VersionRangeConstraint
-   * @generated
-   */
-  public Adapter createVersionRangeConstraintAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.ExpressionConstraint <em>Expression Constraint</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.ExpressionConstraint
-   * @generated
-   */
-  public Adapter createExpressionConstraintAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.TypingDependency <em>Typing Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.TypingDependency
-   * @generated
-   */
-  public Adapter createTypingDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.InheritanceDependency <em>Inheritance Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.InheritanceDependency
-   * @generated
-   */
-  public Adapter createInheritanceDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.ReferenceDependency <em>Reference Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.ReferenceDependency
-   * @generated
-   */
-  public Adapter createReferenceDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.ContainmentDependency <em>Containment Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.ContainmentDependency
-   * @generated
-   */
-  public Adapter createContainmentDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.AnnotationDependency <em>Annotation Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.code.AnnotationDependency
-   * @generated
-   */
-  public Adapter createAnnotationDependencyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.core.Element <em>Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.core.Element
-   * @generated
-   */
-  public Adapter createElementAdapter()
   {
     return null;
   }

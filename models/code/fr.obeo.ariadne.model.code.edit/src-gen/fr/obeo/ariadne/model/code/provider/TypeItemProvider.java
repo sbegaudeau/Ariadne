@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -70,6 +78,8 @@ public class TypeItemProvider
 
       addQualifiedNamePropertyDescriptor(object);
       addVisibilityPropertyDescriptor(object);
+      addAnnotationsPropertyDescriptor(object);
+      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -121,6 +131,52 @@ public class TypeItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Annotations feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addAnnotationsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Type_annotations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Type_annotations_feature", "_UI_Type_type"),
+         CodePackage.Literals.TYPE__ANNOTATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Related Elements feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRelatedElementsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Type_relatedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Type_relatedElements_feature", "_UI_Type_type"),
+         CodePackage.Literals.TYPE__RELATED_ELEMENTS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -134,12 +190,7 @@ public class TypeItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.TYPE__TYPES);
-      childrenFeatures.add(CodePackage.Literals.TYPE__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.TYPE__INHERITANCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.TYPE__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.TYPE__CONTAINMENT_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.TYPE__ANNOTATION_DEPENDENCIES);
+      childrenFeatures.add(CodePackage.Literals.TYPE__INTERNAL_TYPES);
     }
     return childrenFeatures;
   }
@@ -191,12 +242,7 @@ public class TypeItemProvider
       case CodePackage.TYPE__VISIBILITY:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.TYPE__TYPES:
-      case CodePackage.TYPE__TYPING_DEPENDENCIES:
-      case CodePackage.TYPE__INHERITANCE_DEPENDENCIES:
-      case CodePackage.TYPE__REFERENCE_DEPENDENCIES:
-      case CodePackage.TYPE__CONTAINMENT_DEPENDENCIES:
-      case CodePackage.TYPE__ANNOTATION_DEPENDENCIES:
+      case CodePackage.TYPE__INTERNAL_TYPES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -217,38 +263,13 @@ public class TypeItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.TYPE__TYPES,
+        (CodePackage.Literals.TYPE__INTERNAL_TYPES,
          CodeFactory.eINSTANCE.createClassifier()));
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.TYPE__TYPES,
+        (CodePackage.Literals.TYPE__INTERNAL_TYPES,
          CodeFactory.eINSTANCE.createAnnotation()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.TYPE__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.TYPE__INHERITANCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createInheritanceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.TYPE__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.TYPE__CONTAINMENT_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createContainmentDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.TYPE__ANNOTATION_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createAnnotationDependency()));
   }
 
   /**

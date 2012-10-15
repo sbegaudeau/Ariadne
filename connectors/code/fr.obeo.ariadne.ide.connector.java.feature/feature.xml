@@ -3,7 +3,7 @@
       id="fr.obeo.ariadne.ide.connector.java.feature"
       label="%featureName"
       version="1.0.0.qualifier"
-      provider-name="%featureProvider">
+      provider-name="%providerName">
 
    <description url="http://sbegaudeau.github.com/Ariadne">
       %description

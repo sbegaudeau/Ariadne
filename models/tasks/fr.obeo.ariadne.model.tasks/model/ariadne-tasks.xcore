@@ -2,17 +2,25 @@
 @GenModel(editDirectory="/fr.obeo.ariadne.model.tasks.edit/src-gen")
 @GenModel(editorDirectory="/fr.obeo.ariadne.model.tasks.editor/src-gen")
 @GenModel(fileExtensions="ariadnetasks")
+@GenModel(copyrightText="Copyright (c) 2012 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.tasks
 
-import fr.obeo.ariadne.model.core.Element
+import fr.obeo.ariadne.model.core.VersionedElement
 
-class TasksRepository extends Element {
+class TasksRepository extends VersionedElement {
 	String url
 	String connectorKind
 	contains Task[] tasks
 }
 
-class Task extends Element {
+class Task extends VersionedElement {
 	String url
 	String identifier
 	String kind
@@ -20,7 +28,7 @@ class Task extends Element {
 	String priority
 	String status
 	contains TaskEntry[] taskEntries
-	refers Element[] elements
+	refers VersionedElement[] versionedElements
 }
 
 class TaskEntry {

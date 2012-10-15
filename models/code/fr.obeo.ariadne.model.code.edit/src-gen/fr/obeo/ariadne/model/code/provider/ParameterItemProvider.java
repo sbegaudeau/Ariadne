@@ -1,9 +1,16 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
 
-import fr.obeo.ariadne.model.code.CodeFactory;
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Parameter;
 
@@ -16,8 +23,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -72,6 +77,10 @@ public class ParameterItemProvider
       addVisibilityPropertyDescriptor(object);
       addFinalPropertyDescriptor(object);
       addImmutablePropertyDescriptor(object);
+      addTypesPropertyDescriptor(object);
+      addAnnotationsPropertyDescriptor(object);
+      addRelatedElementsPropertyDescriptor(object);
+      addOperationPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -169,38 +178,95 @@ public class ParameterItemProvider
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * This adds a property descriptor for the Types feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+  protected void addTypesPropertyDescriptor(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(CodePackage.Literals.PARAMETER__TYPING_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.PARAMETER__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.PARAMETER__ANNOTATION_DEPENDENCIES);
-    }
-    return childrenFeatures;
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_types_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_types_feature", "_UI_Parameter_type"),
+         CodePackage.Literals.PARAMETER__TYPES,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
+   * This adds a property descriptor for the Annotations feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
+  protected void addAnnotationsPropertyDescriptor(Object object)
   {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_annotations_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_annotations_feature", "_UI_Parameter_type"),
+         CodePackage.Literals.PARAMETER__ANNOTATIONS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
 
-    return super.getChildFeature(object, child);
+  /**
+   * This adds a property descriptor for the Related Elements feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRelatedElementsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_relatedElements_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_relatedElements_feature", "_UI_Parameter_type"),
+         CodePackage.Literals.PARAMETER__RELATED_ELEMENTS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Operation feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addOperationPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_operation_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_operation_feature", "_UI_Parameter_type"),
+         CodePackage.Literals.PARAMETER__OPERATION,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
@@ -250,11 +316,6 @@ public class ParameterItemProvider
       case CodePackage.PARAMETER__IMMUTABLE:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case CodePackage.PARAMETER__TYPING_DEPENDENCIES:
-      case CodePackage.PARAMETER__REFERENCE_DEPENDENCIES:
-      case CodePackage.PARAMETER__ANNOTATION_DEPENDENCIES:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
     }
     super.notifyChanged(notification);
   }
@@ -270,21 +331,6 @@ public class ParameterItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.PARAMETER__TYPING_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createTypingDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.PARAMETER__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (CodePackage.Literals.PARAMETER__ANNOTATION_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createAnnotationDependency()));
   }
 
   /**

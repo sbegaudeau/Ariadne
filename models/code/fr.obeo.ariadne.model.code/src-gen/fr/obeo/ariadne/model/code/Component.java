@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code;
 
@@ -17,8 +25,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Component#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Component#getClasspathEntries <em>Classpath Entries</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Component#getResourcesContainers <em>Resources Containers</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Component#getReferenceDependencies <em>Reference Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Component#getContainmentDependencies <em>Containment Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Component#getSubcomponents <em>Subcomponents</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Component#getReferencedServices <em>Referenced Services</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Component#getProvidedServices <em>Provided Services</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,6 +66,7 @@ public interface Component extends VersionedElement
   /**
    * Returns the value of the '<em><b>Classpath Entries</b></em>' containment reference list.
    * The list contents are of type {@link fr.obeo.ariadne.model.code.ClasspathEntry}.
+   * It is bidirectional and its opposite is '{@link fr.obeo.ariadne.model.code.ClasspathEntry#getComponent <em>Component</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Classpath Entries</em>' containment reference list isn't clear,
@@ -65,7 +75,8 @@ public interface Component extends VersionedElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Classpath Entries</em>' containment reference list.
    * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_ClasspathEntries()
-   * @model containment="true"
+   * @see fr.obeo.ariadne.model.code.ClasspathEntry#getComponent
+   * @model opposite="component" containment="true"
    * @generated
    */
   EList<ClasspathEntry> getClasspathEntries();
@@ -87,35 +98,51 @@ public interface Component extends VersionedElement
   EList<ResourcesContainer> getResourcesContainers();
 
   /**
-   * Returns the value of the '<em><b>Reference Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
+   * Returns the value of the '<em><b>Subcomponents</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Component}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Reference Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Subcomponents</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_ReferenceDependencies()
+   * @return the value of the '<em>Subcomponents</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_Subcomponents()
    * @model containment="true"
    * @generated
    */
-  EList<ReferenceDependency> getReferenceDependencies();
+  EList<Component> getSubcomponents();
 
   /**
-   * Returns the value of the '<em><b>Containment Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.ContainmentDependency}.
+   * Returns the value of the '<em><b>Referenced Services</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.ReferencedService}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Containment Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Referenced Services</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Containment Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_ContainmentDependencies()
+   * @return the value of the '<em>Referenced Services</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_ReferencedServices()
    * @model containment="true"
    * @generated
    */
-  EList<ContainmentDependency> getContainmentDependencies();
+  EList<ReferencedService> getReferencedServices();
+
+  /**
+   * Returns the value of the '<em><b>Provided Services</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.ProvidedService}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Provided Services</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Provided Services</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getComponent_ProvidedServices()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ProvidedService> getProvidedServices();
 
 } // Component

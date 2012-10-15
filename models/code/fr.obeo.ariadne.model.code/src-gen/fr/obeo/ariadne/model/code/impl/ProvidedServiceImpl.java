@@ -1,18 +1,25 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.impl;
 
 import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.ProvidedService;
-import fr.obeo.ariadne.model.code.ReferenceDependency;
-import fr.obeo.ariadne.model.code.TypingDependency;
+import fr.obeo.ariadne.model.code.ReferencedService;
+import fr.obeo.ariadne.model.code.Type;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -21,8 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +38,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getTypingDependencies <em>Typing Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getReferenceDependencies <em>Reference Dependencies</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getReferencedService <em>Referenced Service</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,24 +68,24 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
   protected String identifier = IDENTIFIER_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypingDependencies() <em>Typing Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTypingDependencies()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<TypingDependency> typingDependencies;
+  protected EList<Type> types;
 
   /**
-   * The cached value of the '{@link #getReferenceDependencies() <em>Reference Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getReferencedService() <em>Referenced Service</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReferenceDependencies()
+   * @see #getReferencedService()
    * @generated
    * @ordered
    */
-  protected EList<ReferenceDependency> referenceDependencies;
+  protected ReferencedService referencedService;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,13 +136,13 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TypingDependency> getTypingDependencies()
+  public EList<Type> getTypes()
   {
-    if (typingDependencies == null)
+    if (types == null)
     {
-      typingDependencies = new EObjectContainmentEList<TypingDependency>(TypingDependency.class, this, CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES);
+      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.PROVIDED_SERVICE__TYPES);
     }
-    return typingDependencies;
+    return types;
   }
 
   /**
@@ -144,13 +150,19 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceDependency> getReferenceDependencies()
+  public ReferencedService getReferencedService()
   {
-    if (referenceDependencies == null)
+    if (referencedService != null && referencedService.eIsProxy())
     {
-      referenceDependencies = new EObjectContainmentEList<ReferenceDependency>(ReferenceDependency.class, this, CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES);
+      InternalEObject oldReferencedService = (InternalEObject)referencedService;
+      referencedService = (ReferencedService)eResolveProxy(oldReferencedService);
+      if (referencedService != oldReferencedService)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE, oldReferencedService, referencedService));
+      }
     }
-    return referenceDependencies;
+    return referencedService;
   }
 
   /**
@@ -158,17 +170,22 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public ReferencedService basicGetReferencedService()
   {
-    switch (featureID)
-    {
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-        return ((InternalEList<?>)getTypingDependencies()).basicRemove(otherEnd, msgs);
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        return ((InternalEList<?>)getReferenceDependencies()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return referencedService;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReferencedService(ReferencedService newReferencedService)
+  {
+    ReferencedService oldReferencedService = referencedService;
+    referencedService = newReferencedService;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE, oldReferencedService, referencedService));
   }
 
   /**
@@ -183,10 +200,11 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
     {
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         return getIdentifier();
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-        return getTypingDependencies();
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        return getReferenceDependencies();
+      case CodePackage.PROVIDED_SERVICE__TYPES:
+        return getTypes();
+      case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
+        if (resolve) return getReferencedService();
+        return basicGetReferencedService();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -205,13 +223,12 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         setIdentifier((String)newValue);
         return;
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
-        getTypingDependencies().addAll((Collection<? extends TypingDependency>)newValue);
+      case CodePackage.PROVIDED_SERVICE__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
-        getReferenceDependencies().addAll((Collection<? extends ReferenceDependency>)newValue);
+      case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
+        setReferencedService((ReferencedService)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -230,11 +247,11 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         setIdentifier(IDENTIFIER_EDEFAULT);
         return;
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-        getTypingDependencies().clear();
+      case CodePackage.PROVIDED_SERVICE__TYPES:
+        getTypes().clear();
         return;
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        getReferenceDependencies().clear();
+      case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
+        setReferencedService((ReferencedService)null);
         return;
     }
     super.eUnset(featureID);
@@ -252,10 +269,10 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
     {
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-      case CodePackage.PROVIDED_SERVICE__TYPING_DEPENDENCIES:
-        return typingDependencies != null && !typingDependencies.isEmpty();
-      case CodePackage.PROVIDED_SERVICE__REFERENCE_DEPENDENCIES:
-        return referenceDependencies != null && !referenceDependencies.isEmpty();
+      case CodePackage.PROVIDED_SERVICE__TYPES:
+        return types != null && !types.isEmpty();
+      case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
+        return referencedService != null;
     }
     return super.eIsSet(featureID);
   }

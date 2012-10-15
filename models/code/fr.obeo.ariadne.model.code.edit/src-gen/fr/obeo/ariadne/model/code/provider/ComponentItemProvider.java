@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -112,8 +120,9 @@ public class ComponentItemProvider
       super.getChildrenFeatures(object);
       childrenFeatures.add(CodePackage.Literals.COMPONENT__CLASSPATH_ENTRIES);
       childrenFeatures.add(CodePackage.Literals.COMPONENT__RESOURCES_CONTAINERS);
-      childrenFeatures.add(CodePackage.Literals.COMPONENT__REFERENCE_DEPENDENCIES);
-      childrenFeatures.add(CodePackage.Literals.COMPONENT__CONTAINMENT_DEPENDENCIES);
+      childrenFeatures.add(CodePackage.Literals.COMPONENT__SUBCOMPONENTS);
+      childrenFeatures.add(CodePackage.Literals.COMPONENT__REFERENCED_SERVICES);
+      childrenFeatures.add(CodePackage.Literals.COMPONENT__PROVIDED_SERVICES);
     }
     return childrenFeatures;
   }
@@ -178,8 +187,9 @@ public class ComponentItemProvider
         return;
       case CodePackage.COMPONENT__CLASSPATH_ENTRIES:
       case CodePackage.COMPONENT__RESOURCES_CONTAINERS:
-      case CodePackage.COMPONENT__REFERENCE_DEPENDENCIES:
-      case CodePackage.COMPONENT__CONTAINMENT_DEPENDENCIES:
+      case CodePackage.COMPONENT__SUBCOMPONENTS:
+      case CodePackage.COMPONENT__REFERENCED_SERVICES:
+      case CodePackage.COMPONENT__PROVIDED_SERVICES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -210,13 +220,18 @@ public class ComponentItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.COMPONENT__REFERENCE_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createReferenceDependency()));
+        (CodePackage.Literals.COMPONENT__SUBCOMPONENTS,
+         CodeFactory.eINSTANCE.createComponent()));
 
     newChildDescriptors.add
       (createChildParameter
-        (CodePackage.Literals.COMPONENT__CONTAINMENT_DEPENDENCIES,
-         CodeFactory.eINSTANCE.createContainmentDependency()));
+        (CodePackage.Literals.COMPONENT__REFERENCED_SERVICES,
+         CodeFactory.eINSTANCE.createReferencedService()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (CodePackage.Literals.COMPONENT__PROVIDED_SERVICES,
+         CodeFactory.eINSTANCE.createProvidedService()));
   }
 
   /**

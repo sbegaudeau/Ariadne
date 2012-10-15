@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2012 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Stephane Begaudeau (Obeo) - initial API and implementation
  */
 package fr.obeo.ariadne.model.code.provider;
 
@@ -374,28 +382,28 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.RequiredService} instances.
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.ReferencedService} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RequiredServiceItemProvider requiredServiceItemProvider;
+  protected ReferencedServiceItemProvider referencedServiceItemProvider;
 
   /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.RequiredService}.
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.ReferencedService}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
-  public Adapter createRequiredServiceAdapter()
+  public Adapter createReferencedServiceAdapter()
   {
-    if (requiredServiceItemProvider == null)
+    if (referencedServiceItemProvider == null)
     {
-      requiredServiceItemProvider = new RequiredServiceItemProvider(this);
+      referencedServiceItemProvider = new ReferencedServiceItemProvider(this);
     }
 
-    return requiredServiceItemProvider;
+    return referencedServiceItemProvider;
   }
 
   /**
@@ -421,206 +429,6 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
     }
 
     return providedServiceItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.Dependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected DependencyItemProvider dependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.Dependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createDependencyAdapter()
-  {
-    if (dependencyItemProvider == null)
-    {
-      dependencyItemProvider = new DependencyItemProvider(this);
-    }
-
-    return dependencyItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.VersionRangeConstraint} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected VersionRangeConstraintItemProvider versionRangeConstraintItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.VersionRangeConstraint}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createVersionRangeConstraintAdapter()
-  {
-    if (versionRangeConstraintItemProvider == null)
-    {
-      versionRangeConstraintItemProvider = new VersionRangeConstraintItemProvider(this);
-    }
-
-    return versionRangeConstraintItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.ExpressionConstraint} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected ExpressionConstraintItemProvider expressionConstraintItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.ExpressionConstraint}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createExpressionConstraintAdapter()
-  {
-    if (expressionConstraintItemProvider == null)
-    {
-      expressionConstraintItemProvider = new ExpressionConstraintItemProvider(this);
-    }
-
-    return expressionConstraintItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.TypingDependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected TypingDependencyItemProvider typingDependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.TypingDependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createTypingDependencyAdapter()
-  {
-    if (typingDependencyItemProvider == null)
-    {
-      typingDependencyItemProvider = new TypingDependencyItemProvider(this);
-    }
-
-    return typingDependencyItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.InheritanceDependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected InheritanceDependencyItemProvider inheritanceDependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.InheritanceDependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createInheritanceDependencyAdapter()
-  {
-    if (inheritanceDependencyItemProvider == null)
-    {
-      inheritanceDependencyItemProvider = new InheritanceDependencyItemProvider(this);
-    }
-
-    return inheritanceDependencyItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.ReferenceDependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected ReferenceDependencyItemProvider referenceDependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.ReferenceDependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createReferenceDependencyAdapter()
-  {
-    if (referenceDependencyItemProvider == null)
-    {
-      referenceDependencyItemProvider = new ReferenceDependencyItemProvider(this);
-    }
-
-    return referenceDependencyItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.ContainmentDependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected ContainmentDependencyItemProvider containmentDependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.ContainmentDependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createContainmentDependencyAdapter()
-  {
-    if (containmentDependencyItemProvider == null)
-    {
-      containmentDependencyItemProvider = new ContainmentDependencyItemProvider(this);
-    }
-
-    return containmentDependencyItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.AnnotationDependency} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected AnnotationDependencyItemProvider annotationDependencyItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.AnnotationDependency}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createAnnotationDependencyAdapter()
-  {
-    if (annotationDependencyItemProvider == null)
-    {
-      annotationDependencyItemProvider = new AnnotationDependencyItemProvider(this);
-    }
-
-    return annotationDependencyItemProvider;
   }
 
   /**
@@ -746,16 +554,8 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
     if (parameterItemProvider != null) parameterItemProvider.dispose();
     if (annotationItemProvider != null) annotationItemProvider.dispose();
     if (annotationFieldItemProvider != null) annotationFieldItemProvider.dispose();
-    if (requiredServiceItemProvider != null) requiredServiceItemProvider.dispose();
+    if (referencedServiceItemProvider != null) referencedServiceItemProvider.dispose();
     if (providedServiceItemProvider != null) providedServiceItemProvider.dispose();
-    if (dependencyItemProvider != null) dependencyItemProvider.dispose();
-    if (versionRangeConstraintItemProvider != null) versionRangeConstraintItemProvider.dispose();
-    if (expressionConstraintItemProvider != null) expressionConstraintItemProvider.dispose();
-    if (typingDependencyItemProvider != null) typingDependencyItemProvider.dispose();
-    if (inheritanceDependencyItemProvider != null) inheritanceDependencyItemProvider.dispose();
-    if (referenceDependencyItemProvider != null) referenceDependencyItemProvider.dispose();
-    if (containmentDependencyItemProvider != null) containmentDependencyItemProvider.dispose();
-    if (annotationDependencyItemProvider != null) annotationDependencyItemProvider.dispose();
   }
 
 }
