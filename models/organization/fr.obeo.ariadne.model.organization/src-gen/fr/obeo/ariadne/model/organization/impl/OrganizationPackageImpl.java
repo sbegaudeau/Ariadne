@@ -16,8 +16,6 @@ import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
 
 import fr.obeo.ariadne.model.core.CorePackage;
 
-import fr.obeo.ariadne.model.environment.EnvironmentPackage;
-
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.Organization;
 import fr.obeo.ariadne.model.organization.OrganizationDependency;
@@ -26,7 +24,6 @@ import fr.obeo.ariadne.model.organization.OrganizationFactory;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
 import fr.obeo.ariadne.model.organization.Release;
-import fr.obeo.ariadne.model.organization.Specification;
 
 import fr.obeo.ariadne.model.scm.ScmPackage;
 
@@ -69,13 +66,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
    * @generated
    */
   private EClass projectEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass specificationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -147,10 +137,9 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     isInited = true;
 
     // Initialize simple dependencies
-    ScmPackage.eINSTANCE.eClass();
     TasksPackage.eINSTANCE.eClass();
+    ScmPackage.eINSTANCE.eClass();
     ContinuousintegrationPackage.eINSTANCE.eClass();
-    EnvironmentPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theOrganizationPackage.createPackageContents();
@@ -292,19 +281,9 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCategory_Specifications()
-  {
-    return (EReference)categoryEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getCategory_Organization()
   {
-    return (EReference)categoryEClass.getEStructuralFeatures().get(2);
+    return (EReference)categoryEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -382,7 +361,7 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProject_Specifications()
+  public EReference getProject_Repositories()
   {
     return (EReference)projectEClass.getEStructuralFeatures().get(6);
   }
@@ -392,29 +371,9 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProject_Repositories()
-  {
-    return (EReference)projectEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getProject_Category()
   {
-    return (EReference)projectEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSpecification()
-  {
-    return specificationEClass;
+    return (EReference)projectEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -502,6 +461,16 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getRelease_Tasks()
+  {
+    return (EReference)releaseEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getOrganizationDependencyKind()
   {
     return organizationDependencyKindEEnum;
@@ -550,7 +519,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 
     categoryEClass = createEClass(CATEGORY);
     createEReference(categoryEClass, CATEGORY__PROJECTS);
-    createEReference(categoryEClass, CATEGORY__SPECIFICATIONS);
     createEReference(categoryEClass, CATEGORY__ORGANIZATION);
 
     projectEClass = createEClass(PROJECT);
@@ -560,11 +528,8 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     createEReference(projectEClass, PROJECT__SUB_PROJECTS);
     createEReference(projectEClass, PROJECT__RELEASES);
     createEReference(projectEClass, PROJECT__DEPENDENT_PROJECTS);
-    createEReference(projectEClass, PROJECT__SPECIFICATIONS);
     createEReference(projectEClass, PROJECT__REPOSITORIES);
     createEReference(projectEClass, PROJECT__CATEGORY);
-
-    specificationEClass = createEClass(SPECIFICATION);
 
     organizationDependencyEClass = createEClass(ORGANIZATION_DEPENDENCY);
     createEAttribute(organizationDependencyEClass, ORGANIZATION_DEPENDENCY__ORGANIZATION_DEPENDENCY_KINDS);
@@ -575,6 +540,7 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     createEReference(releaseEClass, RELEASE__COMPONENTS);
     createEReference(releaseEClass, RELEASE__BUILD_JOBS);
     createEReference(releaseEClass, RELEASE__BRANCHS);
+    createEReference(releaseEClass, RELEASE__TASKS);
 
     // Create enums
     organizationDependencyKindEEnum = createEEnum(ORGANIZATION_DEPENDENCY_KIND);
@@ -611,7 +577,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     ContinuousintegrationPackage theContinuousintegrationPackage = (ContinuousintegrationPackage)EPackage.Registry.INSTANCE.getEPackage(ContinuousintegrationPackage.eNS_URI);
     TasksPackage theTasksPackage = (TasksPackage)EPackage.Registry.INSTANCE.getEPackage(TasksPackage.eNS_URI);
     CodePackage theCodePackage = (CodePackage)EPackage.Registry.INSTANCE.getEPackage(CodePackage.eNS_URI);
-    EnvironmentPackage theEnvironmentPackage = (EnvironmentPackage)EPackage.Registry.INSTANCE.getEPackage(EnvironmentPackage.eNS_URI);
 
     // Create type parameters
 
@@ -620,7 +585,6 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     // Add supertypes to classes
     categoryEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     projectEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
-    specificationEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     organizationDependencyEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     releaseEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
@@ -638,21 +602,17 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
 
     initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCategory_Projects(), this.getProject(), this.getProject_Category(), "projects", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCategory_Specifications(), this.getSpecification(), null, "specifications", null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCategory_Organization(), this.getOrganization(), this.getOrganization_Categories(), "organization", null, 0, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProject_Components(), theCodePackage.getComponent(), null, "components", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProject_DevelopmentEnvironments(), theEnvironmentPackage.getDevelopmentEnvironment(), null, "developmentEnvironments", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProject_RuntimeEnvironments(), theEnvironmentPackage.getRuntimeEnvironment(), null, "runtimeEnvironments", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProject_DevelopmentEnvironments(), theCodePackage.getEnvironment(), null, "developmentEnvironments", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProject_RuntimeEnvironments(), theCodePackage.getEnvironment(), null, "runtimeEnvironments", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProject_SubProjects(), this.getProject(), null, "subProjects", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProject_Releases(), this.getRelease(), null, "releases", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProject_DependentProjects(), this.getProject(), null, "dependentProjects", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProject_Specifications(), this.getSpecification(), null, "specifications", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProject_Repositories(), theScmPackage.getRepository(), null, "repositories", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProject_Category(), this.getCategory(), this.getCategory_Projects(), "category", null, 0, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(organizationDependencyEClass, OrganizationDependency.class, "OrganizationDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOrganizationDependency_OrganizationDependencyKinds(), this.getOrganizationDependencyKind(), "organizationDependencyKinds", null, 0, -1, OrganizationDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -663,6 +623,7 @@ public class OrganizationPackageImpl extends EPackageImpl implements Organizatio
     initEReference(getRelease_Components(), theCodePackage.getComponent(), null, "components", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRelease_BuildJobs(), theContinuousintegrationPackage.getBuildJob(), null, "buildJobs", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRelease_Branchs(), theScmPackage.getBranch(), null, "branchs", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRelease_Tasks(), theTasksPackage.getTask(), null, "tasks", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(organizationDependencyKindEEnum, OrganizationDependencyKind.class, "OrganizationDependencyKind");

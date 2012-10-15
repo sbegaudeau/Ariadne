@@ -74,6 +74,7 @@ public class ResourceChangeItemProvider
 
       addPathPropertyDescriptor(object);
       addResourceChangeKindPropertyDescriptor(object);
+      addVersionedElementPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -120,6 +121,29 @@ public class ResourceChangeItemProvider
          false,
          false,
          ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Versioned Element feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addVersionedElementPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ResourceChange_versionedElement_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_ResourceChange_versionedElement_feature", "_UI_ResourceChange_type"),
+         ScmPackage.Literals.RESOURCE_CHANGE__VERSIONED_ELEMENT,
+         true,
+         false,
+         true,
+         null,
          null,
          null));
   }

@@ -83,7 +83,6 @@ public class FieldItemProvider
       addTypesPropertyDescriptor(object);
       addAnnotationsPropertyDescriptor(object);
       addOverriddenFieldsPropertyDescriptor(object);
-      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -310,29 +309,6 @@ public class FieldItemProvider
          getString("_UI_Field_overriddenFields_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Field_overriddenFields_feature", "_UI_Field_type"),
          CodePackage.Literals.FIELD__OVERRIDDEN_FIELDS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Related Elements feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRelatedElementsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Field_relatedElements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Field_relatedElements_feature", "_UI_Field_type"),
-         CodePackage.Literals.FIELD__RELATED_ELEMENTS,
          true,
          false,
          true,

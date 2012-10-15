@@ -76,6 +76,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
       case CorePackage.VERSION: return createVersion();
       case CorePackage.PERSON: return createPerson();
       case CorePackage.PROPERTY: return createProperty();
+      case CorePackage.ENTRY: return createEntry();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -123,6 +124,17 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory
   {
     PropertyImpl property = new PropertyImpl();
     return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Entry createEntry()
+  {
+    EntryImpl entry = new EntryImpl();
+    return entry;
   }
 
   /**

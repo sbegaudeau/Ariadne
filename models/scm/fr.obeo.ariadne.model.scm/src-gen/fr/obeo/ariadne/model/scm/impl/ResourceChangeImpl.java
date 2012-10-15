@@ -10,6 +10,8 @@
  */
 package fr.obeo.ariadne.model.scm.impl;
 
+import fr.obeo.ariadne.model.core.VersionedElement;
+
 import fr.obeo.ariadne.model.scm.ResourceChange;
 import fr.obeo.ariadne.model.scm.ResourceChangeKind;
 import fr.obeo.ariadne.model.scm.ScmPackage;
@@ -17,6 +19,7 @@ import fr.obeo.ariadne.model.scm.ScmPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.scm.impl.ResourceChangeImpl#getPath <em>Path</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.scm.impl.ResourceChangeImpl#getResourceChangeKind <em>Resource Change Kind</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.scm.impl.ResourceChangeImpl#getVersionedElement <em>Versioned Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,6 +80,16 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected ResourceChangeKind resourceChangeKind = RESOURCE_CHANGE_KIND_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVersionedElement() <em>Versioned Element</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVersionedElement()
+   * @generated
+   * @ordered
+   */
+  protected VersionedElement versionedElement;
 
   /**
    * <!-- begin-user-doc -->
@@ -149,6 +163,49 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public VersionedElement getVersionedElement()
+  {
+    if (versionedElement != null && versionedElement.eIsProxy())
+    {
+      InternalEObject oldVersionedElement = (InternalEObject)versionedElement;
+      versionedElement = (VersionedElement)eResolveProxy(oldVersionedElement);
+      if (versionedElement != oldVersionedElement)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT, oldVersionedElement, versionedElement));
+      }
+    }
+    return versionedElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VersionedElement basicGetVersionedElement()
+  {
+    return versionedElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVersionedElement(VersionedElement newVersionedElement)
+  {
+    VersionedElement oldVersionedElement = versionedElement;
+    versionedElement = newVersionedElement;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT, oldVersionedElement, versionedElement));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -158,6 +215,9 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
         return getPath();
       case ScmPackage.RESOURCE_CHANGE__RESOURCE_CHANGE_KIND:
         return getResourceChangeKind();
+      case ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT:
+        if (resolve) return getVersionedElement();
+        return basicGetVersionedElement();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -177,6 +237,9 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
         return;
       case ScmPackage.RESOURCE_CHANGE__RESOURCE_CHANGE_KIND:
         setResourceChangeKind((ResourceChangeKind)newValue);
+        return;
+      case ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT:
+        setVersionedElement((VersionedElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -198,6 +261,9 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
       case ScmPackage.RESOURCE_CHANGE__RESOURCE_CHANGE_KIND:
         setResourceChangeKind(RESOURCE_CHANGE_KIND_EDEFAULT);
         return;
+      case ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT:
+        setVersionedElement((VersionedElement)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -216,6 +282,8 @@ public class ResourceChangeImpl extends MinimalEObjectImpl.Container implements 
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
       case ScmPackage.RESOURCE_CHANGE__RESOURCE_CHANGE_KIND:
         return resourceChangeKind != RESOURCE_CHANGE_KIND_EDEFAULT;
+      case ScmPackage.RESOURCE_CHANGE__VERSIONED_ELEMENT:
+        return versionedElement != null;
     }
     return super.eIsSet(featureID);
   }

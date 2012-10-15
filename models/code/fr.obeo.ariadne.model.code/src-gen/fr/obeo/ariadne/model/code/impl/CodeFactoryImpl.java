@@ -87,6 +87,7 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
       case CodePackage.ANNOTATION_FIELD: return createAnnotationField();
       case CodePackage.REFERENCED_SERVICE: return createReferencedService();
       case CodePackage.PROVIDED_SERVICE: return createProvidedService();
+      case CodePackage.ENVIRONMENT: return createEnvironment();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -290,6 +291,17 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
   {
     ProvidedServiceImpl providedService = new ProvidedServiceImpl();
     return providedService;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Environment createEnvironment()
+  {
+    EnvironmentImpl environment = new EnvironmentImpl();
+    return environment;
   }
 
   /**

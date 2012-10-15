@@ -12,6 +12,7 @@ Contributors:
     Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.code
 
+import fr.obeo.ariadne.model.core.Entry
 import fr.obeo.ariadne.model.core.VersionedElement
 
 class Component extends VersionedElement {
@@ -30,7 +31,6 @@ class ResourcesContainer extends VersionedElement {
 }
 
 abstract class Resource extends VersionedElement {
-	refers VersionedElement[] relatedElements
 }
 
 class GenericResource extends Resource {
@@ -80,7 +80,6 @@ abstract class Type extends VersionedElement {
 	VisibilityKind visibility
 	contains Type[] internalTypes
 	refers Annotation[] annotations
-	refers VersionedElement[] relatedElements
 }
 
 class Classifier extends Type {
@@ -114,7 +113,6 @@ class Field extends VersionedElement {
 	refers Type[] types
 	refers Annotation[] annotations
 	refers derived Field[] overriddenFields
-	refers VersionedElement[] relatedElements
 }
 
 class Constructor extends VersionedElement {
@@ -129,7 +127,6 @@ class Constructor extends VersionedElement {
 	refers Type[] types
 	refers Annotation[] annotations
 	refers derived Constructor[] overriddenConstructors
-	refers VersionedElement[] relatedElements
 }
 
 class Operation extends VersionedElement {
@@ -146,7 +143,6 @@ class Operation extends VersionedElement {
 	refers Type[] types
 	refers Annotation[] annotations
 	refers derived Operation[] overriddenOperations
-	refers VersionedElement[] relatedElements
 }
 
 class Parameter extends VersionedElement {
@@ -156,7 +152,6 @@ class Parameter extends VersionedElement {
 	boolean immutable
 	refers Type[] types
 	refers Annotation[] annotations
-	refers VersionedElement[] relatedElements
 	container Operation operation opposite parameters
 }
 
@@ -178,12 +173,14 @@ enum VisibilityKind {
 
 class ReferencedService extends VersionedElement {
 	String identifier
-	refers Type[] types
 	refers ProvidedService[] providedServices
 }
 
 class ProvidedService extends VersionedElement {
 	String identifier
-	refers Type[] types
 	refers ReferencedService referencedService
+}
+
+class Environment extends VersionedElement {
+	contains Entry[] entries
 }

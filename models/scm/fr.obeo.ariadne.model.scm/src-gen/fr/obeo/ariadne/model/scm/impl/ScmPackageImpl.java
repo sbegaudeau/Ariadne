@@ -381,6 +381,16 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getResourceChange_VersionedElement()
+  {
+    return (EReference)resourceChangeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getResourceChangeKind()
   {
     return resourceChangeKindEEnum;
@@ -443,6 +453,7 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
     resourceChangeEClass = createEClass(RESOURCE_CHANGE);
     createEAttribute(resourceChangeEClass, RESOURCE_CHANGE__PATH);
     createEAttribute(resourceChangeEClass, RESOURCE_CHANGE__RESOURCE_CHANGE_KIND);
+    createEReference(resourceChangeEClass, RESOURCE_CHANGE__VERSIONED_ELEMENT);
 
     // Create enums
     resourceChangeKindEEnum = createEEnum(RESOURCE_CHANGE_KIND);
@@ -511,6 +522,7 @@ public class ScmPackageImpl extends EPackageImpl implements ScmPackage
     initEClass(resourceChangeEClass, ResourceChange.class, "ResourceChange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getResourceChange_Path(), theEcorePackage.getEString(), "path", null, 0, 1, ResourceChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getResourceChange_ResourceChangeKind(), this.getResourceChangeKind(), "resourceChangeKind", null, 0, 1, ResourceChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getResourceChange_VersionedElement(), theCorePackage.getVersionedElement(), null, "versionedElement", null, 0, 1, ResourceChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(resourceChangeKindEEnum, ResourceChangeKind.class, "ResourceChangeKind");

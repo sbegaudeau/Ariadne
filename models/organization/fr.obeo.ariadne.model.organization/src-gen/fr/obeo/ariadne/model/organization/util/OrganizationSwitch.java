@@ -105,14 +105,6 @@ public class OrganizationSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case OrganizationPackage.SPECIFICATION:
-      {
-        Specification specification = (Specification)theEObject;
-        T result = caseSpecification(specification);
-        if (result == null) result = caseVersionedElement(specification);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case OrganizationPackage.ORGANIZATION_DEPENDENCY:
       {
         OrganizationDependency organizationDependency = (OrganizationDependency)theEObject;
@@ -177,22 +169,6 @@ public class OrganizationSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProject(Project object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Specification</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Specification</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSpecification(Specification object)
   {
     return null;
   }

@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ProvidedServiceImpl#getReferencedService <em>Referenced Service</em>}</li>
  * </ul>
  * </p>
@@ -66,16 +65,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
    * @ordered
    */
   protected String identifier = IDENTIFIER_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypes()
-   * @generated
-   * @ordered
-   */
-  protected EList<Type> types;
 
   /**
    * The cached value of the '{@link #getReferencedService() <em>Referenced Service</em>}' reference.
@@ -136,20 +125,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getTypes()
-  {
-    if (types == null)
-    {
-      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.PROVIDED_SERVICE__TYPES);
-    }
-    return types;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ReferencedService getReferencedService()
   {
     if (referencedService != null && referencedService.eIsProxy())
@@ -200,8 +175,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
     {
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         return getIdentifier();
-      case CodePackage.PROVIDED_SERVICE__TYPES:
-        return getTypes();
       case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
         if (resolve) return getReferencedService();
         return basicGetReferencedService();
@@ -223,10 +196,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         setIdentifier((String)newValue);
         return;
-      case CodePackage.PROVIDED_SERVICE__TYPES:
-        getTypes().clear();
-        getTypes().addAll((Collection<? extends Type>)newValue);
-        return;
       case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
         setReferencedService((ReferencedService)newValue);
         return;
@@ -247,9 +216,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         setIdentifier(IDENTIFIER_EDEFAULT);
         return;
-      case CodePackage.PROVIDED_SERVICE__TYPES:
-        getTypes().clear();
-        return;
       case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
         setReferencedService((ReferencedService)null);
         return;
@@ -269,8 +235,6 @@ public class ProvidedServiceImpl extends VersionedElementImpl implements Provide
     {
       case CodePackage.PROVIDED_SERVICE__IDENTIFIER:
         return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-      case CodePackage.PROVIDED_SERVICE__TYPES:
-        return types != null && !types.isEmpty();
       case CodePackage.PROVIDED_SERVICE__REFERENCED_SERVICE:
         return referencedService != null;
     }

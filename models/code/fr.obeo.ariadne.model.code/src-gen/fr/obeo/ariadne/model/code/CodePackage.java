@@ -379,22 +379,13 @@ public interface CodePackage extends EPackage
   int RESOURCE__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RESOURCE__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Resource</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+  int RESOURCE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of operations of the '<em>Resource</em>' class.
@@ -468,15 +459,6 @@ public interface CodePackage extends EPackage
    * @ordered
    */
   int GENERIC_RESOURCE__VERSIONED_DEPENDENCIES = RESOURCE__VERSIONED_DEPENDENCIES;
-
-  /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_RESOURCE__RELATED_ELEMENTS = RESOURCE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Resource Kind</b></em>' attribute.
@@ -779,22 +761,13 @@ public interface CodePackage extends EPackage
   int TYPE__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
    * The number of structural features of the '<em>Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
+  int TYPE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of operations of the '<em>Type</em>' class.
@@ -904,15 +877,6 @@ public interface CodePackage extends EPackage
    * @ordered
    */
   int CLASSIFIER__ANNOTATIONS = TYPE__ANNOTATIONS;
-
-  /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASSIFIER__RELATED_ELEMENTS = TYPE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -1168,22 +1132,13 @@ public interface CodePackage extends EPackage
   int FIELD__OVERRIDDEN_FIELDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 9;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FIELD__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
-
-  /**
    * The number of structural features of the '<em>Field</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
+  int FIELD_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
    * The number of operations of the '<em>Field</em>' class.
@@ -1358,22 +1313,13 @@ public interface CodePackage extends EPackage
   int CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 10;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRUCTOR__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
-
-  /**
    * The number of structural features of the '<em>Constructor</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRUCTOR_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 12;
+  int CONSTRUCTOR_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 11;
 
   /**
    * The number of operations of the '<em>Constructor</em>' class.
@@ -1566,22 +1512,13 @@ public interface CodePackage extends EPackage
   int OPERATION__OVERRIDDEN_OPERATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 12;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 13;
-
-  /**
    * The number of structural features of the '<em>Operation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 14;
+  int OPERATION_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 13;
 
   /**
    * The number of operations of the '<em>Operation</em>' class.
@@ -1711,22 +1648,13 @@ public interface CodePackage extends EPackage
   int PARAMETER__ANNOTATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMETER__RELATED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
-
-  /**
    * The feature id for the '<em><b>Operation</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAMETER__OPERATION = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int PARAMETER__OPERATION = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Parameter</em>' class.
@@ -1735,7 +1663,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int PARAMETER_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of operations of the '<em>Parameter</em>' class.
@@ -1845,15 +1773,6 @@ public interface CodePackage extends EPackage
    * @ordered
    */
   int ANNOTATION__ANNOTATIONS = TYPE__ANNOTATIONS;
-
-  /**
-   * The feature id for the '<em><b>Related Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION__RELATED_ELEMENTS = TYPE__RELATED_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Annotation Fields</b></em>' containment reference list.
@@ -2056,22 +1975,13 @@ public interface CodePackage extends EPackage
   int REFERENCED_SERVICE__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCED_SERVICE__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Provided Services</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REFERENCED_SERVICE__PROVIDED_SERVICES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int REFERENCED_SERVICE__PROVIDED_SERVICES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Referenced Service</em>' class.
@@ -2080,7 +1990,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int REFERENCED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int REFERENCED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of operations of the '<em>Referenced Service</em>' class.
@@ -2165,22 +2075,13 @@ public interface CodePackage extends EPackage
   int PROVIDED_SERVICE__IDENTIFIER = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Types</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROVIDED_SERVICE__TYPES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Referenced Service</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROVIDED_SERVICE__REFERENCED_SERVICE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
+  int PROVIDED_SERVICE__REFERENCED_SERVICE = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Provided Service</em>' class.
@@ -2189,7 +2090,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROVIDED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int PROVIDED_SERVICE_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of operations of the '<em>Provided Service</em>' class.
@@ -2201,6 +2102,97 @@ public interface CodePackage extends EPackage
   int PROVIDED_SERVICE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.EnvironmentImpl <em>Environment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.code.impl.EnvironmentImpl
+   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getEnvironment()
+   * @generated
+   */
+  int ENVIRONMENT = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+
+  /**
+   * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__ENTRIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Environment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of operations of the '<em>Environment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2208,7 +2200,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getResourceKind()
    * @generated
    */
-  int RESOURCE_KIND = 16;
+  int RESOURCE_KIND = 17;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClasspathEntryKind <em>Classpath Entry Kind</em>}' enum.
@@ -2218,7 +2210,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClasspathEntryKind()
    * @generated
    */
-  int CLASSPATH_ENTRY_KIND = 17;
+  int CLASSPATH_ENTRY_KIND = 18;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClassifierKind <em>Classifier Kind</em>}' enum.
@@ -2228,7 +2220,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClassifierKind()
    * @generated
    */
-  int CLASSIFIER_KIND = 18;
+  int CLASSIFIER_KIND = 19;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.VisibilityKind <em>Visibility Kind</em>}' enum.
@@ -2238,7 +2230,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getVisibilityKind()
    * @generated
    */
-  int VISIBILITY_KIND = 19;
+  int VISIBILITY_KIND = 20;
 
 
   /**
@@ -2369,17 +2361,6 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EClass getResource();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Resource#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Resource#getRelatedElements()
-   * @see #getResource()
-   * @generated
-   */
-  EReference getResource_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.GenericResource <em>Generic Resource</em>}'.
@@ -2552,17 +2533,6 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EReference getType_Annotations();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Type#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Type#getRelatedElements()
-   * @see #getType()
-   * @generated
-   */
-  EReference getType_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Classifier <em>Classifier</em>}'.
@@ -2794,17 +2764,6 @@ public interface CodePackage extends EPackage
   EReference getField_OverriddenFields();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Field#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Field#getRelatedElements()
-   * @see #getField()
-   * @generated
-   */
-  EReference getField_RelatedElements();
-
-  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Constructor <em>Constructor</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2934,17 +2893,6 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EReference getConstructor_OverriddenConstructors();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Constructor#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Constructor#getRelatedElements()
-   * @see #getConstructor()
-   * @generated
-   */
-  EReference getConstructor_RelatedElements();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Operation <em>Operation</em>}'.
@@ -3100,17 +3048,6 @@ public interface CodePackage extends EPackage
   EReference getOperation_OverriddenOperations();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Operation#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Operation#getRelatedElements()
-   * @see #getOperation()
-   * @generated
-   */
-  EReference getOperation_RelatedElements();
-
-  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Parameter <em>Parameter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3185,17 +3122,6 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EReference getParameter_Annotations();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.Parameter#getRelatedElements <em>Related Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Related Elements</em>'.
-   * @see fr.obeo.ariadne.model.code.Parameter#getRelatedElements()
-   * @see #getParameter()
-   * @generated
-   */
-  EReference getParameter_RelatedElements();
 
   /**
    * Returns the meta object for the container reference '{@link fr.obeo.ariadne.model.code.Parameter#getOperation <em>Operation</em>}'.
@@ -3283,17 +3209,6 @@ public interface CodePackage extends EPackage
   EAttribute getReferencedService_Identifier();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ReferencedService#getTypes <em>Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Types</em>'.
-   * @see fr.obeo.ariadne.model.code.ReferencedService#getTypes()
-   * @see #getReferencedService()
-   * @generated
-   */
-  EReference getReferencedService_Types();
-
-  /**
    * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ReferencedService#getProvidedServices <em>Provided Services</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3326,17 +3241,6 @@ public interface CodePackage extends EPackage
   EAttribute getProvidedService_Identifier();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.code.ProvidedService#getTypes <em>Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Types</em>'.
-   * @see fr.obeo.ariadne.model.code.ProvidedService#getTypes()
-   * @see #getProvidedService()
-   * @generated
-   */
-  EReference getProvidedService_Types();
-
-  /**
    * Returns the meta object for the reference '{@link fr.obeo.ariadne.model.code.ProvidedService#getReferencedService <em>Referenced Service</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3346,6 +3250,27 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EReference getProvidedService_ReferencedService();
+
+  /**
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Environment <em>Environment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Environment</em>'.
+   * @see fr.obeo.ariadne.model.code.Environment
+   * @generated
+   */
+  EClass getEnvironment();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Environment#getEntries <em>Entries</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Entries</em>'.
+   * @see fr.obeo.ariadne.model.code.Environment#getEntries()
+   * @see #getEnvironment()
+   * @generated
+   */
+  EReference getEnvironment_Entries();
 
   /**
    * Returns the meta object for enum '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}'.
@@ -3514,14 +3439,6 @@ public interface CodePackage extends EPackage
     EClass RESOURCE = eINSTANCE.getResource();
 
     /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RESOURCE__RELATED_ELEMENTS = eINSTANCE.getResource_RelatedElements();
-
-    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.GenericResourceImpl <em>Generic Resource</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3656,14 +3573,6 @@ public interface CodePackage extends EPackage
      * @generated
      */
     EReference TYPE__ANNOTATIONS = eINSTANCE.getType_Annotations();
-
-    /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TYPE__RELATED_ELEMENTS = eINSTANCE.getType_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -3838,14 +3747,6 @@ public interface CodePackage extends EPackage
     EReference FIELD__OVERRIDDEN_FIELDS = eINSTANCE.getField_OverriddenFields();
 
     /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FIELD__RELATED_ELEMENTS = eINSTANCE.getField_RelatedElements();
-
-    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl <em>Constructor</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3942,14 +3843,6 @@ public interface CodePackage extends EPackage
      * @generated
      */
     EReference CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS = eINSTANCE.getConstructor_OverriddenConstructors();
-
-    /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONSTRUCTOR__RELATED_ELEMENTS = eINSTANCE.getConstructor_RelatedElements();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.OperationImpl <em>Operation</em>}' class.
@@ -4066,14 +3959,6 @@ public interface CodePackage extends EPackage
     EReference OPERATION__OVERRIDDEN_OPERATIONS = eINSTANCE.getOperation_OverriddenOperations();
 
     /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPERATION__RELATED_ELEMENTS = eINSTANCE.getOperation_RelatedElements();
-
-    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ParameterImpl <em>Parameter</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4130,14 +4015,6 @@ public interface CodePackage extends EPackage
      * @generated
      */
     EReference PARAMETER__ANNOTATIONS = eINSTANCE.getParameter_Annotations();
-
-    /**
-     * The meta object literal for the '<em><b>Related Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARAMETER__RELATED_ELEMENTS = eINSTANCE.getParameter_RelatedElements();
 
     /**
      * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
@@ -4210,14 +4087,6 @@ public interface CodePackage extends EPackage
     EAttribute REFERENCED_SERVICE__IDENTIFIER = eINSTANCE.getReferencedService_Identifier();
 
     /**
-     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REFERENCED_SERVICE__TYPES = eINSTANCE.getReferencedService_Types();
-
-    /**
      * The meta object literal for the '<em><b>Provided Services</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4244,20 +4113,30 @@ public interface CodePackage extends EPackage
     EAttribute PROVIDED_SERVICE__IDENTIFIER = eINSTANCE.getProvidedService_Identifier();
 
     /**
-     * The meta object literal for the '<em><b>Types</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROVIDED_SERVICE__TYPES = eINSTANCE.getProvidedService_Types();
-
-    /**
      * The meta object literal for the '<em><b>Referenced Service</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference PROVIDED_SERVICE__REFERENCED_SERVICE = eINSTANCE.getProvidedService_ReferencedService();
+
+    /**
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.EnvironmentImpl <em>Environment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.obeo.ariadne.model.code.impl.EnvironmentImpl
+     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getEnvironment()
+     * @generated
+     */
+    EClass ENVIRONMENT = eINSTANCE.getEnvironment();
+
+    /**
+     * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENVIRONMENT__ENTRIES = eINSTANCE.getEnvironment_Entries();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.ResourceKind <em>Resource Kind</em>}' enum.

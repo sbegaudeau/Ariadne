@@ -15,8 +15,6 @@ import fr.obeo.ariadne.model.code.CodeFactory;
 
 import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
-import fr.obeo.ariadne.model.environment.EnvironmentFactory;
-
 import fr.obeo.ariadne.model.organization.OrganizationFactory;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
@@ -80,7 +78,6 @@ public class ProjectItemProvider
       super.getPropertyDescriptors(object);
 
       addDependentProjectsPropertyDescriptor(object);
-      addSpecificationsPropertyDescriptor(object);
       addRepositoriesPropertyDescriptor(object);
       addCategoryPropertyDescriptor(object);
     }
@@ -102,29 +99,6 @@ public class ProjectItemProvider
          getString("_UI_Project_dependentProjects_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Project_dependentProjects_feature", "_UI_Project_type"),
          OrganizationPackage.Literals.PROJECT__DEPENDENT_PROJECTS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Specifications feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addSpecificationsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Project_specifications_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Project_specifications_feature", "_UI_Project_type"),
-         OrganizationPackage.Literals.PROJECT__SPECIFICATIONS,
          true,
          false,
          true,
@@ -288,12 +262,12 @@ public class ProjectItemProvider
     newChildDescriptors.add
       (createChildParameter
         (OrganizationPackage.Literals.PROJECT__DEVELOPMENT_ENVIRONMENTS,
-         EnvironmentFactory.eINSTANCE.createDevelopmentEnvironment()));
+         CodeFactory.eINSTANCE.createEnvironment()));
 
     newChildDescriptors.add
       (createChildParameter
         (OrganizationPackage.Literals.PROJECT__RUNTIME_ENVIRONMENTS,
-         EnvironmentFactory.eINSTANCE.createRuntimeEnvironment()));
+         CodeFactory.eINSTANCE.createEnvironment()));
 
     newChildDescriptors.add
       (createChildParameter
@@ -304,6 +278,31 @@ public class ProjectItemProvider
       (createChildParameter
         (OrganizationPackage.Literals.PROJECT__RELEASES,
          OrganizationFactory.eINSTANCE.createRelease()));
+  }
+
+  /**
+   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
+  {
+    Object childFeature = feature;
+    Object childObject = child;
+
+    boolean qualify =
+      childFeature == OrganizationPackage.Literals.PROJECT__DEVELOPMENT_ENVIRONMENTS ||
+      childFeature == OrganizationPackage.Literals.PROJECT__RUNTIME_ENVIRONMENTS;
+
+    if (qualify)
+    {
+      return getString
+        ("_UI_CreateChild_text2",
+         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+    }
+    return super.getCreateChildText(owner, feature, child, selection);
   }
 
   /**

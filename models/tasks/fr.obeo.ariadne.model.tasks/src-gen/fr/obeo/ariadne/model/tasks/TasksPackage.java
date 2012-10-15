@@ -296,22 +296,13 @@ public interface TasksPackage extends EPackage
   int TASK__STATUS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
-   * The feature id for the '<em><b>Task Entries</b></em>' containment reference list.
+   * The feature id for the '<em><b>Entries</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK__TASK_ENTRIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
-
-  /**
-   * The feature id for the '<em><b>Versioned Elements</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK__VERSIONED_ELEMENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
+  int TASK__ENTRIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Task</em>' class.
@@ -320,7 +311,7 @@ public interface TasksPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 8;
+  int TASK_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of operations of the '<em>Task</em>' class.
@@ -330,52 +321,6 @@ public interface TasksPackage extends EPackage
    * @ordered
    */
   int TASK_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl <em>Task Entry</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl
-   * @see fr.obeo.ariadne.model.tasks.impl.TasksPackageImpl#getTaskEntry()
-   * @generated
-   */
-  int TASK_ENTRY = 2;
-
-  /**
-   * The feature id for the '<em><b>Identifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY__IDENTIFIER = 0;
-
-  /**
-   * The feature id for the '<em><b>Values</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY__VALUES = 1;
-
-  /**
-   * The number of structural features of the '<em>Task Entry</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY_FEATURE_COUNT = 2;
-
-  /**
-   * The number of operations of the '<em>Task Entry</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_ENTRY_OPERATION_COUNT = 0;
 
 
   /**
@@ -498,58 +443,15 @@ public interface TasksPackage extends EPackage
   EAttribute getTask_Status();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.tasks.Task#getTaskEntries <em>Task Entries</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.tasks.Task#getEntries <em>Entries</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Task Entries</em>'.
-   * @see fr.obeo.ariadne.model.tasks.Task#getTaskEntries()
+   * @return the meta object for the containment reference list '<em>Entries</em>'.
+   * @see fr.obeo.ariadne.model.tasks.Task#getEntries()
    * @see #getTask()
    * @generated
    */
-  EReference getTask_TaskEntries();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.tasks.Task#getVersionedElements <em>Versioned Elements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Versioned Elements</em>'.
-   * @see fr.obeo.ariadne.model.tasks.Task#getVersionedElements()
-   * @see #getTask()
-   * @generated
-   */
-  EReference getTask_VersionedElements();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.tasks.TaskEntry <em>Task Entry</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Task Entry</em>'.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry
-   * @generated
-   */
-  EClass getTaskEntry();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.tasks.TaskEntry#getIdentifier <em>Identifier</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Identifier</em>'.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry#getIdentifier()
-   * @see #getTaskEntry()
-   * @generated
-   */
-  EAttribute getTaskEntry_Identifier();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.tasks.TaskEntry#getValues <em>Values</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Values</em>'.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry#getValues()
-   * @see #getTaskEntry()
-   * @generated
-   */
-  EAttribute getTaskEntry_Values();
+  EReference getTask_Entries();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -668,46 +570,12 @@ public interface TasksPackage extends EPackage
     EAttribute TASK__STATUS = eINSTANCE.getTask_Status();
 
     /**
-     * The meta object literal for the '<em><b>Task Entries</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TASK__TASK_ENTRIES = eINSTANCE.getTask_TaskEntries();
-
-    /**
-     * The meta object literal for the '<em><b>Versioned Elements</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TASK__VERSIONED_ELEMENTS = eINSTANCE.getTask_VersionedElements();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl <em>Task Entry</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.tasks.impl.TaskEntryImpl
-     * @see fr.obeo.ariadne.model.tasks.impl.TasksPackageImpl#getTaskEntry()
-     * @generated
-     */
-    EClass TASK_ENTRY = eINSTANCE.getTaskEntry();
-
-    /**
-     * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK_ENTRY__IDENTIFIER = eINSTANCE.getTaskEntry_Identifier();
-
-    /**
-     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK_ENTRY__VALUES = eINSTANCE.getTaskEntry_Values();
+    EReference TASK__ENTRIES = eINSTANCE.getTask_Entries();
 
   }
 

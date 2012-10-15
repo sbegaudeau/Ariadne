@@ -88,7 +88,6 @@ public class OperationItemProvider
       addTypesPropertyDescriptor(object);
       addAnnotationsPropertyDescriptor(object);
       addOverriddenOperationsPropertyDescriptor(object);
-      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -361,29 +360,6 @@ public class OperationItemProvider
          getString("_UI_Operation_overriddenOperations_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Operation_overriddenOperations_feature", "_UI_Operation_type"),
          CodePackage.Literals.OPERATION__OVERRIDDEN_OPERATIONS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Related Elements feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRelatedElementsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Operation_relatedElements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Operation_relatedElements_feature", "_UI_Operation_type"),
-         CodePackage.Literals.OPERATION__RELATED_ELEMENTS,
          true,
          false,
          true,

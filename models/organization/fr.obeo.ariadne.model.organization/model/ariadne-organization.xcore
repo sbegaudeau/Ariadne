@@ -13,6 +13,7 @@ Contributors:
 package fr.obeo.ariadne.model.organization
 
 import fr.obeo.ariadne.model.code.Component
+import fr.obeo.ariadne.model.code.Environment
 
 import fr.obeo.ariadne.model.continuousintegration.BuildJob
 import fr.obeo.ariadne.model.continuousintegration.BuildServer
@@ -22,12 +23,11 @@ import fr.obeo.ariadne.model.core.Person
 import fr.obeo.ariadne.model.core.Property
 import fr.obeo.ariadne.model.core.VersionedElement
 
-import fr.obeo.ariadne.model.environment.DevelopmentEnvironment
-import fr.obeo.ariadne.model.environment.RuntimeEnvironment
 
 import fr.obeo.ariadne.model.scm.Branch
 import fr.obeo.ariadne.model.scm.Repository
 
+import fr.obeo.ariadne.model.tasks.Task
 import fr.obeo.ariadne.model.tasks.TasksRepository
 
 class Organization {
@@ -44,23 +44,18 @@ class Organization {
 
 class Category extends VersionedElement {
 	contains Project[] projects opposite category
-	contains Specification[] specifications
 	container Organization organization opposite categories
 }
 
 class Project extends VersionedElement {
 	contains Component[] components
-	contains DevelopmentEnvironment[] developmentEnvironments
-	contains RuntimeEnvironment[] runtimeEnvironments
+	contains Environment[] developmentEnvironments
+	contains Environment[] runtimeEnvironments
 	contains Project[] subProjects
 	contains Release[] releases
 	refers Project[] dependentProjects
-	refers Specification[] specifications
 	refers Repository[] repositories
 	container Category category opposite projects
-}
-
-class Specification extends VersionedElement {
 }
 
 class OrganizationDependency extends VersionedElement {
@@ -82,4 +77,5 @@ class Release extends VersionedElement {
 	refers Component[] components
 	refers BuildJob[] buildJobs
 	refers Branch[] branchs
+	refers Task[] tasks
 }

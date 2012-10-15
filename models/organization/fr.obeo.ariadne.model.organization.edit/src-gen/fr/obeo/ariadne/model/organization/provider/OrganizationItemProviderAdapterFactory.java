@@ -157,31 +157,6 @@ public class OrganizationItemProviderAdapterFactory extends OrganizationAdapterF
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.organization.Specification} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected SpecificationItemProvider specificationItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.organization.Specification}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createSpecificationAdapter()
-  {
-    if (specificationItemProvider == null)
-    {
-      specificationItemProvider = new SpecificationItemProvider(this);
-    }
-
-    return specificationItemProvider;
-  }
-
-  /**
    * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.organization.OrganizationDependency} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -345,7 +320,6 @@ public class OrganizationItemProviderAdapterFactory extends OrganizationAdapterF
     if (organizationItemProvider != null) organizationItemProvider.dispose();
     if (categoryItemProvider != null) categoryItemProvider.dispose();
     if (projectItemProvider != null) projectItemProvider.dispose();
-    if (specificationItemProvider != null) specificationItemProvider.dispose();
     if (organizationDependencyItemProvider != null) organizationDependencyItemProvider.dispose();
     if (releaseItemProvider != null) releaseItemProvider.dispose();
   }

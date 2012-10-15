@@ -100,11 +100,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
         return createProjectAdapter();
       }
       @Override
-      public Adapter caseSpecification(Specification object)
-      {
-        return createSpecificationAdapter();
-      }
-      @Override
       public Adapter caseOrganizationDependency(OrganizationDependency object)
       {
         return createOrganizationDependencyAdapter();
@@ -182,21 +177,6 @@ public class OrganizationAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProjectAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.organization.Specification <em>Specification</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.organization.Specification
-   * @generated
-   */
-  public Adapter createSpecificationAdapter()
   {
     return null;
   }

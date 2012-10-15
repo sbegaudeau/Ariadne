@@ -79,7 +79,6 @@ public class TypeItemProvider
       addQualifiedNamePropertyDescriptor(object);
       addVisibilityPropertyDescriptor(object);
       addAnnotationsPropertyDescriptor(object);
-      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -145,29 +144,6 @@ public class TypeItemProvider
          getString("_UI_Type_annotations_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Type_annotations_feature", "_UI_Type_type"),
          CodePackage.Literals.TYPE__ANNOTATIONS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Related Elements feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRelatedElementsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Type_relatedElements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Type_relatedElements_feature", "_UI_Type_type"),
-         CodePackage.Literals.TYPE__RELATED_ELEMENTS,
          true,
          false,
          true,

@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Type#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Type#getInternalTypes <em>Internal Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Type#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Type#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,21 +121,5 @@ public interface Type extends VersionedElement
    * @generated
    */
   EList<Annotation> getAnnotations();
-
-  /**
-   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getType_RelatedElements()
-   * @model
-   * @generated
-   */
-  EList<VersionedElement> getRelatedElements();
 
 } // Type

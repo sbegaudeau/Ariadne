@@ -16,8 +16,6 @@ import fr.obeo.ariadne.model.continuousintegration.provider.Continuousintegratio
 
 import fr.obeo.ariadne.model.core.provider.CoreEditPlugin;
 
-import fr.obeo.ariadne.model.environment.provider.EnvironmentEditPlugin;
-
 import fr.obeo.ariadne.model.scm.provider.ScmEditPlugin;
 
 import fr.obeo.ariadne.model.tasks.provider.TasksEditPlugin;
@@ -63,12 +61,11 @@ public final class OrganizationEditorPlugin extends EMFPlugin
     super
       (new ResourceLocator [] 
       {
-        ScmEditPlugin.INSTANCE,
-        TasksEditPlugin.INSTANCE,
-        ContinuousintegrationEditPlugin.INSTANCE,
         CoreEditPlugin.INSTANCE,
-        EnvironmentEditPlugin.INSTANCE,
         CodeEditPlugin.INSTANCE,
+        TasksEditPlugin.INSTANCE,
+        ScmEditPlugin.INSTANCE,
+        ContinuousintegrationEditPlugin.INSTANCE,
       });
   }
 

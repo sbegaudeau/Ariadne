@@ -37,7 +37,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ReferencedServiceImpl#getProvidedServices <em>Provided Services</em>}</li>
  * </ul>
  * </p>
@@ -65,16 +64,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
    * @ordered
    */
   protected String identifier = IDENTIFIER_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypes()
-   * @generated
-   * @ordered
-   */
-  protected EList<Type> types;
 
   /**
    * The cached value of the '{@link #getProvidedServices() <em>Provided Services</em>}' reference list.
@@ -135,20 +124,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getTypes()
-  {
-    if (types == null)
-    {
-      types = new EObjectResolvingEList<Type>(Type.class, this, CodePackage.REFERENCED_SERVICE__TYPES);
-    }
-    return types;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<ProvidedService> getProvidedServices()
   {
     if (providedServices == null)
@@ -170,8 +145,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
     {
       case CodePackage.REFERENCED_SERVICE__IDENTIFIER:
         return getIdentifier();
-      case CodePackage.REFERENCED_SERVICE__TYPES:
-        return getTypes();
       case CodePackage.REFERENCED_SERVICE__PROVIDED_SERVICES:
         return getProvidedServices();
     }
@@ -191,10 +164,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
     {
       case CodePackage.REFERENCED_SERVICE__IDENTIFIER:
         setIdentifier((String)newValue);
-        return;
-      case CodePackage.REFERENCED_SERVICE__TYPES:
-        getTypes().clear();
-        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
       case CodePackage.REFERENCED_SERVICE__PROVIDED_SERVICES:
         getProvidedServices().clear();
@@ -217,9 +186,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
       case CodePackage.REFERENCED_SERVICE__IDENTIFIER:
         setIdentifier(IDENTIFIER_EDEFAULT);
         return;
-      case CodePackage.REFERENCED_SERVICE__TYPES:
-        getTypes().clear();
-        return;
       case CodePackage.REFERENCED_SERVICE__PROVIDED_SERVICES:
         getProvidedServices().clear();
         return;
@@ -239,8 +205,6 @@ public class ReferencedServiceImpl extends VersionedElementImpl implements Refer
     {
       case CodePackage.REFERENCED_SERVICE__IDENTIFIER:
         return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-      case CodePackage.REFERENCED_SERVICE__TYPES:
-        return types != null && !types.isEmpty();
       case CodePackage.REFERENCED_SERVICE__PROVIDED_SERVICES:
         return providedServices != null && !providedServices.isEmpty();
     }

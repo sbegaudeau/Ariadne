@@ -71,32 +71,8 @@ public class ResourceItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addRelatedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Related Elements feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRelatedElementsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Resource_relatedElements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Resource_relatedElements_feature", "_UI_Resource_type"),
-         CodePackage.Literals.RESOURCE__RELATED_ELEMENTS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
   }
 
   /**

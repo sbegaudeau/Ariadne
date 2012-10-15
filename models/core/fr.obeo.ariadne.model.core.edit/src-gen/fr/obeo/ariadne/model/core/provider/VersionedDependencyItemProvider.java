@@ -75,11 +75,36 @@ public class VersionedDependencyItemProvider
     {
       super.getPropertyDescriptors(object);
 
+      addUrlPropertyDescriptor(object);
       addIncludesLowerBoundPropertyDescriptor(object);
       addIncludesUpperBoundPropertyDescriptor(object);
+      addOptionalPropertyDescriptor(object);
       addVersionedElementPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Url feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addUrlPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedDependency_url_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedDependency_url_feature", "_UI_VersionedDependency_type"),
+         CorePackage.Literals.VERSIONED_DEPENDENCY__URL,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -120,6 +145,29 @@ public class VersionedDependencyItemProvider
          getString("_UI_VersionedDependency_includesUpperBound_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_VersionedDependency_includesUpperBound_feature", "_UI_VersionedDependency_type"),
          CorePackage.Literals.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Optional feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addOptionalPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_VersionedDependency_optional_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_VersionedDependency_optional_feature", "_UI_VersionedDependency_type"),
+         CorePackage.Literals.VERSIONED_DEPENDENCY__OPTIONAL,
          true,
          false,
          false,
@@ -206,8 +254,10 @@ public class VersionedDependencyItemProvider
   @Override
   public String getText(Object object)
   {
-    VersionedDependency versionedDependency = (VersionedDependency)object;
-    return getString("_UI_VersionedDependency_type") + " " + versionedDependency.isIncludesLowerBound();
+    String label = ((VersionedDependency)object).getUrl();
+    return label == null || label.length() == 0 ?
+      getString("_UI_VersionedDependency_type") :
+      getString("_UI_VersionedDependency_type") + " " + label;
   }
 
   /**
@@ -224,8 +274,10 @@ public class VersionedDependencyItemProvider
 
     switch (notification.getFeatureID(VersionedDependency.class))
     {
+      case CorePackage.VERSIONED_DEPENDENCY__URL:
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_LOWER_BOUND:
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND:
+      case CorePackage.VERSIONED_DEPENDENCY__OPTIONAL:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case CorePackage.VERSIONED_DEPENDENCY__LOWER_BOUND:

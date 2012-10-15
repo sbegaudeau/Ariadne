@@ -31,10 +31,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#isIncludesLowerBound <em>Includes Lower Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#isIncludesUpperBound <em>Includes Upper Bound</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#isOptional <em>Optional</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.impl.VersionedDependencyImpl#getVersionedElement <em>Versioned Element</em>}</li>
  * </ul>
  * </p>
@@ -43,6 +45,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implements VersionedDependency
 {
+  /**
+   * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUrl()
+   * @generated
+   * @ordered
+   */
+  protected static final String URL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUrl() <em>Url</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUrl()
+   * @generated
+   * @ordered
+   */
+  protected String url = URL_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -104,6 +126,26 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   protected boolean includesUpperBound = INCLUDES_UPPER_BOUND_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean OPTIONAL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected boolean optional = OPTIONAL_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getVersionedElement() <em>Versioned Element</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +174,29 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   protected EClass eStaticClass()
   {
     return CorePackage.Literals.VERSIONED_DEPENDENCY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getUrl()
+  {
+    return url;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUrl(String newUrl)
+  {
+    String oldUrl = url;
+    url = newUrl;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.VERSIONED_DEPENDENCY__URL, oldUrl, url));
   }
 
   /**
@@ -281,6 +346,29 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isOptional()
+  {
+    return optional;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOptional(boolean newOptional)
+  {
+    boolean oldOptional = optional;
+    optional = newOptional;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.VERSIONED_DEPENDENCY__OPTIONAL, oldOptional, optional));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public VersionedElement getVersionedElement()
   {
     if (versionedElement != null && versionedElement.eIsProxy())
@@ -347,6 +435,8 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case CorePackage.VERSIONED_DEPENDENCY__URL:
+        return getUrl();
       case CorePackage.VERSIONED_DEPENDENCY__LOWER_BOUND:
         return getLowerBound();
       case CorePackage.VERSIONED_DEPENDENCY__UPPER_BOUND:
@@ -355,6 +445,8 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
         return isIncludesLowerBound();
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND:
         return isIncludesUpperBound();
+      case CorePackage.VERSIONED_DEPENDENCY__OPTIONAL:
+        return isOptional();
       case CorePackage.VERSIONED_DEPENDENCY__VERSIONED_ELEMENT:
         if (resolve) return getVersionedElement();
         return basicGetVersionedElement();
@@ -372,6 +464,9 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case CorePackage.VERSIONED_DEPENDENCY__URL:
+        setUrl((String)newValue);
+        return;
       case CorePackage.VERSIONED_DEPENDENCY__LOWER_BOUND:
         setLowerBound((Version)newValue);
         return;
@@ -383,6 +478,9 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
         return;
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND:
         setIncludesUpperBound((Boolean)newValue);
+        return;
+      case CorePackage.VERSIONED_DEPENDENCY__OPTIONAL:
+        setOptional((Boolean)newValue);
         return;
       case CorePackage.VERSIONED_DEPENDENCY__VERSIONED_ELEMENT:
         setVersionedElement((VersionedElement)newValue);
@@ -401,6 +499,9 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case CorePackage.VERSIONED_DEPENDENCY__URL:
+        setUrl(URL_EDEFAULT);
+        return;
       case CorePackage.VERSIONED_DEPENDENCY__LOWER_BOUND:
         setLowerBound((Version)null);
         return;
@@ -412,6 +513,9 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
         return;
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND:
         setIncludesUpperBound(INCLUDES_UPPER_BOUND_EDEFAULT);
+        return;
+      case CorePackage.VERSIONED_DEPENDENCY__OPTIONAL:
+        setOptional(OPTIONAL_EDEFAULT);
         return;
       case CorePackage.VERSIONED_DEPENDENCY__VERSIONED_ELEMENT:
         setVersionedElement((VersionedElement)null);
@@ -430,6 +534,8 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case CorePackage.VERSIONED_DEPENDENCY__URL:
+        return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
       case CorePackage.VERSIONED_DEPENDENCY__LOWER_BOUND:
         return lowerBound != null;
       case CorePackage.VERSIONED_DEPENDENCY__UPPER_BOUND:
@@ -438,6 +544,8 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
         return includesLowerBound != INCLUDES_LOWER_BOUND_EDEFAULT;
       case CorePackage.VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND:
         return includesUpperBound != INCLUDES_UPPER_BOUND_EDEFAULT;
+      case CorePackage.VERSIONED_DEPENDENCY__OPTIONAL:
+        return optional != OPTIONAL_EDEFAULT;
       case CorePackage.VERSIONED_DEPENDENCY__VERSIONED_ELEMENT:
         return versionedElement != null;
     }
@@ -455,10 +563,14 @@ public class VersionedDependencyImpl extends MinimalEObjectImpl.Container implem
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (includesLowerBound: ");
+    result.append(" (url: ");
+    result.append(url);
+    result.append(", includesLowerBound: ");
     result.append(includesLowerBound);
     result.append(", includesUpperBound: ");
     result.append(includesUpperBound);
+    result.append(", optional: ");
+    result.append(optional);
     result.append(')');
     return result.toString();
   }

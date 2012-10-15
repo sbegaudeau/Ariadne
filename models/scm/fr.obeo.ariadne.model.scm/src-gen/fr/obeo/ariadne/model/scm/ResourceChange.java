@@ -10,6 +10,8 @@
  */
 package fr.obeo.ariadne.model.scm;
 
+import fr.obeo.ariadne.model.core.VersionedElement;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.scm.ResourceChange#getPath <em>Path</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.scm.ResourceChange#getResourceChangeKind <em>Resource Change Kind</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.scm.ResourceChange#getVersionedElement <em>Versioned Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,5 +88,31 @@ public interface ResourceChange extends EObject
    * @generated
    */
   void setResourceChangeKind(ResourceChangeKind value);
+
+  /**
+   * Returns the value of the '<em><b>Versioned Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Versioned Element</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Versioned Element</em>' reference.
+   * @see #setVersionedElement(VersionedElement)
+   * @see fr.obeo.ariadne.model.scm.ScmPackage#getResourceChange_VersionedElement()
+   * @model
+   * @generated
+   */
+  VersionedElement getVersionedElement();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.scm.ResourceChange#getVersionedElement <em>Versioned Element</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Versioned Element</em>' reference.
+   * @see #getVersionedElement()
+   * @generated
+   */
+  void setVersionedElement(VersionedElement value);
 
 } // ResourceChange

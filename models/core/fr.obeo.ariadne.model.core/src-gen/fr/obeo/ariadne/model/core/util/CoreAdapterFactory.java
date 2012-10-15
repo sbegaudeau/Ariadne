@@ -108,6 +108,11 @@ public class CoreAdapterFactory extends AdapterFactoryImpl
         return createPropertyAdapter();
       }
       @Override
+      public Adapter caseEntry(Entry object)
+      {
+        return createEntryAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -200,6 +205,21 @@ public class CoreAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.core.Entry <em>Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.obeo.ariadne.model.core.Entry
+   * @generated
+   */
+  public Adapter createEntryAdapter()
   {
     return null;
   }

@@ -18,14 +18,16 @@ abstract class VersionedElement {
 	refers Person[] authors
 	refers Property[] properties
 	contains Version version
-	contains VersionedDependency[] versionedDependencies	
+	contains VersionedDependency[] versionedDependencies
 }
 
 class VersionedDependency {
+	String url
 	contains Version lowerBound
 	contains Version upperBound
 	boolean includesLowerBound
 	boolean includesUpperBound
+	boolean optional
 	refers VersionedElement versionedElement
 }
 
@@ -45,4 +47,9 @@ class Property {
 	String description
 	String identifier
 	refers Property[] extendedProperties
+}
+
+class Entry {
+	String key
+	String[] values
 }

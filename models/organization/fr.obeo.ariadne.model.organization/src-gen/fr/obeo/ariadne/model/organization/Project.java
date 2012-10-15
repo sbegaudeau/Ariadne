@@ -11,11 +11,9 @@
 package fr.obeo.ariadne.model.organization;
 
 import fr.obeo.ariadne.model.code.Component;
+import fr.obeo.ariadne.model.code.Environment;
 
 import fr.obeo.ariadne.model.core.VersionedElement;
-
-import fr.obeo.ariadne.model.environment.DevelopmentEnvironment;
-import fr.obeo.ariadne.model.environment.RuntimeEnvironment;
 
 import fr.obeo.ariadne.model.scm.Repository;
 
@@ -35,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getSubProjects <em>Sub Projects</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getReleases <em>Releases</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getDependentProjects <em>Dependent Projects</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.organization.Project#getSpecifications <em>Specifications</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getRepositories <em>Repositories</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Project#getCategory <em>Category</em>}</li>
  * </ul>
@@ -65,7 +62,7 @@ public interface Project extends VersionedElement
 
   /**
    * Returns the value of the '<em><b>Development Environments</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.environment.DevelopmentEnvironment}.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Environment}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Development Environments</em>' containment reference list isn't clear,
@@ -77,11 +74,11 @@ public interface Project extends VersionedElement
    * @model containment="true"
    * @generated
    */
-  EList<DevelopmentEnvironment> getDevelopmentEnvironments();
+  EList<Environment> getDevelopmentEnvironments();
 
   /**
    * Returns the value of the '<em><b>Runtime Environments</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.environment.RuntimeEnvironment}.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Environment}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Runtime Environments</em>' containment reference list isn't clear,
@@ -93,7 +90,7 @@ public interface Project extends VersionedElement
    * @model containment="true"
    * @generated
    */
-  EList<RuntimeEnvironment> getRuntimeEnvironments();
+  EList<Environment> getRuntimeEnvironments();
 
   /**
    * Returns the value of the '<em><b>Sub Projects</b></em>' containment reference list.
@@ -142,22 +139,6 @@ public interface Project extends VersionedElement
    * @generated
    */
   EList<Project> getDependentProjects();
-
-  /**
-   * Returns the value of the '<em><b>Specifications</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.organization.Specification}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Specifications</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Specifications</em>' reference list.
-   * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getProject_Specifications()
-   * @model
-   * @generated
-   */
-  EList<Specification> getSpecifications();
 
   /**
    * Returns the value of the '<em><b>Repositories</b></em>' reference list.

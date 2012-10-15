@@ -49,7 +49,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getOverriddenFields <em>Overridden Fields</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.FieldImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -226,16 +225,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * @ordered
    */
   protected EList<Field> overriddenFields;
-
-  /**
-   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRelatedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -466,20 +455,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VersionedElement> getRelatedElements()
-  {
-    if (relatedElements == null)
-    {
-      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.FIELD__RELATED_ELEMENTS);
-    }
-    return relatedElements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -505,8 +480,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
         return getAnnotations();
       case CodePackage.FIELD__OVERRIDDEN_FIELDS:
         return getOverriddenFields();
-      case CodePackage.FIELD__RELATED_ELEMENTS:
-        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -555,10 +528,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
         getOverriddenFields().clear();
         getOverriddenFields().addAll((Collection<? extends Field>)newValue);
         return;
-      case CodePackage.FIELD__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -603,9 +572,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
       case CodePackage.FIELD__OVERRIDDEN_FIELDS:
         getOverriddenFields().clear();
         return;
-      case CodePackage.FIELD__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -640,8 +606,6 @@ public class FieldImpl extends VersionedElementImpl implements Field
         return annotations != null && !annotations.isEmpty();
       case CodePackage.FIELD__OVERRIDDEN_FIELDS:
         return overriddenFields != null && !overriddenFields.isEmpty();
-      case CodePackage.FIELD__RELATED_ELEMENTS:
-        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

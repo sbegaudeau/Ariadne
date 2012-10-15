@@ -12,9 +12,9 @@ package fr.obeo.ariadne.ide.connector.mylyn.tasks.internal.explorer;
 
 import fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer;
 import fr.obeo.ariadne.ide.connector.mylyn.tasks.internal.utils.AriadneMylynTasksConnectorMessage;
+import fr.obeo.ariadne.model.core.CoreFactory;
 import fr.obeo.ariadne.model.organization.Organization;
 import fr.obeo.ariadne.model.tasks.Task;
-import fr.obeo.ariadne.model.tasks.TaskEntry;
 import fr.obeo.ariadne.model.tasks.TasksFactory;
 import fr.obeo.ariadne.model.tasks.TasksRepository;
 
@@ -189,14 +189,14 @@ public class MylynTasksExplorer extends AbstractAriadneExplorer {
 			Map<String, TaskAttribute> attributes = root.getAttributes();
 			Set<Entry<String, TaskAttribute>> entrySet = attributes.entrySet();
 			for (Entry<String, TaskAttribute> entry : entrySet) {
-				TaskEntry taskEntry = TasksFactory.eINSTANCE.createTaskEntry();
-				taskEntry.setIdentifier(entry.getKey());
+				fr.obeo.ariadne.model.core.Entry taskEntry = CoreFactory.eINSTANCE.createEntry();
+				taskEntry.setKey(entry.getKey());
 
 				TaskAttribute taskAttribute = entry.getValue();
 				List<String> values = taskAttribute.getValues();
 				taskEntry.getValues().addAll(values);
 
-				ariadneTask.getTaskEntries().add(taskEntry);
+				ariadneTask.getEntries().add(taskEntry);
 			}
 
 			ariadneTasksRepository.getTasks().add(ariadneTask);

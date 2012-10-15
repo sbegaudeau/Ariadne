@@ -11,17 +11,14 @@
 package fr.obeo.ariadne.model.organization.impl;
 
 import fr.obeo.ariadne.model.code.Component;
+import fr.obeo.ariadne.model.code.Environment;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
-
-import fr.obeo.ariadne.model.environment.DevelopmentEnvironment;
-import fr.obeo.ariadne.model.environment.RuntimeEnvironment;
 
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
 import fr.obeo.ariadne.model.organization.Release;
-import fr.obeo.ariadne.model.organization.Specification;
 
 import fr.obeo.ariadne.model.scm.Repository;
 
@@ -55,7 +52,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getSubProjects <em>Sub Projects</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getReleases <em>Releases</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getDependentProjects <em>Dependent Projects</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getSpecifications <em>Specifications</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getRepositories <em>Repositories</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ProjectImpl#getCategory <em>Category</em>}</li>
  * </ul>
@@ -83,7 +79,7 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * @generated
    * @ordered
    */
-  protected EList<DevelopmentEnvironment> developmentEnvironments;
+  protected EList<Environment> developmentEnvironments;
 
   /**
    * The cached value of the '{@link #getRuntimeEnvironments() <em>Runtime Environments</em>}' containment reference list.
@@ -93,7 +89,7 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * @generated
    * @ordered
    */
-  protected EList<RuntimeEnvironment> runtimeEnvironments;
+  protected EList<Environment> runtimeEnvironments;
 
   /**
    * The cached value of the '{@link #getSubProjects() <em>Sub Projects</em>}' containment reference list.
@@ -124,16 +120,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * @ordered
    */
   protected EList<Project> dependentProjects;
-
-  /**
-   * The cached value of the '{@link #getSpecifications() <em>Specifications</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSpecifications()
-   * @generated
-   * @ordered
-   */
-  protected EList<Specification> specifications;
 
   /**
    * The cached value of the '{@link #getRepositories() <em>Repositories</em>}' reference list.
@@ -185,11 +171,11 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<DevelopmentEnvironment> getDevelopmentEnvironments()
+  public EList<Environment> getDevelopmentEnvironments()
   {
     if (developmentEnvironments == null)
     {
-      developmentEnvironments = new EObjectContainmentEList<DevelopmentEnvironment>(DevelopmentEnvironment.class, this, OrganizationPackage.PROJECT__DEVELOPMENT_ENVIRONMENTS);
+      developmentEnvironments = new EObjectContainmentEList<Environment>(Environment.class, this, OrganizationPackage.PROJECT__DEVELOPMENT_ENVIRONMENTS);
     }
     return developmentEnvironments;
   }
@@ -199,11 +185,11 @@ public class ProjectImpl extends VersionedElementImpl implements Project
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RuntimeEnvironment> getRuntimeEnvironments()
+  public EList<Environment> getRuntimeEnvironments()
   {
     if (runtimeEnvironments == null)
     {
-      runtimeEnvironments = new EObjectContainmentEList<RuntimeEnvironment>(RuntimeEnvironment.class, this, OrganizationPackage.PROJECT__RUNTIME_ENVIRONMENTS);
+      runtimeEnvironments = new EObjectContainmentEList<Environment>(Environment.class, this, OrganizationPackage.PROJECT__RUNTIME_ENVIRONMENTS);
     }
     return runtimeEnvironments;
   }
@@ -248,20 +234,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
       dependentProjects = new EObjectResolvingEList<Project>(Project.class, this, OrganizationPackage.PROJECT__DEPENDENT_PROJECTS);
     }
     return dependentProjects;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Specification> getSpecifications()
-  {
-    if (specifications == null)
-    {
-      specifications = new EObjectResolvingEList<Specification>(Specification.class, this, OrganizationPackage.PROJECT__SPECIFICATIONS);
-    }
-    return specifications;
   }
 
   /**
@@ -405,8 +377,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return getReleases();
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         return getDependentProjects();
-      case OrganizationPackage.PROJECT__SPECIFICATIONS:
-        return getSpecifications();
       case OrganizationPackage.PROJECT__REPOSITORIES:
         return getRepositories();
       case OrganizationPackage.PROJECT__CATEGORY:
@@ -432,11 +402,11 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return;
       case OrganizationPackage.PROJECT__DEVELOPMENT_ENVIRONMENTS:
         getDevelopmentEnvironments().clear();
-        getDevelopmentEnvironments().addAll((Collection<? extends DevelopmentEnvironment>)newValue);
+        getDevelopmentEnvironments().addAll((Collection<? extends Environment>)newValue);
         return;
       case OrganizationPackage.PROJECT__RUNTIME_ENVIRONMENTS:
         getRuntimeEnvironments().clear();
-        getRuntimeEnvironments().addAll((Collection<? extends RuntimeEnvironment>)newValue);
+        getRuntimeEnvironments().addAll((Collection<? extends Environment>)newValue);
         return;
       case OrganizationPackage.PROJECT__SUB_PROJECTS:
         getSubProjects().clear();
@@ -449,10 +419,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         getDependentProjects().clear();
         getDependentProjects().addAll((Collection<? extends Project>)newValue);
-        return;
-      case OrganizationPackage.PROJECT__SPECIFICATIONS:
-        getSpecifications().clear();
-        getSpecifications().addAll((Collection<? extends Specification>)newValue);
         return;
       case OrganizationPackage.PROJECT__REPOSITORIES:
         getRepositories().clear();
@@ -493,9 +459,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         getDependentProjects().clear();
         return;
-      case OrganizationPackage.PROJECT__SPECIFICATIONS:
-        getSpecifications().clear();
-        return;
       case OrganizationPackage.PROJECT__REPOSITORIES:
         getRepositories().clear();
         return;
@@ -528,8 +491,6 @@ public class ProjectImpl extends VersionedElementImpl implements Project
         return releases != null && !releases.isEmpty();
       case OrganizationPackage.PROJECT__DEPENDENT_PROJECTS:
         return dependentProjects != null && !dependentProjects.isEmpty();
-      case OrganizationPackage.PROJECT__SPECIFICATIONS:
-        return specifications != null && !specifications.isEmpty();
       case OrganizationPackage.PROJECT__REPOSITORIES:
         return repositories != null && !repositories.isEmpty();
       case OrganizationPackage.PROJECT__CATEGORY:

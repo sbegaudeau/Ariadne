@@ -95,11 +95,6 @@ public class TasksAdapterFactory extends AdapterFactoryImpl
         return createTaskAdapter();
       }
       @Override
-      public Adapter caseTaskEntry(TaskEntry object)
-      {
-        return createTaskEntryAdapter();
-      }
-      @Override
       public Adapter caseVersionedElement(VersionedElement object)
       {
         return createVersionedElementAdapter();
@@ -152,21 +147,6 @@ public class TasksAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTaskAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.tasks.TaskEntry <em>Task Entry</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.obeo.ariadne.model.tasks.TaskEntry
-   * @generated
-   */
-  public Adapter createTaskEntryAdapter()
   {
     return null;
   }

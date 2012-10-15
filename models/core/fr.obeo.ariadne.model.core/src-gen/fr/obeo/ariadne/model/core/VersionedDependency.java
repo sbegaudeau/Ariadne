@@ -20,10 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#isIncludesLowerBound <em>Includes Lower Bound</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#isIncludesUpperBound <em>Includes Upper Bound</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#isOptional <em>Optional</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.core.VersionedDependency#getVersionedElement <em>Versioned Element</em>}</li>
  * </ul>
  * </p>
@@ -34,6 +36,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface VersionedDependency extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Url</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Url</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Url</em>' attribute.
+   * @see #setUrl(String)
+   * @see fr.obeo.ariadne.model.core.CorePackage#getVersionedDependency_Url()
+   * @model unique="false"
+   * @generated
+   */
+  String getUrl();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.core.VersionedDependency#getUrl <em>Url</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Url</em>' attribute.
+   * @see #getUrl()
+   * @generated
+   */
+  void setUrl(String value);
+
   /**
    * Returns the value of the '<em><b>Lower Bound</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -137,6 +165,32 @@ public interface VersionedDependency extends EObject
    * @generated
    */
   void setIncludesUpperBound(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Optional</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Optional</em>' attribute.
+   * @see #setOptional(boolean)
+   * @see fr.obeo.ariadne.model.core.CorePackage#getVersionedDependency_Optional()
+   * @model unique="false"
+   * @generated
+   */
+  boolean isOptional();
+
+  /**
+   * Sets the value of the '{@link fr.obeo.ariadne.model.core.VersionedDependency#isOptional <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Optional</em>' attribute.
+   * @see #isOptional()
+   * @generated
+   */
+  void setOptional(boolean value);
 
   /**
    * Returns the value of the '<em><b>Versioned Element</b></em>' reference.

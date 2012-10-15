@@ -118,7 +118,6 @@ public class CategoryItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(OrganizationPackage.Literals.CATEGORY__PROJECTS);
-      childrenFeatures.add(OrganizationPackage.Literals.CATEGORY__SPECIFICATIONS);
     }
     return childrenFeatures;
   }
@@ -179,7 +178,6 @@ public class CategoryItemProvider
     switch (notification.getFeatureID(Category.class))
     {
       case OrganizationPackage.CATEGORY__PROJECTS:
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -202,11 +200,6 @@ public class CategoryItemProvider
       (createChildParameter
         (OrganizationPackage.Literals.CATEGORY__PROJECTS,
          OrganizationFactory.eINSTANCE.createProject()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (OrganizationPackage.Literals.CATEGORY__SPECIFICATIONS,
-         OrganizationFactory.eINSTANCE.createSpecification()));
   }
 
   /**

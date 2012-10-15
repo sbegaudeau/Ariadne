@@ -76,7 +76,6 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
       case OrganizationPackage.ORGANIZATION: return createOrganization();
       case OrganizationPackage.CATEGORY: return createCategory();
       case OrganizationPackage.PROJECT: return createProject();
-      case OrganizationPackage.SPECIFICATION: return createSpecification();
       case OrganizationPackage.ORGANIZATION_DEPENDENCY: return createOrganizationDependency();
       case OrganizationPackage.RELEASE: return createRelease();
       default:
@@ -149,17 +148,6 @@ public class OrganizationFactoryImpl extends EFactoryImpl implements Organizatio
   {
     ProjectImpl project = new ProjectImpl();
     return project;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Specification createSpecification()
-  {
-    SpecificationImpl specification = new SpecificationImpl();
-    return specification;
   }
 
   /**

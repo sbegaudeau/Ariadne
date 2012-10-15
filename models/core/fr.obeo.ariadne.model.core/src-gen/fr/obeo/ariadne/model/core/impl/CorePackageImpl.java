@@ -12,6 +12,7 @@ package fr.obeo.ariadne.model.core.impl;
 
 import fr.obeo.ariadne.model.core.CoreFactory;
 import fr.obeo.ariadne.model.core.CorePackage;
+import fr.obeo.ariadne.model.core.Entry;
 import fr.obeo.ariadne.model.core.Person;
 import fr.obeo.ariadne.model.core.Property;
 import fr.obeo.ariadne.model.core.Version;
@@ -68,6 +69,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * @generated
    */
   private EClass propertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entryEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -220,9 +228,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVersionedDependency_LowerBound()
+  public EAttribute getVersionedDependency_Url()
   {
-    return (EReference)versionedDependencyEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)versionedDependencyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -230,7 +238,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVersionedDependency_UpperBound()
+  public EReference getVersionedDependency_LowerBound()
   {
     return (EReference)versionedDependencyEClass.getEStructuralFeatures().get(1);
   }
@@ -240,9 +248,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVersionedDependency_IncludesLowerBound()
+  public EReference getVersionedDependency_UpperBound()
   {
-    return (EAttribute)versionedDependencyEClass.getEStructuralFeatures().get(2);
+    return (EReference)versionedDependencyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -250,7 +258,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVersionedDependency_IncludesUpperBound()
+  public EAttribute getVersionedDependency_IncludesLowerBound()
   {
     return (EAttribute)versionedDependencyEClass.getEStructuralFeatures().get(3);
   }
@@ -260,9 +268,29 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getVersionedDependency_IncludesUpperBound()
+  {
+    return (EAttribute)versionedDependencyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVersionedDependency_Optional()
+  {
+    return (EAttribute)versionedDependencyEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getVersionedDependency_VersionedElement()
   {
-    return (EReference)versionedDependencyEClass.getEStructuralFeatures().get(4);
+    return (EReference)versionedDependencyEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -390,6 +418,36 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEntry()
+  {
+    return entryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEntry_Key()
+  {
+    return (EAttribute)entryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEntry_Values()
+  {
+    return (EAttribute)entryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CoreFactory getCoreFactory()
   {
     return (CoreFactory)getEFactoryInstance();
@@ -424,10 +482,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
     createEReference(versionedElementEClass, VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES);
 
     versionedDependencyEClass = createEClass(VERSIONED_DEPENDENCY);
+    createEAttribute(versionedDependencyEClass, VERSIONED_DEPENDENCY__URL);
     createEReference(versionedDependencyEClass, VERSIONED_DEPENDENCY__LOWER_BOUND);
     createEReference(versionedDependencyEClass, VERSIONED_DEPENDENCY__UPPER_BOUND);
     createEAttribute(versionedDependencyEClass, VERSIONED_DEPENDENCY__INCLUDES_LOWER_BOUND);
     createEAttribute(versionedDependencyEClass, VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND);
+    createEAttribute(versionedDependencyEClass, VERSIONED_DEPENDENCY__OPTIONAL);
     createEReference(versionedDependencyEClass, VERSIONED_DEPENDENCY__VERSIONED_ELEMENT);
 
     versionEClass = createEClass(VERSION);
@@ -444,6 +504,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
     createEAttribute(propertyEClass, PROPERTY__DESCRIPTION);
     createEAttribute(propertyEClass, PROPERTY__IDENTIFIER);
     createEReference(propertyEClass, PROPERTY__EXTENDED_PROPERTIES);
+
+    entryEClass = createEClass(ENTRY);
+    createEAttribute(entryEClass, ENTRY__KEY);
+    createEAttribute(entryEClass, ENTRY__VALUES);
   }
 
   /**
@@ -489,10 +553,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
     initEReference(getVersionedElement_VersionedDependencies(), this.getVersionedDependency(), null, "versionedDependencies", null, 0, -1, VersionedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(versionedDependencyEClass, VersionedDependency.class, "VersionedDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVersionedDependency_Url(), theEcorePackage.getEString(), "url", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVersionedDependency_LowerBound(), this.getVersion(), null, "lowerBound", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVersionedDependency_UpperBound(), this.getVersion(), null, "upperBound", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVersionedDependency_IncludesLowerBound(), theEcorePackage.getEBoolean(), "includesLowerBound", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVersionedDependency_IncludesUpperBound(), theEcorePackage.getEBoolean(), "includesUpperBound", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVersionedDependency_Optional(), theEcorePackage.getEBoolean(), "optional", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVersionedDependency_VersionedElement(), this.getVersionedElement(), null, "versionedElement", null, 0, 1, VersionedDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -509,6 +575,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage
     initEAttribute(getProperty_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_Identifier(), theEcorePackage.getEString(), "identifier", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_ExtendedProperties(), this.getProperty(), null, "extendedProperties", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntry_Key(), theEcorePackage.getEString(), "key", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntry_Values(), theEcorePackage.getEString(), "values", null, 0, -1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

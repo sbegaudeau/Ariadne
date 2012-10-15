@@ -408,13 +408,22 @@ public interface ScmPackage extends EPackage
   int RESOURCE_CHANGE__RESOURCE_CHANGE_KIND = 1;
 
   /**
+   * The feature id for the '<em><b>Versioned Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RESOURCE_CHANGE__VERSIONED_ELEMENT = 2;
+
+  /**
    * The number of structural features of the '<em>Resource Change</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RESOURCE_CHANGE_FEATURE_COUNT = 2;
+  int RESOURCE_CHANGE_FEATURE_COUNT = 3;
 
   /**
    * The number of operations of the '<em>Resource Change</em>' class.
@@ -685,6 +694,17 @@ public interface ScmPackage extends EPackage
   EAttribute getResourceChange_ResourceChangeKind();
 
   /**
+   * Returns the meta object for the reference '{@link fr.obeo.ariadne.model.scm.ResourceChange#getVersionedElement <em>Versioned Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Versioned Element</em>'.
+   * @see fr.obeo.ariadne.model.scm.ResourceChange#getVersionedElement()
+   * @see #getResourceChange()
+   * @generated
+   */
+  EReference getResourceChange_VersionedElement();
+
+  /**
    * Returns the meta object for enum '{@link fr.obeo.ariadne.model.scm.ResourceChangeKind <em>Resource Change Kind</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -911,6 +931,14 @@ public interface ScmPackage extends EPackage
      * @generated
      */
     EAttribute RESOURCE_CHANGE__RESOURCE_CHANGE_KIND = eINSTANCE.getResourceChange_ResourceChangeKind();
+
+    /**
+     * The meta object literal for the '<em><b>Versioned Element</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RESOURCE_CHANGE__VERSIONED_ELEMENT = eINSTANCE.getResourceChange_VersionedElement();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.scm.ResourceChangeKind <em>Resource Change Kind</em>}' enum.

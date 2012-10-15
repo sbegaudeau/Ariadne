@@ -10,12 +10,11 @@
  */
 package fr.obeo.ariadne.model.tasks.impl;
 
-import fr.obeo.ariadne.model.core.VersionedElement;
+import fr.obeo.ariadne.model.core.Entry;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
 import fr.obeo.ariadne.model.tasks.Task;
-import fr.obeo.ariadne.model.tasks.TaskEntry;
 import fr.obeo.ariadne.model.tasks.TasksPackage;
 
 import java.util.Collection;
@@ -31,7 +30,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -47,8 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getTaskEntries <em>Task Entries</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getVersionedElements <em>Versioned Elements</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.impl.TaskImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
  *
@@ -177,24 +174,14 @@ public class TaskImpl extends VersionedElementImpl implements Task
   protected String status = STATUS_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTaskEntries() <em>Task Entries</em>}' containment reference list.
+   * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTaskEntries()
+   * @see #getEntries()
    * @generated
    * @ordered
    */
-  protected EList<TaskEntry> taskEntries;
-
-  /**
-   * The cached value of the '{@link #getVersionedElements() <em>Versioned Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVersionedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> versionedElements;
+  protected EList<Entry> entries;
 
   /**
    * <!-- begin-user-doc -->
@@ -360,27 +347,13 @@ public class TaskImpl extends VersionedElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TaskEntry> getTaskEntries()
+  public EList<Entry> getEntries()
   {
-    if (taskEntries == null)
+    if (entries == null)
     {
-      taskEntries = new EObjectContainmentEList<TaskEntry>(TaskEntry.class, this, TasksPackage.TASK__TASK_ENTRIES);
+      entries = new EObjectContainmentEList<Entry>(Entry.class, this, TasksPackage.TASK__ENTRIES);
     }
-    return taskEntries;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<VersionedElement> getVersionedElements()
-  {
-    if (versionedElements == null)
-    {
-      versionedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, TasksPackage.TASK__VERSIONED_ELEMENTS);
-    }
-    return versionedElements;
+    return entries;
   }
 
   /**
@@ -393,8 +366,8 @@ public class TaskImpl extends VersionedElementImpl implements Task
   {
     switch (featureID)
     {
-      case TasksPackage.TASK__TASK_ENTRIES:
-        return ((InternalEList<?>)getTaskEntries()).basicRemove(otherEnd, msgs);
+      case TasksPackage.TASK__ENTRIES:
+        return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -421,10 +394,8 @@ public class TaskImpl extends VersionedElementImpl implements Task
         return getPriority();
       case TasksPackage.TASK__STATUS:
         return getStatus();
-      case TasksPackage.TASK__TASK_ENTRIES:
-        return getTaskEntries();
-      case TasksPackage.TASK__VERSIONED_ELEMENTS:
-        return getVersionedElements();
+      case TasksPackage.TASK__ENTRIES:
+        return getEntries();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -458,13 +429,9 @@ public class TaskImpl extends VersionedElementImpl implements Task
       case TasksPackage.TASK__STATUS:
         setStatus((String)newValue);
         return;
-      case TasksPackage.TASK__TASK_ENTRIES:
-        getTaskEntries().clear();
-        getTaskEntries().addAll((Collection<? extends TaskEntry>)newValue);
-        return;
-      case TasksPackage.TASK__VERSIONED_ELEMENTS:
-        getVersionedElements().clear();
-        getVersionedElements().addAll((Collection<? extends VersionedElement>)newValue);
+      case TasksPackage.TASK__ENTRIES:
+        getEntries().clear();
+        getEntries().addAll((Collection<? extends Entry>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -498,11 +465,8 @@ public class TaskImpl extends VersionedElementImpl implements Task
       case TasksPackage.TASK__STATUS:
         setStatus(STATUS_EDEFAULT);
         return;
-      case TasksPackage.TASK__TASK_ENTRIES:
-        getTaskEntries().clear();
-        return;
-      case TasksPackage.TASK__VERSIONED_ELEMENTS:
-        getVersionedElements().clear();
+      case TasksPackage.TASK__ENTRIES:
+        getEntries().clear();
         return;
     }
     super.eUnset(featureID);
@@ -530,10 +494,8 @@ public class TaskImpl extends VersionedElementImpl implements Task
         return PRIORITY_EDEFAULT == null ? priority != null : !PRIORITY_EDEFAULT.equals(priority);
       case TasksPackage.TASK__STATUS:
         return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
-      case TasksPackage.TASK__TASK_ENTRIES:
-        return taskEntries != null && !taskEntries.isEmpty();
-      case TasksPackage.TASK__VERSIONED_ELEMENTS:
-        return versionedElements != null && !versionedElements.isEmpty();
+      case TasksPackage.TASK__ENTRIES:
+        return entries != null && !entries.isEmpty();
     }
     return super.eIsSet(featureID);
   }

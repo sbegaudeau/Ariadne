@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.ProvidedService#getReferencedService <em>Referenced Service</em>}</li>
  * </ul>
  * </p>
@@ -59,22 +58,6 @@ public interface ProvidedService extends VersionedElement
    * @generated
    */
   void setIdentifier(String value);
-
-  /**
-   * Returns the value of the '<em><b>Types</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.Type}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Types</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Types</em>' reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getProvidedService_Types()
-   * @model
-   * @generated
-   */
-  EList<Type> getTypes();
 
   /**
    * Returns the value of the '<em><b>Referenced Service</b></em>' reference.

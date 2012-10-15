@@ -182,6 +182,31 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.core.Entry} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected EntryItemProvider entryItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.core.Entry}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createEntryAdapter()
+  {
+    if (entryItemProvider == null)
+    {
+      entryItemProvider = new EntryItemProvider(this);
+    }
+
+    return entryItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -296,6 +321,7 @@ public class CoreItemProviderAdapterFactory extends CoreAdapterFactory implement
     if (versionItemProvider != null) versionItemProvider.dispose();
     if (personItemProvider != null) personItemProvider.dispose();
     if (propertyItemProvider != null) propertyItemProvider.dispose();
+    if (entryItemProvider != null) entryItemProvider.dispose();
   }
 
 }

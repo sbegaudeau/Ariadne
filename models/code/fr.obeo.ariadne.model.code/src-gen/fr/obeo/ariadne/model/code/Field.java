@@ -32,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Field#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Field#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Field#getOverriddenFields <em>Overridden Fields</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Field#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -274,21 +273,5 @@ public interface Field extends VersionedElement
    * @generated
    */
   EList<Field> getOverriddenFields();
-
-  /**
-   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getField_RelatedElements()
-   * @model
-   * @generated
-   */
-  EList<VersionedElement> getRelatedElements();
 
 } // Field

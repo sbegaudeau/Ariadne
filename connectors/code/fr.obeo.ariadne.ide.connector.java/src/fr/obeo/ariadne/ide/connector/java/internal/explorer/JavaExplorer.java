@@ -32,6 +32,7 @@ import fr.obeo.ariadne.model.common.IAriadneModelCommonConstants;
 import fr.obeo.ariadne.model.core.CoreFactory;
 import fr.obeo.ariadne.model.core.Property;
 import fr.obeo.ariadne.model.core.Version;
+import fr.obeo.ariadne.model.core.VersionedDependency;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import java.io.IOException;
@@ -369,7 +370,9 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 									+ iImportDeclaration.getElementName();
 							internalEObject.eSetProxyURI(URI.createURI(uri));
 						}
-						annotation.getRelatedElements().add(anAnnotation);
+						VersionedDependency dependency = CoreFactory.eINSTANCE.createVersionedDependency();
+						dependency.setVersionedElement(anAnnotation);
+						annotation.getVersionedDependencies().add(dependency);
 					}
 				}
 			}
@@ -539,7 +542,9 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 									+ iImportDeclaration.getElementName();
 							internalEObject.eSetProxyURI(URI.createURI(uri));
 						}
-						classifier.getRelatedElements().add(aClassifier);
+						VersionedDependency dependency = CoreFactory.eINSTANCE.createVersionedDependency();
+						dependency.setVersionedElement(aClassifier);
+						classifier.getVersionedDependencies().add(dependency);
 					}
 				}
 

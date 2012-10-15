@@ -33,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getOverriddenConstructors <em>Overridden Constructors</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.Constructor#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -291,21 +290,5 @@ public interface Constructor extends VersionedElement
    * @generated
    */
   EList<Constructor> getOverriddenConstructors();
-
-  /**
-   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getConstructor_RelatedElements()
-   * @model
-   * @generated
-   */
-  EList<VersionedElement> getRelatedElements();
 
 } // Constructor

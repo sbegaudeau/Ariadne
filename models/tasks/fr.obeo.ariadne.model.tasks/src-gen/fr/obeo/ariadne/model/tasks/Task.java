@@ -10,6 +10,7 @@
  */
 package fr.obeo.ariadne.model.tasks;
 
+import fr.obeo.ariadne.model.core.Entry;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.common.util.EList;
@@ -28,8 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getStatus <em>Status</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getTaskEntries <em>Task Entries</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getVersionedElements <em>Versioned Elements</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.tasks.Task#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
  *
@@ -196,35 +196,19 @@ public interface Task extends VersionedElement
   void setStatus(String value);
 
   /**
-   * Returns the value of the '<em><b>Task Entries</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.tasks.TaskEntry}.
+   * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.Entry}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Task Entries</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Task Entries</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.tasks.TasksPackage#getTask_TaskEntries()
+   * @return the value of the '<em>Entries</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.tasks.TasksPackage#getTask_Entries()
    * @model containment="true"
    * @generated
    */
-  EList<TaskEntry> getTaskEntries();
-
-  /**
-   * Returns the value of the '<em><b>Versioned Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Versioned Elements</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Versioned Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.tasks.TasksPackage#getTask_VersionedElements()
-   * @model
-   * @generated
-   */
-  EList<VersionedElement> getVersionedElements();
+  EList<Entry> getEntries();
 
 } // Task

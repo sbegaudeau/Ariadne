@@ -12,6 +12,7 @@ Contributors:
     Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.tasks
 
+import fr.obeo.ariadne.model.core.Entry
 import fr.obeo.ariadne.model.core.VersionedElement
 
 class TasksRepository extends VersionedElement {
@@ -27,11 +28,5 @@ class Task extends VersionedElement {
 	String creationDate
 	String priority
 	String status
-	contains TaskEntry[] taskEntries
-	refers VersionedElement[] versionedElements
-}
-
-class TaskEntry {
-	String identifier
-	String[] values
+	contains Entry[] entries
 }

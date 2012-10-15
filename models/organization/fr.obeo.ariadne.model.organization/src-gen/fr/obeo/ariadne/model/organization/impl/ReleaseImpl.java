@@ -22,6 +22,8 @@ import fr.obeo.ariadne.model.organization.Release;
 
 import fr.obeo.ariadne.model.scm.Branch;
 
+import fr.obeo.ariadne.model.tasks.Task;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -45,6 +47,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl#getBuildJobs <em>Build Jobs</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl#getBranchs <em>Branchs</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.impl.ReleaseImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,6 +104,16 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
    * @ordered
    */
   protected EList<Branch> branchs;
+
+  /**
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTasks()
+   * @generated
+   * @ordered
+   */
+  protected EList<Task> tasks;
 
   /**
    * <!-- begin-user-doc -->
@@ -193,6 +206,20 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Task> getTasks()
+  {
+    if (tasks == null)
+    {
+      tasks = new EObjectResolvingEList<Task>(Task.class, this, OrganizationPackage.RELEASE__TASKS);
+    }
+    return tasks;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -206,6 +233,8 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
         return getBuildJobs();
       case OrganizationPackage.RELEASE__BRANCHS:
         return getBranchs();
+      case OrganizationPackage.RELEASE__TASKS:
+        return getTasks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -236,6 +265,10 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
         getBranchs().clear();
         getBranchs().addAll((Collection<? extends Branch>)newValue);
         return;
+      case OrganizationPackage.RELEASE__TASKS:
+        getTasks().clear();
+        getTasks().addAll((Collection<? extends Task>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -262,6 +295,9 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
       case OrganizationPackage.RELEASE__BRANCHS:
         getBranchs().clear();
         return;
+      case OrganizationPackage.RELEASE__TASKS:
+        getTasks().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -284,6 +320,8 @@ public class ReleaseImpl extends VersionedElementImpl implements Release
         return buildJobs != null && !buildJobs.isEmpty();
       case OrganizationPackage.RELEASE__BRANCHS:
         return branchs != null && !branchs.isEmpty();
+      case OrganizationPackage.RELEASE__TASKS:
+        return tasks != null && !tasks.isEmpty();
     }
     return super.eIsSet(featureID);
   }

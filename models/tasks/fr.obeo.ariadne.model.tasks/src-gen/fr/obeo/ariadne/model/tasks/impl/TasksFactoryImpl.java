@@ -74,7 +74,6 @@ public class TasksFactoryImpl extends EFactoryImpl implements TasksFactory
     {
       case TasksPackage.TASKS_REPOSITORY: return createTasksRepository();
       case TasksPackage.TASK: return createTask();
-      case TasksPackage.TASK_ENTRY: return createTaskEntry();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -100,17 +99,6 @@ public class TasksFactoryImpl extends EFactoryImpl implements TasksFactory
   {
     TaskImpl task = new TaskImpl();
     return task;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TaskEntry createTaskEntry()
-  {
-    TaskEntryImpl taskEntry = new TaskEntryImpl();
-    return taskEntry;
   }
 
   /**

@@ -19,12 +19,6 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Resource</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link fr.obeo.ariadne.model.code.Resource#getRelatedElements <em>Related Elements</em>}</li>
- * </ul>
- * </p>
  *
  * @see fr.obeo.ariadne.model.code.CodePackage#getResource()
  * @model abstract="true"
@@ -32,20 +26,5 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Resource extends VersionedElement
 {
-  /**
-   * Returns the value of the '<em><b>Related Elements</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.core.VersionedElement}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Related Elements</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Elements</em>' reference list.
-   * @see fr.obeo.ariadne.model.code.CodePackage#getResource_RelatedElements()
-   * @model
-   * @generated
-   */
-  EList<VersionedElement> getRelatedElements();
 
 } // Resource

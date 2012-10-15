@@ -49,15 +49,6 @@ public interface TasksFactory extends EFactory
   Task createTask();
 
   /**
-   * Returns a new object of class '<em>Task Entry</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Task Entry</em>'.
-   * @generated
-   */
-  TaskEntry createTaskEntry();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

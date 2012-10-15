@@ -46,7 +46,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getInternalTypes <em>Internal Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.TypeImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,16 +112,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
    * @ordered
    */
   protected EList<Annotation> annotations;
-
-  /**
-   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRelatedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -224,20 +213,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VersionedElement> getRelatedElements()
-  {
-    if (relatedElements == null)
-    {
-      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.TYPE__RELATED_ELEMENTS);
-    }
-    return relatedElements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -267,8 +242,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
         return getInternalTypes();
       case CodePackage.TYPE__ANNOTATIONS:
         return getAnnotations();
-      case CodePackage.TYPE__RELATED_ELEMENTS:
-        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -298,10 +271,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
         getAnnotations().clear();
         getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.TYPE__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -328,9 +297,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
       case CodePackage.TYPE__ANNOTATIONS:
         getAnnotations().clear();
         return;
-      case CodePackage.TYPE__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -353,8 +319,6 @@ public abstract class TypeImpl extends VersionedElementImpl implements Type
         return internalTypes != null && !internalTypes.isEmpty();
       case CodePackage.TYPE__ANNOTATIONS:
         return annotations != null && !annotations.isEmpty();
-      case CodePackage.TYPE__RELATED_ELEMENTS:
-        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

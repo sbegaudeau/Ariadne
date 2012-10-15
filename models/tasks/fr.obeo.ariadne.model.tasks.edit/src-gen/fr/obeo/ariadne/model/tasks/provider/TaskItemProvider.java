@@ -11,10 +11,11 @@
 package fr.obeo.ariadne.model.tasks.provider;
 
 
+import fr.obeo.ariadne.model.core.CoreFactory;
+
 import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import fr.obeo.ariadne.model.tasks.Task;
-import fr.obeo.ariadne.model.tasks.TasksFactory;
 import fr.obeo.ariadne.model.tasks.TasksPackage;
 
 import java.util.Collection;
@@ -82,7 +83,6 @@ public class TaskItemProvider
       addCreationDatePropertyDescriptor(object);
       addPriorityPropertyDescriptor(object);
       addStatusPropertyDescriptor(object);
-      addVersionedElementsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -226,29 +226,6 @@ public class TaskItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Versioned Elements feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addVersionedElementsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_Task_versionedElements_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Task_versionedElements_feature", "_UI_Task_type"),
-         TasksPackage.Literals.TASK__VERSIONED_ELEMENTS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -262,7 +239,7 @@ public class TaskItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(TasksPackage.Literals.TASK__TASK_ENTRIES);
+      childrenFeatures.add(TasksPackage.Literals.TASK__ENTRIES);
     }
     return childrenFeatures;
   }
@@ -330,7 +307,7 @@ public class TaskItemProvider
       case TasksPackage.TASK__STATUS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case TasksPackage.TASK__TASK_ENTRIES:
+      case TasksPackage.TASK__ENTRIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -351,8 +328,8 @@ public class TaskItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (TasksPackage.Literals.TASK__TASK_ENTRIES,
-         TasksFactory.eINSTANCE.createTaskEntry()));
+        (TasksPackage.Literals.TASK__ENTRIES,
+         CoreFactory.eINSTANCE.createEntry()));
   }
 
   /**

@@ -49,7 +49,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#isImmutable <em>Immutable</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getRelatedElements <em>Related Elements</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ParameterImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  * </p>
@@ -157,16 +156,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * @ordered
    */
   protected EList<Annotation> annotations;
-
-  /**
-   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRelatedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -314,20 +303,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VersionedElement> getRelatedElements()
-  {
-    if (relatedElements == null)
-    {
-      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.PARAMETER__RELATED_ELEMENTS);
-    }
-    return relatedElements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Operation getOperation()
   {
     if (eContainerFeatureID() != CodePackage.PARAMETER__OPERATION) return null;
@@ -440,8 +415,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return getTypes();
       case CodePackage.PARAMETER__ANNOTATIONS:
         return getAnnotations();
-      case CodePackage.PARAMETER__RELATED_ELEMENTS:
-        return getRelatedElements();
       case CodePackage.PARAMETER__OPERATION:
         return getOperation();
     }
@@ -479,10 +452,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         getAnnotations().clear();
         getAnnotations().addAll((Collection<? extends Annotation>)newValue);
         return;
-      case CodePackage.PARAMETER__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
-        return;
       case CodePackage.PARAMETER__OPERATION:
         setOperation((Operation)newValue);
         return;
@@ -518,9 +487,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
       case CodePackage.PARAMETER__ANNOTATIONS:
         getAnnotations().clear();
         return;
-      case CodePackage.PARAMETER__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        return;
       case CodePackage.PARAMETER__OPERATION:
         setOperation((Operation)null);
         return;
@@ -550,8 +516,6 @@ public class ParameterImpl extends VersionedElementImpl implements Parameter
         return types != null && !types.isEmpty();
       case CodePackage.PARAMETER__ANNOTATIONS:
         return annotations != null && !annotations.isEmpty();
-      case CodePackage.PARAMETER__RELATED_ELEMENTS:
-        return relatedElements != null && !relatedElements.isEmpty();
       case CodePackage.PARAMETER__OPERATION:
         return getOperation() != null;
     }

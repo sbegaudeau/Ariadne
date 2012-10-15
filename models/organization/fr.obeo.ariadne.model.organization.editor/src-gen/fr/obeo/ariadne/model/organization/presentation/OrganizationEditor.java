@@ -169,8 +169,6 @@ import fr.obeo.ariadne.model.continuousintegration.provider.Continuousintegratio
 
 import fr.obeo.ariadne.model.core.provider.CoreItemProviderAdapterFactory;
 
-import fr.obeo.ariadne.model.environment.provider.EnvironmentItemProviderAdapterFactory;
-
 import fr.obeo.ariadne.model.scm.provider.ScmItemProviderAdapterFactory;
 
 import fr.obeo.ariadne.model.tasks.provider.TasksItemProviderAdapterFactory;
@@ -788,12 +786,11 @@ public class OrganizationEditor
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new OrganizationItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new ScmItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new TasksItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new ContinuousintegrationItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
-    adapterFactory.addAdapterFactory(new EnvironmentItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new CodeItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new TasksItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new ScmItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new ContinuousintegrationItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
     // Create the command stack that will notify this editor as commands are executed.

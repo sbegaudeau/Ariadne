@@ -132,31 +132,6 @@ public class TasksItemProviderAdapterFactory extends TasksAdapterFactory impleme
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.tasks.TaskEntry} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected TaskEntryItemProvider taskEntryItemProvider;
-
-  /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.tasks.TaskEntry}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createTaskEntryAdapter()
-  {
-    if (taskEntryItemProvider == null)
-    {
-      taskEntryItemProvider = new TaskEntryItemProvider(this);
-    }
-
-    return taskEntryItemProvider;
-  }
-
-  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -269,7 +244,6 @@ public class TasksItemProviderAdapterFactory extends TasksAdapterFactory impleme
   {
     if (tasksRepositoryItemProvider != null) tasksRepositoryItemProvider.dispose();
     if (taskItemProvider != null) taskItemProvider.dispose();
-    if (taskEntryItemProvider != null) taskEntryItemProvider.dispose();
   }
 
 }

@@ -55,7 +55,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getOverriddenConstructors <em>Overridden Constructors</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.ConstructorImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -242,16 +241,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * @ordered
    */
   protected EList<Constructor> overriddenConstructors;
-
-  /**
-   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRelatedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -496,20 +485,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VersionedElement> getRelatedElements()
-  {
-    if (relatedElements == null)
-    {
-      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.CONSTRUCTOR__RELATED_ELEMENTS);
-    }
-    return relatedElements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -553,8 +528,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         return getAnnotations();
       case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
         return getOverriddenConstructors();
-      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
-        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -607,10 +580,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         getOverriddenConstructors().clear();
         getOverriddenConstructors().addAll((Collection<? extends Constructor>)newValue);
         return;
-      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -658,9 +627,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
       case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
         getOverriddenConstructors().clear();
         return;
-      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -697,8 +663,6 @@ public class ConstructorImpl extends VersionedElementImpl implements Constructor
         return annotations != null && !annotations.isEmpty();
       case CodePackage.CONSTRUCTOR__OVERRIDDEN_CONSTRUCTORS:
         return overriddenConstructors != null && !overriddenConstructors.isEmpty();
-      case CodePackage.CONSTRUCTOR__RELATED_ELEMENTS:
-        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

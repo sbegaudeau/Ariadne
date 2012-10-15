@@ -77,6 +77,7 @@ public class ReleaseItemProvider
       addComponentsPropertyDescriptor(object);
       addBuildJobsPropertyDescriptor(object);
       addBranchsPropertyDescriptor(object);
+      addTasksPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -165,6 +166,29 @@ public class ReleaseItemProvider
          getString("_UI_Release_branchs_feature"),
          getString("_UI_PropertyDescriptor_description", "_UI_Release_branchs_feature", "_UI_Release_type"),
          OrganizationPackage.Literals.RELEASE__BRANCHS,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Tasks feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTasksPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Release_tasks_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Release_tasks_feature", "_UI_Release_type"),
+         OrganizationPackage.Literals.RELEASE__TASKS,
          true,
          false,
          true,

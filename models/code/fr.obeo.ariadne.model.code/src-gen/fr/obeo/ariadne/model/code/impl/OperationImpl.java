@@ -59,7 +59,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getOverriddenOperations <em>Overridden Operations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.code.impl.OperationImpl#getRelatedElements <em>Related Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -256,16 +255,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * @ordered
    */
   protected EList<Operation> overriddenOperations;
-
-  /**
-   * The cached value of the '{@link #getRelatedElements() <em>Related Elements</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRelatedElements()
-   * @generated
-   * @ordered
-   */
-  protected EList<VersionedElement> relatedElements;
 
   /**
    * <!-- begin-user-doc -->
@@ -569,20 +558,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VersionedElement> getRelatedElements()
-  {
-    if (relatedElements == null)
-    {
-      relatedElements = new EObjectResolvingEList<VersionedElement>(VersionedElement.class, this, CodePackage.OPERATION__RELATED_ELEMENTS);
-    }
-    return relatedElements;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
@@ -669,8 +644,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return getAnnotations();
       case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
         return getOverriddenOperations();
-      case CodePackage.OPERATION__RELATED_ELEMENTS:
-        return getRelatedElements();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -730,10 +703,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         getOverriddenOperations().clear();
         getOverriddenOperations().addAll((Collection<? extends Operation>)newValue);
         return;
-      case CodePackage.OPERATION__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        getRelatedElements().addAll((Collection<? extends VersionedElement>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -787,9 +756,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
       case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
         getOverriddenOperations().clear();
         return;
-      case CodePackage.OPERATION__RELATED_ELEMENTS:
-        getRelatedElements().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -830,8 +796,6 @@ public class OperationImpl extends VersionedElementImpl implements Operation
         return annotations != null && !annotations.isEmpty();
       case CodePackage.OPERATION__OVERRIDDEN_OPERATIONS:
         return overriddenOperations != null && !overriddenOperations.isEmpty();
-      case CodePackage.OPERATION__RELATED_ELEMENTS:
-        return relatedElements != null && !relatedElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }

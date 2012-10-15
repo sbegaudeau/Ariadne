@@ -13,7 +13,6 @@ package fr.obeo.ariadne.model.tasks.impl;
 import fr.obeo.ariadne.model.core.CorePackage;
 
 import fr.obeo.ariadne.model.tasks.Task;
-import fr.obeo.ariadne.model.tasks.TaskEntry;
 import fr.obeo.ariadne.model.tasks.TasksFactory;
 import fr.obeo.ariadne.model.tasks.TasksPackage;
 import fr.obeo.ariadne.model.tasks.TasksRepository;
@@ -47,13 +46,6 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * @generated
    */
   private EClass taskEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass taskEntryEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -236,49 +228,9 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTask_TaskEntries()
+  public EReference getTask_Entries()
   {
     return (EReference)taskEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTask_VersionedElements()
-  {
-    return (EReference)taskEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTaskEntry()
-  {
-    return taskEntryEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTaskEntry_Identifier()
-  {
-    return (EAttribute)taskEntryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTaskEntry_Values()
-  {
-    return (EAttribute)taskEntryEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -323,12 +275,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     createEAttribute(taskEClass, TASK__CREATION_DATE);
     createEAttribute(taskEClass, TASK__PRIORITY);
     createEAttribute(taskEClass, TASK__STATUS);
-    createEReference(taskEClass, TASK__TASK_ENTRIES);
-    createEReference(taskEClass, TASK__VERSIONED_ELEMENTS);
-
-    taskEntryEClass = createEClass(TASK_ENTRY);
-    createEAttribute(taskEntryEClass, TASK_ENTRY__IDENTIFIER);
-    createEAttribute(taskEntryEClass, TASK_ENTRY__VALUES);
+    createEReference(taskEClass, TASK__ENTRIES);
   }
 
   /**
@@ -380,12 +327,7 @@ public class TasksPackageImpl extends EPackageImpl implements TasksPackage
     initEAttribute(getTask_CreationDate(), theEcorePackage.getEString(), "creationDate", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTask_Priority(), theEcorePackage.getEString(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTask_Status(), theEcorePackage.getEString(), "status", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTask_TaskEntries(), this.getTaskEntry(), null, "taskEntries", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTask_VersionedElements(), theCorePackage.getVersionedElement(), null, "versionedElements", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(taskEntryEClass, TaskEntry.class, "TaskEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTaskEntry_Identifier(), theEcorePackage.getEString(), "identifier", null, 0, 1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTaskEntry_Values(), theEcorePackage.getEString(), "values", null, 0, -1, TaskEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTask_Entries(), theCorePackage.getEntry(), null, "entries", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

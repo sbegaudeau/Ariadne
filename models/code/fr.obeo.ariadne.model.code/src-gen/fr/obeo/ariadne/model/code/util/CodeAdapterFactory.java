@@ -165,6 +165,11 @@ public class CodeAdapterFactory extends AdapterFactoryImpl
         return createProvidedServiceAdapter();
       }
       @Override
+      public Adapter caseEnvironment(Environment object)
+      {
+        return createEnvironmentAdapter();
+      }
+      @Override
       public Adapter caseVersionedElement(VersionedElement object)
       {
         return createVersionedElementAdapter();
@@ -427,6 +432,21 @@ public class CodeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProvidedServiceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.code.Environment <em>Environment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.obeo.ariadne.model.code.Environment
+   * @generated
+   */
+  public Adapter createEnvironmentAdapter()
   {
     return null;
   }

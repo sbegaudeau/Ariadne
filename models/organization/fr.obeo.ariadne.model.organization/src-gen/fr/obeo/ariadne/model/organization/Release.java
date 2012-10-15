@@ -19,6 +19,8 @@ import fr.obeo.ariadne.model.core.VersionedElement;
 
 import fr.obeo.ariadne.model.scm.Branch;
 
+import fr.obeo.ariadne.model.tasks.Task;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -33,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.organization.Release#getComponents <em>Components</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Release#getBuildJobs <em>Build Jobs</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.Release#getBranchs <em>Branchs</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.organization.Release#getTasks <em>Tasks</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,5 +121,21 @@ public interface Release extends VersionedElement
    * @generated
    */
   EList<Branch> getBranchs();
+
+  /**
+   * Returns the value of the '<em><b>Tasks</b></em>' reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.tasks.Task}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Tasks</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tasks</em>' reference list.
+   * @see fr.obeo.ariadne.model.organization.OrganizationPackage#getRelease_Tasks()
+   * @model
+   * @generated
+   */
+  EList<Task> getTasks();
 
 } // Release

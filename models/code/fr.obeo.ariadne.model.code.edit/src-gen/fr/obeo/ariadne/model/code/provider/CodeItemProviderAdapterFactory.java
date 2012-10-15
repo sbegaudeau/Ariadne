@@ -432,6 +432,31 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.Environment} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected EnvironmentItemProvider environmentItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.Environment}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createEnvironmentAdapter()
+  {
+    if (environmentItemProvider == null)
+    {
+      environmentItemProvider = new EnvironmentItemProvider(this);
+    }
+
+    return environmentItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -556,6 +581,7 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
     if (annotationFieldItemProvider != null) annotationFieldItemProvider.dispose();
     if (referencedServiceItemProvider != null) referencedServiceItemProvider.dispose();
     if (providedServiceItemProvider != null) providedServiceItemProvider.dispose();
+    if (environmentItemProvider != null) environmentItemProvider.dispose();
   }
 
 }

@@ -159,13 +159,22 @@ public interface CorePackage extends EPackage
   int VERSIONED_DEPENDENCY = 1;
 
   /**
+   * The feature id for the '<em><b>Url</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VERSIONED_DEPENDENCY__URL = 0;
+
+  /**
    * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY__LOWER_BOUND = 0;
+  int VERSIONED_DEPENDENCY__LOWER_BOUND = 1;
 
   /**
    * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
@@ -174,7 +183,7 @@ public interface CorePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY__UPPER_BOUND = 1;
+  int VERSIONED_DEPENDENCY__UPPER_BOUND = 2;
 
   /**
    * The feature id for the '<em><b>Includes Lower Bound</b></em>' attribute.
@@ -183,7 +192,7 @@ public interface CorePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY__INCLUDES_LOWER_BOUND = 2;
+  int VERSIONED_DEPENDENCY__INCLUDES_LOWER_BOUND = 3;
 
   /**
    * The feature id for the '<em><b>Includes Upper Bound</b></em>' attribute.
@@ -192,7 +201,16 @@ public interface CorePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND = 3;
+  int VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND = 4;
+
+  /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VERSIONED_DEPENDENCY__OPTIONAL = 5;
 
   /**
    * The feature id for the '<em><b>Versioned Element</b></em>' reference.
@@ -201,7 +219,7 @@ public interface CorePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY__VERSIONED_ELEMENT = 4;
+  int VERSIONED_DEPENDENCY__VERSIONED_ELEMENT = 6;
 
   /**
    * The number of structural features of the '<em>Versioned Dependency</em>' class.
@@ -210,7 +228,7 @@ public interface CorePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERSIONED_DEPENDENCY_FEATURE_COUNT = 5;
+  int VERSIONED_DEPENDENCY_FEATURE_COUNT = 7;
 
   /**
    * The number of operations of the '<em>Versioned Dependency</em>' class.
@@ -386,6 +404,52 @@ public interface CorePackage extends EPackage
    */
   int PROPERTY_OPERATION_COUNT = 0;
 
+  /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.core.impl.EntryImpl <em>Entry</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.core.impl.EntryImpl
+   * @see fr.obeo.ariadne.model.core.impl.CorePackageImpl#getEntry()
+   * @generated
+   */
+  int ENTRY = 5;
+
+  /**
+   * The feature id for the '<em><b>Key</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRY__KEY = 0;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRY__VALUES = 1;
+
+  /**
+   * The number of structural features of the '<em>Entry</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRY_FEATURE_COUNT = 2;
+
+  /**
+   * The number of operations of the '<em>Entry</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRY_OPERATION_COUNT = 0;
+
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.core.VersionedElement <em>Versioned Element</em>}'.
@@ -474,6 +538,17 @@ public interface CorePackage extends EPackage
   EClass getVersionedDependency();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.core.VersionedDependency#getUrl <em>Url</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Url</em>'.
+   * @see fr.obeo.ariadne.model.core.VersionedDependency#getUrl()
+   * @see #getVersionedDependency()
+   * @generated
+   */
+  EAttribute getVersionedDependency_Url();
+
+  /**
    * Returns the meta object for the containment reference '{@link fr.obeo.ariadne.model.core.VersionedDependency#getLowerBound <em>Lower Bound</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -516,6 +591,17 @@ public interface CorePackage extends EPackage
    * @generated
    */
   EAttribute getVersionedDependency_IncludesUpperBound();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.core.VersionedDependency#isOptional <em>Optional</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Optional</em>'.
+   * @see fr.obeo.ariadne.model.core.VersionedDependency#isOptional()
+   * @see #getVersionedDependency()
+   * @generated
+   */
+  EAttribute getVersionedDependency_Optional();
 
   /**
    * Returns the meta object for the reference '{@link fr.obeo.ariadne.model.core.VersionedDependency#getVersionedElement <em>Versioned Element</em>}'.
@@ -658,6 +744,38 @@ public interface CorePackage extends EPackage
   EReference getProperty_ExtendedProperties();
 
   /**
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.core.Entry <em>Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entry</em>'.
+   * @see fr.obeo.ariadne.model.core.Entry
+   * @generated
+   */
+  EClass getEntry();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.core.Entry#getKey <em>Key</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Key</em>'.
+   * @see fr.obeo.ariadne.model.core.Entry#getKey()
+   * @see #getEntry()
+   * @generated
+   */
+  EAttribute getEntry_Key();
+
+  /**
+   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.core.Entry#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Values</em>'.
+   * @see fr.obeo.ariadne.model.core.Entry#getValues()
+   * @see #getEntry()
+   * @generated
+   */
+  EAttribute getEntry_Values();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -750,6 +868,14 @@ public interface CorePackage extends EPackage
     EClass VERSIONED_DEPENDENCY = eINSTANCE.getVersionedDependency();
 
     /**
+     * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VERSIONED_DEPENDENCY__URL = eINSTANCE.getVersionedDependency_Url();
+
+    /**
      * The meta object literal for the '<em><b>Lower Bound</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -780,6 +906,14 @@ public interface CorePackage extends EPackage
      * @generated
      */
     EAttribute VERSIONED_DEPENDENCY__INCLUDES_UPPER_BOUND = eINSTANCE.getVersionedDependency_IncludesUpperBound();
+
+    /**
+     * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VERSIONED_DEPENDENCY__OPTIONAL = eINSTANCE.getVersionedDependency_Optional();
 
     /**
      * The meta object literal for the '<em><b>Versioned Element</b></em>' reference feature.
@@ -890,6 +1024,32 @@ public interface CorePackage extends EPackage
      * @generated
      */
     EReference PROPERTY__EXTENDED_PROPERTIES = eINSTANCE.getProperty_ExtendedProperties();
+
+    /**
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.core.impl.EntryImpl <em>Entry</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.obeo.ariadne.model.core.impl.EntryImpl
+     * @see fr.obeo.ariadne.model.core.impl.CorePackageImpl#getEntry()
+     * @generated
+     */
+    EClass ENTRY = eINSTANCE.getEntry();
+
+    /**
+     * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTRY__KEY = eINSTANCE.getEntry_Key();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTRY__VALUES = eINSTANCE.getEntry_Values();
 
   }
 

@@ -16,7 +16,6 @@ import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.Organization;
 import fr.obeo.ariadne.model.organization.OrganizationPackage;
 import fr.obeo.ariadne.model.organization.Project;
-import fr.obeo.ariadne.model.organization.Specification;
 
 import java.util.Collection;
 
@@ -30,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -43,7 +41,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.CategoryImpl#getProjects <em>Projects</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.organization.impl.CategoryImpl#getSpecifications <em>Specifications</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.organization.impl.CategoryImpl#getOrganization <em>Organization</em>}</li>
  * </ul>
  * </p>
@@ -61,16 +58,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
    * @ordered
    */
   protected EList<Project> projects;
-
-  /**
-   * The cached value of the '{@link #getSpecifications() <em>Specifications</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSpecifications()
-   * @generated
-   * @ordered
-   */
-  protected EList<Specification> specifications;
 
   /**
    * <!-- begin-user-doc -->
@@ -105,20 +92,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
       projects = new EObjectContainmentWithInverseEList<Project>(Project.class, this, OrganizationPackage.CATEGORY__PROJECTS, OrganizationPackage.PROJECT__CATEGORY);
     }
     return projects;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Specification> getSpecifications()
-  {
-    if (specifications == null)
-    {
-      specifications = new EObjectContainmentEList<Specification>(Specification.class, this, OrganizationPackage.CATEGORY__SPECIFICATIONS);
-    }
-    return specifications;
   }
 
   /**
@@ -199,8 +172,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
     {
       case OrganizationPackage.CATEGORY__PROJECTS:
         return ((InternalEList<?>)getProjects()).basicRemove(otherEnd, msgs);
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
-        return ((InternalEList<?>)getSpecifications()).basicRemove(otherEnd, msgs);
       case OrganizationPackage.CATEGORY__ORGANIZATION:
         return basicSetOrganization(null, msgs);
     }
@@ -235,8 +206,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
     {
       case OrganizationPackage.CATEGORY__PROJECTS:
         return getProjects();
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
-        return getSpecifications();
       case OrganizationPackage.CATEGORY__ORGANIZATION:
         return getOrganization();
     }
@@ -258,10 +227,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
         getProjects().clear();
         getProjects().addAll((Collection<? extends Project>)newValue);
         return;
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
-        getSpecifications().clear();
-        getSpecifications().addAll((Collection<? extends Specification>)newValue);
-        return;
       case OrganizationPackage.CATEGORY__ORGANIZATION:
         setOrganization((Organization)newValue);
         return;
@@ -282,9 +247,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
       case OrganizationPackage.CATEGORY__PROJECTS:
         getProjects().clear();
         return;
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
-        getSpecifications().clear();
-        return;
       case OrganizationPackage.CATEGORY__ORGANIZATION:
         setOrganization((Organization)null);
         return;
@@ -304,8 +266,6 @@ public class CategoryImpl extends VersionedElementImpl implements Category
     {
       case OrganizationPackage.CATEGORY__PROJECTS:
         return projects != null && !projects.isEmpty();
-      case OrganizationPackage.CATEGORY__SPECIFICATIONS:
-        return specifications != null && !specifications.isEmpty();
       case OrganizationPackage.CATEGORY__ORGANIZATION:
         return getOrganization() != null;
     }

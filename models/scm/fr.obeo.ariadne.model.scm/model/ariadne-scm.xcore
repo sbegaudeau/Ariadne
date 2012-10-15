@@ -46,6 +46,7 @@ class Commit {
 class ResourceChange {
 	String path
 	ResourceChangeKind resourceChangeKind
+	refers VersionedElement versionedElement
 }
 
 enum ResourceChangeKind {

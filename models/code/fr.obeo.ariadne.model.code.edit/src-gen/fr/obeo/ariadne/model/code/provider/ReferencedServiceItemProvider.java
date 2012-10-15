@@ -74,7 +74,6 @@ public class ReferencedServiceItemProvider
       super.getPropertyDescriptors(object);
 
       addIdentifierPropertyDescriptor(object);
-      addTypesPropertyDescriptor(object);
       addProvidedServicesPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -99,29 +98,6 @@ public class ReferencedServiceItemProvider
          false,
          false,
          ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Types feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addTypesPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_ReferencedService_types_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_ReferencedService_types_feature", "_UI_ReferencedService_type"),
-         CodePackage.Literals.REFERENCED_SERVICE__TYPES,
-         true,
-         false,
-         true,
-         null,
          null,
          null));
   }
