@@ -1,0 +1,153 @@
+<!doctype html>
+<html  itemscope itemtype="http://schema.org/Product">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Ariadne</title>
+	
+	<meta name="title" content="Ariadne" />
+	<meta name="description" content="Ariadne" />
+	<meta name="author" content="St&eacute;phane B&eacute;gaudeau" />
+	
+	<meta property="og:title" content="Ariadne" />
+	<meta property="og:image" content="assets/images/Ariadne_Logo_Black_th.png" />
+	<meta property="og:description" content="Ariadne" />
+	<meta property="og:type" content="product">
+	<meta property="og:url" content="http://sbegaudeau.github.com/Ariadne">
+
+	<meta itemprop="name" content="Ariadne">
+	<meta itemprop="description" content="Ariadne">
+	<meta itemprop="image" content="assets/images/Ariadne_Logo_Black_th.png">
+		
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+	
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+	<!-- The navigation bar -->
+	<section class="navbar">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="http://www.github.com/sbegaudeau/Ariadne">Github</a></li>
+			<li><a href="documentation.html">Documentation</a></li>
+		</ul>
+	</section>
+	
+	<div class="documentation-container">
+		<section class="documentation-section">
+			<h2>Ariadne</h2>
+			<h3>Architecture</h3>
+			<p>The Ariadne project is separated in several key components. Firstly, you can find the core of the Ariadne project linking all the components together.
+					Secondly, there are the different structures that will be used to store and query the data collected from the Eclipse IDE.
+					Thirdly, there are the connectors used to gather the data from Eclipse.
+					Finally, you can find the tools used to manipulate the data collected.
+			</p>
+		</section>
+		
+		<section class="documentation-section">
+			<h2>Structures</h2>
+			<h3>Core</h3>
+			<p>The "Core" structure defines all the concepts that will be used accross the other structures. As such, it contains concepts like</p>
+			<ul>
+				<li>VersionedElement</li>
+				<li>Version</li>
+				<li>VersionedDependency</li>
+				<li>Person</li>
+			</ul>
+			<p>Those concepts are the glue used by the tooling to link the concepts used in other structures together.</p>
+			
+			<h3>Source Code</h3>
+			<p>The "Source Code" structure defines all the concepts used to represent the technical artifacts of the project. From "Component" and "Provided Service" to "Type" and "Parameter", this
+					structure can be used to represent any kind of project. This structure contains the following concepts:
+			</p>
+			<ul>
+				<li>Component</li>
+				<li>ClasspathEntry</li>
+				<li>TypesContainer</li>
+				<li>Type</li>
+				<li>Classifier</li>
+				<li>Annotation</li>
+				<li>Field</li>
+				<li>Operation</li>
+				<li>Parameter</li>
+			</ul>
+			
+			<h3>Source Code Management</h3>
+			<p>This structure is used to represent the organization of a source code management tool like CVS, SVN or Git. As such, it defines concepts like:</p>
+			<ul>
+				<li>Repository</li>
+				<li>Commit</li>
+				<li>Branch</li>
+				<li>Tags</li>
+				<li>ResourceChange</li>
+				<li>ResourceChangeKind</li>
+			</ul>
+			
+			<h3>Tasks</h3>
+			<p>this structure let you represent any kind of tasks repository along with their artifacts. As such it contains some concepts like:</p>
+			<ul>
+				<li>TasksRepository</li>
+				<li>Task</li>
+			</ul>
+			
+			<h3>Continuous Integration</h3>
+			<p>This structure let you represent a continuous integration tool like Jenkins or Hudson with the following concepts:</p>
+			<ul>
+				<li>BuildServer</li>
+				<li>BuildJob</li>
+			</ul>
+			
+			<h3>Organization</h3>
+			<p>This structure is the one that link all the other structure together. It defines concepts like:</p>
+			<ul>
+				<li>Organization</li>
+				<li>Project</li>
+				<li>Release</li>
+			</ul>
+		</section>
+		
+		<section class="documentation-section">
+			<h2>Connectors</h2>
+			<h3>Java</h3>
+			<p>The Java connector for the "Source Code" structure.</p>
+			
+			<h3>PDE</h3>
+			<p>The PDE connector for the "Source Code" structure.</p>
+			
+			<h3>Git</h3>
+			<p>The Git connector for the "Source Code Management" structure.</p>
+			
+			<h3>Mylyn Tasks</h3>
+			<p>The Mylyn Tasks connector for the "Tasks" structure.</p>
+			
+			<h3>Mylyn Build</h3>
+			<p>The Mylyn Build connector for the "Continuous Integration" structure.</p>
+			
+			<h3>Maven</h3>
+			<p>The Maven connector for the "Source Code" structure.</p>
+		</section>
+		
+		<section class="documentation-section">
+			<h2>Tools</h2>
+			<p>Several tools leveraging the information collected will be available soon...</p>
+		</section>
+	</div>
+	
+	<!-- The footer will contains the copyright and company links -->
+	<footer class="footer">
+		<div class="container">
+			<ul>
+				<li><a href="https://plus.google.com/u/0/105625286543794908607">Google+</a></li>
+				<li><a href="http://www.twitter.com/sbegaudeau">Twitter</a></li>
+				<li><a href="license.html">License</a></li>
+				<li><a href="copyright.html">Copyright</a></li>
+			</ul>
+			<h4>St&eacute;phane B&eacute;gaudeau, Obeo, 2012</h4>
+		</div>
+	</footer>
+</body>
+</html>
