@@ -18,22 +18,24 @@ import fr.obeo.ariadne.model.core.CoreFactory;
 import fr.obeo.ariadne.model.core.Person;
 import fr.obeo.ariadne.model.organization.Category;
 import fr.obeo.ariadne.model.organization.Organization;
-import fr.obeo.ariadne.model.organization.Project;
 import fr.obeo.ariadne.model.scm.Branch;
 import fr.obeo.ariadne.model.scm.Commit;
-import fr.obeo.ariadne.model.scm.ResourceChange;
-import fr.obeo.ariadne.model.scm.ResourceChangeKind;
 import fr.obeo.ariadne.model.scm.ScmFactory;
 import fr.obeo.ariadne.model.scm.Tag;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -42,7 +44,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.egit.core.GitProvider;
 import org.eclipse.egit.core.project.GitProjectData;
 import org.eclipse.egit.core.project.RepositoryMapping;
-import org.eclipse.egit.ui.internal.history.FileDiff;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -52,18 +53,11 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.LogCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.NoHeadException;
-import org.eclipse.jgit.diff.DiffEntry.ChangeType;
-import org.eclipse.jgit.errors.CorruptObjectException;
-import org.eclipse.jgit.errors.IncorrectObjectTypeException;
-import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
-import org.eclipse.jgit.revwalk.RevWalk;
-import org.eclipse.jgit.treewalk.TreeWalk;
-import org.eclipse.jgit.treewalk.filter.TreeFilter;
 import org.eclipse.team.core.RepositoryProvider;
 
 /**
@@ -74,9 +68,20 @@ import org.eclipse.team.core.RepositoryProvider;
  */
 public class GitExplorer extends AbstractAriadneExplorer {
 	/**
-	 * Cache used to retrieve the Ariadne commit mapping a JGit commit.
+	 * The size of the cache of the commits.
 	 */
-	private Map<RevCommit, Commit> commit2ariadneCommit = new HashMap<RevCommit, Commit>();
+	private static final int CACHE_SIZE = 5000;
+
+	/**
+	 * The list of the repositories previsouly explored during the analysis.
+	 */
+	private List<String> repositoryPreviouslyExplored = new ArrayList<>();
+
+	/**
+	 * Cache used to retrieve the Ariadne commit mapping a JGit commit. This cache is initialized with a size
+	 * of 1000 since we know that we will use it a lot.
+	 */
+	private Map<RevCommit, Commit> commit2ariadneCommit = new HashMap<>(CACHE_SIZE);
 
 	/**
 	 * {@inheritDoc}
@@ -105,27 +110,60 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 */
 	@Override
 	public IStatus explore(IProgressMonitor monitor) {
+		// Clear the caches
+		this.repositoryPreviouslyExplored.clear();
+		this.commit2ariadneCommit.clear();
+
 		for (IProject project : this.projects) {
 			// Only analyze if the project is shared on Git
 			if (RepositoryProvider.isShared(project)) {
 				RepositoryProvider provider = RepositoryProvider.getProvider(project);
 				if (GitProvider.ID.equals(provider.getID()) && provider instanceof GitProvider) {
-					// If the project is not mapped to a component, create it
-					fr.obeo.ariadne.model.scm.Repository ariadneRepository = this.doExplore(project,
-							(GitProvider)provider, monitor);
+					if (this.shouldExplore(project, (GitProvider)provider)) {
+						// If the project is not mapped to a component, create it
+						fr.obeo.ariadne.model.scm.Repository ariadneRepository = this.doExplore(project,
+								(GitProvider)provider, monitor);
 
-					// Save the data computed
-					Resource resource = ariadneRepository.eResource();
-					try {
-						HashMap<String, String> options = new HashMap<String, String>();
-						resource.save(options);
-					} catch (IOException e) {
-						e.printStackTrace();
+						// Save the data computed
+						Resource resource = ariadneRepository.eResource();
+						try {
+							HashMap<String, String> options = new HashMap<String, String>();
+							resource.save(options);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					} else {
+						// Log error ?
 					}
 				}
 			}
 		}
 		return Status.OK_STATUS;
+	}
+
+	/**
+	 * Indicates if we should analyze the Git repository of the given project.
+	 * 
+	 * @param project
+	 *            The project to analyze
+	 * @param provider
+	 *            The Git repository provider
+	 * @return <code>true</code> if we should explore the repository linked to the given project, false
+	 *         otherwise.
+	 */
+	private boolean shouldExplore(IProject project, GitProvider provider) {
+		String repositoryPath = null;
+
+		GitProjectData gitProjectData = provider.getData();
+		RepositoryMapping repositoryMapping = gitProjectData.getRepositoryMapping(project);
+		if (repositoryMapping != null) {
+			Repository repository = repositoryMapping.getRepository();
+			if (repository != null) {
+				repositoryPath = repository.getDirectory().getAbsolutePath();
+			}
+		}
+
+		return repositoryPath != null && !this.repositoryPreviouslyExplored.contains(repositoryPath);
 	}
 
 	/**
@@ -148,12 +186,15 @@ public class GitExplorer extends AbstractAriadneExplorer {
 			Repository repository = repositoryMapping.getRepository();
 			if (repository != null) {
 				// Create or recreate the Ariadne SCM repository matching this Git repository
-				fr.obeo.ariadne.model.scm.Repository ariadneRepository = this
-						.getOrCreateRepository(repository);
+				fr.obeo.ariadne.model.scm.Repository ariadneRepository = this.getOrCreateRepository(
+						repository, monitor);
 
-				this.computeCommits(repository, ariadneRepository);
-				this.computeParents(repository, ariadneRepository);
-				this.computeReferences(repository, ariadneRepository);
+				this.computeCommits(repository, ariadneRepository, monitor);
+				this.computeParents(repository, ariadneRepository, monitor);
+				this.computeReferences(repository, ariadneRepository, monitor);
+
+				// Add the repository as explored
+				this.repositoryPreviouslyExplored.add(repository.getDirectory().getAbsolutePath());
 
 				return ariadneRepository;
 			}
@@ -166,9 +207,15 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 * 
 	 * @param gitRepository
 	 *            The Git repository
+	 * @param monitor
+	 *            The progress monitor
 	 * @return The Ariadne repository that we will use to map the Git repository analyzed.
 	 */
-	private fr.obeo.ariadne.model.scm.Repository getOrCreateRepository(Repository gitRepository) {
+	private fr.obeo.ariadne.model.scm.Repository getOrCreateRepository(Repository gitRepository,
+			IProgressMonitor monitor) {
+		monitor.subTask(AriadneGitConnectorMessage.getString("GitExplorer.InitializingRepository")); //$NON-NLS-1$
+		monitor.worked(1);
+
 		fr.obeo.ariadne.model.scm.Repository ariadneRepository = null;
 		String repositoryName = gitRepository.getDirectory().getParentFile().getName();
 
@@ -226,120 +273,64 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 *            The Git repository
 	 * @param ariadneRepository
 	 *            The Ariadne repository
+	 * @param monitor
+	 *            The progress monitor
 	 */
 	private void computeCommits(Repository gitRepository,
-			fr.obeo.ariadne.model.scm.Repository ariadneRepository) {
+			fr.obeo.ariadne.model.scm.Repository ariadneRepository, IProgressMonitor monitor) {
+		int maxThreads = Runtime.getRuntime().availableProcessors();
+		ExecutorService executorService = Executors.newFixedThreadPool(maxThreads);
+
+		long start = System.currentTimeMillis();
+
+		List<Callable<AriadneCommitExplorerEntry>> callables = new ArrayList<>();
+
 		Git git = new Git(gitRepository);
 		LogCommand log = git.log();
 		try {
 			Iterable<RevCommit> logs = log.call();
 			Iterator<RevCommit> logIterator = logs.iterator();
+			monitor.subTask(AriadneGitConnectorMessage.getString("GitExplorer.ExploringCommit")); //$NON-NLS-1$
 			while (logIterator.hasNext()) {
+				monitor.worked(1);
+
 				RevCommit revCommit = logIterator.next();
-
-				// commit's settings
-				Commit ariadneCommit = ScmFactory.eINSTANCE.createCommit();
-				ariadneCommit.setId(revCommit.getId().getName());
-				ariadneCommit.setCommitTime(revCommit.getCommitTime());
-				ariadneCommit.setName(CharMatcher.JAVA_ISO_CONTROL.removeFrom(revCommit.getName()));
-				ariadneCommit.setShortMessage(CharMatcher.JAVA_ISO_CONTROL.removeFrom(revCommit
-						.getShortMessage()));
-				ariadneCommit.setFullMessage(CharMatcher.JAVA_ISO_CONTROL.removeFrom(revCommit
-						.getFullMessage()));
-
 				// person's settings
 				Person committer = this.getOrCreatePerson(ariadneRepository, revCommit.getCommitterIdent());
-				if (committer != null) {
-					ariadneCommit.setCommitter(committer);
-				}
-
 				Person author = this.getOrCreatePerson(ariadneRepository, revCommit.getAuthorIdent());
-				if (author != null) {
-					ariadneCommit.setAuthor(author);
-				}
 
-				// compute file diffs
-				Set<ResourceChange> filesChanged = this.computeFilesChanged(gitRepository, revCommit);
-				ariadneCommit.getResourceChanges().addAll(filesChanged);
-
-				// adding the commit to the repository
-				ariadneRepository.getCommits().add(ariadneCommit);
-
-				// keep in the cache
-				this.commit2ariadneCommit.put(revCommit, ariadneCommit);
+				Callable<AriadneCommitExplorerEntry> callable = new AriadneCommitExplorerRunnable(
+						gitRepository, revCommit, committer, author);
+				callables.add(callable);
 			}
 		} catch (NoHeadException e) {
 			e.printStackTrace();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		}
-	}
 
-	/**
-	 * Computes the changes that have occurred during the given commit on the given Git repository.
-	 * 
-	 * @param gitRepository
-	 *            The Git repository
-	 * @param revCommit
-	 *            The Git commit
-	 * @return The set of changes that has occurred during the commit
-	 */
-	private Set<ResourceChange> computeFilesChanged(Repository gitRepository, RevCommit revCommit) {
-		Set<ResourceChange> filesChanged = new LinkedHashSet<ResourceChange>();
-		RevWalk revWalk = new RevWalk(gitRepository);
-		TreeWalk treewalk = new TreeWalk(revWalk.getObjectReader());
-		treewalk.setRecursive(true);
-		treewalk.setFilter(TreeFilter.ANY_DIFF);
-
-		FileDiff[] diffs = new FileDiff[0];
 		try {
-			for (RevCommit parent : revCommit.getParents()) {
-				revWalk.parseBody(parent);
-			}
-			diffs = FileDiff.compute(treewalk, revCommit);
-		} catch (MissingObjectException e) {
-			e.printStackTrace();
-		} catch (IncorrectObjectTypeException e) {
-			e.printStackTrace();
-		} catch (CorruptObjectException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			revWalk.release();
-			treewalk.release();
-		}
+			List<Future<AriadneCommitExplorerEntry>> results = executorService.invokeAll(callables);
+			executorService.shutdown();
 
-		for (FileDiff fileDiff : diffs) {
-			ResourceChange resourceChange = ScmFactory.eINSTANCE.createResourceChange();
-			resourceChange.setPath(fileDiff.getLabel(fileDiff));
-
-			ChangeType changeType = fileDiff.getChange();
-			switch (changeType) {
-				case ADD:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.ADDED);
-					break;
-				case COPY:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.COPIED);
-					break;
-				case DELETE:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.DELETED);
-					break;
-				case MODIFY:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.MODIFIED);
-					break;
-				case RENAME:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.RENAMED);
-					break;
-				default:
-					resourceChange.setResourceChangeKind(ResourceChangeKind.ADDED);
-					break;
+			for (Future<AriadneCommitExplorerEntry> commit : results) {
+				try {
+					AriadneCommitExplorerEntry ariadneCommitExplorerEntry = commit.get();
+					this.commit2ariadneCommit.put(ariadneCommitExplorerEntry.getGitCommit(),
+							ariadneCommitExplorerEntry.getAriadneCommit());
+					ariadneRepository.getCommits().add(ariadneCommitExplorerEntry.getAriadneCommit());
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+				}
 			}
 
-			filesChanged.add(resourceChange);
-		}
+			long end = System.currentTimeMillis();
 
-		return filesChanged;
+			System.out.println("Commits: " + ariadneRepository.getCommits().size() + " Time: "
+					+ (end - start) + "ms");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -353,38 +344,44 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 */
 	private Person getOrCreatePerson(fr.obeo.ariadne.model.scm.Repository ariadneRepository,
 			PersonIdent committerIdent) {
+		Person person = null;
 		// Look for an existing person in the whole resource set
 		List<Resource> resources = this.resourceSet.getResources();
 		for (Resource resource : resources) {
 			TreeIterator<EObject> allContents = resource.getAllContents();
 			while (allContents.hasNext()) {
 				EObject eObject = allContents.next();
-				if (eObject instanceof Person) {
+				if (eObject instanceof Organization) {
+					Organization organization = (Organization)eObject;
+					List<Person> persons = organization.getPersons();
+					for (Person aPerson : persons) {
+						if (aPerson.getEmail().equals(committerIdent.getEmailAddress())
+								&& aPerson.getName().equals(committerIdent.getName())) {
+							person = aPerson;
+						}
+					}
+				} else if (eObject instanceof Person) {
 					Person aPerson = (Person)eObject;
 					if (aPerson.getEmail().equals(committerIdent.getEmailAddress())
 							&& aPerson.getName().equals(committerIdent.getName())) {
-						return aPerson;
+						person = aPerson;
 					}
+				}
+				if (person != null) {
+					return person;
 				}
 			}
 		}
 
 		// If we haven't find anyone matching the name and email of our choice, create it in the organization
 		// of the repository
-		Person person = null;
 		EObject eContainer = ariadneRepository.eContainer();
-		if (eContainer instanceof Project) {
-			Project project = (Project)eContainer;
-			Category category = project.getCategory();
-			if (category != null) {
-				Organization organization = category.getOrganization();
-				if (organization != null) {
-					person = CoreFactory.eINSTANCE.createPerson();
-					person.setName(CharMatcher.JAVA_ISO_CONTROL.removeFrom(committerIdent.getName()));
-					person.setEmail(CharMatcher.JAVA_ISO_CONTROL.removeFrom(committerIdent.getEmailAddress()));
-					organization.getPersons().add(person);
-				}
-			}
+		if (eContainer instanceof Organization) {
+			Organization organization = (Organization)eContainer;
+			person = CoreFactory.eINSTANCE.createPerson();
+			person.setName(CharMatcher.JAVA_ISO_CONTROL.removeFrom(committerIdent.getName()));
+			person.setEmail(CharMatcher.JAVA_ISO_CONTROL.removeFrom(committerIdent.getEmailAddress()));
+			organization.getPersons().add(person);
 		}
 		return person;
 	}
@@ -396,29 +393,30 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 *            The Git repository
 	 * @param ariadneRepository
 	 *            The Ariadne repository
+	 * @param monitor
+	 *            The progress monitor
 	 */
 	private void computeParents(Repository gitRepository,
-			fr.obeo.ariadne.model.scm.Repository ariadneRepository) {
-		Git git = new Git(gitRepository);
-		LogCommand log = git.log();
-		try {
-			Iterable<RevCommit> logs = log.call();
-			Iterator<RevCommit> logIterator = logs.iterator();
-			while (logIterator.hasNext()) {
-				RevCommit revCommit = logIterator.next();
-				Commit ariadneCommit = this.commit2ariadneCommit.get(revCommit);
+			fr.obeo.ariadne.model.scm.Repository ariadneRepository, IProgressMonitor monitor) {
+		Set<Entry<RevCommit, Commit>> entrySet = this.commit2ariadneCommit.entrySet();
+		for (Entry<RevCommit, Commit> entry : entrySet) {
+			RevCommit revCommit = entry.getKey();
+			Commit ariadneCommit = entry.getValue();
 
-				RevCommit[] parents = revCommit.getParents();
-				for (RevCommit parentCommit : parents) {
-					Commit parentAriadneCommit = this.commit2ariadneCommit.get(parentCommit);
-					ariadneCommit.getParents().add(parentAriadneCommit);
-				}
+			monitor.subTask(AriadneGitConnectorMessage.getString(
+					"GitExplorer.ComputingCommitHierarchy", ariadneCommit.getShortMessage())); //$NON-NLS-1$
+			monitor.worked(1);
+
+			RevCommit[] parents = revCommit.getParents();
+			for (RevCommit revCommitParent : parents) {
+				Commit ariadneCommitParent = this.commit2ariadneCommit.get(revCommitParent);
+				ariadneCommit.getParents().add(ariadneCommitParent);
 			}
-		} catch (NoHeadException e) {
-			e.printStackTrace();
-		} catch (GitAPIException e) {
-			e.printStackTrace();
 		}
+
+		// Memory management
+		this.commit2ariadneCommit.clear();
+		this.commit2ariadneCommit = new HashMap<>();
 	}
 
 	/**
@@ -429,9 +427,13 @@ public class GitExplorer extends AbstractAriadneExplorer {
 	 *            The Git repository
 	 * @param ariadneRepository
 	 *            The Ariadne repository
+	 * @param monitor
+	 *            The progress monitor
 	 */
 	private void computeReferences(Repository gitRepository,
-			fr.obeo.ariadne.model.scm.Repository ariadneRepository) {
+			fr.obeo.ariadne.model.scm.Repository ariadneRepository, IProgressMonitor monitor) {
+		monitor.subTask(AriadneGitConnectorMessage.getString("GitExplorer.ComputingReferences")); //$NON-NLS-1$
+
 		Map<String, Ref> allRefs = gitRepository.getAllRefs();
 		for (Entry<String, Ref> entry : allRefs.entrySet()) {
 			String key = entry.getKey();
@@ -474,6 +476,7 @@ public class GitExplorer extends AbstractAriadneExplorer {
 			} else {
 				// A branch linked to something else than a commit...
 			}
+			monitor.worked(1);
 		}
 	}
 
