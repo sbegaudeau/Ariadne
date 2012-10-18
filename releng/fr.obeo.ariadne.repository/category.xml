@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.obeo.ariadne.model.code.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.code.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <feature url="features/fr.obeo.ariadne.model.continuousintegration.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.continuousintegration.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <feature url="features/fr.obeo.ariadne.model.core.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.core.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <feature url="features/fr.obeo.ariadne.model.organization.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.organization.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <feature url="features/fr.obeo.ariadne.model.scm.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.scm.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <feature url="features/fr.obeo.ariadne.model.tasks.feature_1.0.0.qualifier.jar" id="fr.obeo.ariadne.model.tasks.feature" version="1.0.0.qualifier">
+      <category name="fr.obeo.ariadne.model"/>
+   </feature>
+   <category-def name="fr.obeo.ariadne.model" label="Ariadne Models">
+      <description>
+         This category contains all the data structure manipulated by Ariadne connectors.
+      </description>
+   </category-def>
+</site>
