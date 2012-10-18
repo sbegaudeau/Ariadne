@@ -72,6 +72,16 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 	private Button button;
 
 	/**
+	 * The Ariadne projects available.
+	 */
+	private List<Project> projects = new ArrayList<>();
+
+	/**
+	 * The combo box listing the Ariadne projects available.
+	 */
+	private org.eclipse.swt.widgets.List projectCombo;
+
+	/**
 	 * The constructor.
 	 * 
 	 * @param wizardPage
@@ -97,27 +107,6 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 		container.setLayout(new GridLayout());
 
-		// Compute the project available
-		List<IFile> selectedOrganizations = organizationWizardPage.getSelectedOrganizations();
-
-		final List<Project> projects = new ArrayList<>();
-
-		ResourceSet resourceSet = new ResourceSetImpl();
-		for (IFile iFile : selectedOrganizations) {
-			Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(iFile.getFullPath()
-					.toString(), true), true);
-			EList<EObject> contents = resource.getContents();
-			for (EObject eObject : contents) {
-				if (eObject instanceof Organization) {
-					Organization organization = (Organization)eObject;
-					EList<Category> categories = organization.getCategories();
-					for (Category category : categories) {
-						projects.addAll(category.getProjects());
-					}
-				}
-			}
-		}
-
 		// Create the group for the selection of the projects
 		Group projectSelectionGroup = new Group(container, SWT.NONE);
 		projectSelectionGroup.setLayout(new GridLayout(1, false));
@@ -128,8 +117,8 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 		Label label = new Label(projectSelectionGroup, SWT.NONE);
 		label.setText(AriadneUIMessages.getString("AriadneExploreProjectsWizardProjectPage.SelectProject")); //$NON-NLS-1$
 
-		final org.eclipse.swt.widgets.List projectCombo = new org.eclipse.swt.widgets.List(
-				projectSelectionGroup, SWT.READ_ONLY | SWT.SINGLE | SWT.BORDER);
+		projectCombo = new org.eclipse.swt.widgets.List(projectSelectionGroup, SWT.READ_ONLY | SWT.SINGLE
+				| SWT.BORDER);
 		projectCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		for (Project aProject : projects) {
 			projectCombo.add(EcoreUtil.getURI(aProject).toString());
@@ -147,7 +136,7 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 				String[] selection = projectCombo.getSelection();
 				if (selection.length == 1) {
 					for (Project aProject : projects) {
-						if (EcoreUtil.getURI(aProject).toString().equals(selection[0])) {
+						if (aProject.getName().equals(selection[0])) {
 							project = aProject;
 						}
 					}
@@ -160,6 +149,7 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 		button = new Button(projectSelectionGroup, SWT.CHECK);
 		button.setText(AriadneUIMessages
 				.getString("AriadneExploreProjectsWizardProjectPage.SaveInProjectModel")); //$NON-NLS-1$
+		button.setSelection(true);
 
 		// Create the group for the selection of the connector to use
 		Group connectorSelectionGroup = new Group(container, SWT.NONE);
@@ -207,6 +197,47 @@ public class AriadneExploreProjectsWizardProjectPage extends WizardPage {
 		});
 
 		this.setControl(container);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.jface.dialogs.DialogPage#setVisible(boolean)
+	 */
+	@Override
+	public void setVisible(boolean visible) {
+		super.setVisible(visible);
+
+		if (visible) {
+			// The page is now visible, let's refresh its content
+
+			// Compute the project available
+			List<IFile> selectedOrganizations = organizationWizardPage.getSelectedOrganizations();
+
+			ResourceSet resourceSet = new ResourceSetImpl();
+			for (IFile iFile : selectedOrganizations) {
+				Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(iFile.getFullPath()
+						.toString(), true), true);
+				EList<EObject> contents = resource.getContents();
+				for (EObject eObject : contents) {
+					if (eObject instanceof Organization) {
+						Organization organization = (Organization)eObject;
+						EList<Category> categories = organization.getCategories();
+						for (Category category : categories) {
+							projects.addAll(category.getProjects());
+						}
+					}
+				}
+			}
+
+			// Remove the old content
+			projectCombo.removeAll();
+
+			// Add the new content
+			for (Project aProject : projects) {
+				projectCombo.add(aProject.getName());
+			}
+		}
 	}
 
 	/**

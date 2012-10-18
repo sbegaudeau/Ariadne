@@ -11,6 +11,7 @@
 package fr.obeo.ariadne.ide.connector.ui.internal.actions.explore;
 
 import fr.obeo.ariadne.ide.connector.core.explorer.AbstractAriadneExplorer;
+import fr.obeo.ariadne.ide.connector.ui.internal.AriadneUIPlugin;
 import fr.obeo.ariadne.ide.connector.ui.internal.utils.AriadneUIMessages;
 import fr.obeo.ariadne.model.organization.Project;
 
@@ -20,6 +21,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.wizard.Wizard;
@@ -85,20 +87,7 @@ public class AriadneExploreProjectsWizard extends Wizard {
 			 */
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-				List<IProject> projectsToExplore = selectionWizardPage.getProjectsToExplore();
-				List<IFile> organizations = organizationWizardPage.getSelectedOrganizations();
-				Project ariadneProject = projectWizardPage.getAriadneProject();
-				boolean shouldSaveInProjectResource = projectWizardPage.shouldSaveInProjectResource();
-
-				List<AbstractAriadneExplorer> ariadneExplorers = projectWizardPage.getAriadneExplorers();
-				for (AbstractAriadneExplorer abstractAriadneExplorer : ariadneExplorers) {
-					abstractAriadneExplorer.setProjects(projectsToExplore);
-					abstractAriadneExplorer.setOrganizations(organizations);
-					abstractAriadneExplorer.setAriadneProject(EcoreUtil.getURI(ariadneProject));
-					abstractAriadneExplorer.saveInProjectResource(shouldSaveInProjectResource);
-					abstractAriadneExplorer.initialize(monitor);
-					abstractAriadneExplorer.explore(monitor);
-				}
+				launchExploration(monitor);
 			}
 		};
 
@@ -110,6 +99,47 @@ public class AriadneExploreProjectsWizard extends Wizard {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	/**
+	 * Launches the exploration of the selected projects with the selected Ariadne explorers.
+	 * 
+	 * @param monitor
+	 *            The progress monitor.
+	 */
+	private void launchExploration(IProgressMonitor monitor) {
+		monitor.beginTask(AriadneUIMessages.getString("AriadneExploreProjectsWizard.BeginExploration"), //$NON-NLS-1$
+				IProgressMonitor.UNKNOWN);
+
+		List<IProject> projectsToExplore = selectionWizardPage.getProjectsToExplore();
+		List<IFile> organizations = organizationWizardPage.getSelectedOrganizations();
+		Project ariadneProject = projectWizardPage.getAriadneProject();
+		boolean shouldSaveInProjectResource = projectWizardPage.shouldSaveInProjectResource();
+
+		List<AbstractAriadneExplorer> ariadneExplorers = projectWizardPage.getAriadneExplorers();
+		for (AbstractAriadneExplorer abstractAriadneExplorer : ariadneExplorers) {
+			monitor.subTask(AriadneUIMessages.getString(
+					"AriadneExploreProjectsWizard.StartingInitialization", abstractAriadneExplorer.getName())); //$NON-NLS-1$
+			monitor.worked(1);
+
+			abstractAriadneExplorer.setProjects(projectsToExplore);
+			abstractAriadneExplorer.setOrganizations(organizations);
+			abstractAriadneExplorer.setAriadneProject(EcoreUtil.getURI(ariadneProject));
+			abstractAriadneExplorer.saveInProjectResource(shouldSaveInProjectResource);
+			IStatus initializeStatus = abstractAriadneExplorer.initialize(monitor);
+			if (initializeStatus.isOK()) {
+				monitor.subTask(AriadneUIMessages.getString(
+						"AriadneExploreProjectsWizard.StartingExploration", //$NON-NLS-1$
+						abstractAriadneExplorer.getName()));
+				monitor.worked(1);
+
+				abstractAriadneExplorer.explore(monitor);
+			} else {
+				AriadneUIPlugin.log(AriadneUIMessages.getString(
+						"AriadneExploreProjectsWizard.InitializationError", abstractAriadneExplorer //$NON-NLS-1$
+								.getName(), initializeStatus.getMessage()), true);
+			}
+		}
 	}
 
 	/**
