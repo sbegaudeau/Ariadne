@@ -19,10 +19,13 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -55,13 +58,22 @@ public class AriadneExploreProjectsWizardSelectionPage extends WizardPage {
 	private IStructuredSelection structuredSelection;
 
 	/**
-	 * The constructor.
+	 * The projects selected in the workspace while opening the wizard.
 	 */
-	public AriadneExploreProjectsWizardSelectionPage() {
+	private IStructuredSelection initialSelection;
+
+	/**
+	 * The constructor.
+	 * 
+	 * @param currentSelection
+	 *            The projects selected in the workspace while opening the wizard.
+	 */
+	public AriadneExploreProjectsWizardSelectionPage(IStructuredSelection currentSelection) {
 		super(AriadneUIMessages.getString("AriadneExploreProjectsWizardSelectionPage.Name")); //$NON-NLS-1$
 		this.setTitle(AriadneUIMessages.getString("AriadneExploreProjectsWizardSelectionPage.Title")); //$NON-NLS-1$
 		this.setDescription(AriadneUIMessages
 				.getString("AriadneExploreProjectsWizardSelectionPage.Description")); //$NON-NLS-1$
+		this.initialSelection = currentSelection;
 	}
 
 	/**
@@ -106,11 +118,38 @@ public class AriadneExploreProjectsWizardSelectionPage extends WizardPage {
 				if (selection instanceof IStructuredSelection) {
 					structuredSelection = (IStructuredSelection)selection;
 				}
-				getWizard().getContainer().updateButtons();
+				if (getWizard().getContainer() != null && getWizard().getContainer().getCurrentPage() != null) {
+					getWizard().getContainer().updateButtons();
+				}
 			}
 		});
 		treeViewer.setInput(ResourcesPlugin.getWorkspace().getRoot());
 		treeViewer.expandAll();
+
+		// Select the project already selected
+		if (this.initialSelection instanceof TreeSelection) {
+			List<TreePath> newPaths = new ArrayList<>();
+
+			TreeSelection treeSelection = (TreeSelection)this.initialSelection;
+			TreePath[] paths = treeSelection.getPaths();
+
+			for (TreePath treePath : paths) {
+				int segmentCount = treePath.getSegmentCount();
+				for (int i = 0; i < segmentCount; i++) {
+					Object object = treePath.getSegment(i);
+					if (object instanceof IProject) {
+						newPaths.add(new TreePath(new Object[] {object }));
+					} else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
+						newPaths.add(new TreePath(new Object[] {Platform.getAdapterManager().getAdapter(
+								object, IProject.class), }));
+					}
+				}
+			}
+
+			this.initialSelection = new TreeSelection(newPaths.toArray(new TreePath[newPaths.size()]));
+		}
+		treeViewer.setSelection(initialSelection, true);
+
 		setControl(container);
 	}
 

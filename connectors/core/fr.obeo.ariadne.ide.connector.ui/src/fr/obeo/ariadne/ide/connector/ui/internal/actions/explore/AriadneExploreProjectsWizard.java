@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 
 /**
@@ -50,10 +51,19 @@ public class AriadneExploreProjectsWizard extends Wizard {
 	private AriadneExploreProjectsWizardProjectPage projectWizardPage;
 
 	/**
-	 * The constructor.
+	 * The projects selected in the workspace while opening the wizard.
 	 */
-	public AriadneExploreProjectsWizard() {
+	private IStructuredSelection currentSelection;
+
+	/**
+	 * The constructor.
+	 * 
+	 * @param structuredSelection
+	 *            The project selected in the workspace while opening the wizard.
+	 */
+	public AriadneExploreProjectsWizard(IStructuredSelection structuredSelection) {
 		this.setWindowTitle(AriadneUIMessages.getString("AriadneExploreProjectsWizard.Title")); //$NON-NLS-1$
+		this.currentSelection = structuredSelection;
 	}
 
 	/**
@@ -63,7 +73,7 @@ public class AriadneExploreProjectsWizard extends Wizard {
 	 */
 	@Override
 	public void addPages() {
-		this.selectionWizardPage = new AriadneExploreProjectsWizardSelectionPage();
+		this.selectionWizardPage = new AriadneExploreProjectsWizardSelectionPage(this.currentSelection);
 		this.organizationWizardPage = new AriadneExploreProjectsWizardOrganizationPage();
 		this.projectWizardPage = new AriadneExploreProjectsWizardProjectPage(this.organizationWizardPage);
 
