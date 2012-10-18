@@ -45,7 +45,7 @@ public class AriadneOrganizationFileViewerFilter extends ViewerFilter {
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		boolean isOrganizationFile = element instanceof IFile
 				&& OrganizationModelWizard.FILE_EXTENSIONS.contains(((IFile)element).getFileExtension());
-		if (element instanceof IContainer) {
+		if (element instanceof IContainer && ((IContainer)element).isAccessible()) {
 			// Reset the variable
 			this.isContainerWithOrganizationFile = false;
 
