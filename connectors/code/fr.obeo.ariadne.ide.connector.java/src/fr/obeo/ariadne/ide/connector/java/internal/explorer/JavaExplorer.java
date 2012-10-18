@@ -20,14 +20,12 @@ import fr.obeo.ariadne.model.code.ClassifierKind;
 import fr.obeo.ariadne.model.code.ClasspathEntry;
 import fr.obeo.ariadne.model.code.CodeFactory;
 import fr.obeo.ariadne.model.code.Component;
-import fr.obeo.ariadne.model.code.Constructor;
 import fr.obeo.ariadne.model.code.Field;
 import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Parameter;
 import fr.obeo.ariadne.model.code.Type;
 import fr.obeo.ariadne.model.code.TypesContainer;
 import fr.obeo.ariadne.model.code.VisibilityKind;
-import fr.obeo.ariadne.model.code.utils.IAriadneCodeModelConstants;
 import fr.obeo.ariadne.model.common.IAriadneModelCommonConstants;
 import fr.obeo.ariadne.model.core.CoreFactory;
 import fr.obeo.ariadne.model.core.Property;
@@ -46,9 +44,10 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IAnnotation;
@@ -84,7 +83,7 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 	 */
 	@Override
 	public String getName() {
-		return AriadneJavaConnectorMessage.getString("JavaConnector.Name"); //$NON-NLS-1$
+		return AriadneJavaConnectorMessage.getString("JavaExplorer.Name"); //$NON-NLS-1$
 	}
 
 	/**
@@ -349,12 +348,9 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				// Set up the annotations dependencies
 				IAnnotation[] annotations = iType.getAnnotations();
 				for (IAnnotation iAnnotation : annotations) {
-					Annotation anAnnotation = CodeFactory.eINSTANCE.createAnnotation();
-					if (anAnnotation instanceof InternalEObject) {
-						InternalEObject internalEObject = (InternalEObject)anAnnotation;
-						String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
-								+ iAnnotation.getElementName();
-						internalEObject.eSetProxyURI(URI.createURI(uri));
+					Annotation ariadneAnnotation = this.getOrCreateAnnotation(iAnnotation);
+					if (ariadneAnnotation != null) {
+						annotation.getAnnotations().add(ariadneAnnotation);
 					}
 				}
 
@@ -363,22 +359,61 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				if (compilationUnit != null) {
 					IImportDeclaration[] imports = compilationUnit.getImports();
 					for (IImportDeclaration iImportDeclaration : imports) {
-						Annotation anAnnotation = CodeFactory.eINSTANCE.createAnnotation();
-						if (anAnnotation instanceof InternalEObject) {
-							InternalEObject internalEObject = (InternalEObject)anAnnotation;
-							String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
-									+ iImportDeclaration.getElementName();
-							internalEObject.eSetProxyURI(URI.createURI(uri));
-						}
-						VersionedDependency dependency = CoreFactory.eINSTANCE.createVersionedDependency();
-						dependency.setVersionedElement(anAnnotation);
-						annotation.getVersionedDependencies().add(dependency);
+						// TODO Support annotation import!
+						// Annotation anAnnotation = CodeFactory.eINSTANCE.createAnnotation();
+						// if (anAnnotation instanceof InternalEObject) {
+						// InternalEObject internalEObject = (InternalEObject)anAnnotation;
+						// String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
+						// + iImportDeclaration.getElementName();
+						// internalEObject.eSetProxyURI(URI.createURI(uri));
+						// }
+						// VersionedDependency dependency = CoreFactory.eINSTANCE.createVersionedDependency();
+						// dependency.setVersionedElement(anAnnotation);
+						// annotation.getVersionedDependencies().add(dependency);
 					}
 				}
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Finds an Ariadne annotation matching the given Java annotation in the resource set or creates an EMF
+	 * proxy representing this annotation.
+	 * 
+	 * @param iJavaAnnotation
+	 *            The Java annotation
+	 * @return An Ariadne annotation representing this Java annotation.
+	 */
+	private Annotation getOrCreateAnnotation(IAnnotation iJavaAnnotation) {
+		Annotation ariadneAnnotation = null;
+
+		// Look for the matching annotation in the resource set
+		TreeIterator<Notifier> allContents = this.resourceSet.getAllContents();
+
+		boolean found = false;
+		while (allContents.hasNext() && !found) {
+			Notifier next = allContents.next();
+			if (next instanceof Annotation) {
+				Annotation anAnnotation = (Annotation)next;
+				if (anAnnotation.getQualifiedName().equals(iJavaAnnotation.getElementName())) {
+					ariadneAnnotation = anAnnotation;
+					found = true;
+				}
+			}
+		}
+
+		// TODO Support proxies
+		// Annotation anAnnotation = CodeFactory.eINSTANCE.createAnnotation();
+		// if (anAnnotation instanceof InternalEObject) {
+		// InternalEObject internalEObject = (InternalEObject)anAnnotation;
+		// String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
+		// + iAnnotation.getElementName();
+		// internalEObject.eSetProxyURI(URI.createURI(uri));
+		// }
+
+		return ariadneAnnotation;
 	}
 
 	/**
@@ -400,31 +435,32 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 			}
 		}
 
-		Annotation annotationDeprecated = CodeFactory.eINSTANCE.createAnnotation();
-		if (annotationDeprecated instanceof InternalEObject) {
-			InternalEObject internalEObject = (InternalEObject)annotationDeprecated;
-
-			String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
-					+ IAriadneJavaConnectorConstants.DEPRECATED_ANNOTATION;
-			internalEObject.eSetProxyURI(URI.createURI(uri));
-		}
-
-		if (versionedElement instanceof Type) {
-			Type type = (Type)versionedElement;
-			type.getAnnotations().add(annotationDeprecated);
-		} else if (versionedElement instanceof Operation) {
-			Operation operation = (Operation)versionedElement;
-			operation.getAnnotations().add(annotationDeprecated);
-		} else if (versionedElement instanceof Field) {
-			Field field = (Field)versionedElement;
-			field.getAnnotations().add(annotationDeprecated);
-		} else if (versionedElement instanceof Parameter) {
-			Parameter parameter = (Parameter)versionedElement;
-			parameter.getAnnotations().add(annotationDeprecated);
-		} else if (versionedElement instanceof Constructor) {
-			Constructor constructor = (Constructor)versionedElement;
-			constructor.getAnnotations().add(annotationDeprecated);
-		}
+		// TODO Support proxies
+		// Annotation annotationDeprecated = CodeFactory.eINSTANCE.createAnnotation();
+		// if (annotationDeprecated instanceof InternalEObject) {
+		// InternalEObject internalEObject = (InternalEObject)annotationDeprecated;
+		//
+		// String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
+		// + IAriadneJavaConnectorConstants.DEPRECATED_ANNOTATION;
+		// internalEObject.eSetProxyURI(URI.createURI(uri));
+		// }
+		//
+		// if (versionedElement instanceof Type) {
+		// Type type = (Type)versionedElement;
+		// type.getAnnotations().add(annotationDeprecated);
+		// } else if (versionedElement instanceof Operation) {
+		// Operation operation = (Operation)versionedElement;
+		// operation.getAnnotations().add(annotationDeprecated);
+		// } else if (versionedElement instanceof Field) {
+		// Field field = (Field)versionedElement;
+		// field.getAnnotations().add(annotationDeprecated);
+		// } else if (versionedElement instanceof Parameter) {
+		// Parameter parameter = (Parameter)versionedElement;
+		// parameter.getAnnotations().add(annotationDeprecated);
+		// } else if (versionedElement instanceof Constructor) {
+		// Constructor constructor = (Constructor)versionedElement;
+		// constructor.getAnnotations().add(annotationDeprecated);
+		// }
 	}
 
 	/**
@@ -521,12 +557,9 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				// Set up the annotations dependencies
 				IAnnotation[] annotations = iType.getAnnotations();
 				for (IAnnotation iAnnotation : annotations) {
-					Annotation anAnnotation = CodeFactory.eINSTANCE.createAnnotation();
-					if (anAnnotation instanceof InternalEObject) {
-						InternalEObject internalEObject = (InternalEObject)anAnnotation;
-						String uri = IAriadneCodeModelConstants.ANNOTATION_URI_PREFIX
-								+ iAnnotation.getElementName();
-						internalEObject.eSetProxyURI(URI.createURI(uri));
+					Annotation ariadneAnnotation = this.getOrCreateAnnotation(iAnnotation);
+					if (ariadneAnnotation != null) {
+						classifier.getAnnotations().add(ariadneAnnotation);
 					}
 				}
 
@@ -535,43 +568,72 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 				if (compilationUnit != null) {
 					IImportDeclaration[] imports = compilationUnit.getImports();
 					for (IImportDeclaration iImportDeclaration : imports) {
-						Classifier aClassifier = CodeFactory.eINSTANCE.createClassifier();
-						if (aClassifier instanceof InternalEObject) {
-							InternalEObject internalEObject = (InternalEObject)aClassifier;
-							String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX
-									+ iImportDeclaration.getElementName();
-							internalEObject.eSetProxyURI(URI.createURI(uri));
+						Classifier ariadneClassifier = this.getOrCreateClassifier(iImportDeclaration
+								.getElementName());
+						if (ariadneClassifier != null) {
+							VersionedDependency dependency = CoreFactory.eINSTANCE
+									.createVersionedDependency();
+							dependency.setVersionedElement(ariadneClassifier);
+							classifier.getVersionedDependencies().add(dependency);
 						}
-						VersionedDependency dependency = CoreFactory.eINSTANCE.createVersionedDependency();
-						dependency.setVersionedElement(aClassifier);
-						classifier.getVersionedDependencies().add(dependency);
 					}
 				}
 
 				// Set up the inhenritance dependencies
 				String superclassName = iType.getSuperclassName();
-				Classifier aClassifier = CodeFactory.eINSTANCE.createClassifier();
-				if (aClassifier instanceof InternalEObject) {
-					InternalEObject internalEObject = (InternalEObject)aClassifier;
-					String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + superclassName;
-					internalEObject.eSetProxyURI(URI.createURI(uri));
+				Classifier ariadneClassifier = this.getOrCreateClassifier(superclassName);
+				if (ariadneClassifier != null) {
+					classifier.getSuperTypes().add(ariadneClassifier);
 				}
-				classifier.getSuperTypes().add(aClassifier);
 
 				String[] superInterfaceNames = iType.getSuperInterfaceNames();
 				for (String superInterfaceName : superInterfaceNames) {
-					aClassifier = CodeFactory.eINSTANCE.createClassifier();
-					if (aClassifier instanceof InternalEObject) {
-						InternalEObject internalEObject = (InternalEObject)aClassifier;
-						String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + superInterfaceName;
-						internalEObject.eSetProxyURI(URI.createURI(uri));
+					ariadneClassifier = this.getOrCreateClassifier(superInterfaceName);
+					if (ariadneClassifier != null) {
+						classifier.getSuperTypes().add(ariadneClassifier);
 					}
-					classifier.getSuperTypes().add(aClassifier);
 				}
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Returns the Ariadne classifier matching the given classifier name or an EMF proxy if none could be
+	 * found.
+	 * 
+	 * @param classifierName
+	 *            The name of the classifier that we are looking for
+	 * @return The Ariadne classifier or an EMF proxy.
+	 */
+	private Classifier getOrCreateClassifier(String classifierName) {
+		Classifier classifier = null;
+
+		// Look for the matching annotation in the resource set
+		TreeIterator<Notifier> allContents = this.resourceSet.getAllContents();
+
+		boolean found = false;
+		while (allContents.hasNext() && !found) {
+			Notifier next = allContents.next();
+			if (next instanceof Classifier) {
+				Classifier aClassifier = (Classifier)next;
+				if (aClassifier.getQualifiedName().equals(classifierName)) {
+					classifier = aClassifier;
+					found = true;
+				}
+			}
+		}
+
+		// TODO Support EMF proxies
+		// aClassifier = CodeFactory.eINSTANCE.createClassifier();
+		// if (aClassifier instanceof InternalEObject) {
+		// InternalEObject internalEObject = (InternalEObject)aClassifier;
+		// String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + superInterfaceName;
+		// internalEObject.eSetProxyURI(URI.createURI(uri));
+		// }
+
+		return classifier;
 	}
 
 	/**
@@ -734,13 +796,10 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 
 				// Set the typing dependency
 				String returnType = Signature.getReturnType(iMethod.getReturnType());
-				Classifier aClassifier = CodeFactory.eINSTANCE.createClassifier();
-				if (aClassifier instanceof InternalEObject) {
-					InternalEObject internalEObject = (InternalEObject)aClassifier;
-					String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + returnType;
-					internalEObject.eSetProxyURI(URI.createURI(uri));
+				Classifier ariadneClassifier = this.getOrCreateClassifier(returnType);
+				if (ariadneClassifier != null) {
+					operation.getTypes().add(ariadneClassifier);
 				}
-				operation.getTypes().add(aClassifier);
 			} catch (JavaModelException e) {
 				e.printStackTrace();
 			}
@@ -764,13 +823,10 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 
 						// Set the typing dependency
 						String signature = Signature.toString(iLocalVariable.getTypeSignature());
-						Classifier aClassifier = CodeFactory.eINSTANCE.createClassifier();
-						if (aClassifier instanceof InternalEObject) {
-							InternalEObject internalEObject = (InternalEObject)aClassifier;
-							String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + signature;
-							internalEObject.eSetProxyURI(URI.createURI(uri));
+						Classifier ariadneClassifier = this.getOrCreateClassifier(signature);
+						if (ariadneClassifier != null) {
+							parameter.getTypes().add(ariadneClassifier);
 						}
-						parameter.getTypes().add(aClassifier);
 					}
 				}
 			} catch (JavaModelException e) {
@@ -860,13 +916,10 @@ public class JavaExplorer extends AbstractAriadneExplorer {
 
 				// Set the typing dependency
 				String signature = Signature.toString(iField.getTypeSignature());
-				Classifier aClassifier = CodeFactory.eINSTANCE.createClassifier();
-				if (aClassifier instanceof InternalEObject) {
-					InternalEObject internalEObject = (InternalEObject)aClassifier;
-					String uri = IAriadneCodeModelConstants.CLASSIFIER_URI_PREFIX + signature;
-					internalEObject.eSetProxyURI(URI.createURI(uri));
+				Classifier ariadneClassifier = this.getOrCreateClassifier(signature);
+				if (ariadneClassifier != null) {
+					field.getTypes().add(ariadneClassifier);
 				}
-				field.getTypes().add(aClassifier);
 			} catch (JavaModelException e) {
 				e.printStackTrace();
 			}
