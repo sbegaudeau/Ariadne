@@ -48,4 +48,39 @@ public interface IAriadneCodeModelConstants {
 	 * The prefix used to indicate that an EObject is a proxy of an Ariadne Code Model required service.
 	 */
 	String REQUIRED_SERVICE_URI_PREFIX = CODE_URI_PREFIX + "service/required/"; //$NON-NLS-1$
+	
+	/**
+	 * Operating System.
+	 */
+	String ENVIRONMENT_ENTRY_OS = "Operating System"; //$NON-NLS-1$
+	
+	/**
+	 * Architecture.
+	 */
+	String ENVIRONMENT_ENTRY_ARCHITECTURE = "Architecture"; //$NON-NLS-1$
+	
+	/**
+	 * Windowing System.
+	 */
+	String ENVIRONMENT_ENTRY_WINDOWING_SYSTEM = "Windowing System"; //$NON-NLS-1$
+	
+	/**
+	 * JRE Container.
+	 */
+	String ENVIRONMENT_ENTRY_JRE_CONTAINER = "JRE Container"; //$NON-NLS-1$
+	
+	/**
+	 * Nationalization.
+	 */
+	String ENVIRONMENT_ENTRY_NATIONALIZATION = "Nationalization"; //$NON-NLS-1$
+	
+	/**
+	 * Program Arguments.
+	 */
+	String ENVIRONMENT_ENTRY_PROGRAM_ARGUMENTS = "Program Arguments"; //$NON-NLS-1$
+	
+	/**
+	 * VM Arguments.
+	 */
+	String ENVIRONMENT_ENTRY_VM_ARGUMENTS = "VM Arguments"; //$NON-NLS-1$
 }
