@@ -76,6 +76,15 @@ public interface CodeFactory extends EFactory
   TypesContainer createTypesContainer();
 
   /**
+   * Returns a new object of class '<em>Primitive Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primitive Type</em>'.
+   * @generated
+   */
+  PrimitiveType createPrimitiveType();
+
+  /**
    * Returns a new object of class '<em>Classifier</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

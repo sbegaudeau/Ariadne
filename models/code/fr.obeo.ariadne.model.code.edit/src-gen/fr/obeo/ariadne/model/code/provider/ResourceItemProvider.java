@@ -11,7 +11,6 @@
 package fr.obeo.ariadne.model.code.provider;
 
 
-import fr.obeo.ariadne.model.code.CodePackage;
 import fr.obeo.ariadne.model.code.Resource;
 
 import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
@@ -24,7 +23,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;

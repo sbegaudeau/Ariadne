@@ -270,31 +270,31 @@ public interface ContinuousintegrationPackage extends EPackage
   int BUILD_JOB__BUILD_KINDS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILD_JOB__ENTRIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The feature id for the '<em><b>Promotion Locations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_JOB__PROMOTION_LOCATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
+  int BUILD_JOB__PROMOTION_LOCATIONS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
-   * The feature id for the '<em><b>Build Dependencies</b></em>' containment reference list.
+   * The feature id for the '<em><b>Build Artifacts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_JOB__BUILD_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The feature id for the '<em><b>Components</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUILD_JOB__COMPONENTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
+  int BUILD_JOB__BUILD_ARTIFACTS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Build Job</em>' class.
@@ -315,14 +315,14 @@ public interface ContinuousintegrationPackage extends EPackage
   int BUILD_JOB_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildDependencyImpl <em>Build Dependency</em>}' class.
+   * The meta object id for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildArtifactImpl <em>Build Artifact</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see fr.obeo.ariadne.model.continuousintegration.impl.BuildDependencyImpl
-   * @see fr.obeo.ariadne.model.continuousintegration.impl.ContinuousintegrationPackageImpl#getBuildDependency()
+   * @see fr.obeo.ariadne.model.continuousintegration.impl.BuildArtifactImpl
+   * @see fr.obeo.ariadne.model.continuousintegration.impl.ContinuousintegrationPackageImpl#getBuildArtifact()
    * @generated
    */
-  int BUILD_DEPENDENCY = 2;
+  int BUILD_ARTIFACT = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -331,7 +331,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
+  int BUILD_ARTIFACT__NAME = CorePackage.VERSIONED_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -340,7 +340,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
+  int BUILD_ARTIFACT__DESCRIPTION = CorePackage.VERSIONED_ELEMENT__DESCRIPTION;
 
   /**
    * The feature id for the '<em><b>Authors</b></em>' reference list.
@@ -349,7 +349,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
+  int BUILD_ARTIFACT__AUTHORS = CorePackage.VERSIONED_ELEMENT__AUTHORS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' reference list.
@@ -358,7 +358,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
+  int BUILD_ARTIFACT__PROPERTIES = CorePackage.VERSIONED_ELEMENT__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Version</b></em>' containment reference.
@@ -367,7 +367,7 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
+  int BUILD_ARTIFACT__VERSION = CorePackage.VERSIONED_ELEMENT__VERSION;
 
   /**
    * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
@@ -376,52 +376,25 @@ public interface ContinuousintegrationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
+  int BUILD_ARTIFACT__VERSIONED_DEPENDENCIES = CorePackage.VERSIONED_ELEMENT__VERSIONED_DEPENDENCIES;
 
   /**
-   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * The number of structural features of the '<em>Build Artifact</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__QUALIFIED_NAME = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
+  int BUILD_ARTIFACT_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Urls</b></em>' attribute list.
+   * The number of operations of the '<em>Build Artifact</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUILD_DEPENDENCY__URLS = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Licenses</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUILD_DEPENDENCY__LICENSES = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Build Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUILD_DEPENDENCY_FEATURE_COUNT = CorePackage.VERSIONED_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The number of operations of the '<em>Build Dependency</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUILD_DEPENDENCY_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
+  int BUILD_ARTIFACT_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.PromotionLocationImpl <em>Promotion Location</em>}' class.
@@ -612,6 +585,17 @@ public interface ContinuousintegrationPackage extends EPackage
   EAttribute getBuildJob_BuildKinds();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getEntries <em>Entries</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Entries</em>'.
+   * @see fr.obeo.ariadne.model.continuousintegration.BuildJob#getEntries()
+   * @see #getBuildJob()
+   * @generated
+   */
+  EReference getBuildJob_Entries();
+
+  /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getPromotionLocations <em>Promotion Locations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -623,69 +607,25 @@ public interface ContinuousintegrationPackage extends EPackage
   EReference getBuildJob_PromotionLocations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildDependencies <em>Build Dependencies</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildArtifacts <em>Build Artifacts</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Build Dependencies</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildDependencies()
+   * @return the meta object for the containment reference list '<em>Build Artifacts</em>'.
+   * @see fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildArtifacts()
    * @see #getBuildJob()
    * @generated
    */
-  EReference getBuildJob_BuildDependencies();
+  EReference getBuildJob_BuildArtifacts();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getComponents <em>Components</em>}'.
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.continuousintegration.BuildArtifact <em>Build Artifact</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Components</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildJob#getComponents()
-   * @see #getBuildJob()
+   * @return the meta object for class '<em>Build Artifact</em>'.
+   * @see fr.obeo.ariadne.model.continuousintegration.BuildArtifact
    * @generated
    */
-  EReference getBuildJob_Components();
-
-  /**
-   * Returns the meta object for class '{@link fr.obeo.ariadne.model.continuousintegration.BuildDependency <em>Build Dependency</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Build Dependency</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildDependency
-   * @generated
-   */
-  EClass getBuildDependency();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.obeo.ariadne.model.continuousintegration.BuildDependency#getQualifiedName <em>Qualified Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Qualified Name</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildDependency#getQualifiedName()
-   * @see #getBuildDependency()
-   * @generated
-   */
-  EAttribute getBuildDependency_QualifiedName();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.continuousintegration.BuildDependency#getUrls <em>Urls</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Urls</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildDependency#getUrls()
-   * @see #getBuildDependency()
-   * @generated
-   */
-  EAttribute getBuildDependency_Urls();
-
-  /**
-   * Returns the meta object for the attribute list '{@link fr.obeo.ariadne.model.continuousintegration.BuildDependency#getLicenses <em>Licenses</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Licenses</em>'.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildDependency#getLicenses()
-   * @see #getBuildDependency()
-   * @generated
-   */
-  EAttribute getBuildDependency_Licenses();
+  EClass getBuildArtifact();
 
   /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.continuousintegration.PromotionLocation <em>Promotion Location</em>}'.
@@ -811,6 +751,14 @@ public interface ContinuousintegrationPackage extends EPackage
     EAttribute BUILD_JOB__BUILD_KINDS = eINSTANCE.getBuildJob_BuildKinds();
 
     /**
+     * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUILD_JOB__ENTRIES = eINSTANCE.getBuildJob_Entries();
+
+    /**
      * The meta object literal for the '<em><b>Promotion Locations</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -819,54 +767,22 @@ public interface ContinuousintegrationPackage extends EPackage
     EReference BUILD_JOB__PROMOTION_LOCATIONS = eINSTANCE.getBuildJob_PromotionLocations();
 
     /**
-     * The meta object literal for the '<em><b>Build Dependencies</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Build Artifacts</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BUILD_JOB__BUILD_DEPENDENCIES = eINSTANCE.getBuildJob_BuildDependencies();
+    EReference BUILD_JOB__BUILD_ARTIFACTS = eINSTANCE.getBuildJob_BuildArtifacts();
 
     /**
-     * The meta object literal for the '<em><b>Components</b></em>' reference list feature.
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildArtifactImpl <em>Build Artifact</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see fr.obeo.ariadne.model.continuousintegration.impl.BuildArtifactImpl
+     * @see fr.obeo.ariadne.model.continuousintegration.impl.ContinuousintegrationPackageImpl#getBuildArtifact()
      * @generated
      */
-    EReference BUILD_JOB__COMPONENTS = eINSTANCE.getBuildJob_Components();
-
-    /**
-     * The meta object literal for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildDependencyImpl <em>Build Dependency</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.obeo.ariadne.model.continuousintegration.impl.BuildDependencyImpl
-     * @see fr.obeo.ariadne.model.continuousintegration.impl.ContinuousintegrationPackageImpl#getBuildDependency()
-     * @generated
-     */
-    EClass BUILD_DEPENDENCY = eINSTANCE.getBuildDependency();
-
-    /**
-     * The meta object literal for the '<em><b>Qualified Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BUILD_DEPENDENCY__QUALIFIED_NAME = eINSTANCE.getBuildDependency_QualifiedName();
-
-    /**
-     * The meta object literal for the '<em><b>Urls</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BUILD_DEPENDENCY__URLS = eINSTANCE.getBuildDependency_Urls();
-
-    /**
-     * The meta object literal for the '<em><b>Licenses</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BUILD_DEPENDENCY__LICENSES = eINSTANCE.getBuildDependency_Licenses();
+    EClass BUILD_ARTIFACT = eINSTANCE.getBuildArtifact();
 
     /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.continuousintegration.impl.PromotionLocationImpl <em>Promotion Location</em>}' class.

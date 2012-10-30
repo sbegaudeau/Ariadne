@@ -10,8 +10,7 @@
  */
 package fr.obeo.ariadne.model.continuousintegration;
 
-import fr.obeo.ariadne.model.code.Component;
-
+import fr.obeo.ariadne.model.core.Entry;
 import fr.obeo.ariadne.model.core.VersionedElement;
 
 import org.eclipse.emf.common.util.EList;
@@ -27,9 +26,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildTechnologyKinds <em>Build Technology Kinds</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildKinds <em>Build Kinds</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getEntries <em>Entries</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getPromotionLocations <em>Promotion Locations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildDependencies <em>Build Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getComponents <em>Components</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.continuousintegration.BuildJob#getBuildArtifacts <em>Build Artifacts</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,6 +99,22 @@ public interface BuildJob extends VersionedElement
   EList<BuildKind> getBuildKinds();
 
   /**
+   * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.core.Entry}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Entries</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Entries</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage#getBuildJob_Entries()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Entry> getEntries();
+
+  /**
    * Returns the value of the '<em><b>Promotion Locations</b></em>' containment reference list.
    * The list contents are of type {@link fr.obeo.ariadne.model.continuousintegration.PromotionLocation}.
    * <!-- begin-user-doc -->
@@ -116,35 +131,19 @@ public interface BuildJob extends VersionedElement
   EList<PromotionLocation> getPromotionLocations();
 
   /**
-   * Returns the value of the '<em><b>Build Dependencies</b></em>' containment reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.continuousintegration.BuildDependency}.
+   * Returns the value of the '<em><b>Build Artifacts</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.continuousintegration.BuildArtifact}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Build Dependencies</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Build Artifacts</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Build Dependencies</em>' containment reference list.
-   * @see fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage#getBuildJob_BuildDependencies()
+   * @return the value of the '<em>Build Artifacts</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage#getBuildJob_BuildArtifacts()
    * @model containment="true"
    * @generated
    */
-  EList<BuildDependency> getBuildDependencies();
-
-  /**
-   * Returns the value of the '<em><b>Components</b></em>' reference list.
-   * The list contents are of type {@link fr.obeo.ariadne.model.code.Component}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Components</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Components</em>' reference list.
-   * @see fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage#getBuildJob_Components()
-   * @model
-   * @generated
-   */
-  EList<Component> getComponents();
+  EList<BuildArtifact> getBuildArtifacts();
 
 } // BuildJob

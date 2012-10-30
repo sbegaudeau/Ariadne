@@ -10,13 +10,13 @@
  */
 package fr.obeo.ariadne.model.continuousintegration.impl;
 
-import fr.obeo.ariadne.model.code.Component;
-
-import fr.obeo.ariadne.model.continuousintegration.BuildDependency;
+import fr.obeo.ariadne.model.continuousintegration.BuildArtifact;
 import fr.obeo.ariadne.model.continuousintegration.BuildJob;
 import fr.obeo.ariadne.model.continuousintegration.BuildKind;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
 import fr.obeo.ariadne.model.continuousintegration.PromotionLocation;
+
+import fr.obeo.ariadne.model.core.Entry;
 
 import fr.obeo.ariadne.model.core.impl.VersionedElementImpl;
 
@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -47,9 +46,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getBuildTechnologyKinds <em>Build Technology Kinds</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getBuildKinds <em>Build Kinds</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getPromotionLocations <em>Promotion Locations</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getBuildDependencies <em>Build Dependencies</em>}</li>
- *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getComponents <em>Components</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.continuousintegration.impl.BuildJobImpl#getBuildArtifacts <em>Build Artifacts</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,6 +97,16 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
   protected EList<BuildKind> buildKinds;
 
   /**
+   * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEntries()
+   * @generated
+   * @ordered
+   */
+  protected EList<Entry> entries;
+
+  /**
    * The cached value of the '{@link #getPromotionLocations() <em>Promotion Locations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -108,24 +117,14 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
   protected EList<PromotionLocation> promotionLocations;
 
   /**
-   * The cached value of the '{@link #getBuildDependencies() <em>Build Dependencies</em>}' containment reference list.
+   * The cached value of the '{@link #getBuildArtifacts() <em>Build Artifacts</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBuildDependencies()
+   * @see #getBuildArtifacts()
    * @generated
    * @ordered
    */
-  protected EList<BuildDependency> buildDependencies;
-
-  /**
-   * The cached value of the '{@link #getComponents() <em>Components</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComponents()
-   * @generated
-   * @ordered
-   */
-  protected EList<Component> components;
+  protected EList<BuildArtifact> buildArtifacts;
 
   /**
    * <!-- begin-user-doc -->
@@ -204,6 +203,20 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Entry> getEntries()
+  {
+    if (entries == null)
+    {
+      entries = new EObjectContainmentEList<Entry>(Entry.class, this, ContinuousintegrationPackage.BUILD_JOB__ENTRIES);
+    }
+    return entries;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<PromotionLocation> getPromotionLocations()
   {
     if (promotionLocations == null)
@@ -218,27 +231,13 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<BuildDependency> getBuildDependencies()
+  public EList<BuildArtifact> getBuildArtifacts()
   {
-    if (buildDependencies == null)
+    if (buildArtifacts == null)
     {
-      buildDependencies = new EObjectContainmentEList<BuildDependency>(BuildDependency.class, this, ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES);
+      buildArtifacts = new EObjectContainmentEList<BuildArtifact>(BuildArtifact.class, this, ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS);
     }
-    return buildDependencies;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Component> getComponents()
-  {
-    if (components == null)
-    {
-      components = new EObjectResolvingEList<Component>(Component.class, this, ContinuousintegrationPackage.BUILD_JOB__COMPONENTS);
-    }
-    return components;
+    return buildArtifacts;
   }
 
   /**
@@ -251,10 +250,12 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
   {
     switch (featureID)
     {
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
+        return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
         return ((InternalEList<?>)getPromotionLocations()).basicRemove(otherEnd, msgs);
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
-        return ((InternalEList<?>)getBuildDependencies()).basicRemove(otherEnd, msgs);
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
+        return ((InternalEList<?>)getBuildArtifacts()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -275,12 +276,12 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
         return getBuildTechnologyKinds();
       case ContinuousintegrationPackage.BUILD_JOB__BUILD_KINDS:
         return getBuildKinds();
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
+        return getEntries();
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
         return getPromotionLocations();
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
-        return getBuildDependencies();
-      case ContinuousintegrationPackage.BUILD_JOB__COMPONENTS:
-        return getComponents();
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
+        return getBuildArtifacts();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -307,17 +308,17 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
         getBuildKinds().clear();
         getBuildKinds().addAll((Collection<? extends BuildKind>)newValue);
         return;
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
+        getEntries().clear();
+        getEntries().addAll((Collection<? extends Entry>)newValue);
+        return;
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
         getPromotionLocations().clear();
         getPromotionLocations().addAll((Collection<? extends PromotionLocation>)newValue);
         return;
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
-        getBuildDependencies().clear();
-        getBuildDependencies().addAll((Collection<? extends BuildDependency>)newValue);
-        return;
-      case ContinuousintegrationPackage.BUILD_JOB__COMPONENTS:
-        getComponents().clear();
-        getComponents().addAll((Collection<? extends Component>)newValue);
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
+        getBuildArtifacts().clear();
+        getBuildArtifacts().addAll((Collection<? extends BuildArtifact>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -342,14 +343,14 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
       case ContinuousintegrationPackage.BUILD_JOB__BUILD_KINDS:
         getBuildKinds().clear();
         return;
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
+        getEntries().clear();
+        return;
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
         getPromotionLocations().clear();
         return;
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
-        getBuildDependencies().clear();
-        return;
-      case ContinuousintegrationPackage.BUILD_JOB__COMPONENTS:
-        getComponents().clear();
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
+        getBuildArtifacts().clear();
         return;
     }
     super.eUnset(featureID);
@@ -371,12 +372,12 @@ public class BuildJobImpl extends VersionedElementImpl implements BuildJob
         return buildTechnologyKinds != null && !buildTechnologyKinds.isEmpty();
       case ContinuousintegrationPackage.BUILD_JOB__BUILD_KINDS:
         return buildKinds != null && !buildKinds.isEmpty();
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
+        return entries != null && !entries.isEmpty();
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
         return promotionLocations != null && !promotionLocations.isEmpty();
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
-        return buildDependencies != null && !buildDependencies.isEmpty();
-      case ContinuousintegrationPackage.BUILD_JOB__COMPONENTS:
-        return components != null && !components.isEmpty();
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
+        return buildArtifacts != null && !buildArtifacts.isEmpty();
     }
     return super.eIsSet(featureID);
   }

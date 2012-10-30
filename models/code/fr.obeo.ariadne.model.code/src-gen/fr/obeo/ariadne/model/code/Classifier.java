@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.ariadne.model.code.Classifier#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Classifier#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Classifier#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.Classifier#getConstructors <em>Constructors</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Classifier#getFields <em>Fields</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.Classifier#getOperations <em>Operations</em>}</li>
  * </ul>
@@ -202,6 +203,22 @@ public interface Classifier extends Type
    * @generated
    */
   EList<Type> getTypeParameters();
+
+  /**
+   * Returns the value of the '<em><b>Constructors</b></em>' containment reference list.
+   * The list contents are of type {@link fr.obeo.ariadne.model.code.Constructor}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Constructors</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constructors</em>' containment reference list.
+   * @see fr.obeo.ariadne.model.code.CodePackage#getClassifier_Constructors()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Constructor> getConstructors();
 
   /**
    * Returns the value of the '<em><b>Fields</b></em>' containment reference list.

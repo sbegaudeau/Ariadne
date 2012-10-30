@@ -82,6 +82,10 @@ abstract class Type extends VersionedElement {
 	refers Annotation[] annotations
 }
 
+class PrimitiveType extends Type {
+	
+}
+
 class Classifier extends Type {
 	ClassifierKind kind
 	boolean static
@@ -90,6 +94,7 @@ class Classifier extends Type {
 	boolean ^abstract
 	refers Type[] superTypes
 	refers Type[] typeParameters
+	contains Constructor[] constructors
 	contains Field[] fields
 	contains Operation[] operations opposite classifier
 }

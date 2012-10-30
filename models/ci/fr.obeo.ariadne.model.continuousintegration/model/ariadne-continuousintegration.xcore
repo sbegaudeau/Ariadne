@@ -12,8 +12,7 @@ Contributors:
     Stephane Begaudeau (Obeo) - initial API and implementation")
 package fr.obeo.ariadne.model.continuousintegration
 
-import fr.obeo.ariadne.model.code.Component
-
+import fr.obeo.ariadne.model.core.Entry
 import fr.obeo.ariadne.model.core.VersionedElement
 
 class BuildServer extends VersionedElement {
@@ -26,15 +25,13 @@ class BuildJob extends VersionedElement {
 	String url
 	String[] buildTechnologyKinds
 	BuildKind[] buildKinds
+	contains Entry[] entries
 	contains PromotionLocation[] promotionLocations
-	contains BuildDependency[] buildDependencies
-	refers Component[] components
+	contains BuildArtifact[] buildArtifacts
 }
 
-class BuildDependency extends VersionedElement {
-	String qualifiedName
-	String[] urls
-	String[] licenses
+class BuildArtifact extends VersionedElement {
+	
 }
 
 class PromotionLocation extends VersionedElement {

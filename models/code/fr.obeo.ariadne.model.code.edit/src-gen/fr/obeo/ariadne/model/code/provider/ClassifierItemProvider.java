@@ -258,6 +258,7 @@ public class ClassifierItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(CodePackage.Literals.CLASSIFIER__CONSTRUCTORS);
       childrenFeatures.add(CodePackage.Literals.CLASSIFIER__FIELDS);
       childrenFeatures.add(CodePackage.Literals.CLASSIFIER__OPERATIONS);
     }
@@ -326,6 +327,7 @@ public class ClassifierItemProvider
       case CodePackage.CLASSIFIER__ABSTRACT:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
       case CodePackage.CLASSIFIER__FIELDS:
       case CodePackage.CLASSIFIER__OPERATIONS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -345,6 +347,11 @@ public class ClassifierItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
+
+    newChildDescriptors.add
+      (createChildParameter
+        (CodePackage.Literals.CLASSIFIER__CONSTRUCTORS,
+         CodeFactory.eINSTANCE.createConstructor()));
 
     newChildDescriptors.add
       (createChildParameter

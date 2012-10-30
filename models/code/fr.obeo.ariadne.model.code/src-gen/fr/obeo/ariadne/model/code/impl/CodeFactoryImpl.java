@@ -78,6 +78,7 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
       case CodePackage.GENERIC_RESOURCE: return createGenericResource();
       case CodePackage.CLASSPATH_ENTRY: return createClasspathEntry();
       case CodePackage.TYPES_CONTAINER: return createTypesContainer();
+      case CodePackage.PRIMITIVE_TYPE: return createPrimitiveType();
       case CodePackage.CLASSIFIER: return createClassifier();
       case CodePackage.FIELD: return createField();
       case CodePackage.CONSTRUCTOR: return createConstructor();
@@ -192,6 +193,17 @@ public class CodeFactoryImpl extends EFactoryImpl implements CodeFactory
   {
     TypesContainerImpl typesContainer = new TypesContainerImpl();
     return typesContainer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrimitiveType createPrimitiveType()
+  {
+    PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
+    return primitiveType;
   }
 
   /**

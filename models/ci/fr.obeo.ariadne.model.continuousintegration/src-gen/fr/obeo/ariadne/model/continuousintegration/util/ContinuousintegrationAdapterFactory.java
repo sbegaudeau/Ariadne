@@ -95,9 +95,9 @@ public class ContinuousintegrationAdapterFactory extends AdapterFactoryImpl
         return createBuildJobAdapter();
       }
       @Override
-      public Adapter caseBuildDependency(BuildDependency object)
+      public Adapter caseBuildArtifact(BuildArtifact object)
       {
-        return createBuildDependencyAdapter();
+        return createBuildArtifactAdapter();
       }
       @Override
       public Adapter casePromotionLocation(PromotionLocation object)
@@ -162,16 +162,16 @@ public class ContinuousintegrationAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.continuousintegration.BuildDependency <em>Build Dependency</em>}'.
+   * Creates a new adapter for an object of class '{@link fr.obeo.ariadne.model.continuousintegration.BuildArtifact <em>Build Artifact</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fr.obeo.ariadne.model.continuousintegration.BuildDependency
+   * @see fr.obeo.ariadne.model.continuousintegration.BuildArtifact
    * @generated
    */
-  public Adapter createBuildDependencyAdapter()
+  public Adapter createBuildArtifactAdapter()
   {
     return null;
   }

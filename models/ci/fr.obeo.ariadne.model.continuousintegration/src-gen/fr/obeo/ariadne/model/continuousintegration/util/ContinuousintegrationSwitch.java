@@ -98,11 +98,11 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ContinuousintegrationPackage.BUILD_DEPENDENCY:
+      case ContinuousintegrationPackage.BUILD_ARTIFACT:
       {
-        BuildDependency buildDependency = (BuildDependency)theEObject;
-        T result = caseBuildDependency(buildDependency);
-        if (result == null) result = caseVersionedElement(buildDependency);
+        BuildArtifact buildArtifact = (BuildArtifact)theEObject;
+        T result = caseBuildArtifact(buildArtifact);
+        if (result == null) result = caseVersionedElement(buildArtifact);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -151,17 +151,17 @@ public class ContinuousintegrationSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Build Dependency</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Build Artifact</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Build Dependency</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Build Artifact</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBuildDependency(BuildDependency object)
+  public T caseBuildArtifact(BuildArtifact object)
   {
     return null;
   }

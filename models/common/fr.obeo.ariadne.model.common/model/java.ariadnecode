@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ariadne-code="http://www.obeo.fr/dsl/Ariadne/Code">
+  <ariadne-code:TypesContainer name="java.lang">
+    <types xsi:type="ariadne-code:PrimitiveType" name="byte"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="boolean"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="char"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="double"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="float"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="int"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="long"/>
+    <types xsi:type="ariadne-code:PrimitiveType" name="short"/>
+    <types xsi:type="ariadne-code:Classifier" name="Appendable" qualifiedName="java.lang.Appendable"/>
+    <types xsi:type="ariadne-code:Classifier" name="CharSequence" qualifiedName="java.lang.CharSequence"/>
+    <types xsi:type="ariadne-code:Classifier" name="Cloneable" qualifiedName="java.lang.Cloneable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Compareable" qualifiedName="java.lang.Compareable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Iterable" qualifiedName="java.lang.Iterable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Readable" qualifiedName="java.lang.Readable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Runable" qualifiedName="java.lang.Runable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Boolean" qualifiedName="java.lang.Boolean"/>
+    <types xsi:type="ariadne-code:Classifier" name="Byte" qualifiedName="java.lang.Byte"/>
+    <types xsi:type="ariadne-code:Classifier" name="Character" qualifiedName="java.lang.Character"/>
+    <types xsi:type="ariadne-code:Classifier" name="Class" qualifiedName="java.lang.Class"/>
+    <types xsi:type="ariadne-code:Classifier" name="ClassLoader" qualifiedName="java.lang.ClassLoader"/>
+    <types xsi:type="ariadne-code:Classifier" name="Compiler" qualifiedName="java.lang.Compiler"/>
+    <types xsi:type="ariadne-code:Classifier" name="Double" qualifiedName="java.lang.Double"/>
+    <types xsi:type="ariadne-code:Classifier" name="Enum" qualifiedName="java.lang.Enum"/>
+    <types xsi:type="ariadne-code:Classifier" name="Float" qualifiedName="java.lang.Float"/>
+    <types xsi:type="ariadne-code:Classifier" name="Integer" qualifiedName="java.lang.Integer"/>
+    <types xsi:type="ariadne-code:Classifier" name="Long" qualifiedName="java.lang.Long"/>
+    <types xsi:type="ariadne-code:Classifier" name="Math" qualifiedName="java.lang.Math"/>
+    <types xsi:type="ariadne-code:Classifier" name="Number" qualifiedName="java.lang.Number"/>
+    <types xsi:type="ariadne-code:Classifier" name="Object" qualifiedName="java.lang.Object"/>
+    <types xsi:type="ariadne-code:Classifier" name="Package" qualifiedName="java.lang.Package"/>
+    <types xsi:type="ariadne-code:Classifier" name="Process" qualifiedName="java.lang.Process"/>
+    <types xsi:type="ariadne-code:Classifier" name="ProcessBuilder" qualifiedName="java.lang.ProcessBuilder"/>
+    <types xsi:type="ariadne-code:Classifier" name="Runtime" qualifiedName="java.lang.Runtime"/>
+    <types xsi:type="ariadne-code:Classifier" name="RuntimePermission" qualifiedName="java.lang.RuntimePermission"/>
+    <types xsi:type="ariadne-code:Classifier" name="SecurityManager" qualifiedName="java.lang.SecurityManager"/>
+    <types xsi:type="ariadne-code:Classifier" name="Short" qualifiedName="java.lang.Short"/>
+    <types xsi:type="ariadne-code:Classifier" name="StackTraceElement" qualifiedName="java.lang.StackTraceElement"/>
+    <types xsi:type="ariadne-code:Classifier" name="StrictMath" qualifiedName="java.lang.StrictMath"/>
+    <types xsi:type="ariadne-code:Classifier" name="String" qualifiedName="java.lang.String"/>
+    <types xsi:type="ariadne-code:Classifier" name="StringBuffer" qualifiedName="java.lang.StringBuffer"/>
+    <types xsi:type="ariadne-code:Classifier" name="StringBuilder" qualifiedName="java.lang.StringBuilder"/>
+    <types xsi:type="ariadne-code:Classifier" name="System" qualifiedName="java.lang.System"/>
+    <types xsi:type="ariadne-code:Classifier" name="Thread" qualifiedName="java.lang.Thread"/>
+    <types xsi:type="ariadne-code:Classifier" name="ThreadGroup" qualifiedName="java.lang.ThreadGroup"/>
+    <types xsi:type="ariadne-code:Classifier" name="ThreadLocal" qualifiedName="java.lang.ThreadLocal"/>
+    <types xsi:type="ariadne-code:Classifier" name="Throwable" qualifiedName="java.lang.Throwable"/>
+    <types xsi:type="ariadne-code:Classifier" name="Void" qualifiedName="java.lang.Void"/>
+    <types xsi:type="ariadne-code:Classifier" name="ArithmeticException" qualifiedName="java.lang.ArithmeticException"/>
+    <types xsi:type="ariadne-code:Classifier" name="ArrayIndexOutOfBoundsException" qualifiedName="java.lang.ArrayIndexOutOfBoundsException"/>
+    <types xsi:type="ariadne-code:Classifier" name="ArrayStoreException" qualifiedName="java.lang.ArrayStoreException"/>
+    <types xsi:type="ariadne-code:Classifier" name="ClassCastException" qualifiedName="java.lang.ClassCastException"/>
+    <types xsi:type="ariadne-code:Classifier" name="ClassNotFoundException" qualifiedName="java.lang.ClassNotFoundException"/>
+    <types xsi:type="ariadne-code:Classifier" name="CloneNotSupportedException" qualifiedName="java.lang.CloneNotSupportedException"/>
+    <types xsi:type="ariadne-code:Classifier" name="EnumConstantNotPresentException" qualifiedName="java.lang.EnumConstantNotPresentException"/>
+    <types xsi:type="ariadne-code:Classifier" name="Exception" qualifiedName="java.lang.Exception"/>
+    <types xsi:type="ariadne-code:Classifier" name="IllegalAccessException" qualifiedName="java.lang.IllegalAccessException"/>
+    <types xsi:type="ariadne-code:Classifier" name="IllegalArgumentException" qualifiedName="java.lang.IllegalArgumentException"/>
+    <types xsi:type="ariadne-code:Classifier" name="IllegalMonitorStateException" qualifiedName="java.lang.IllegalMonitorStateException"/>
+    <types xsi:type="ariadne-code:Classifier" name="IllegalStateException" qualifiedName="java.lang.IllegalStateException"/>
+    <types xsi:type="ariadne-code:Classifier" name="IllegalThreadStateException" qualifiedName="java.lang.IllegalThreadStateException"/>
+    <types xsi:type="ariadne-code:Classifier" name="IndexOutOfBoundsException" qualifiedName="java.lang.IndexOutOfBoundsException"/>
+    <types xsi:type="ariadne-code:Classifier" name="InstantiationException" qualifiedName="java.lang.InstantiationException"/>
+    <types xsi:type="ariadne-code:Classifier" name="InterruptedException" qualifiedName="java.lang.InterruptedException"/>
+    <types xsi:type="ariadne-code:Classifier" name="NegativeArraySizeException" qualifiedName="java.lang.NegativeArraySizeException"/>
+    <types xsi:type="ariadne-code:Classifier" name="NoSuchFieldException" qualifiedName="java.lang.NoSuchFieldException"/>
+    <types xsi:type="ariadne-code:Classifier" name="NoSuchMethodException" qualifiedName="java.lang.NoSuchMethodException"/>
+    <types xsi:type="ariadne-code:Classifier" name="NullPointerException" qualifiedName="java.lang.NullPointerException"/>
+    <types xsi:type="ariadne-code:Classifier" name="NumberFormatException" qualifiedName="java.lang.NumberFormatException"/>
+    <types xsi:type="ariadne-code:Classifier" name="RuntimeException" qualifiedName="java.lang.RuntimeException"/>
+    <types xsi:type="ariadne-code:Classifier" name="SecurityException" qualifiedName="java.lang.SecurityException"/>
+    <types xsi:type="ariadne-code:Classifier" name="StringIndexOutOfBoundsException" qualifiedName="java.lang.StringIndexOutOfBoundsException"/>
+    <types xsi:type="ariadne-code:Classifier" name="typeNotPresentException" qualifiedName="java.lang.typeNotPresentException"/>
+    <types xsi:type="ariadne-code:Classifier" name="UnsupportedOperationException" qualifiedName="java.lang.UnsupportedOperationException"/>
+    <types xsi:type="ariadne-code:Annotation" name="Deprecated" qualifiedName="java.lang.Deprecated"/>
+    <types xsi:type="ariadne-code:Annotation" name="Override" qualifiedName="java.lang.Override"/>
+    <types xsi:type="ariadne-code:Annotation" name="SuppressWarning" qualifiedName="java.lang.SuppressWarning"/>
+  </ariadne-code:TypesContainer>
+  <ariadne-code:TypesContainer name="java.util">
+    <types xsi:type="ariadne-code:Classifier" name="List" qualifiedName="java.util.List"/>
+    <types xsi:type="ariadne-code:Classifier" name="ArrayList" qualifiedName="java.util.ArrayList"/>
+    <types xsi:type="ariadne-code:Classifier" name="LinkedList" qualifiedName="java.util.LinkedList"/>
+    <types xsi:type="ariadne-code:Classifier" name="Set" qualifiedName="java.util.Set"/>
+    <types xsi:type="ariadne-code:Classifier" name="LinkedHashSet" qualifiedName="java.util.LinkedHashSet"/>
+    <types xsi:type="ariadne-code:Classifier" name="Map" qualifiedName="java.util.Map"/>
+    <types xsi:type="ariadne-code:Classifier" name="HashMap" qualifiedName="java.util.HashMap"/>
+  </ariadne-code:TypesContainer>
+  <ariadne-code:TypesContainer name="java.io">
+    <types xsi:type="ariadne-code:Classifier" name="File" qualifiedName="java.io.File"/>
+  </ariadne-code:TypesContainer>
+</xmi:XMI>

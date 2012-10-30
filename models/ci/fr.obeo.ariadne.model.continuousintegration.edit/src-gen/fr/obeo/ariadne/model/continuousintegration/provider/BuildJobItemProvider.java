@@ -15,6 +15,8 @@ import fr.obeo.ariadne.model.continuousintegration.BuildJob;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationFactory;
 import fr.obeo.ariadne.model.continuousintegration.ContinuousintegrationPackage;
 
+import fr.obeo.ariadne.model.core.CoreFactory;
+
 import fr.obeo.ariadne.model.core.provider.VersionedElementItemProvider;
 
 import java.util.Collection;
@@ -79,7 +81,6 @@ public class BuildJobItemProvider
       addUrlPropertyDescriptor(object);
       addBuildTechnologyKindsPropertyDescriptor(object);
       addBuildKindsPropertyDescriptor(object);
-      addComponentsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -154,29 +155,6 @@ public class BuildJobItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Components feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addComponentsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_BuildJob_components_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_BuildJob_components_feature", "_UI_BuildJob_type"),
-         ContinuousintegrationPackage.Literals.BUILD_JOB__COMPONENTS,
-         true,
-         false,
-         true,
-         null,
-         null,
-         null));
-  }
-
-  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -190,8 +168,9 @@ public class BuildJobItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(ContinuousintegrationPackage.Literals.BUILD_JOB__ENTRIES);
       childrenFeatures.add(ContinuousintegrationPackage.Literals.BUILD_JOB__PROMOTION_LOCATIONS);
-      childrenFeatures.add(ContinuousintegrationPackage.Literals.BUILD_JOB__BUILD_DEPENDENCIES);
+      childrenFeatures.add(ContinuousintegrationPackage.Literals.BUILD_JOB__BUILD_ARTIFACTS);
     }
     return childrenFeatures;
   }
@@ -256,8 +235,9 @@ public class BuildJobItemProvider
       case ContinuousintegrationPackage.BUILD_JOB__BUILD_KINDS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
+      case ContinuousintegrationPackage.BUILD_JOB__ENTRIES:
       case ContinuousintegrationPackage.BUILD_JOB__PROMOTION_LOCATIONS:
-      case ContinuousintegrationPackage.BUILD_JOB__BUILD_DEPENDENCIES:
+      case ContinuousintegrationPackage.BUILD_JOB__BUILD_ARTIFACTS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -278,13 +258,18 @@ public class BuildJobItemProvider
 
     newChildDescriptors.add
       (createChildParameter
+        (ContinuousintegrationPackage.Literals.BUILD_JOB__ENTRIES,
+         CoreFactory.eINSTANCE.createEntry()));
+
+    newChildDescriptors.add
+      (createChildParameter
         (ContinuousintegrationPackage.Literals.BUILD_JOB__PROMOTION_LOCATIONS,
          ContinuousintegrationFactory.eINSTANCE.createPromotionLocation()));
 
     newChildDescriptors.add
       (createChildParameter
-        (ContinuousintegrationPackage.Literals.BUILD_JOB__BUILD_DEPENDENCIES,
-         ContinuousintegrationFactory.eINSTANCE.createBuildDependency()));
+        (ContinuousintegrationPackage.Literals.BUILD_JOB__BUILD_ARTIFACTS,
+         ContinuousintegrationFactory.eINSTANCE.createBuildArtifact()));
   }
 
   /**

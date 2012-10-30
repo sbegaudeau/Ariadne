@@ -10,9 +10,7 @@
  */
 package fr.obeo.ariadne.model.continuousintegration.impl;
 
-import fr.obeo.ariadne.model.code.CodePackage;
-
-import fr.obeo.ariadne.model.continuousintegration.BuildDependency;
+import fr.obeo.ariadne.model.continuousintegration.BuildArtifact;
 import fr.obeo.ariadne.model.continuousintegration.BuildJob;
 import fr.obeo.ariadne.model.continuousintegration.BuildKind;
 import fr.obeo.ariadne.model.continuousintegration.BuildServer;
@@ -58,7 +56,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass buildDependencyEClass = null;
+  private EClass buildArtifactEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -123,7 +121,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     isInited = true;
 
     // Initialize simple dependencies
-    CodePackage.eINSTANCE.eClass();
+    CorePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theContinuousintegrationPackage.createPackageContents();
@@ -225,7 +223,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBuildJob_PromotionLocations()
+  public EReference getBuildJob_Entries()
   {
     return (EReference)buildJobEClass.getEStructuralFeatures().get(3);
   }
@@ -235,7 +233,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBuildJob_BuildDependencies()
+  public EReference getBuildJob_PromotionLocations()
   {
     return (EReference)buildJobEClass.getEStructuralFeatures().get(4);
   }
@@ -245,7 +243,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBuildJob_Components()
+  public EReference getBuildJob_BuildArtifacts()
   {
     return (EReference)buildJobEClass.getEStructuralFeatures().get(5);
   }
@@ -255,39 +253,9 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBuildDependency()
+  public EClass getBuildArtifact()
   {
-    return buildDependencyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getBuildDependency_QualifiedName()
-  {
-    return (EAttribute)buildDependencyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getBuildDependency_Urls()
-  {
-    return (EAttribute)buildDependencyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getBuildDependency_Licenses()
-  {
-    return (EAttribute)buildDependencyEClass.getEStructuralFeatures().get(2);
+    return buildArtifactEClass;
   }
 
   /**
@@ -359,14 +327,11 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     createEAttribute(buildJobEClass, BUILD_JOB__URL);
     createEAttribute(buildJobEClass, BUILD_JOB__BUILD_TECHNOLOGY_KINDS);
     createEAttribute(buildJobEClass, BUILD_JOB__BUILD_KINDS);
+    createEReference(buildJobEClass, BUILD_JOB__ENTRIES);
     createEReference(buildJobEClass, BUILD_JOB__PROMOTION_LOCATIONS);
-    createEReference(buildJobEClass, BUILD_JOB__BUILD_DEPENDENCIES);
-    createEReference(buildJobEClass, BUILD_JOB__COMPONENTS);
+    createEReference(buildJobEClass, BUILD_JOB__BUILD_ARTIFACTS);
 
-    buildDependencyEClass = createEClass(BUILD_DEPENDENCY);
-    createEAttribute(buildDependencyEClass, BUILD_DEPENDENCY__QUALIFIED_NAME);
-    createEAttribute(buildDependencyEClass, BUILD_DEPENDENCY__URLS);
-    createEAttribute(buildDependencyEClass, BUILD_DEPENDENCY__LICENSES);
+    buildArtifactEClass = createEClass(BUILD_ARTIFACT);
 
     promotionLocationEClass = createEClass(PROMOTION_LOCATION);
     createEAttribute(promotionLocationEClass, PROMOTION_LOCATION__URL);
@@ -402,7 +367,6 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     // Obtain other dependent packages
     CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-    CodePackage theCodePackage = (CodePackage)EPackage.Registry.INSTANCE.getEPackage(CodePackage.eNS_URI);
 
     // Create type parameters
 
@@ -411,7 +375,7 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     // Add supertypes to classes
     buildServerEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     buildJobEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
-    buildDependencyEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
+    buildArtifactEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     promotionLocationEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
 
     // Initialize classes, features, and operations; add parameters
@@ -424,14 +388,11 @@ public class ContinuousintegrationPackageImpl extends EPackageImpl implements Co
     initEAttribute(getBuildJob_Url(), theEcorePackage.getEString(), "url", null, 0, 1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBuildJob_BuildTechnologyKinds(), theEcorePackage.getEString(), "buildTechnologyKinds", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBuildJob_BuildKinds(), this.getBuildKind(), "buildKinds", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildJob_Entries(), theCorePackage.getEntry(), null, "entries", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBuildJob_PromotionLocations(), this.getPromotionLocation(), null, "promotionLocations", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBuildJob_BuildDependencies(), this.getBuildDependency(), null, "buildDependencies", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBuildJob_Components(), theCodePackage.getComponent(), null, "components", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBuildJob_BuildArtifacts(), this.getBuildArtifact(), null, "buildArtifacts", null, 0, -1, BuildJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(buildDependencyEClass, BuildDependency.class, "BuildDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBuildDependency_QualifiedName(), theEcorePackage.getEString(), "qualifiedName", null, 0, 1, BuildDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBuildDependency_Urls(), theEcorePackage.getEString(), "urls", null, 0, -1, BuildDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBuildDependency_Licenses(), theEcorePackage.getEString(), "licenses", null, 0, -1, BuildDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(buildArtifactEClass, BuildArtifact.class, "BuildArtifact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(promotionLocationEClass, PromotionLocation.class, "PromotionLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPromotionLocation_Url(), theEcorePackage.getEString(), "url", null, 0, 1, PromotionLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

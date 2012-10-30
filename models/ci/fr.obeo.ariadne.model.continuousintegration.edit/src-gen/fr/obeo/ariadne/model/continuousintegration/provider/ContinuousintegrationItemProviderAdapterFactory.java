@@ -132,28 +132,28 @@ public class ContinuousintegrationItemProviderAdapterFactory extends Continuousi
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.continuousintegration.BuildDependency} instances.
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.continuousintegration.BuildArtifact} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected BuildDependencyItemProvider buildDependencyItemProvider;
+  protected BuildArtifactItemProvider buildArtifactItemProvider;
 
   /**
-   * This creates an adapter for a {@link fr.obeo.ariadne.model.continuousintegration.BuildDependency}.
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.continuousintegration.BuildArtifact}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
-  public Adapter createBuildDependencyAdapter()
+  public Adapter createBuildArtifactAdapter()
   {
-    if (buildDependencyItemProvider == null)
+    if (buildArtifactItemProvider == null)
     {
-      buildDependencyItemProvider = new BuildDependencyItemProvider(this);
+      buildArtifactItemProvider = new BuildArtifactItemProvider(this);
     }
 
-    return buildDependencyItemProvider;
+    return buildArtifactItemProvider;
   }
 
   /**
@@ -294,7 +294,7 @@ public class ContinuousintegrationItemProviderAdapterFactory extends Continuousi
   {
     if (buildServerItemProvider != null) buildServerItemProvider.dispose();
     if (buildJobItemProvider != null) buildJobItemProvider.dispose();
-    if (buildDependencyItemProvider != null) buildDependencyItemProvider.dispose();
+    if (buildArtifactItemProvider != null) buildArtifactItemProvider.dispose();
     if (promotionLocationItemProvider != null) promotionLocationItemProvider.dispose();
   }
 

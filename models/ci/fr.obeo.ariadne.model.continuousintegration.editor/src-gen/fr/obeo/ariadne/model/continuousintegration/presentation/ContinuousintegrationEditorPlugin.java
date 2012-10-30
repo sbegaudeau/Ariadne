@@ -10,8 +10,6 @@
  */
 package fr.obeo.ariadne.model.continuousintegration.presentation;
 
-import fr.obeo.ariadne.model.code.provider.CodeEditPlugin;
-
 import fr.obeo.ariadne.model.core.provider.CoreEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -56,7 +54,6 @@ public final class ContinuousintegrationEditorPlugin extends EMFPlugin
       (new ResourceLocator [] 
       {
         CoreEditPlugin.INSTANCE,
-        CodeEditPlugin.INSTANCE,
       });
   }
 

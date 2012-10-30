@@ -49,13 +49,13 @@ public interface ContinuousintegrationFactory extends EFactory
   BuildJob createBuildJob();
 
   /**
-   * Returns a new object of class '<em>Build Dependency</em>'.
+   * Returns a new object of class '<em>Build Artifact</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Build Dependency</em>'.
+   * @return a new object of class '<em>Build Artifact</em>'.
    * @generated
    */
-  BuildDependency createBuildDependency();
+  BuildArtifact createBuildArtifact();
 
   /**
    * Returns a new object of class '<em>Promotion Location</em>'.

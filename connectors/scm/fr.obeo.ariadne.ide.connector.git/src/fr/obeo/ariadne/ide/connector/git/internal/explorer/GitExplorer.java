@@ -355,15 +355,13 @@ public class GitExplorer extends AbstractAriadneExplorer {
 					Organization organization = (Organization)eObject;
 					List<Person> persons = organization.getPersons();
 					for (Person aPerson : persons) {
-						if (aPerson.getEmail().equals(committerIdent.getEmailAddress())
-								&& aPerson.getName().equals(committerIdent.getName())) {
+						if (aPerson.getName().equals(committerIdent.getName())) {
 							person = aPerson;
 						}
 					}
 				} else if (eObject instanceof Person) {
 					Person aPerson = (Person)eObject;
-					if (aPerson.getEmail().equals(committerIdent.getEmailAddress())
-							&& aPerson.getName().equals(committerIdent.getName())) {
+					if (aPerson.getName().equals(committerIdent.getName())) {
 						person = aPerson;
 					}
 				}

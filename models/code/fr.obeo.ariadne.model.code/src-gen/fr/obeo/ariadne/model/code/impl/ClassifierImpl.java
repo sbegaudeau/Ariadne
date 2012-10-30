@@ -13,6 +13,7 @@ package fr.obeo.ariadne.model.code.impl;
 import fr.obeo.ariadne.model.code.Classifier;
 import fr.obeo.ariadne.model.code.ClassifierKind;
 import fr.obeo.ariadne.model.code.CodePackage;
+import fr.obeo.ariadne.model.code.Constructor;
 import fr.obeo.ariadne.model.code.Field;
 import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Type;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getConstructors <em>Constructors</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl#getOperations <em>Operations</em>}</li>
  * </ul>
@@ -176,6 +178,16 @@ public class ClassifierImpl extends TypeImpl implements Classifier
    * @ordered
    */
   protected EList<Type> typeParameters;
+
+  /**
+   * The cached value of the '{@link #getConstructors() <em>Constructors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstructors()
+   * @generated
+   * @ordered
+   */
+  protected EList<Constructor> constructors;
 
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
@@ -366,6 +378,20 @@ public class ClassifierImpl extends TypeImpl implements Classifier
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Constructor> getConstructors()
+  {
+    if (constructors == null)
+    {
+      constructors = new EObjectContainmentEList<Constructor>(Constructor.class, this, CodePackage.CLASSIFIER__CONSTRUCTORS);
+    }
+    return constructors;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Field> getFields()
   {
     if (fields == null)
@@ -416,6 +442,8 @@ public class ClassifierImpl extends TypeImpl implements Classifier
   {
     switch (featureID)
     {
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
+        return ((InternalEList<?>)getConstructors()).basicRemove(otherEnd, msgs);
       case CodePackage.CLASSIFIER__FIELDS:
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
       case CodePackage.CLASSIFIER__OPERATIONS:
@@ -448,6 +476,8 @@ public class ClassifierImpl extends TypeImpl implements Classifier
         return getSuperTypes();
       case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
         return getTypeParameters();
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
+        return getConstructors();
       case CodePackage.CLASSIFIER__FIELDS:
         return getFields();
       case CodePackage.CLASSIFIER__OPERATIONS:
@@ -489,6 +519,10 @@ public class ClassifierImpl extends TypeImpl implements Classifier
       case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
         getTypeParameters().clear();
         getTypeParameters().addAll((Collection<? extends Type>)newValue);
+        return;
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
+        getConstructors().clear();
+        getConstructors().addAll((Collection<? extends Constructor>)newValue);
         return;
       case CodePackage.CLASSIFIER__FIELDS:
         getFields().clear();
@@ -533,6 +567,9 @@ public class ClassifierImpl extends TypeImpl implements Classifier
       case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
         getTypeParameters().clear();
         return;
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
+        getConstructors().clear();
+        return;
       case CodePackage.CLASSIFIER__FIELDS:
         getFields().clear();
         return;
@@ -567,6 +604,8 @@ public class ClassifierImpl extends TypeImpl implements Classifier
         return superTypes != null && !superTypes.isEmpty();
       case CodePackage.CLASSIFIER__TYPE_PARAMETERS:
         return typeParameters != null && !typeParameters.isEmpty();
+      case CodePackage.CLASSIFIER__CONSTRUCTORS:
+        return constructors != null && !constructors.isEmpty();
       case CodePackage.CLASSIFIER__FIELDS:
         return fields != null && !fields.isEmpty();
       case CodePackage.CLASSIFIER__OPERATIONS:

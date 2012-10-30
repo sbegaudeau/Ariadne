@@ -25,6 +25,7 @@ import fr.obeo.ariadne.model.code.Field;
 import fr.obeo.ariadne.model.code.GenericResource;
 import fr.obeo.ariadne.model.code.Operation;
 import fr.obeo.ariadne.model.code.Parameter;
+import fr.obeo.ariadne.model.code.PrimitiveType;
 import fr.obeo.ariadne.model.code.ProvidedService;
 import fr.obeo.ariadne.model.code.ReferencedService;
 import fr.obeo.ariadne.model.code.Resource;
@@ -101,6 +102,13 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * @generated
    */
   private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass primitiveTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -551,6 +559,16 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getPrimitiveType()
+  {
+    return primitiveTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getClassifier()
   {
     return classifierEClass;
@@ -631,7 +649,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Fields()
+  public EReference getClassifier_Constructors()
   {
     return (EReference)classifierEClass.getEStructuralFeatures().get(7);
   }
@@ -641,9 +659,19 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Operations()
+  public EReference getClassifier_Fields()
   {
     return (EReference)classifierEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClassifier_Operations()
+  {
+    return (EReference)classifierEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1331,6 +1359,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEReference(typeEClass, TYPE__INTERNAL_TYPES);
     createEReference(typeEClass, TYPE__ANNOTATIONS);
 
+    primitiveTypeEClass = createEClass(PRIMITIVE_TYPE);
+
     classifierEClass = createEClass(CLASSIFIER);
     createEAttribute(classifierEClass, CLASSIFIER__KIND);
     createEAttribute(classifierEClass, CLASSIFIER__STATIC);
@@ -1339,6 +1369,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     createEAttribute(classifierEClass, CLASSIFIER__ABSTRACT);
     createEReference(classifierEClass, CLASSIFIER__SUPER_TYPES);
     createEReference(classifierEClass, CLASSIFIER__TYPE_PARAMETERS);
+    createEReference(classifierEClass, CLASSIFIER__CONSTRUCTORS);
     createEReference(classifierEClass, CLASSIFIER__FIELDS);
     createEReference(classifierEClass, CLASSIFIER__OPERATIONS);
 
@@ -1455,6 +1486,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     genericResourceEClass.getESuperTypes().add(this.getResource());
     typesContainerEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     typeEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
+    primitiveTypeEClass.getESuperTypes().add(this.getType());
     classifierEClass.getESuperTypes().add(this.getType());
     fieldEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
     constructorEClass.getESuperTypes().add(theCorePackage.getVersionedElement());
@@ -1502,6 +1534,8 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEReference(getType_InternalTypes(), this.getType(), null, "internalTypes", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getType_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(classifierEClass, Classifier.class, "Classifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getClassifier_Kind(), this.getClassifierKind(), "kind", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassifier_Static(), theEcorePackage.getEBoolean(), "static", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1510,6 +1544,7 @@ public class CodePackageImpl extends EPackageImpl implements CodePackage
     initEAttribute(getClassifier_Abstract(), theEcorePackage.getEBoolean(), "abstract", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassifier_SuperTypes(), this.getType(), null, "superTypes", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassifier_TypeParameters(), this.getType(), null, "typeParameters", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassifier_Constructors(), this.getConstructor(), null, "constructors", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassifier_Fields(), this.getField(), null, "fields", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassifier_Operations(), this.getOperation(), this.getOperation_Classifier(), "operations", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

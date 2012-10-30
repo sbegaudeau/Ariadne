@@ -25,6 +25,11 @@ public interface IAriadneModelCommonConstants {
 	String PROPERTIES_MODEL_PATH = "platform:/plugin/fr.obeo.ariadne.model.common/model/properties.ariadnecore"; //$NON-NLS-1$
 
 	/**
+	 * The path of the Ariadne Code model of the Java standard library.
+	 */
+	String JAVA_STANDARD_LIBRARY = "platform:/plugin/fr.obeo.ariadne.model.common/model/java.ariadnecode"; //$NON-NLS-1$
+
+	/**
 	 * Derived.
 	 */
 	String DERIVED_PROPERTY = "Derived"; //$NON-NLS-1$

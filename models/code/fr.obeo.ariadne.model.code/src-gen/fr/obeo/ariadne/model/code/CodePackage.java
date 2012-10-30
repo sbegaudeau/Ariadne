@@ -779,6 +779,124 @@ public interface CodePackage extends EPackage
   int TYPE_OPERATION_COUNT = CorePackage.VERSIONED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.obeo.ariadne.model.code.impl.PrimitiveTypeImpl
+   * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getPrimitiveType()
+   * @generated
+   */
+  int PRIMITIVE_TYPE = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__DESCRIPTION = TYPE__DESCRIPTION;
+
+  /**
+   * The feature id for the '<em><b>Authors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__AUTHORS = TYPE__AUTHORS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__PROPERTIES = TYPE__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Version</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__VERSION = TYPE__VERSION;
+
+  /**
+   * The feature id for the '<em><b>Versioned Dependencies</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__VERSIONED_DEPENDENCIES = TYPE__VERSIONED_DEPENDENCIES;
+
+  /**
+   * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__QUALIFIED_NAME = TYPE__QUALIFIED_NAME;
+
+  /**
+   * The feature id for the '<em><b>Visibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__VISIBILITY = TYPE__VISIBILITY;
+
+  /**
+   * The feature id for the '<em><b>Internal Types</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__INTERNAL_TYPES = TYPE__INTERNAL_TYPES;
+
+  /**
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE__ANNOTATIONS = TYPE__ANNOTATIONS;
+
+  /**
+   * The number of structural features of the '<em>Primitive Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of operations of the '<em>Primitive Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMITIVE_TYPE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl <em>Classifier</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -786,7 +904,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClassifier()
    * @generated
    */
-  int CLASSIFIER = 7;
+  int CLASSIFIER = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -942,13 +1060,22 @@ public interface CodePackage extends EPackage
   int CLASSIFIER__TYPE_PARAMETERS = TYPE_FEATURE_COUNT + 6;
 
   /**
+   * The feature id for the '<em><b>Constructors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__CONSTRUCTORS = TYPE_FEATURE_COUNT + 7;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__FIELDS = TYPE_FEATURE_COUNT + 7;
+  int CLASSIFIER__FIELDS = TYPE_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -957,7 +1084,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER__OPERATIONS = TYPE_FEATURE_COUNT + 8;
+  int CLASSIFIER__OPERATIONS = TYPE_FEATURE_COUNT + 9;
 
   /**
    * The number of structural features of the '<em>Classifier</em>' class.
@@ -966,7 +1093,7 @@ public interface CodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER_FEATURE_COUNT = TYPE_FEATURE_COUNT + 9;
+  int CLASSIFIER_FEATURE_COUNT = TYPE_FEATURE_COUNT + 10;
 
   /**
    * The number of operations of the '<em>Classifier</em>' class.
@@ -985,7 +1112,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getField()
    * @generated
    */
-  int FIELD = 8;
+  int FIELD = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1157,7 +1284,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getConstructor()
    * @generated
    */
-  int CONSTRUCTOR = 9;
+  int CONSTRUCTOR = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1338,7 +1465,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getOperation()
    * @generated
    */
-  int OPERATION = 10;
+  int OPERATION = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1537,7 +1664,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 11;
+  int PARAMETER = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1682,7 +1809,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getAnnotation()
    * @generated
    */
-  int ANNOTATION = 12;
+  int ANNOTATION = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1809,7 +1936,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getAnnotationField()
    * @generated
    */
-  int ANNOTATION_FIELD = 13;
+  int ANNOTATION_FIELD = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1909,7 +2036,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getReferencedService()
    * @generated
    */
-  int REFERENCED_SERVICE = 14;
+  int REFERENCED_SERVICE = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2009,7 +2136,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getProvidedService()
    * @generated
    */
-  int PROVIDED_SERVICE = 15;
+  int PROVIDED_SERVICE = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2109,7 +2236,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getEnvironment()
    * @generated
    */
-  int ENVIRONMENT = 16;
+  int ENVIRONMENT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2200,7 +2327,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getResourceKind()
    * @generated
    */
-  int RESOURCE_KIND = 17;
+  int RESOURCE_KIND = 18;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClasspathEntryKind <em>Classpath Entry Kind</em>}' enum.
@@ -2210,7 +2337,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClasspathEntryKind()
    * @generated
    */
-  int CLASSPATH_ENTRY_KIND = 18;
+  int CLASSPATH_ENTRY_KIND = 19;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.ClassifierKind <em>Classifier Kind</em>}' enum.
@@ -2220,7 +2347,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getClassifierKind()
    * @generated
    */
-  int CLASSIFIER_KIND = 19;
+  int CLASSIFIER_KIND = 20;
 
   /**
    * The meta object id for the '{@link fr.obeo.ariadne.model.code.VisibilityKind <em>Visibility Kind</em>}' enum.
@@ -2230,7 +2357,7 @@ public interface CodePackage extends EPackage
    * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getVisibilityKind()
    * @generated
    */
-  int VISIBILITY_KIND = 20;
+  int VISIBILITY_KIND = 21;
 
 
   /**
@@ -2535,6 +2662,16 @@ public interface CodePackage extends EPackage
   EReference getType_Annotations();
 
   /**
+   * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.PrimitiveType <em>Primitive Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Primitive Type</em>'.
+   * @see fr.obeo.ariadne.model.code.PrimitiveType
+   * @generated
+   */
+  EClass getPrimitiveType();
+
+  /**
    * Returns the meta object for class '{@link fr.obeo.ariadne.model.code.Classifier <em>Classifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2620,6 +2757,17 @@ public interface CodePackage extends EPackage
    * @generated
    */
   EReference getClassifier_TypeParameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Classifier#getConstructors <em>Constructors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constructors</em>'.
+   * @see fr.obeo.ariadne.model.code.Classifier#getConstructors()
+   * @see #getClassifier()
+   * @generated
+   */
+  EReference getClassifier_Constructors();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.obeo.ariadne.model.code.Classifier#getFields <em>Fields</em>}'.
@@ -3575,6 +3723,16 @@ public interface CodePackage extends EPackage
     EReference TYPE__ANNOTATIONS = eINSTANCE.getType_Annotations();
 
     /**
+     * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.obeo.ariadne.model.code.impl.PrimitiveTypeImpl
+     * @see fr.obeo.ariadne.model.code.impl.CodePackageImpl#getPrimitiveType()
+     * @generated
+     */
+    EClass PRIMITIVE_TYPE = eINSTANCE.getPrimitiveType();
+
+    /**
      * The meta object literal for the '{@link fr.obeo.ariadne.model.code.impl.ClassifierImpl <em>Classifier</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3639,6 +3797,14 @@ public interface CodePackage extends EPackage
      * @generated
      */
     EReference CLASSIFIER__TYPE_PARAMETERS = eINSTANCE.getClassifier_TypeParameters();
+
+    /**
+     * The meta object literal for the '<em><b>Constructors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSIFIER__CONSTRUCTORS = eINSTANCE.getClassifier_Constructors();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.

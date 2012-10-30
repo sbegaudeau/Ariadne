@@ -75,7 +75,7 @@ public class ContinuousintegrationFactoryImpl extends EFactoryImpl implements Co
     {
       case ContinuousintegrationPackage.BUILD_SERVER: return createBuildServer();
       case ContinuousintegrationPackage.BUILD_JOB: return createBuildJob();
-      case ContinuousintegrationPackage.BUILD_DEPENDENCY: return createBuildDependency();
+      case ContinuousintegrationPackage.BUILD_ARTIFACT: return createBuildArtifact();
       case ContinuousintegrationPackage.PROMOTION_LOCATION: return createPromotionLocation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -143,10 +143,10 @@ public class ContinuousintegrationFactoryImpl extends EFactoryImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public BuildDependency createBuildDependency()
+  public BuildArtifact createBuildArtifact()
   {
-    BuildDependencyImpl buildDependency = new BuildDependencyImpl();
-    return buildDependency;
+    BuildArtifactImpl buildArtifact = new BuildArtifactImpl();
+    return buildArtifact;
   }
 
   /**

@@ -119,7 +119,7 @@ public class AriadneExploreProjectsWizard extends Wizard {
 	 */
 	private void launchExploration(IProgressMonitor monitor) {
 		monitor.beginTask(AriadneUIMessages.getString("AriadneExploreProjectsWizard.BeginExploration"), //$NON-NLS-1$
-				IProgressMonitor.UNKNOWN);
+				1000);
 
 		List<IProject> projectsToExplore = selectionWizardPage.getProjectsToExplore();
 		List<IFile> organizations = organizationWizardPage.getSelectedOrganizations();

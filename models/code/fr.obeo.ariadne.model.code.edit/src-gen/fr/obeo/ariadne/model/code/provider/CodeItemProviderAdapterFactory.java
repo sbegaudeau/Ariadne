@@ -207,6 +207,31 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.PrimitiveType} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected PrimitiveTypeItemProvider primitiveTypeItemProvider;
+
+  /**
+   * This creates an adapter for a {@link fr.obeo.ariadne.model.code.PrimitiveType}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createPrimitiveTypeAdapter()
+  {
+    if (primitiveTypeItemProvider == null)
+    {
+      primitiveTypeItemProvider = new PrimitiveTypeItemProvider(this);
+    }
+
+    return primitiveTypeItemProvider;
+  }
+
+  /**
    * This keeps track of the one adapter used for all {@link fr.obeo.ariadne.model.code.Classifier} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -572,6 +597,7 @@ public class CodeItemProviderAdapterFactory extends CodeAdapterFactory implement
     if (genericResourceItemProvider != null) genericResourceItemProvider.dispose();
     if (classpathEntryItemProvider != null) classpathEntryItemProvider.dispose();
     if (typesContainerItemProvider != null) typesContainerItemProvider.dispose();
+    if (primitiveTypeItemProvider != null) primitiveTypeItemProvider.dispose();
     if (classifierItemProvider != null) classifierItemProvider.dispose();
     if (fieldItemProvider != null) fieldItemProvider.dispose();
     if (constructorItemProvider != null) constructorItemProvider.dispose();

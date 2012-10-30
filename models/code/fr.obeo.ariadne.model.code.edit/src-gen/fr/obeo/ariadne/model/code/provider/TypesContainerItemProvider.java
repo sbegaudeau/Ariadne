@@ -176,6 +176,11 @@ public class TypesContainerItemProvider
     newChildDescriptors.add
       (createChildParameter
         (CodePackage.Literals.TYPES_CONTAINER__TYPES,
+         CodeFactory.eINSTANCE.createPrimitiveType()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (CodePackage.Literals.TYPES_CONTAINER__TYPES,
          CodeFactory.eINSTANCE.createClassifier()));
 
     newChildDescriptors.add

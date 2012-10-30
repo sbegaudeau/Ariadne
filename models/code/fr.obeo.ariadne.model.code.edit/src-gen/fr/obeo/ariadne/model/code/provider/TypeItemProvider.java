@@ -240,6 +240,11 @@ public class TypeItemProvider
     newChildDescriptors.add
       (createChildParameter
         (CodePackage.Literals.TYPE__INTERNAL_TYPES,
+         CodeFactory.eINSTANCE.createPrimitiveType()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (CodePackage.Literals.TYPE__INTERNAL_TYPES,
          CodeFactory.eINSTANCE.createClassifier()));
 
     newChildDescriptors.add
