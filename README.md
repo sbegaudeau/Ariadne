@@ -1,4 +1,4 @@
 Ariadne
 =======
 
-Repository of the Ariadne project
+Repository of the Ariadne project.
